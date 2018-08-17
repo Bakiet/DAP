@@ -1,0 +1,91 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.DatoObraViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Editar Datos de Obras</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar datos de obras</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Editar", "AdministrarDatosObras", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            
+
+           
+
+                <div class="form-group">
+
+
+                    <div class="col-sm-4">
+                        <label class="col-sm-3 control-label">Datos de la empresa constructora</label>
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.nombreconstructora, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.nombreconstructora, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.nombreconstructora)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.contactotelefonicoempresa, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.contactotelefonicoempresa, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.contactotelefonicoempresa)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.correoelectronicoempresa, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.correoelectronicoempresa, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.correoelectronicoempresa)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.cargoempresa, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.cargoempresa, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cargoempresa)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.direccionoficina, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(m => m.direccionoficina, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                        @Html.ValidationMessageFor(m => m.direccionoficina)
+                    </div>
+                </div>
+
+              
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarDatosObras")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

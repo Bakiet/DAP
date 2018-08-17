@@ -1,0 +1,160 @@
+﻿@using Ppgz.Repository
+@{
+    ViewBag.Title = "Administración de Facturas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    var facturas = (List<facturas>)ViewBag.Facturas;
+    var fechaInicio = (DateTime)ViewBag.FechaInicio;
+}
+
+<h2>Facturas Registradas</h2>
+<p class="page-description-title"><i class="fa fa-envelope" aria-hidden="true"></i> <i>Registro desde hace 3 meses</i></p>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Lista de Facturas</div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="row">
+                <label class="col-sm-2">Fecha</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="fecha" id="fecha" placeholder="Fecha" />
+                </div>
+            </div>
+            <hr />
+            <div class="table-responsive">
+                <table id="facturas" class="table table-striped">
+                    <thead>
+                        <tr>
+         
+                            <th class="text-center">RFC</th>
+                            <th class="text-center">Razón Social</th>
+                            <th class="text-center">Serie</th>
+                            <th class="text-center">Folio</th>
+                            <th class="text-center">Núm.Generado</th>
+                            <th class="text-center">UUID</th>
+                            <th class="text-center">Fecha</th>
+                            <th class="text-center">Total</th>
+                            <th class="text-center">Estatus</th>
+                            <th class="text-center">Comentario</th>
+                            <th class="text-center">Descargar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var factura in facturas)
+                        {
+                            <tr>
+               
+                                <td class="text-center vert-align">@factura.proveedores.Rfc</td>
+                                <td class="text-center vert-align" style=" white-space: inherit; font-size: .8em;">@factura.proveedores.Nombre1 @factura.proveedores.Nombre2 @factura.proveedores.Nombre3 @factura.proveedores.Nombre4</td>
+                                <td class="text-center vert-align">@factura.Serie</td>
+                                <td class="text-center vert-align">@factura.Folio</td>
+                                <td class="text-center vert-align">@factura.NumeroGenerado</td>
+                                <td class="text-center vert-align" style=" white-space: inherit; font-size: .8em;">@factura.Uuid</td>
+                                <td class="text-center vert-align">@factura.Fecha.ToString("dd/MM/yyyy")</td>
+                                <td class="text-center vert-align">@factura.Total</td>
+                                <th class="text-center vert-align">
+                                    @factura.Estatus
+                                </th>
+                                <td class="text-justify vert-align">@factura.Comentario</td>
+                                <td class="text-center vert-align">
+
+                                    <div class="btn-group btn-group-vertical" role="group" aria-label="Archivos">
+                                        <a class="btn btn-danger btn-xs btn-block" href="@Url.Action("DescargarXml", "AdministrarFacturas", new {proveedorId = @factura.proveedores.Id, facturaId = @factura.Id})"><i class="fa fa-file-code-o" aria-hidden="true"></i> XML </a>
+                                        <a class="btn btn-warning btn-xs btn-block" href="@Url.Action("DescargarPdf", "AdministrarFacturas", new {proveedorId = @factura.proveedores.Id, facturaId = @factura.Id})"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF </a>
+                                        <a class="btn btn-primary btn-xs btn-block btn-modificar-factura" data-facturaid="@factura.Id" data-facturaserie="@factura.Serie" data-facturafolio="@factura.Folio" data-facturaestatus="@factura.Estatus" data-facturauuid="@factura.Uuid" data-facturacomentario="@factura.Comentario" data-facturanumerogenerado="@factura.NumeroGenerado"><i class="fa fa-edit" aria-hidden="true"></i> MODIFICAR </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="modificar-factura-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("Actualizar", "AdministrarFacturas", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modificar Factura <span style="font-weight: bold;" id="factura-uuid"></span></h4>
+                </div>
+                <div class="modal-body">
+
+
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="factura-id" name="facturaId" />
+
+
+                    <label>Serie - Folio</label>
+                    <p><span id="factura-serie"></span> - <span id="factura-folio"></span></p>
+
+                    <label>Número Generado</label>
+                    <input class="form-control" name="numeroGenerado" id="factura-numero-generado" />
+                    <label>Estatus</label>
+                    <select name="estatus" id="factura-estatus" class="form-control">
+                        <option value="E">E</option>
+                        <option value="S">S</option>
+                        <option value="S">H</option>
+                    </select>
+                    <label>Comentario</label>
+                    <textarea class="form-control" id="factura-comentario" name="comentario"></textarea>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Modificación</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#facturas  ').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+
+            $('#fecha').datetimepicker({
+                locale: 'es',
+                format: 'DD/MM/YYYY',
+                defaultDate: "@fechaInicio.ToString("yyyyMMdd")"
+            });
+
+            $("#fecha").on("dp.change", function () {
+                location.href = "@Url.Action("Index", "AdministrarFacturas")" + "?fecha=" + $(this).val();
+            });
+
+            $(".btn-modificar-factura").click(function () {
+                var facturaId = $(this).data("facturaid");
+                var facturaUuid = $(this).data("facturauuid");
+                var facturaSerie = $(this).data("facturaserie");
+                var facturaFolio = $(this).data("facturafolio");
+                var facturaNumeroGenerado = $(this).data("facturanumerogenerado");
+                var facturaEstatus = $(this).data("facturaestatus");
+                var facturaComentario = $(this).data("facturacomentario");
+
+                $("#factura-id").val(facturaId);
+                $("#factura-uuid").text(facturaUuid);
+                $("#factura-serie").text(facturaSerie);
+                $("#factura-folio").text(facturaFolio);
+                $("#factura-numero-generado").val(facturaNumeroGenerado);
+                $("#factura-estatus").val(facturaEstatus);
+                $("#factura-comentario").val(facturaComentario);
+
+                $("#modificar-factura-modal").modal("show");
+
+            });
+        });
+    </script>
+}

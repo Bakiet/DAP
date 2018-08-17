@@ -1,0 +1,218 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.MantenimientoPreventivoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Mantenimiento preventivo</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Mantenimiento preventivo</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de Mantenimiento preventivo</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Crear", "AdministrarMantenimientosPreventivos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+
+
+            <div class="form-group">
+                @Html.LabelFor(c => c.Tipo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(c =>  c.Tipo, (IEnumerable<SelectListItem>)ViewBag.Equipo_Tipo, "Seleccione un Valor", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Tipo)
+                </div>
+            </div>
+
+               
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PersonaJuridica, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.PersonaJuridica, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PersonaJuridica)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FechaVisita, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.FechaVisita, new { @class = "form-control fecha", @type = "datetime" })
+                        @Html.ValidationMessageFor(m => m.FechaVisita)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha", @type = "datetime" })
+                        @Html.ValidationMessageFor(m => m.FechaPublicacion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NombreDocumento, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.NombreDocumento, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.NombreDocumento)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Tecnico, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Tecnico, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Tecnico)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EquiposAtendidos, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.EquiposAtendidos, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EquiposAtendidos)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.StatusMantenimiento, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.StatusMantenimiento, (IEnumerable<SelectListItem>)ViewBag.StatusMantenimiento, "Seleccione un Valor", new { @class = "form-control" })
+                        
+                        @Html.ValidationMessageFor(m => m.StatusMantenimiento)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Descripcion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(m => m.Descripcion, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                        @Html.ValidationMessageFor(m => m.Descripcion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Archivo</label>
+                    <div class="col-sm-4">
+                        <div>
+                           
+                               
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf" id="Pdf">
+                                        @Html.ValidationMessageFor(k => k.Archivo)
+
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Evaluación</label>
+                    <div class="col-sm-4">
+                        <div>
+                            
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    
+                                        <div role="tabpanel" class="tab-pane" id="pdf-panel1">
+                                           
+                                                <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-evaluacion" id="Pdf-evaluacion">
+                                                @Html.ValidationMessageFor(k => k.Evaluacion)
+                                         
+                                        </div>
+                                     
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.HoraLlegada, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.HoraLlegada, new { @class = "form-control fecha-hora" })
+                        @Html.ValidationMessageFor(m => m.HoraLlegada)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.HoraSalida, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.HoraSalida, new { @class = "form-control fecha-hora" })
+                        @Html.ValidationMessageFor(m => m.HoraSalida)
+                    </div>
+                </div>  
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-7">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarMantenimientosPreventivos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    </div>
+                </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        
+       
+        $(document).ready(function () {
+
+            $("#Pdf").bind('change', function () {
+        
+                if (this.files[0].size / 1024 / 1024 > 100) {
+                    $(this).val("");
+
+                    alert('Debe incluir un archivo menor a 100Mb');
+                }
+            });
+
+            $('.fecha').datetimepicker({
+                locale: 'es',
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'HH:mm A',
+                showClose: true,
+                sideBySide: true
+            });
+
+            $("#form").submit(function (eventObj) {
+                if ($("ul#text-pdf li.active").attr("id") === "pdf-evaluacion") {
+                    $('<input />').attr('type', 'hidden')
+                        .attr('name', "pdf-evaluacion")
+                        .attr('value', "pdf-evaluacion")
+                        .appendTo('#form');
+                }
+                return true;
+            });
+
+            $("#form").submit(function (eventObj) {
+                if ($("ul#text-pdf li.active").attr("id") === "pdf") {
+                    $('<input />').attr('type', 'hidden')
+                        .attr('name', "pdf")
+                        .attr('value', "pdf")
+                        .appendTo('#form');
+                }
+                return true;
+            });
+
+           
+        });
+
+    </script>
+
+
+}

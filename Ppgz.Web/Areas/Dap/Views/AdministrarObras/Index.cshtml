@@ -1,0 +1,427 @@
+﻿@using Ppgz.Repository
+@model Ppgz.Web.Areas.Dap.Models.ObraViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Obras</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de obras</i></p>*@
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra los reportes de fallas</i></p>*@
+<a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallefallas-modal" id="" onclick="createModal('@Url.Action("ReporteObras", "AdministrarObras" , new {id=ViewBag.id })')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarObras")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Obras</a>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Obras Registradas</div>
+    <div class="panel-body">
+        <table class="table table-striped " id="obras">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Reporte</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Persona Jurídica</th>
+                    <th class="text-center">Dirección de obra</th>
+                    <th class="text-center">Dirección de facturación</th>
+                    <th class="text-center">Dirección de oficina</th>
+                    
+                    @*<th class="text-center">Telefono de oficina</th>
+                    <th class="text-center">Contacto</th>
+                    
+                    <th class="text-center">Email</th>*@
+                    <th class="text-center">INFO. GENERAL DE OBRA</th>
+                    <th class="text-center">Post Venta</th>
+                    <th class="text-center">Operación</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obra in (ViewBag.obras))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@obra.Id</td>*@
+                        <td class="text-center vert-align">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@obra.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarObras" , new {id=obra.Id })')">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            </div>
+                        </td>      
+                        <td class="text-center vert-align h4">@obra.Nombre</td>
+                        <td class="text-center vert-align">@obra.PersonaJuridica</td>
+                        <td class="text-center vert-align">@obra.DireccionObra</td>
+                        <td class="text-center vert-align">@obra.DireccionFacturacion</td>
+                        <td class="text-center vert-align">@obra.DireccionOficina</td>
+                        
+                        @*<td class="text-center vert-align">@obra.TelefonoOficina</td>
+                        <td class="text-center vert-align">@obra.Contacto</td>
+                       
+                        <td class="text-center vert-align">@obra.Email</td>*@
+                        <td class="text-center vert-align">
+                            @if (ViewBag.equipos != null)
+                            {
+                            
+                               
+                                <a class="btn btn-primary btn-block" style="font-weight:bold;" href="@Url.Action("Equipos", "AdministrarEquipos", new { @id = @obra.Id })">
+
+                                    <i  class="fa fa-industry" aria-hidden="true"></i> Equipos
+                                </a>
+                                  
+                            }
+                            @if (ViewBag.fallas != null)
+                            {
+                                <a class="btn btn-danger btn-block" style="font-weight:bold;" href="@Url.Action("Fallas", "AdministrarFallas", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-times" aria-hidden="true"></i> Fallas
+                                </a>
+                            }
+                            @if (ViewBag.envios != null)
+                            {
+                                <a class="btn btn-info btn-block" style="font-weight:bold;" href="@Url.Action("Envios", "AdministrarEnvios", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-truck" aria-hidden="true"></i> Envios
+                                </a>
+                            }
+                            @if (ViewBag.requerimientos != null)
+                            {
+                                <a class="btn btn-warning btn-block" style="font-weight:bold;" href="@Url.Action("Requerimientos", "AdministrarRequerimientos", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-envelope" aria-hidden="true"></i> Requerimientos
+                                </a>
+                            }
+                            @if (ViewBag.herramientas != null)
+                            {
+                                <a class="btn btn-success btn-block" style="font-weight:bold;" href="@Url.Action("HerramientasDesdeObra", "AdministrarHerramientas", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-wrench" aria-hidden="true"></i> Herramientas
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Ventas != null)
+                            {
+                                <a class="btn btn-warning btn-sm" href="@Url.Action("Ventas", "AdministrarVentas", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> VER
+                                </a>
+                            }
+                        </td>                       
+                        @*<td class="text-center vert-align">
+                            @if (ViewBag.Envios != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarEnvios", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Requerimientos != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarRequerimientos", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (@obra.Foto != null)
+                            {
+                                <a href="@Url.Content(@obra.Foto)" target="_blank">Ver</a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (obra.Satelital != null)
+                            {
+                                <a href="@Url.Content(@obra.Satelital)" target="_blank">Ver</a>
+                            }
+                        </td>*@                       
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarObras", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                </a>
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarObras", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarObras", new { @id = @obra.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El mensaje será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modelContent">
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecObra('reporteobra')">
+                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            </a>
+            <div id="reporteobra">
+                <div class="modal-header">
+                    @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                    <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                    </button>
+                    <h4 class="modal-title">Reporte de Fallas</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Nombre)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Nombre)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.PersonaJuridica)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.PersonaJuridica)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.DireccionObra)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.DireccionObra)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.DireccionFacturacion)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.DireccionFacturacion)
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.DireccionOficina)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.DireccionOficina)
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                
+
+                    <div class="form-group">
+                        <div class="table-wrapper">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h2> <b>Contactos</b></h2>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <table class="table table-striped " id="obras">
+                                <thead>
+                                    <tr>
+                                        @*<th class="text-center">Id</th>*@
+                                        <th class="text-center">Nombre</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Telefono</th>
+
+                                </thead>
+                                <tbody>
+                                    @foreach (var obracontacto in (ViewBag.contactos))
+                                    {
+
+                                        <tr>
+                                            @*<td class="text-center vert-align">@obracontacto.id</td>*@
+                                            <td class="text-center vert-align">@obracontacto.nombre</td>
+                                            <td class="text-center vert-align">@obracontacto.email</td>
+                                            <td class="text-center vert-align">@obracontacto.telefono</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+                <script type="text/javascript">
+
+                            function imprSelecObra(muestra) {
+                                var ficha = document.getElementById(muestra);
+                                var ventimp = window.open(' ', 'popimpr');
+                                ventimp.document.write(ficha.innerHTML);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();
+
+                            }
+                </script>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detallefallas-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modelContent" style="width:1000px;">
+
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
+                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            </a>
+            <div id="reporte">
+
+                <div class="modal-header">
+                    @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                    <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                    </button>
+                    <h4 class="modal-title">Obras</h4>
+                </div>
+
+
+                <div class="responsive-table">
+                    <div class="container-fluid">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Obras Registradas</div>
+                            <div class="panel-body">
+                                <table class="table table-striped" id="mensajesmodal">
+                                    <thead>
+                                        <tr>
+                                            @*<th class="text-center">Id</th>*@
+                                           
+                                            <th class="text-center">Nombre</th>
+                                            <th class="text-center">Persona Jurídica</th>
+                                            <th class="text-center">Dirección de obra</th>
+                                            <th class="text-center">Dirección de facturación</th>
+                                            <th class="text-center">Dirección de oficina</th>
+
+                               
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var obra in (ViewBag.obras))
+                                        {
+                                            <tr>
+                                                @*<td class="text-center vert-align">@obra.Id</td>*@
+                                                
+                                                <td class="text-center vert-align h4">@obra.Nombre</td>
+                                                <td class="text-center vert-align">@obra.PersonaJuridica</td>
+                                                <td class="text-center vert-align">@obra.DireccionObra</td>
+                                                <td class="text-center vert-align">@obra.DireccionFacturacion</td>
+                                                <td class="text-center vert-align">@obra.DireccionOficina</td>
+
+                                             
+                    
+                                                
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+                <script type="text/javascript">
+
+                            function imprSelec(muestra) {
+                                var ficha = document.getElementById(muestra);
+                                var ventimp = window.open(' ', 'popimpr');
+                                ventimp.document.write(ficha.innerHTML);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();
+                            }
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+<script type="text/javascript">
+      function createModal(url){
+          $('#modelContent').load(url);
+
+      }
+</script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+            $('#mensajesmodal').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+
+            $('<input />').attr('type', 'hidden')
+                        .attr('name', "Pdf-Plano")
+                        .attr('value', "Pdf-Plano")
+                        .appendTo('#form');
+
+            $('<input />').attr('type', 'hidden')
+                              .attr('name', "Pdf-Fotografia")
+                              .attr('value', "Pdf-Fotografia")
+                              .appendTo('#form');
+        });
+
+        
+
+    </script>
+}

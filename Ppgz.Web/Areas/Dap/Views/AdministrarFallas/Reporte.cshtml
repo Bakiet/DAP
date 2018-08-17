@@ -1,0 +1,140 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.FallaViewModel
+@{
+    
+}
+<a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecFalla('reportefalla')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+<div id="reportefalla">
+    <div class="modal-header">
+        @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+        </button>
+        <h4 class="modal-title">Reporte de Fallas</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row" >
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaFalla)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.FechaFalla)
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Obra)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Obra)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Equipo)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Equipo)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tipo)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Tipo)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Componente)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Componente)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Personal)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Personal)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaSolucion)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.FechaSolucion)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.StatusFalla)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.StatusFalla)
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Descripcion)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Descripcion)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Condicion)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Condicion)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.AccionesTomadas)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.AccionesTomadas)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.PersonaReporte)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.PersonaReporte)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.GerenciaResponsable)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.GerenciaResponsable)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+    </div>

@@ -1,0 +1,346 @@
+﻿@using Ppgz.Repository
+@model Ppgz.Web.Areas.Dap.Models.RequerimientoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="form-signin-heading">Requerimientos</h2>
+<a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallerequerimientos-modal" id="" onclick="createModal('@Url.Action("ReporteRequerimientos", "AdministrarRequerimientos" , new {id=ViewBag.id })')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de requerimientos</i></p>*@
+@if (ViewBag.id != null)
+{
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarRequerimientos", new { @id = ViewBag.id })'">Histórico</button>
+}
+else
+{
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("HistoricoTodos", "AdministrarRequerimientos")'">Histórico</button>
+}
+<div class="clearfix">
+    @if (ViewBag.id != null)
+    {
+
+        <a href="@Url.Action("Crear", "AdministrarRequerimientos", new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Requerimientos</a>
+
+    }
+    else
+    {
+
+        <a href="@Url.Action("CrearPorDefecto", "AdministrarRequerimientos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Requerimientos</a>
+
+    }
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Requerimientos Registrados</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="mensajes">
+            <thead>
+                <tr>
+                    <th class="text-center">Reporte</th>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Obra</th>
+                    <th class="text-center">Tipo</th>
+                    <th class="text-center">Fecha de Solicitud</th>
+                    <th class="text-center">Gerencia Responsable</th>
+                    <th class="text-center">Técnicos</th>
+                    <th class="text-center">Estatus de Requerimiento</th>
+                    <th class="text-center">Fecha de Cumplimiento de Solicitud</th>
+                    @*<th class="text-center">Descripción</th>*@
+                    @*<th class="text-center">Acciones Ejecutadas</th>*@
+
+                    @*<th class="text-center">Reporte de fallas</th>
+                        <th class="text-center">Control de envíos</th>
+                        <th class="text-center">Requerimientos</th>
+                        <th class="text-center">Foto</th>
+                        <th class="text-center">Mapa satelital</th>*@
+                    <th></th>
+            </thead>
+            <tbody>
+                @foreach (var requerimiento in (ViewBag.Requerimientos))
+                {
+                    <tr>
+                        <td class="text-center vert-align">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@requerimiento.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarRequerimientos" , new {id=requerimiento.Id })')">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            </div>
+                        </td>        
+                        @*<td class="text-center vert-align">@requerimiento.Id</td>*@
+                        <td class="text-center vert-align h4">@requerimiento.Obra</td>
+                        <td class="text-center vert-align">@requerimiento.Tipo</td>
+                        <td class="text-center vert-align">@requerimiento.FechaSolicitud.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center vert-align">@requerimiento.GerenciaResponsable</td>
+                        <td class="text-center vert-align">@requerimiento.Tecnicos</td>
+                        <td class="text-center vert-align">@requerimiento.StatusRequerimiento</td>
+                        <td class="text-center vert-align">@requerimiento.FechaCumplimientoSolicitud.ToString("dd/MM/yyyy")</td>
+                        @*<td class="text-center vert-align">@requerimiento.Descripcion</td>*@
+                        @*<td class="text-center vert-align">@requerimiento.AccionesEjecutadas</td>*@
+                       
+                      
+                        <td class="text-center">
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarRequerimientos", new { @id = @requerimiento.Id })">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarRequerimientos", new { @id = @requerimiento.Id })">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarRequerimientos", new { @id = @requerimiento.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El mensaje será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modelContent">
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecRequerimiento('reporterequerimiento')">
+                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            </a>
+            <div id="reporterequerimiento">
+                <div class="modal-header">
+                    @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                    <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                    </button>
+                    <h4 class="modal-title">Reporte de Requerimiento</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Obra)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Obra)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tipo)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Tipo)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaSolicitud)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.FechaSolicitud)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.GerenciaResponsable)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.GerenciaResponsable)
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tecnicos)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Tecnicos)
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaCumplimientoSolicitud)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.FechaCumplimientoSolicitud)
+                            </div>
+                        </div>
+                        @*<div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.Descripcion)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Descripcion)
+                            </div>
+                        </div>*@
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.AccionesEjecutadas)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.AccionesEjecutadas)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.StatusRequerimientos)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.StatusRequerimientos)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+                <script type="text/javascript">
+
+                            function imprSelecRequerimiento(muestra) {
+                                var ficha = document.getElementById(muestra);
+                                var ventimp = window.open(' ', 'popimpr');
+                                ventimp.document.write(ficha.innerHTML);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();
+                            }
+                </script>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detallerequerimientos-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modelContent" style="width:1300px;">
+            @*<a class="text-uppercase" id="download">Imprimir</a>*@
+            @*<a class="" href="javascript:imprSelec('reporte')">Imprimir</a>*@
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
+                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            </a>
+            <div id="reporte">
+
+                <div class="modal-header">
+                    @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                    <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                    </button>
+                    <h4 class="modal-title">Reporte de Requerimientos</h4>
+                </div>
+
+
+                <div class="responsive-table">
+                    <div class="container-fluid">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Requerimientos Registradas</div>
+                            <div class="panel-body">
+                                <table class="table table-striped" id="mensajesmodal">
+                                    <thead>
+                                        <tr>
+                                            @*<th class="text-center">Id</th>*@
+                                            <th class="text-center">Obra</th>
+                                            <th class="text-center">Tipo</th>
+                                            <th class="text-center">Fecha de Solicitud</th>
+                                            <th class="text-center">Gerencia Responsable</th>
+                                            <th class="text-center">Técnicos</th>
+                                            <th class="text-center">Estatus de Requerimiento</th>
+                                            <th class="text-center">Fecha de Cumplimiento de Solicitud</th>
+                                            @*<th class="text-center">Descripción</th>*@
+                                            <th class="text-center">Acciones Ejecutadas</th>
+
+                                          
+                                            <th></th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var requerimiento in (ViewBag.Requerimientos))
+                                        {
+                                            <tr>
+                                                @*<td class="text-center vert-align">@requerimiento.Id</td>*@
+                                                <td class="text-center vert-align h4">@requerimiento.Obra</td>
+                                                <td class="text-center vert-align">@requerimiento.Tipo</td>
+                                                <td class="text-center vert-align">@requerimiento.FechaSolicitud.ToString("dd/MM/yyyy")</td>
+                                                <td class="text-center vert-align">@requerimiento.GerenciaResponsable</td>
+                                                <td class="text-center vert-align">@requerimiento.Tecnicos</td>
+                                                <td class="text-center vert-align">@requerimiento.StatusRequerimiento</td>
+                                                <td class="text-center vert-align">@requerimiento.FechaCumplimientoSolicitud.ToString("dd/MM/yyyy")</td>
+                                                @*<td class="text-center vert-align">@requerimiento.Descripcion</td>*@
+                                                <td class="text-center vert-align">@requerimiento.AccionesEjecutadas</td>
+
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+                <script type="text/javascript">
+
+                            function imprSelec(muestra) {
+                                var ficha = document.getElementById(muestra);
+                                var ventimp = window.open(' ', 'popimpr');
+                                ventimp.document.write(ficha.innerHTML);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();
+                            }
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script type="text/javascript">
+      function createModal(url){
+          $('#modelContent').load(url);
+
+      }
+</script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+           
+
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+            $('#mensajesmodal').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+        
+    </script>
+}

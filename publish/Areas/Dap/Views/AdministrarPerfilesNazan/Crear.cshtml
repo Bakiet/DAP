@@ -1,0 +1,90 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.PefilNazanViewModel
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/assets/vendor/bootstrap-chosen/bootstrap-chosen.css")
+<h2>Crear Perfil</h2>
+<p class="page-description-title">
+    <i class="fa fa-info" aria-hidden="true"></i> <i>Nuevo perfil</i>
+</p>
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de registro</div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Crear", "AdministrarPerfilesNazan", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Nombre, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Nombre)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.RolesIds, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+
+                    @Html.ListBoxFor(model => model.RolesIds, Model.Roles, new { @class = "form-control chosen-select" })
+                    @Html.ValidationMessageFor(m => m.RolesIds)
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Registrar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarPerfilesNazan")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/assets/vendor/chosen_v1.6.2/chosen.jquery.min.js")
+    <script>
+        $(function() {
+            $('.chosen-select').chosen({
+                no_results_text: "No se encontraron resultados",
+                placeholder_text_single: "Seleccione un valor",
+                placeholder_text_multiple: "Seleccione los valores"
+            });
+            //SE VALIDA QUE SI SELECCIONA EL MAESTRO, NO DEJE SELECCIONAR OTRA OPCIÓN MÁS.
+            $('.chosen-select').on('change', function (evt, params) {
+                var seleccion = params.selected;
+                if (seleccion == "MAESTRO-NAZAN") {
+                    var selecciones = $("#RolesIds").val();
+                    if (selecciones.length > 0) {
+                        $("#RolesIds").val(["MAESTRO-NAZAN"]).trigger("chosen:updated");
+                    }
+                    $("#RolesIds").val(["MAESTRO-NAZAN"]).trigger("chosen:updated");
+                }
+            });
+            /*
+            $('.chosen-select').change(function () {
+
+                if (this.value == "MAESTRO-NAZAN") {
+                    $(".chosen-select").chosen({ allow_single_deselect: false, search_contains: false });
+                } else {
+                    $(".chosen-select").chosen({ allow_single_deselect: true, search_contains: true });
+                }
+            });*/
+        });
+    </script>
+
+
+
+}

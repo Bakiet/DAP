@@ -1,0 +1,11 @@
+componentes_electricos
+componentes_mecanicos
+fallas
+equipos
+requerimientos
+obras
+
+https://weblog.west-wind.com/posts/2012/Mar/06/Using-the-HTML5-input-typefile-multiplemultiple-Tag-in-ASPNET
+https://www.c-sharpcorner.com/article/uploading-multiple-files-in-asp-net-mvc/
+https://www.mikesdotnetting.com/article/287/uploading-multiple-files-with-asp-net-mvc
+https://stackoverflow.com/questions/20208223/upload-multiple-files-in-one-form-mvc4

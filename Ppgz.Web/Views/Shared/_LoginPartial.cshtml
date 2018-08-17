@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNet.Identity
+@using Ppgz.Services
+@using Ppgz.Web.Infrastructure
+@if (Request.IsAuthenticated)
+{
+    var commonManager= new CommonManager();
+    var cuenta = commonManager.GetCuentaUsuarioAutenticado();
+    
+    
+    
+    using (Html.BeginForm("LogOff", "Account",  new { area = "" },FormMethod.Post,  new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("¡BIENVENIDO " + User.Identity.GetUserName().ToUpper() + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" , style = "font-size:11px;" })
+        </li>
+        @if (cuenta != null)
+        {
+            <li id="mensajes-notificador">
+                <a class="btn btn-link text-uppercase" href="@Url.Action("Index", "MensajesInstitucionales", new {area = @cuenta.Tipo})"><i class="fa fa-envelope" aria-hidden="true"></i> <span class="badge"></span></a>
+            </li>
+        }
+        <li><a class="text-uppercase" style="font-size:11px" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @*<li><a id="registerLink" href="@Url.Action("Register", "Account")"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrese</a></li>*@
+        <li><a style="font-size:13px;" class="text-uppercase" id="loginLink" href="@Url.Action("Login", "Account")"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión</a></li>
+    </ul>
+}

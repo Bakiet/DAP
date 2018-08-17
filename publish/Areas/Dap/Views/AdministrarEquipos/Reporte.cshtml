@@ -1,0 +1,163 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.EquipoViewModel
+@{
+    
+}
+<a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecGeneralObra('reportegeneralobra')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+<div id="reportegeneralobra">
+    <div class="modal-header">
+        <a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>
+        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+        </button>
+        <h4 class="modal-title">Reporte de Fallas</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.obra)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.obra_id)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Nombre)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.Nombre)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Marca)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.Marca)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Modelo)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.Modelo)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Referencia)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.Referencia)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.DimensionesCabina)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.DimensionesCabina)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.DimensionesHueco)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.DimensionesHueco)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.CargaNominal)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.CargaNominal)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Velocidad)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.Velocidad)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Recorrido)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.Recorrido)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Paradas)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.Paradas)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Accesos)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.Accesos)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.VoltajeDeRed)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.VoltajeDeRed)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.PotenciaDeMaquina)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.PotenciaDeMaquina)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.TipoDeManiobra)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.TipoDeManiobra)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.NumeroDeGuayas)</h4>
+                </div>
+                <div class="col-4 col-sm-6">
+                    @Html.DisplayFor(o => o.NumeroDeGuayas)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+    </div>

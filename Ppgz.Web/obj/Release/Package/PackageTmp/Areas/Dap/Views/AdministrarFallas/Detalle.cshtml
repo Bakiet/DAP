@@ -1,0 +1,319 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.FallaViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    
+}
+
+<h2 class="form-signin-heading">Fallas</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar fallas</i></p>*@
+
+@*<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Fallas", "AdministrarFallas", new { @id = Model.obraid })'">Volver</button>*@
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de detalle</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Detalle", "AdministrarFallas", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+
+
+            
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Obra, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.Obra, (IEnumerable<SelectListItem>)ViewBag.Obras, "Seleccione un Valor", new { @class = "form-control", @readonly = true, @disabled = "disabled" })
+                    @Html.ValidationMessageFor(f => f.Obra)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.Equipo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.Equipo, (IEnumerable<SelectListItem>)ViewBag.Equipos, "Seleccione un Valor", new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.Equipo)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.FechaFalla, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.FechaFalla, new { @class = "form-control fecha-hora", @type = "datetime", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.FechaFalla)
+                </div>
+            </div>
+            @*<div class="form-group">
+                @Html.LabelFor(f => f.Tipo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.DropDownListFor(f => f.Tipo, new SelectList(Model.fallas, "id", "Descripcion"), "Seleccione un Valor", new { @class = "form-control", @onchange = "javascript:GetComponentes(this.value);" })
+                    @Html.ValidationMessageFor(f => f.Tipo)
+                </div>
+            </div>*@
+            <div class="form-group">
+                @Html.LabelFor(f => f.Tipo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.Tipo, (IEnumerable<SelectListItem>)ViewBag.TipoFallas, "Seleccione un Valor", new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.Tipo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Componente, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.Componente, (IEnumerable<SelectListItem>)ViewBag.Componentes, "Seleccione un Valor", new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.Componente)
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Personal, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.Personal, new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.Personal)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.FechaSolucion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.FechaSolucion, new { @class = "form-control  fecha-hora", @type = "datetime", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.FechaSolucion)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.StatusFalla, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                        @Html.DropDownListFor(f => f.StatusFalla, (IEnumerable<SelectListItem>)ViewBag.Status, "Seleccione un Valor", new { @class = "form-control", @id="confirmar", @readonly = true })
+                        @Html.ValidationMessageFor(f => f.StatusFalla)
+                </div>
+            </div>
+            
+
+            @*<div class="form-group">
+                @Html.LabelFor(f => f.NumeroReporte, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.NumeroReporte, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(f => f.NumeroReporte)
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Descripcion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(f => f.Descripcion, new { @class = "form-control", style = "width: 700px; height:150px;", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.Descripcion)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Condicion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.Condicion, (IEnumerable<SelectListItem>)ViewBag.Condicion, "Seleccione un Valor", new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.Condicion)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.AccionesTomadas, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(f => f.AccionesTomadas, new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.AccionesTomadas)
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(f => f.AccionesRecomendadas, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(f => f.AccionesRecomendadas, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                    @Html.ValidationMessageFor(f => f.AccionesRecomendadas)
+                </div>
+            </div>*@
+
+           
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.PersonaReporte, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.PersonaReporte, new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.PersonaReporte)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.GerenciaResponsable, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.GerenciaResponsable, new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(f => f.GerenciaResponsable)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Correos</label>
+                <div class="col-sm-4">
+                    <div>
+
+
+                        @foreach (var ArchivosCorreo in (ViewBag.ArchivosCorreo))
+                        {
+                            var nombrearchivo = ArchivosCorreo.url.Replace("~/Uploads/", "");
+                            if (nombrearchivo.Contains(".docx"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".docx", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".pdf"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".pdf", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-pdf-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".pptx"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".pptx", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-powerpoint-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".xlsx"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".xlsx", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-excel-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".jpg"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".jpg", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-picture-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".png"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".png", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-image-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-archive-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                        }
+                        @*<ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                            <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                <input type="file" style="padding: 20px;" name="Pdf-Fotografia" id="Pdf-Fotografia">
+                               
+
+                            </div>
+                        </div>*@
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="confirm-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p></p>
+                            <p>Esta seguro de cambiar el estatus de la falla</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.href='@Url.Action("Editar", "AdministrarFallas", new { @id = Model.id })'">CANCELAR</button>
+                            
+                            <button id="confirm" type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> ACEPTAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-7">
+                       
+                            @*<button id="confirm" type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>*@
+                     
+                        
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarFallas")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    </div>
+                </div>
+
+                
+
+        }
+            </div>
+</div>
+
+@section Scripts {
+  
+
+
+    <script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+       
+
+        $("#confirmar").bind('change', function () {
+            var st = this.options[this.selectedIndex].innerHTML;
+            if (st == "FALLA SOLUCIONADA") {
+                $("#confirm-edit").modal("show");
+            }
+               
+            });
+
+        $('.fecha-hora').datetimepicker({
+            locale: 'es',
+
+            format: 'DD/MM/YYYY HH:MM:ss',
+            showClose: true,
+            sideBySide: true
+        });
+
+        $('.fecha-hora-minutos').datetimepicker({
+            locale: 'es',
+
+            format: 'MM/DD/HH',
+
+            showClose: true,
+            sideBySide: true
+        });
+
+        $('<input />').attr('type', 'hidden')
+                         .attr('name', "Pdf-Plano")
+                         .attr('value', "Pdf-Plano")
+                         .appendTo('#form');
+
+        $('<input />').attr('type', 'hidden')
+                          .attr('name', "Pdf-Fotografia")
+                          .attr('value', "Pdf-Fotografia")
+                          .appendTo('#form');
+
+    });
+
+   
+
+    </script>
+
+    
+}

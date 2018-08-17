@@ -1,0 +1,166 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.EnvioViewModel
+@{
+    
+}
+<a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecEnvio('reporteenvio')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+<div id="reporteenvio">
+    <div class="modal-header">
+        @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+        </button>
+        <h4 class="modal-title">Reporte de Envios</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row" >
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Obra)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Obra)
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.TipoComponente)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.TipoComponente)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaPedido)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.FechaPedido)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaSalida)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.FechaSalida)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tracking)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Tracking)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.EmpresaEnvio)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.EmpresaEnvio)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.StatusEnvio)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.StatusEnvio)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.NumeroBulto)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.NumeroBulto)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.PesoTotal)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.PesoTotal)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.CodigoArancelario)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.CodigoArancelario)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Solicitado)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Solicitado)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.CostoProducto)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.CostoProducto)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6" >
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.StatusPago)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.StatusPago)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.NumeroFactura)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.NumeroFactura)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.EntregaProducto)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.EntregaProducto)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaEntrega)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.FechaEntrega)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+    </div>

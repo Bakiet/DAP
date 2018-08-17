@@ -1,0 +1,346 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.EquipoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Editar Equipos</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Equipos</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Editar", "AdministrarEquipos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+
+                <div class="form-group">
+                    @Html.LabelFor(o => o.obra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(o => o.obra_id, (IEnumerable<SelectListItem>)ViewBag.ObrasEditar, new { @class = "form-control",@disabled="disabled" })
+                        @Html.ValidationMessageFor(o => o.obra_id)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Nombre, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Nombre, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Nombre)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Marca, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Marca, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Marca)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Modelo, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Modelo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Modelo)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Referencia, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Referencia, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Referencia)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(o => o.DimensionesCabina, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.DimensionesCabina, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.DimensionesCabina)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.DimensionesHueco, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.DimensionesHueco, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.DimensionesHueco)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.CargaNominal, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.CargaNominal, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.CargaNominal)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Velocidad, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Velocidad, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Velocidad)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Recorrido, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Recorrido, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Recorrido)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Paradas, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Paradas, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Paradas)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Accesos, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Accesos, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Accesos)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.VoltajeDeRed, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.VoltajeDeRed, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.VoltajeDeRed)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.PotenciaDeMaquina, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.PotenciaDeMaquina, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.PotenciaDeMaquina)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.TipoDeManiobra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.TipoDeManiobra, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.TipoDeManiobra)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.NumeroDeGuayas, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.NumeroDeGuayas, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.NumeroDeGuayas)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.CantidadPersonas, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.CantidadPersonas, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.CantidadPersonas)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Fotografias</label>
+                    <div class="col-sm-4">
+                        <div>
+
+
+                            @foreach (var ArchivosFotografia in (ViewBag.ArchivosFotografia))
+                            {
+                                var nombrearchivo = ArchivosFotografia.url.Replace("~/Uploads/", "");
+                                if (nombrearchivo.Contains(".docx"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".docx", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosFotografia.url, @tipo = "equipos", @caracteristica = "fotografia", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".pdf"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".pdf", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-pdf-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosFotografia.url, @tipo = "equipos", @caracteristica = "fotografia", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".pptx"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".pptx", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-powerpoint-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosFotografia.url, @tipo = "equipos", @caracteristica = "fotografia", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".xlsx"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".xlsx", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-excel-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosFotografia.url, @tipo = "equipos", @caracteristica = "fotografia", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".jpg"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".jpg", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-picture-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosFotografia.url, @tipo = "equipos", @caracteristica = "fotografia", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".png"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".png", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-image-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosFotografia.url, @tipo = "equipos", @caracteristica = "fotografia", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-archive-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosFotografia.url, @tipo = "equipos", @caracteristica = "fotografia", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                            }
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-Fotografia" id="Pdf-Fotografia">
+                                        @Html.ValidationMessageFor(k => k.Fotografia)
+
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Planos</label>
+                    <div class="col-sm-4">
+                        <div>
+  
+                            @foreach (var ArchivosPlano in (ViewBag.ArchivosPlano))
+                            {
+                                var nombrearchivo = ArchivosPlano.url.Replace("~/Uploads/", "");
+                                if (nombrearchivo.Contains(".docx"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".docx", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosPlano.url, @tipo = "equipos", @caracteristica = "plano", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".pdf"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".pdf", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-pdf-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosPlano.url, @tipo = "equipos", @caracteristica = "plano", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".pptx"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".pptx", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-powerpoint-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosPlano.url, @tipo = "equipos", @caracteristica = "plano", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".xlsx"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".xlsx", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-excel-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosPlano.url, @tipo = "equipos", @caracteristica = "plano", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".jpg"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".jpg", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-picture-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosPlano.url, @tipo = "equipos", @caracteristica = "plano", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else if (nombrearchivo.Contains(".png"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".png", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-image-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosPlano.url, @tipo = "equipos", @caracteristica = "plano", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-archive-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarEquipos", new { @archivo = ArchivosPlano.url, @tipo = "equipos", @caracteristica = "plano", @id = TempData["equipo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+                                }
+                            }
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel1">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-Plano" id="Pdf-Plano">
+                                        @Html.ValidationMessageFor(k => k.Plano)
+
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                    @Html.ValidationMessageFor(m => m.FechaPublicacion)
+                </div>
+            </div>*@
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarEquipos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+     
+        $('<input />').attr('type', 'hidden')
+                         .attr('name', "Pdf-Plano")
+                         .attr('value', "Pdf-Plano")
+                         .appendTo('#form');
+
+        $('<input />').attr('type', 'hidden')
+                          .attr('name', "Pdf-Fotografia")
+                          .attr('value', "Pdf-Fotografia")
+                          .appendTo('#form');
+
+        
+    </script>
+
+
+
+}

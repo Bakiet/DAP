@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Componentes mecanicos sustituciones</h2>
+<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de componentes mecanicos sustituciones</i></p>
+
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarComponentesMecanicosSustituciones")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Componentes mecanicos</a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Cuenta</div>
+    <div class="panel-body">
+        <div class="row">
+            <label class="col-sm-2 control-label">Obra</label>
+            <div class="col-sm-3">
+                <div></div>
+            </div>
+            
+            <div class="col-sm-2">
+                @*<a href="@Url.Action("Editar", "AdministrarEquipos",new { @id = @componentemecanicosustitucion.IdEquipos })")" class="btn btn-warning btn-xs"> <i class="fa fa-refresh" aria-hidden="true"></i>  Volver</a>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Componentes Mecanicos Sustituciones</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="obras">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Tipo</th>
+                    <th class="text-center">Caracteristicas</th>
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center">Marca</th>
+                    <th class="text-center">Modelo</th>
+                    <th class="text-center">Serial</th>
+                    <th class="text-center">Fecha Fabricado</th>
+                    <th class="text-center">Duración</th>
+                    <th class="text-center">Sustitución</th>
+                    <th class="text-center">Fotografía</th>
+
+            </thead>
+            <tbody>
+                @foreach (var componentemecanico in (ViewBag.ComponentesMecanicosSustituciones))
+                {
+                    <tr>
+                        <td class="text-center vert-align">@componentemecanico.Id</td>
+                        <td class="text-center vert-align">@componentemecanico.Tipo</td>
+                        <td class="text-center vert-align">@componentemecanico.Caracteristicas</td>
+                        <td class="text-center vert-align">@componentemecanico.Descripcion</td>
+                        <td class="text-center vert-align">@componentemecanico.Marca</td>
+                        <td class="text-center vert-align">@componentemecanico.Modelo</td>
+                        <td class="text-center vert-align">@componentemecanico.Serial</td>
+                        <td class="text-center vert-align">@componentemecanico.FechaFabricado</td>
+                        <td class="text-center vert-align">@componentemecanico.Duracion</td>
+                        <td class="text-center vert-align">@componentemecanico.Sustitucion</td>
+                        <td class="text-center vert-align">@componentemecanico.Fotografia</td>
+                        
+                       
+                        @*<td class="text-center vert-align">
+                            @if (ViewBag.Fallas != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarDallas", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Envios != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarEnvios", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Requerimientos != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarRequerimientos", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>*@
+                        @*<td class="text-center vert-align">
+                            @if (@obra.Foto != null)
+                            {
+                                <a href="@Url.Content(@obra.Foto)" target="_blank">Ver</a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (obra.Satelital != null)
+                            {
+                                <a href="@Url.Content(@obra.Satelital)" target="_blank">Ver</a>
+                            }
+                        </td>*@                       
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarComponentesMecanicosSustituciones", new { @id = @componentemecanico.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarComponentesMecanicosSustituciones", new { @id = @componentemecanico.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El componente mecanico será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

@@ -1,0 +1,385 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.PrevioViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Dap previo</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Dap previo</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Crear", "AdministrarPrevios", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+
+
+            <div class="form-group">
+
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaFirmaContrato, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaFirmaContrato, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaFirmaContrato)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaPagoInicialFabrica, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaPagoInicialFabrica, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaPagoInicialFabrica)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaPagoInicialEquipo, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaPagoInicialEquipo, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaPagoInicialEquipo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaConstruccion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaConstruccion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaConstruccion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaSalidaFabrica, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaSalidaFabrica, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaSalidaFabrica)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaSalidaBuque, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaSalidaBuque, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaSalidaBuque)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaLlegadaBuque, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaLlegadaBuque, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaLlegadaBuque)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaPeriodoNacionalizacion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaPeriodoNacionalizacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaPeriodoNacionalizacion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaSalidaPuertoObra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaSalidaPuertoObra, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaSalidaPuertoObra)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaDescargaResguardo, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaDescargaResguardo, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaDescargaResguardo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Fotográfia de Fecha descarga y resguardo</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if (string.IsNullOrWhiteSpace(Model.FechaDescargaResguardoFotografia))
+                            {
+
+
+                            }
+                            else
+                            {
+                                <p>
+                                    <a href="@Url.Content(@Model.FechaDescargaResguardoFotografia)" target="_blank">Descripción Fotográfica</a>
+                                </p>
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                        <input type="file" style="padding: 20px;" name="Pdf-FechaDescargaResguardoFotografia" id="Pdf-FechaDescargaResguardoFotografia">
+                                        @Html.ValidationMessageFor(p => p.FechaDescargaResguardoFotografia)
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.ActivacionProtocoloGarantiaFabrica, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.ActivacionProtocoloGarantiaFabrica, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.ActivacionProtocoloGarantiaFabrica)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaInicioMontaje, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaInicioMontaje, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaInicioMontaje)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaEntregaSoso, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaEntregaSoso, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaEntregaSoso)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaCulminacionMontaje, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaCulminacionMontaje, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaCulminacionMontaje)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Fotografia de Fecha culminación de montaje</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if (string.IsNullOrWhiteSpace(Model.FechaCulminacionMontajeFotografia))
+                            {
+
+
+                            }
+                            else
+                            {
+                                <p>
+                                    <a href="@Url.Content(@Model.FechaCulminacionMontajeFotografia)" target="_blank">Descripción Fotográfica</a>
+                                </p>
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel1">
+                                        <input type="file" style="padding: 20px;" name="Pdf-FechaCulminacionMontajeFotografia" id="Pdf-FechaCulminacionMontajeFotografia">
+                                        @Html.ValidationMessageFor(p => p.FechaCulminacionMontajeFotografia)
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaConfiguracion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaConfiguracion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaConfiguracion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaPeriodoPrueba, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaPeriodoPrueba, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaPeriodoPrueba)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(p => p.FechaInspeccion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaInspeccion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaInspeccion)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Fecha Inspeccion Fotografia</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if (string.IsNullOrWhiteSpace(Model.FechaInspeccionFotografia))
+                            {
+
+
+                            }
+                            else
+                            {
+                                <p>
+                                    <a href="@Url.Content(@Model.FechaInspeccionFotografia)" target="_blank">Descripción Fotográfica</a>
+                                </p>
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                        <input type="file" style="padding: 20px;" name="Pdf" id="Pdf-fechainspeccion">
+                                        @Html.ValidationMessageFor(p => p.FechaInspeccionFotografia)
+                                        @*<p><i>Descripción fotografica distribuida como <span class="label label-info">PDF</span></i></p>*@
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Video de Fecha Inspeccion</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if (string.IsNullOrWhiteSpace(Model.FechaInspeccionVideo))
+                            {
+
+
+                            }
+                            else
+                            {
+                                <p>
+                                    <a href="@Url.Content(@Model.FechaInspeccionVideo)" target="_blank">Descripción Videográfica</a>
+                                </p>
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo de video</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                        <input type="file" style="padding: 20px;" name="Pdf" id="Pdf-FechaInspeccionVideo">
+                                        @Html.ValidationMessageFor(p => p.FechaInspeccionVideo)
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(p => p.TecnicoInstalador, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.TecnicoInstalador, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.TecnicoInstalador)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Informe de entrega final</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if (string.IsNullOrWhiteSpace(Model.InformeEntregaFinal))
+                            {
+
+
+                            }
+                            else
+                            {
+                                <p>
+                                    <a href="@Url.Content(@Model.InformeEntregaFinal)" target="_blank">Informe de entrega final</a>
+                                </p>
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                        <input type="file" style="padding: 20px;" name="Pdf" id="Pdf-InformeEntregaFinal">
+                                        @Html.ValidationMessageFor(p => p.InformeEntregaFinal)
+                                        @*<p><i>Descripción fotografica distribuida como <span class="label label-info">PDF</span></i></p>*@
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.Label("KIT DAP", new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        <a class="btn btn-default" href="@Url.Action("KitDaps", "AdministrarKitDaps", new { @id = @Model.previo_id })"><i class="fa fa-eye" aria-hidden="true"></i> VER </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Protocolos de chequeo", new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        <a class="btn btn-default" href="@Url.Action("Protocolos", "AdministrarProtocolos", new { @id = @Model.previo_id })"><i class="fa fa-eye" aria-hidden="true"></i> VER </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Herramientas de la obra", new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        <a class="btn btn-default" href="@Url.Action("Herramientas", "AdministrarHerramientas", new { @id = @Model.previo_id })"><i class="fa fa-eye" aria-hidden="true"></i> VER </a>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                    <a class="btn btn-default" href="@Url.Action("Editar", "AdministrarPrevios")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+       
+
+        $(document).ready(function () {
+
+            $("#Pdf").bind('change', function () {
+
+                if (this.files[0].size / 1024 / 1024 > 3) {
+                    $(this).val("");
+
+                    alert('Debe incluir un archivo menor a 3Mb');
+                }
+            });
+
+
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+
+            $('<input />').attr('type', 'hidden')
+                         .attr('name', "Pdf-Plano")
+                         .attr('value', "Pdf-Plano")
+                         .appendTo('#form');
+
+            $('<input />').attr('type', 'hidden')
+                              .attr('name', "Pdf-Fotografia")
+                              .attr('value', "Pdf-Fotografia")
+                              .appendTo('#form');
+        });
+
+    </script>
+
+
+}

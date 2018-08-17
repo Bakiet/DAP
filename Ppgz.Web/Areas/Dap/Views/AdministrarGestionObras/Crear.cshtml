@@ -1,0 +1,217 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.GestionObraViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Gestion de Obras</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Gestión de obras</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Crear", "AdministrarGestionObras", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+
+
+                <div class="col-sm-4">
+                    <label class="col-sm-3 control-label">Primer Contacto en obras</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.primercontacto, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.primercontacto, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(m => m.primercontacto)*@
+                </div>
+            </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.contactotelefonicoobra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.contactotelefonicoobra, new { @class = "form-control" })
+                      
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.correoelectronicoobra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.correoelectronicoobra, new { @class = "form-control" })
+                       
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.cargoobra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.cargoobra, new { @class = "form-control" })
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+
+                    <div class="col-sm-4">
+                        <label class="col-sm-3 control-label">Datos de la empresa constructora</label>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.nombreconstructora, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.nombreconstructora, new { @class = "form-control" })
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.contactotelefonicoempresa, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.contactotelefonicoempresa, new { @class = "form-control" })
+                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.correoelectronicoempresa, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.correoelectronicoempresa, new { @class = "form-control" })
+                      
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.cargoempresa, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.cargoempresa, new { @class = "form-control" })
+                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.direccionoficina, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(m => m.direccionoficina, new { @class = "form-control" })
+                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+
+                    <div class="col-sm-4">
+                        <label class="col-sm-3 control-label">Caracteristicas de las obras y equipos</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.ubicacionobra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(m => m.ubicacionobra, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                      
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.tipoobra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.tipoobra, new { @class = "form-control" })
+                      
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.numeroequipos, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.numeroequipos, new { @class = "form-control" })
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.tipoequipo, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.tipoequipo, new { @class = "form-control" })
+                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+
+                    <div class="col-sm-4">
+                        <label class="col-sm-3 control-label">Status de la obra</label>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.vendidasclimb, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.vendidasclimb, new { @class = "form-control" })
+                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.vendidasotros, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.vendidasotros, new { @class = "form-control" })
+                       
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.novendidas, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.novendidas, new { @class = "form-control" })
+                     
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.paralizadas, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.paralizadas, new { @class = "form-control" })
+                        
+                    </div>
+                </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Guardar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarGestionObras")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

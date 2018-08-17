@@ -1,0 +1,345 @@
+﻿@using Ppgz.Repository
+@model Ppgz.Web.Areas.Dap.Models.ComponenteMecanicoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var obra = (obras)ViewBag.obra;
+    var equipo = (equipos)ViewBag.equipo;
+}
+
+<h2 class="form-signin-heading">Componentes mecanicos</h2>
+<a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallecomponentesmecanicos-modal" id="" onclick="createModal('@Url.Action("ReporteComponentesMecanicos", "AdministrarComponentesMecanicos" , new {id=ViewBag.id })')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de componentes mecanicos</i></p>*@
+<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarComponentesMecanicos", new { @id = ViewBag.id })'">Histórico</button>
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarComponentesMecanicos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Componentes mecanicos</a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Cuenta</div>
+    <div class="panel-body">
+        <div class="row">
+            <label class="col-sm-2 control-label">Obra</label>
+            <div class="col-sm-3">
+                <div class="h4">@obra.Nombre</div>
+            </div>
+            <label class="col-sm-2 control-label">Equipo</label>
+            <div class="col-sm-3">
+                <div>@equipo.Nombre</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Componentes Mecanicos</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="obras">
+            <thead>
+                <tr>
+                    <th class="text-center">Reporte</th>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Tipo</th>
+                    <th class="text-center">Caracteristicas</th>
+                    @*<th class="text-center">Descripción</th>*@
+                    <th class="text-center">Marca</th>
+                    <th class="text-center">Modelo</th>
+                    <th class="text-center">Serial</th>
+                    <th class="text-center">Fecha Fabricado</th>
+                    <th class="text-center">Duración</th>
+                    <th class="text-center">Sustitución</th>
+                    @*<th class="text-center">Fotografía</th>*@
+                    <th></th>
+            </thead>
+            <tbody>
+                @foreach (var componentemecanico in (ViewBag.componentesmecanicos))
+                {
+                    <tr>
+                        <td class="text-center vert-align">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@componentemecanico.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarComponentesMecanicos" , new {id=componentemecanico.Id })')">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            </div>
+                        </td>
+                        @*<td class="text-center vert-align">@componentemecanico.Id</td>*@
+                        <td class="text-center vert-align">@componentemecanico.Tipo</td>
+                        <td class="text-center vert-align">@componentemecanico.Caracteristicas</td>
+                        @*<td class="text-center vert-align">@componentemecanico.Descripcion</td>*@
+                        <td class="text-center vert-align">@componentemecanico.Marca</td>
+                        <td class="text-center vert-align">@componentemecanico.Modelo</td>
+                        <td class="text-center vert-align">@componentemecanico.Serial</td>
+                        <td class="text-center vert-align">@componentemecanico.FechaFabricado</td>
+                        <td class="text-center vert-align">@componentemecanico.Duracion</td>
+                        <td class="text-center vert-align">@componentemecanico.Sustitucion</td>
+                        
+                       
+                       
+                   
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarComponentesMecanicos", new { @id = @componentemecanico.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                </a>
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarComponentesMecanicos", new { @id = @componentemecanico.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarComponentesMecanicos", new { @id = @componentemecanico.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El componente mecanico será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content" id="modelContent">
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecComponenteMecanico('reportecomponentemecanico')">
+                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                </a>
+                <div id="reportecomponentemecanico">
+                    <div class="modal-header">
+                        @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                        </button>
+                        <h4 class="modal-title">Reporte de Componente Mecanico</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tipo)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Tipo)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Caracteristicas)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Caracteristicas)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Marca)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Marca)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Modelo)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Modelo)
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Serial)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Serial)
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaFabricado)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.FechaFabricado)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.Duracion)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Duracion)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Sustitucion)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Sustitucion)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaSustitucion)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.FechaSustitucion)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+                    <script type="text/javascript">
+
+                        function imprSelecComponenteMecanico(muestra) {
+                            var ficha = document.getElementById(muestra);
+                            var ventimp = window.open(' ', 'popimpr');
+                            ventimp.document.write(ficha.innerHTML);
+                            ventimp.document.close();
+                            ventimp.print();
+                            ventimp.close();
+                        }
+                    </script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="detallecomponentesmecanicos-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" id="modelContent" style="width:1000px;">
+                @*<a class="text-uppercase" id="download">Imprimir</a>*@
+                @*<a class="" href="javascript:imprSelec('reporte')">Imprimir</a>*@
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
+                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                </a>
+                <div id="reporte">
+
+                    <div class="modal-header">
+                      
+                        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                        </button>
+                        <h4 class="modal-title">Reporte de Componente Mecanico</h4>
+                    </div>
+
+
+                    <div class="responsive-table">
+                        <div class="container-fluid">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Componentes Mecanicos Registrados</div>
+                                <div class="panel-body">
+                                    <table class="table table-striped" id="mensajesmodal">
+                                        <thead>
+                                            <tr>
+                                               
+                                                <th class="text-center">Tipo</th>
+                                                <th class="text-center">Caracteristicas</th>
+                                                <th class="text-center">Marca</th>
+                                                <th class="text-center">Modelo</th>
+                                                <th class="text-center">Serial</th>
+                                                <th class="text-center">Fecha Fabricado</th>
+                                                <th class="text-center">Duración</th>
+                                                @*<th class="text-center">Sustitución</th>*@
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var componentemecanico in (ViewBag.componentesmecanicos))
+                                            {
+                                                <tr>
+                                                  
+                                                    <td class="text-center vert-align">@componentemecanico.Tipo</td>
+                                                    <td class="text-center vert-align">@componentemecanico.Caracteristicas</td>
+                                                    <td class="text-center vert-align">@componentemecanico.Marca</td>
+                                                    <td class="text-center vert-align">@componentemecanico.Modelo</td>
+                                                    <td class="text-center vert-align">@componentemecanico.Serial</td>
+                                                    <td class="text-center vert-align">@componentemecanico.FechaFabricado</td>
+                                                    <td class="text-center vert-align">@componentemecanico.Duracion</td>
+                                                    @*<td class="text-center vert-align">@componentemecanico.Sustitucion</td>*@
+                                                   
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+                    <script type="text/javascript">
+
+                        function imprSelec(muestra) {
+                            var ficha = document.getElementById(muestra);
+                            var ventimp = window.open(' ', 'popimpr');
+                            ventimp.document.write(ficha.innerHTML);
+                            ventimp.document.close();
+                            ventimp.print();
+                            ventimp.close();
+                        }
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+<script type="text/javascript">
+            function createModal(url) {
+                $('#modelContent').load(url);
+
+            }
+</script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+            $('#mensajesmodal').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

@@ -1,0 +1,24 @@
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\bin\Release\Ppgz.Facturas.dll.config
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\bin\Release\Ppgz.Facturas.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\bin\Release\Ppgz.Facturas.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\obj\Release\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\obj\Release\Ppgz.Facturas.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\obj\Release\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\bin\Release\Ppgz.Facturas.dll.config
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\bin\Release\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\bin\Release\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\obj\Release\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\obj\Release\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\obj\Release\Ppgz.Facturas.pdb
+C:\Users\Mama\Desktop\DAP\SatWrapper\bin\Release\Ppgz.Facturas.dll.config
+C:\Users\Mama\Desktop\DAP\SatWrapper\bin\Release\Ppgz.Facturas.dll
+C:\Users\Mama\Desktop\DAP\SatWrapper\bin\Release\Ppgz.Facturas.pdb
+C:\Users\Mama\Desktop\DAP\SatWrapper\obj\Release\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Mama\Desktop\DAP\SatWrapper\obj\Release\Ppgz.Facturas.dll
+C:\Users\Mama\Desktop\DAP\SatWrapper\obj\Release\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\bin\Release\Ppgz.Facturas.dll.config
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\bin\Release\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\bin\Release\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\obj\Release\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\obj\Release\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\obj\Release\Ppgz.Facturas.pdb

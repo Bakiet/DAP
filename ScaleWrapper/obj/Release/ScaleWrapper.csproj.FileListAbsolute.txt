@@ -1,0 +1,40 @@
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\bin\Release\ScaleWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\bin\Release\ScaleWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\bin\Release\EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\bin\Release\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\bin\Release\MySql.Data.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\bin\Release\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\bin\Release\EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\obj\Release\ScaleWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\obj\Release\ScaleWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\ScaleWrapper\obj\Release\ScaleWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\bin\Release\ScaleWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\bin\Release\ScaleWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\bin\Release\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\bin\Release\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\bin\Release\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\bin\Release\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\bin\Release\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\obj\Release\ScaleWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\obj\Release\ScaleWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\ScaleWrapper\obj\Release\ScaleWrapper.pdb
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\bin\Release\ScaleWrapper.dll
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\bin\Release\ScaleWrapper.pdb
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\bin\Release\EntityFramework.dll
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\bin\Release\Ppgz.Repository.dll
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\bin\Release\MySql.Data.dll
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\bin\Release\Ppgz.Repository.pdb
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\bin\Release\EntityFramework.xml
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\obj\Release\ScaleWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\obj\Release\ScaleWrapper.dll
+C:\Users\Mama\Desktop\DAP\ScaleWrapper\obj\Release\ScaleWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\bin\Release\ScaleWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\bin\Release\ScaleWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\bin\Release\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\bin\Release\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\bin\Release\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\bin\Release\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\bin\Release\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\obj\Release\ScaleWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\obj\Release\ScaleWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\obj\Release\ScaleWrapper.pdb

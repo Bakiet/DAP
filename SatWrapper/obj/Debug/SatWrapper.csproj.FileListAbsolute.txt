@@ -1,0 +1,42 @@
+C:\repos\impuls\Ppgz\SatWrapper\bin\Debug\Ppgz.Facturas.dll.config
+C:\repos\impuls\Ppgz\SatWrapper\bin\Debug\Ppgz.Facturas.dll
+C:\repos\impuls\Ppgz\SatWrapper\bin\Debug\Ppgz.Facturas.pdb
+C:\repos\impuls\Ppgz\SatWrapper\obj\Debug\Ppgz.Facturas.dll
+C:\repos\impuls\Ppgz\SatWrapper\obj\Debug\Ppgz.Facturas.pdb
+C:\repos\impuls\Ppgz\SatWrapper\obj\Debug\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SatWrapper\bin\Debug\Ppgz.Facturas.dll.config
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SatWrapper\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SatWrapper\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SatWrapper\obj\Debug\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SatWrapper\obj\Debug\Ppgz.Facturas.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SatWrapper\obj\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll.config
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SatWrapper\obj\Debug\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll.config
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SatWrapper\obj\Debug\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll.config
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SatWrapper\obj\Debug\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Mama\Desktop\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll.config
+C:\Users\Mama\Desktop\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Mama\Desktop\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Mama\Desktop\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.dll
+C:\Users\Mama\Desktop\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.pdb
+C:\Users\Mama\Desktop\DAP\SatWrapper\obj\Debug\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll.config
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\obj\Debug\SatWrapper.csprojResolveAssemblyReference.cache

@@ -1,0 +1,84 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.ComponenteMecanicoTipoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Tipos Componentes Mecanicos</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Tipos de Componentes Mecanicos</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de Tipo de Componentes Mecanicos</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Crear", "AdministrarComponentesMecanicosTipos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+
+
+           
+        
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Descripcion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(c => c.Descripcion, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.Descripcion)
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-7">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarComponentesMecanicosTipos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    </div>
+                </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+       
+
+        $(document).ready(function () {
+
+            $("#Pdf").bind('change', function () {
+
+                if (this.files[0].size / 1024 / 1024 > 3) {
+                    $(this).val("");
+
+                    alert('Debe incluir un archivo menor a 3Mb');
+                }
+            });
+
+
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+
+            $('<input />').attr('type', 'hidden')
+                         .attr('name', "Pdf-Plano")
+                         .attr('value', "Pdf-Plano")
+                         .appendTo('#form');
+
+            $('<input />').attr('type', 'hidden')
+                              .attr('name', "Pdf-Fotografia")
+                              .attr('value', "Pdf-Fotografia")
+                              .appendTo('#form');
+        });
+
+    </script>
+
+
+}

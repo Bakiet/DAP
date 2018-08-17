@@ -1,0 +1,104 @@
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\SapWrapper.dll
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\SapWrapper.pdb
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\EntityFramework.dll
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\Ppgz.Repository.dll
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\SAPConnectionManager.dll
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\sapnco.dll
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\sapnco_utils.dll
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\MySql.Data.dll
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\repos\impuls\Ppgz\SapWrapper\bin\Debug\EntityFramework.xml
+C:\repos\impuls\Ppgz\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
+C:\repos\impuls\Ppgz\SapWrapper\obj\Debug\SapWrapper.dll
+C:\repos\impuls\Ppgz\SapWrapper\obj\Debug\SapWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\SapWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\SapWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\SAPConnectionManager.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\sapnco.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\sapnco_utils.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\MySql.Data.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\bin\Debug\EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\obj\Debug\SapWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\SapWrapper\obj\Debug\SapWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\SapWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\SapWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\SAPConnectionManager.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\MySql.Data.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\sapnco.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\sapnco_utils.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\obj\Debug\SapWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\obj\Debug\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\SAPConnectionManager.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\sapnco.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\sapnco_utils.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\obj\Debug\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\SapWrapper\obj\Debug\SapWrapper.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\SapWrapper.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\SapWrapper.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\EntityFramework.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\Ppgz.Repository.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\SAPConnectionManager.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\MySql.Data.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\sapnco.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\sapnco_utils.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\bin\Debug\EntityFramework.xml
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\obj\Debug\SapWrapper.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\SapWrapper\obj\Debug\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\SAPConnectionManager.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\sapnco.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\sapnco_utils.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\obj\Debug\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\SapWrapper\obj\Debug\SapWrapper.pdb
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\SapWrapper.dll
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\SapWrapper.pdb
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\EntityFramework.dll
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\Ppgz.Repository.dll
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\SAPConnectionManager.dll
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\MySql.Data.dll
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\sapnco.dll
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\sapnco_utils.dll
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Mama\Desktop\DAP\SapWrapper\bin\Debug\EntityFramework.xml
+C:\Users\Mama\Desktop\DAP\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Mama\Desktop\DAP\SapWrapper\obj\Debug\SapWrapper.dll
+C:\Users\Mama\Desktop\DAP\SapWrapper\obj\Debug\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\SAPConnectionManager.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\sapnco.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\sapnco_utils.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\obj\Debug\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\obj\Debug\SapWrapper.pdb

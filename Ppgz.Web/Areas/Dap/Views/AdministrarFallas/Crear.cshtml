@@ -1,0 +1,241 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.FallaViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Fallas</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear fallas</i></p>*@
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de la nueva falla</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Crear", "AdministrarFallas", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            
+
+           
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Obra, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.Obra, (IEnumerable<SelectListItem>)ViewBag.Obras, "Seleccione un Valor", new { @class = "form-control", @id = "ddlObra" })
+                    @*@Html.ValidationMessageFor(f => f.Obra)*@
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.Equipo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.Equipo, (IEnumerable<SelectListItem>)ViewBag.Equipos, "Seleccione un Valor", new { @class = "form-control", @id = "ddlEquipo" })
+                    @*@Html.ValidationMessageFor(f => f.Equipo)*@
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.FechaFalla, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.FechaFalla, new { @class = "form-control fecha-hora", @type = "datetime" })
+                    @*@Html.ValidationMessageFor(f => f.FechaFalla)*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Tipo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.Tipo, (IEnumerable<SelectListItem>)ViewBag.TipoFallas, "Seleccione un Valor", new { @class = "form-control", @id = "ddlTipo" })
+                    @*@Html.ValidationMessageFor(f => f.Tipo)*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Componente, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.Componente, (IEnumerable<SelectListItem>)ViewBag.Componentes, "Seleccione un Valor", new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(f => f.Componente)*@
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Personal, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.Personal, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(f => f.Personal)*@
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.FechaSolucion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.FechaSolucion, new { @class = "form-control  fecha-hora", @type = "datetime" })
+                    @*@Html.ValidationMessageFor(f => f.FechaSolucion)*@
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.StatusFalla, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(f => f.StatusFalla, (IEnumerable<SelectListItem>)ViewBag.Status, "Seleccione un Valor", new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(f => f.StatusFalla)*@
+                </div>
+            </div>
+
+
+
+            
+
+            @*<div class="form-group">
+                    @Html.LabelFor(f => f.NumeroReporte, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(f => f.NumeroReporte, new { @class = "form-control" })
+
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Descripcion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(f => f.Descripcion, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                    @*@Html.ValidationMessageFor(f => f.Descripcion)*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Condicion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @*@Html.TextBoxFor(f => f.Condicion, new { @class = "form-control" })*@
+                    @Html.DropDownListFor(f => f.Condicion, (IEnumerable<SelectListItem>)ViewBag.Condicion, "Seleccione un Valor", new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(f => f.Condicion)*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.AccionesTomadas, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(f => f.AccionesTomadas, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                    @*@Html.ValidationMessageFor(f => f.AccionesTomadas)*@
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(f => f.AccionesRecomendadas, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(f => f.AccionesRecomendadas, new { @class = "form-control" })
+
+                    </div>
+                </div>*@
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.PersonaReporte, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.PersonaReporte, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(f => f.PersonaReporte)*@
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.GerenciaResponsable, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(f => f.GerenciaResponsable, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(f => f.GerenciaResponsable)*@
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Archivos</label>
+                <div class="col-sm-4">
+                    <div>
+
+                        <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                            <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                <input type="file" multiple="multiple" style="padding: 20px;" name="Correo" id="Correo">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-7">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrar</button>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarFallas")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    </div>
+                </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+
+
+        $(document).ready(function () {
+
+            $("#ddlTipo").change(function () {
+                var e = document.getElementById("ddlTipo").value;
+              
+                //TempData["valortipo"] = e;
+                var uriTemplate = '@Url.Action("Crear", "AdministrarFallas", new { id = TempData["OBRA_ID"], tipo = "exampleddltipo" })';
+
+                var uriFinal = uriTemplate.replace("exampleddltipo", e);
+
+                window.location.href = uriFinal;
+              
+            });
+            $("#ddlObra").change(function () {
+                var e = document.getElementById("ddlObra").value;
+
+                //TempData["valortipo"] = e;
+                var uriTemplate = '@Url.Action("Crear", "AdministrarFallas", new { id = TempData["OBRA_ID"], tipo = "exampleddltipo" })';
+
+                var uriFinal = uriTemplate.replace("exampleddltipo", e);
+
+                window.location.href = uriFinal;
+
+            });
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY HH:MM:ss',
+
+                showClose: true,
+                sideBySide: true
+            });
+
+            $('.fecha-hora-minutos').datetimepicker({
+                locale: 'es',
+
+                format: 'MM/DD/HH',
+
+                showClose: true,
+                sideBySide: true
+            });
+
+            $('<input />').attr('type', 'hidden')
+                         .attr('name', "Pdf-Plano")
+                         .attr('value', "Pdf-Plano")
+                         .appendTo('#form');
+
+            $('<input />').attr('type', 'hidden')
+                              .attr('name', "Pdf-Fotografia")
+                              .attr('value', "Pdf-Fotografia")
+                              .appendTo('#form');
+
+
+        });
+
+    </script>
+
+
+}

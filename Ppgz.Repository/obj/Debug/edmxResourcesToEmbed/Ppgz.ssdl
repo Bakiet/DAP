@@ -1,0 +1,1445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="impuls_portalModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="acumuladores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SemanaAno" Type="int" Nullable="false" />
+    <Property Name="CantidadPar" Type="int" Nullable="false" />
+    <Property Name="AlmacenId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="almacenes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreAlmacen" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="CapacidadDiaria" Type="int" Nullable="false" />
+    <Property Name="CapacidadSemanal" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="andenes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Anden" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="asn">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CitaId" Type="int" />
+    <Property Name="OrdenNumeroDocumento" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="NumeroPosicion" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumeroMaterial" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="NombreMaterial" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Tienda" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="aspnetroles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="256" />
+    <Property Name="Description" Type="varchar" MaxLength="1000" />
+    <Property Name="Tipo" Type="enum" />
+  </EntityType>
+  <EntityType Name="aspnetuserclaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="longtext" />
+    <Property Name="ClaimValue" Type="longtext" />
+  </EntityType>
+  <EntityType Name="aspnetuserlogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnetuserroles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnetusers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bool" />
+    <Property Name="PasswordHash" Type="longtext" />
+    <Property Name="SecurityStamp" Type="longtext" />
+    <Property Name="PhoneNumber" Type="longtext" />
+    <Property Name="PhoneNumberConfirmed" Type="bool" />
+    <Property Name="TwoFactorEnabled" Type="bool" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" Precision="0" />
+    <Property Name="LockoutEnabled" Type="bool" />
+    <Property Name="AccessFailedCount" Type="int" />
+    <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Tipo" Type="enum" Nullable="false" />
+    <Property Name="Activo" Type="bool" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cargo" Type="varchar" MaxLength="200" />
+    <Property Name="PerfilId" Type="int" Nullable="false" />
+    <Property Name="TerminosCondicionesFecha" Type="datetime" Precision="0" />
+    <Property Name="Borrado" Type="tinyint" />
+    <Property Name="FechaTx" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioIdTx" Type="varchar" MaxLength="128" />
+    <Property Name="OperacionTx" Type="enum" />
+  </EntityType>
+  <EntityType Name="citas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="5" />
+    <Property Name="FechaCita" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+    <Property Name="Almacen" Type="varchar" MaxLength="45" />
+    <Property Name="CantidadTotal" Type="int" />
+    <Property Name="ProveedorId" Type="int" Nullable="false" />
+    <Property Name="Borrado" Type="bool" Nullable="false" />
+    <Property Name="FechaTx" Type="datetime" Precision="0" />
+    <Property Name="UsuarioIdTx" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="OperacionTx" Type="enum" Nullable="false" />
+    <Property Name="RielesOcupados" Type="tinyint" Nullable="false" />
+    <Property Name="EstatusCitaId" Type="int" />
+    <Property Name="Penalizado" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="componenteselectricos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="45" />
+    <Property Name="Marca" Type="varchar" MaxLength="45" />
+    <Property Name="Modelo" Type="varchar" MaxLength="45" />
+    <Property Name="Serial" Type="varchar" MaxLength="45" />
+    <Property Name="FechaFabricado" Type="datetime" Precision="0" />
+    <Property Name="Duracion" Type="varchar" MaxLength="45" />
+    <Property Name="Sustitucion" Type="varchar" MaxLength="45" />
+    <Property Name="Fotografia" Type="varchar" MaxLength="1000" />
+    <Property Name="IdEquipos" Type="int" />
+  </EntityType>
+  <EntityType Name="componenteselectricos_sustituciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="45" />
+    <Property Name="Marca" Type="varchar" MaxLength="45" />
+    <Property Name="Modelo" Type="varchar" MaxLength="45" />
+    <Property Name="Serial" Type="varchar" MaxLength="45" />
+    <Property Name="FechaFabricado" Type="datetime" Precision="0" />
+    <Property Name="Duracion" Type="varchar" MaxLength="45" />
+    <Property Name="Sustitucion" Type="varchar" MaxLength="45" />
+    <Property Name="Fotografia" Type="varchar" MaxLength="1000" />
+    <Property Name="IdEquipos" Type="int" />
+  </EntityType>
+  <EntityType Name="componentesmecanicos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="45" />
+    <Property Name="Marca" Type="varchar" MaxLength="45" />
+    <Property Name="Modelo" Type="varchar" MaxLength="45" />
+    <Property Name="Serial" Type="varchar" MaxLength="45" />
+    <Property Name="FechaFabricado" Type="datetime" Precision="0" />
+    <Property Name="Duracion" Type="varchar" MaxLength="45" />
+    <Property Name="Sustitucion" Type="varchar" MaxLength="45" />
+    <Property Name="Fotografia" Type="varchar" MaxLength="1000" />
+    <Property Name="IdEquipos" Type="int" />
+  </EntityType>
+  <EntityType Name="componentesmecanicos_sustituciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="45" />
+    <Property Name="Marca" Type="varchar" MaxLength="45" />
+    <Property Name="Modelo" Type="varchar" MaxLength="45" />
+    <Property Name="Serial" Type="varchar" MaxLength="45" />
+    <Property Name="FechaFabricado" Type="datetime" Precision="0" />
+    <Property Name="Duracion" Type="varchar" MaxLength="45" />
+    <Property Name="Sustitucion" Type="varchar" MaxLength="45" />
+    <Property Name="Fotografia" Type="varchar" MaxLength="45" />
+    <Property Name="IdEquipos" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="configuraciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="50" />
+    <Property Name="Valor" Type="varchar" MaxLength="200" />
+    <Property Name="Habilitado" Type="bool" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="crs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="20" />
+    <Property Name="ArchivoCR" Type="varchar" MaxLength="1000" />
+    <Property Name="Fecha" Type="datetime" Precision="0" />
+    <Property Name="CitaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cuentaproveedores">
+    <Key>
+      <PropertyRef Name="NumeroProveedor" />
+      <PropertyRef Name="CuentaId" />
+    </Key>
+    <Property Name="NumeroProveedor" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="45" />
+    <Property Name="Ciudad" Type="varchar" MaxLength="45" />
+    <Property Name="Distrito" Type="varchar" MaxLength="45" />
+    <Property Name="VendedorNombre" Type="varchar" MaxLength="45" />
+    <Property Name="VendedorTelefono" Type="varchar" MaxLength="45" />
+    <Property Name="CompradorImpulsNombre" Type="varchar" MaxLength="45" />
+    <Property Name="CompradorImpulsTelefono" Type="varchar" MaxLength="45" />
+    <Property Name="CompradorImpulsEmail" Type="varchar" MaxLength="45" />
+    <Property Name="CuentaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cuentas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoProveedor" Type="varchar" MaxLength="50" />
+    <Property Name="NombreCuenta" Type="varchar" MaxLength="50" />
+    <Property Name="FechaRegistro" Type="datetime" Precision="0" />
+    <Property Name="Tipo" Type="enum" />
+    <Property Name="EsEspecial" Type="bool" Nullable="false" />
+    <Property Name="Activo" Type="bool" Nullable="false" />
+    <Property Name="Borrado" Type="bool" Nullable="false" />
+    <Property Name="FechaTx" Type="datetime" Precision="0" />
+    <Property Name="UsuarioIdTx" Type="varchar" MaxLength="128" />
+    <Property Name="OperacionTx" Type="enum" />
+  </EntityType>
+  <EntityType Name="cuentasmensajes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaVisualizacion" Type="datetime" Precision="0" />
+    <Property Name="MensajeId" Type="int" />
+    <Property Name="CuentaId" Type="int" />
+    <Property Name="UsuarioId" Type="varchar" MaxLength="128" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.dap.devoluciones' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="devoluciones">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Referencia" />
+      <PropertyRef Name="Material" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Importe" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Referencia" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Material" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Cantidad" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Importe" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="envios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Obra" Type="varchar" MaxLength="45" />
+    <Property Name="TipoComponente" Type="varchar" MaxLength="45" />
+    <Property Name="FechaPedido" Type="datetime" Precision="0" />
+    <Property Name="FechaSalida" Type="datetime" Precision="0" />
+    <Property Name="Tracking" Type="varchar" MaxLength="45" />
+    <Property Name="EmpresaEnvio" Type="varchar" MaxLength="45" />
+    <Property Name="StatusEnvio" Type="varchar" MaxLength="45" />
+    <Property Name="NumeroBulto" Type="varchar" MaxLength="45" />
+    <Property Name="PesoTotal" Type="varchar" MaxLength="45" />
+    <Property Name="CodigoArancelario" Type="varchar" MaxLength="45" />
+    <Property Name="Solicitado" Type="varchar" MaxLength="45" />
+    <Property Name="CostoProducto" Type="varchar" MaxLength="45" />
+    <Property Name="StatusPago" Type="varchar" MaxLength="45" />
+    <Property Name="NumeroFactura" Type="varchar" MaxLength="45" />
+    <Property Name="StatusEntrega" Type="varchar" MaxLength="45" />
+    <Property Name="EntregaProducto" Type="varchar" MaxLength="45" />
+    <Property Name="FechaEntrega" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="equipos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="45" />
+    <Property Name="Marca" Type="varchar" MaxLength="45" />
+    <Property Name="Modelo" Type="varchar" MaxLength="45" />
+    <Property Name="Referencia" Type="varchar" MaxLength="45" />
+    <Property Name="DimensionesCabina" Type="varchar" MaxLength="45" />
+    <Property Name="DimensionesHueco" Type="varchar" MaxLength="45" />
+    <Property Name="CargaNominal" Type="varchar" MaxLength="45" />
+    <Property Name="Velocidad" Type="varchar" MaxLength="45" />
+    <Property Name="Recorrido" Type="varchar" MaxLength="45" />
+    <Property Name="Paradas" Type="varchar" MaxLength="45" />
+    <Property Name="Accesos" Type="varchar" MaxLength="45" />
+    <Property Name="VoltajeDeRed" Type="varchar" MaxLength="45" />
+    <Property Name="PotenciaDeMaquina" Type="varchar" MaxLength="45" />
+    <Property Name="TipoDeManiobra" Type="varchar" MaxLength="45" />
+    <Property Name="NumeroDeGuayas" Type="varchar" MaxLength="45" />
+    <Property Name="Fotografia" Type="varchar" MaxLength="1000" />
+    <Property Name="Plano" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="estatuscitas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="etiquetas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Archivo" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="NumeroOrden" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ProveedorId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="facturas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="proveedor_id" Type="int" Nullable="false" />
+    <Property Name="Uuid" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Serie" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Folio" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="XmlRuta" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="PdfRuta" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Comentario" Type="varchar" MaxLength="5000" />
+    <Property Name="NumeroGenerado" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="fallas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaFalla" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="Obra" Type="varchar" MaxLength="45" />
+    <Property Name="Equipo" Type="varchar" MaxLength="45" />
+    <Property Name="Tipo" Type="varchar" MaxLength="45" />
+    <Property Name="Componente" Type="varchar" MaxLength="45" />
+    <Property Name="Personal" Type="varchar" MaxLength="45" />
+    <Property Name="StatusFalla" Type="varchar" MaxLength="45" />
+    <Property Name="FechaSolucion" Type="datetime" Precision="0" />
+    <Property Name="NumeroReporte" Type="varchar" MaxLength="45" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="Condicion" Type="varchar" MaxLength="45" />
+    <Property Name="AccionesTomadas" Type="varchar" MaxLength="1500" />
+    <Property Name="AccionesRecomendadas" Type="varchar" MaxLength="1500" />
+    <Property Name="Duracion" Type="varchar" MaxLength="45" />
+    <Property Name="PersonaReporte" Type="varchar" MaxLength="45" />
+    <Property Name="GerenciaResponsable" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="fallascorreos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="1000" />
+    <Property Name="IdFallas" Type="int" />
+  </EntityType>
+  <EntityType Name="herramientas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="FechaSalida" Type="datetime" Precision="0" />
+    <Property Name="Propiedad" Type="varchar" MaxLength="45" />
+    <Property Name="FechaCulminacion" Type="datetime" Precision="0" />
+    <Property Name="CantidadDeposito" Type="varchar" MaxLength="45" />
+    <Property Name="FechaEntrada" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="horariorieles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Disponibilidad" Type="bool" Nullable="false" />
+    <Property Name="HorarioId" Type="int" Nullable="false" />
+    <Property Name="AlmacenRielId" Type="int" Nullable="false" />
+    <Property Name="CitaId" Type="int" />
+    <Property Name="ComentarioBloqueo" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="horarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoraDesde" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="HoraHasta" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="impuls_logs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="log" Type="varchar" MaxLength="255" />
+    <Property Name="fecha" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="informes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="1500" />
+    <Property Name="Nombre" Type="varchar" MaxLength="45" />
+    <Property Name="Fecha" Type="datetime" Precision="0" />
+    <Property Name="IdVenta" Type="int" />
+  </EntityType>
+  <EntityType Name="kitdap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="45" />
+    <Property Name="Url" Type="varchar" MaxLength="1000" />
+    <Property Name="IdPrevio" Type="int" />
+  </EntityType>
+  <EntityType Name="mantenimientocorrectivo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="45" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+    <Property Name="PersonaJuridica" Type="varchar" MaxLength="45" />
+    <Property Name="FechaVisita" Type="datetime" Precision="0" />
+    <Property Name="FechaPublicacion" Type="datetime" Precision="0" />
+    <Property Name="NombreDocumento" Type="varchar" MaxLength="45" />
+    <Property Name="Tecnico" Type="varchar" MaxLength="45" />
+    <Property Name="EquiposAtendidos" Type="varchar" MaxLength="45" />
+    <Property Name="StatusMantenimiento" Type="varchar" MaxLength="45" />
+    <Property Name="Archivo" Type="varchar" MaxLength="1500" />
+    <Property Name="Evaluacion" Type="varchar" MaxLength="1500" />
+    <Property Name="HoraLlegada" Type="varchar" MaxLength="45" />
+    <Property Name="HoraSalida" Type="varchar" MaxLength="45" />
+    <Property Name="IdVenta" Type="int" />
+  </EntityType>
+  <EntityType Name="mantenimientopreventivo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="45" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+    <Property Name="PersonaJuridica" Type="varchar" MaxLength="45" />
+    <Property Name="FechaVisita" Type="datetime" Precision="0" />
+    <Property Name="FechaPublicacion" Type="datetime" Precision="0" />
+    <Property Name="NombreDocumento" Type="varchar" MaxLength="45" />
+    <Property Name="Tecnico" Type="varchar" MaxLength="45" />
+    <Property Name="EquiposAtendidos" Type="varchar" MaxLength="45" />
+    <Property Name="StatusMantenimiento" Type="varchar" MaxLength="45" />
+    <Property Name="Archivo" Type="varchar" MaxLength="1500" />
+    <Property Name="Evaluacion" Type="varchar" MaxLength="1500" />
+    <Property Name="HoraLlegada" Type="varchar" MaxLength="45" />
+    <Property Name="HoraSalida" Type="varchar" MaxLength="45" />
+    <Property Name="IdVenta" Type="int" />
+  </EntityType>
+  <EntityType Name="mensajes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Contenido" Type="varchar" MaxLength="5000" />
+    <Property Name="Archivo" Type="varchar" MaxLength="100" />
+    <Property Name="FechaPublicacion" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="FechaCaducidad" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="EnviadoA" Type="enum" />
+    <Property Name="Borrado" Type="bool" Nullable="false" />
+    <Property Name="FechaTx" Type="datetime" Precision="0" />
+    <Property Name="UsuarioIdTx" Type="varchar" MaxLength="128" />
+    <Property Name="OperacionTx" Type="enum" />
+  </EntityType>
+  <EntityType Name="niveleseervicio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProveedorId" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="UltimoMes" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TemporadaActual" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AcumuladoAnual" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PedidoAtrasado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PedidoEnTiempo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PedidoTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="obras">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="45" />
+    <Property Name="PersonaJuridica" Type="varchar" MaxLength="45" />
+    <Property Name="DireccionFacturacion" Type="varchar" MaxLength="300" />
+    <Property Name="DireccionOficina" Type="varchar" MaxLength="300" />
+    <Property Name="DireccionObra" Type="varchar" MaxLength="300" />
+    <Property Name="TelefonoOficina" Type="varchar" MaxLength="45" />
+    <Property Name="Contacto" Type="varchar" MaxLength="45" />
+    <Property Name="Contacto2" Type="varchar" MaxLength="45" />
+    <Property Name="Email" Type="varchar" MaxLength="45" />
+    <Property Name="Email2" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="obrasgestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="ordencompra">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroDocumento" Type="varchar" MaxLength="20" />
+    <Property Name="Sociedad" Type="varchar" MaxLength="10" />
+    <Property Name="TipoDocumento" Type="varchar" MaxLength="5" />
+    <Property Name="ClaseDocumento" Type="varchar" MaxLength="5" />
+    <Property Name="IndicadorControl" Type="varchar" MaxLength="20" />
+    <Property Name="IndicadorBorrado" Type="varchar" MaxLength="20" />
+    <Property Name="EstatusDocumento" Type="varchar" MaxLength="20" />
+    <Property Name="FechaCreacionSap" Type="varchar" MaxLength="10" />
+    <Property Name="IntervaloPosicion" Type="int" />
+    <Property Name="UltimoNumeroPos" Type="int" />
+    <Property Name="NumeroProveedor" Type="varchar" MaxLength="20" />
+    <Property Name="ClavePago" Type="varchar" MaxLength="10" />
+    <Property Name="OrganizacionCompra" Type="varchar" MaxLength="10" />
+    <Property Name="GrupoCompra" Type="varchar" MaxLength="10" />
+    <Property Name="Moneda" Type="varchar" MaxLength="5" />
+    <Property Name="TipoCambio" Type="int" />
+    <Property Name="IndTipoCambio" Type="varchar" MaxLength="20" />
+    <Property Name="FechaDocCompra" Type="varchar" MaxLength="10" />
+    <Property Name="FechaCargaPortal" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProveedorId" Type="int" />
+    <Property Name="FechaVisualizado" Type="datetime" Precision="0" />
+    <Property Name="CitaId" Type="int" />
+  </EntityType>
+  <EntityType Name="ordencompradetalle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroDocumento" Type="varchar" MaxLength="10" />
+    <Property Name="Ebelp" Type="varchar" MaxLength="5" />
+    <Property Name="DescripcionMaterial" Type="varchar" MaxLength="40" />
+    <Property Name="NumeroMaterial" Type="varchar" MaxLength="18" />
+    <Property Name="Centro" Type="varchar" MaxLength="12" />
+    <Property Name="Almacen" Type="varchar" MaxLength="4" />
+    <Property Name="GrupoArticulos" Type="varchar" MaxLength="9" />
+    <Property Name="CantidadPedido" Type="varchar" MaxLength="13" />
+    <Property Name="UnidadMedidaPedido" Type="varchar" MaxLength="4" />
+    <Property Name="UnidadMedidaPrecio" Type="varchar" MaxLength="5" />
+    <Property Name="ConversionUmpruMP" Type="int" />
+    <Property Name="ConversionUmUmBase" Type="int" />
+    <Property Name="DenominadorUmUmBase" Type="int" />
+    <Property Name="PrecioNeto" Type="decimal" Precision="11" Scale="2" />
+    <Property Name="CantidadBase" Type="int" />
+    <Property Name="ValorNeto" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="ValorBruto" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="CantidadUnidadMedida" Type="decimal" Precision="13" Scale="3" />
+    <Property Name="SapOrdenCompraId" Type="int" />
+    <Property Name="FechaCargaPortal" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CantidadComprometida" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.dap.pagos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="pagos">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="RFC" />
+      <PropertyRef Name="RazonSocial" />
+      <PropertyRef Name="NumeroCompensacion" />
+      <PropertyRef Name="Referencia" />
+      <PropertyRef Name="FechaDePago" />
+      <PropertyRef Name="FechaBase" />
+      <PropertyRef Name="Importe" />
+      <PropertyRef Name="ML" />
+      <PropertyRef Name="TipoMovimiento" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="RFC" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="NumeroCompensacion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Referencia" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="FechaDePago" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="FechaBase" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Importe" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ML" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="TipoMovimiento" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="perfiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Tipo" Type="enum" Nullable="false" />
+    <Property Name="CuentaId" Type="int" />
+  </EntityType>
+  <EntityType Name="perfilesroles">
+    <Key>
+      <PropertyRef Name="PerfilId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="PerfilId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="previos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaFirmaContrato" Type="datetime" Precision="0" />
+    <Property Name="FechaPagoInicialFabrica" Type="datetime" Precision="0" />
+    <Property Name="FechaPagoInicialEquipo" Type="datetime" Precision="0" />
+    <Property Name="FechaConstruccion" Type="datetime" Precision="0" />
+    <Property Name="FechaSalidaFabrica" Type="datetime" Precision="0" />
+    <Property Name="FechaSalidaBuque" Type="datetime" Precision="0" />
+    <Property Name="FechaLlegadaBuque" Type="datetime" Precision="0" />
+    <Property Name="FechaPeriodoNacionalizacion" Type="datetime" Precision="0" />
+    <Property Name="FechaSalidaPuertoObra" Type="datetime" Precision="0" />
+    <Property Name="FechaDescargaResguardo" Type="datetime" Precision="0" />
+    <Property Name="ActivacionProtocoloGarantiaFabrica" Type="varchar" MaxLength="45" />
+    <Property Name="FechaInicioMontaje" Type="datetime" Precision="0" />
+    <Property Name="FechaEntregaSoso" Type="datetime" Precision="0" />
+    <Property Name="FechaCulminacionMontaje" Type="datetime" Precision="0" />
+    <Property Name="FechaConfiguracion" Type="datetime" Precision="0" />
+    <Property Name="FechaPeriodoPrueba" Type="datetime" Precision="0" />
+    <Property Name="FechaInspeccion" Type="datetime" Precision="0" />
+    <Property Name="TecnicoInstalador" Type="varchar" MaxLength="45" />
+    <Property Name="InformeEntregaFinal" Type="varchar" MaxLength="1000" />
+    <Property Name="FechaDescargaResguardoFotografia" Type="varchar" MaxLength="1000" />
+    <Property Name="FechaCulminacionMontajeFotografia" Type="varchar" MaxLength="1000" />
+    <Property Name="FechaInspeccionFotografia" Type="varchar" MaxLength="1000" />
+    <Property Name="FechaInspeccionVideo" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="protocolos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="45" />
+    <Property Name="Url" Type="varchar" MaxLength="1000" />
+    <Property Name="IdPrevio" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="proveedores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroProveedor" Type="varchar" MaxLength="10" />
+    <Property Name="ClavePais" Type="varchar" MaxLength="3" />
+    <Property Name="Nombre1" Type="varchar" MaxLength="35" />
+    <Property Name="Nombre2" Type="varchar" MaxLength="35" />
+    <Property Name="Nombre3" Type="varchar" MaxLength="35" />
+    <Property Name="Nombre4" Type="varchar" MaxLength="35" />
+    <Property Name="Poblacion" Type="varchar" MaxLength="35" />
+    <Property Name="Distrito" Type="varchar" MaxLength="35" />
+    <Property Name="Apartado" Type="varchar" MaxLength="10" />
+    <Property Name="CodigoApartado" Type="varchar" MaxLength="10" />
+    <Property Name="CodigoPostal" Type="varchar" MaxLength="10" />
+    <Property Name="Region" Type="varchar" MaxLength="3" />
+    <Property Name="Calle" Type="varchar" MaxLength="35" />
+    <Property Name="Direccion" Type="varchar" MaxLength="10" />
+    <Property Name="Sociedad" Type="varchar" MaxLength="4" />
+    <Property Name="OrganizacionCompra" Type="varchar" MaxLength="4" />
+    <Property Name="ClaveMoned" Type="varchar" MaxLength="10" />
+    <Property Name="VendedorResponsable" Type="varchar" MaxLength="35" />
+    <Property Name="NumeroTelefono" Type="varchar" MaxLength="16" />
+    <Property Name="CondicionPago" Type="varchar" MaxLength="4" />
+    <Property Name="IncoTerminos1" Type="varchar" MaxLength="3" />
+    <Property Name="IncoTerminos2" Type="varchar" MaxLength="28" />
+    <Property Name="GrupoCompras" Type="varchar" MaxLength="3" />
+    <Property Name="DenominacionGrupo" Type="varchar" MaxLength="18" />
+    <Property Name="TelefonoGrupoCompra" Type="varchar" MaxLength="12" />
+    <Property Name="TelefonoPrefijo" Type="varchar" MaxLength="30" />
+    <Property Name="TelefonoExtension" Type="varchar" MaxLength="10" />
+    <Property Name="Correo" Type="varchar" MaxLength="241" />
+    <Property Name="CuentaId" Type="int" Nullable="false" />
+    <Property Name="FechaCargaPortal" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioIdTx" Type="varchar" MaxLength="128" />
+    <Property Name="OperacionTx" Type="enum" Nullable="false" />
+    <Property Name="Rfc" Type="varchar" MaxLength="100" />
+    <Property Name="Borrado" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="requerimientos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Obra" Type="varchar" MaxLength="45" />
+    <Property Name="Tipo" Type="varchar" MaxLength="45" />
+    <Property Name="FechaSolicitud" Type="datetime" Precision="0" />
+    <Property Name="GerenciaResponsable" Type="varchar" MaxLength="45" />
+    <Property Name="Tecnicos" Type="varchar" MaxLength="45" />
+    <Property Name="StatusRequerimiento" Type="varchar" MaxLength="45" />
+    <Property Name="FechaCumplimientoSolicitud" Type="datetime" Precision="0" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+    <Property Name="AccionesEjecutadas" Type="varchar" MaxLength="1500" />
+  </EntityType>
+  <EntityType Name="requerimientoscorreos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="1500" />
+    <Property Name="IdRequerimientos" Type="int" />
+  </EntityType>
+  <EntityType Name="rieles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Riel" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AndenId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scalealmacen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sap" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Scale" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sugerencias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="450" />
+    <Property Name="Numero" Type="varchar" MaxLength="45" />
+    <Property Name="Fecha" Type="datetime" Precision="0" />
+    <Property Name="AccionesTomadas" Type="varchar" MaxLength="1500" />
+    <Property Name="AccionesRecomendadas" Type="varchar" MaxLength="1500" />
+    <Property Name="GerenciaResponsable" Type="varchar" MaxLength="1500" />
+    <Property Name="IdVenta" Type="int" />
+  </EntityType>
+  <EntityType Name="tipocuentas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tipousuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="5" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ventas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="400" />
+    <Property Name="IdObra" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.dap.vwdashboard' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vwdashboard">
+    <Key>
+      <PropertyRef Name="horarioRielId" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Disponibilidad" />
+      <PropertyRef Name="HorarioId" />
+      <PropertyRef Name="AlmacenRielId" />
+      <PropertyRef Name="Riel" />
+      <PropertyRef Name="AndenId" />
+      <PropertyRef Name="Anden" />
+    </Key>
+    <Property Name="horarioRielId" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Disponibilidad" Type="bool" Nullable="false" />
+    <Property Name="HorarioId" Type="int" Nullable="false" />
+    <Property Name="AlmacenRielId" Type="int" Nullable="false" />
+    <Property Name="CitaId" Type="int" />
+    <Property Name="Riel" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AndenId" Type="int" Nullable="false" />
+    <Property Name="Anden" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Desde" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="Hasta" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="ProveedorId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'def.dap.vwmensajes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vwmensajes">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Titulo" />
+      <PropertyRef Name="FechaPublicacion" />
+      <PropertyRef Name="FechaCaducidad" />
+      <PropertyRef Name="Visualizado" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Contenido" Type="varchar" MaxLength="5000" />
+    <Property Name="Archivo" Type="varchar" MaxLength="100" />
+    <Property Name="FechaPublicacion" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="FechaCaducidad" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="EnviadoA" Type="enum" />
+    <Property Name="Visualizado" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <Association Name="ApplicationUser_Claims">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aspnetuserclaims" Type="Self.aspnetuserclaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserclaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationUser_Logins">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aspnetuserlogins" Type="Self.aspnetuserlogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserlogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_acumulador_almacen">
+    <End Role="almacenes" Type="Self.almacenes" Multiplicity="1" />
+    <End Role="acumuladores" Type="Self.acumuladores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="almacenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="acumuladores">
+        <PropertyRef Name="AlmacenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_asn_cita">
+    <End Role="citas" Type="Self.citas" Multiplicity="0..1" />
+    <End Role="asn" Type="Self.asn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="citas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="asn">
+        <PropertyRef Name="CitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_aspnetuserroles_role">
+    <End Role="aspnetroles" Type="Self.aspnetroles" Multiplicity="1" />
+    <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetroles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserroles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_aspnetuserroles_usuario">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1" />
+    <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserroles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_citas_estatus">
+    <End Role="estatuscitas" Type="Self.estatuscitas" Multiplicity="0..1" />
+    <End Role="citas" Type="Self.citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estatuscitas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="citas">
+        <PropertyRef Name="EstatusCitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_citas_proveedor">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+    <End Role="citas" Type="Self.citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="citas">
+        <PropertyRef Name="ProveedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_citas_usuario">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1" />
+    <End Role="citas" Type="Self.citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="citas">
+        <PropertyRef Name="UsuarioIdTx" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_crs_cita">
+    <End Role="citas" Type="Self.citas" Multiplicity="1" />
+    <End Role="crs" Type="Self.crs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="citas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="crs">
+        <PropertyRef Name="CitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuenta">
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="0..1" />
+    <End Role="perfiles" Type="Self.perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="perfiles">
+        <PropertyRef Name="CuentaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentas_usuario">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="0..1" />
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentas">
+        <PropertyRef Name="UsuarioIdTx" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentasmensajes_cuenta">
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="0..1" />
+    <End Role="cuentasmensajes" Type="Self.cuentasmensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentasmensajes">
+        <PropertyRef Name="CuentaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentasmensajes_mensaje">
+    <End Role="mensajes" Type="Self.mensajes" Multiplicity="0..1" />
+    <End Role="cuentasmensajes" Type="Self.cuentasmensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mensajes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentasmensajes">
+        <PropertyRef Name="MensajeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentasmensajes_usuario">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="0..1" />
+    <End Role="cuentasmensajes" Type="Self.cuentasmensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentasmensajes">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuetnasprov">
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="1" />
+    <End Role="cuentaproveedores" Type="Self.cuentaproveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentaproveedores">
+        <PropertyRef Name="CuentaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_etiquetas_proveedores">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+    <End Role="etiquetas" Type="Self.etiquetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="etiquetas">
+        <PropertyRef Name="ProveedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_facturas_proveedores">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+    <End Role="facturas" Type="Self.facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="facturas">
+        <PropertyRef Name="proveedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_horariorieles_citas">
+    <End Role="citas" Type="Self.citas" Multiplicity="0..1" />
+    <End Role="horariorieles" Type="Self.horariorieles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="citas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="horariorieles">
+        <PropertyRef Name="CitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_horariorieles_horarios">
+    <End Role="horarios" Type="Self.horarios" Multiplicity="1" />
+    <End Role="horariorieles" Type="Self.horariorieles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="horarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="horariorieles">
+        <PropertyRef Name="HorarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_horariorieles_rieles">
+    <End Role="rieles" Type="Self.rieles" Multiplicity="1" />
+    <End Role="horariorieles" Type="Self.horariorieles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rieles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="horariorieles">
+        <PropertyRef Name="AlmacenRielId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_mensajes_usuario">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="0..1" />
+    <End Role="mensajes" Type="Self.mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="mensajes">
+        <PropertyRef Name="UsuarioIdTx" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nivelservicio_proveedor">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+    <End Role="niveleseervicio" Type="Self.niveleseervicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="niveleseervicio">
+        <PropertyRef Name="ProveedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ordencompra_proveedor">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="ProveedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ordencompradetalle_parent">
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="0..1" />
+    <End Role="ordencompradetalle" Type="Self.ordencompradetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ordencompra">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ordencompradetalle">
+        <PropertyRef Name="SapOrdenCompraId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_perfil2">
+    <End Role="perfiles" Type="Self.perfiles" Multiplicity="1" />
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfiles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetusers">
+        <PropertyRef Name="PerfilId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_perfilesroles_perfil">
+    <End Role="perfiles" Type="Self.perfiles" Multiplicity="1" />
+    <End Role="perfilesroles" Type="Self.perfilesroles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfiles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="perfilesroles">
+        <PropertyRef Name="PerfilId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedores_cuenta">
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="1" />
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="proveedores">
+        <PropertyRef Name="CuentaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_rieles_anden">
+    <End Role="andenes" Type="Self.andenes" Multiplicity="1" />
+    <End Role="rieles" Type="Self.rieles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="andenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="rieles">
+        <PropertyRef Name="AndenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_role">
+    <End Role="aspnetroles" Type="Self.aspnetroles" Multiplicity="1" />
+    <End Role="perfilesroles" Type="Self.perfilesroles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetroles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="perfilesroles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="add_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dap">
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="PasswordHash" Type="longtext" Mode="In" />
+    <Parameter Name="PhoneNumber" Type="longtext" Mode="In" />
+    <Parameter Name="pUserName" Type="varchar" Mode="In" />
+    <Parameter Name="Tipo" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="Cargo" Type="varchar" Mode="In" />
+    <Parameter Name="PerfilId" Type="int" Mode="In" />
+    <Parameter Name="TerminosCondicionesFecha" Type="datetime" Mode="In" />
+    <Parameter Name="UsuarioIdTx" Type="int" Mode="In" />
+    <Parameter Name="CuentaId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="varchar" Mode="Out" />
+    <Parameter Name="messageError" Type="varchar" Mode="Out" />
+  </Function>
+  <Function Name="config_appointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dap">
+    <Parameter Name="pFecha" Type="date" Mode="In" />
+    <Parameter Name="pTotal" Type="int" Mode="Out" />
+  </Function>
+  <Function Name="delete_account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dap">
+    <Parameter Name="p_cuentaId" Type="int" Mode="In" />
+    <Parameter Name="messageError" Type="varchar" Mode="Out" />
+  </Function>
+  <EntityContainer Name="impuls_portalModelStoreContainer">
+    <EntitySet Name="acumuladores" EntityType="Self.acumuladores" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="almacenes" EntityType="Self.almacenes" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="andenes" EntityType="Self.andenes" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="asn" EntityType="Self.asn" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="aspnetroles" EntityType="Self.aspnetroles" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="aspnetuserclaims" EntityType="Self.aspnetuserclaims" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogins" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="aspnetuserroles" EntityType="Self.aspnetuserroles" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="aspnetusers" EntityType="Self.aspnetusers" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="citas" EntityType="Self.citas" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="componenteselectricos" EntityType="Self.componenteselectricos" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="componenteselectricos_sustituciones" EntityType="Self.componenteselectricos_sustituciones" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="componentesmecanicos" EntityType="Self.componentesmecanicos" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="componentesmecanicos_sustituciones" EntityType="Self.componentesmecanicos_sustituciones" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="configuraciones" EntityType="Self.configuraciones" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="crs" EntityType="Self.crs" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="cuentaproveedores" EntityType="Self.cuentaproveedores" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="cuentas" EntityType="Self.cuentas" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="cuentasmensajes" EntityType="Self.cuentasmensajes" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="envios" EntityType="Self.envios" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="equipos" EntityType="Self.equipos" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="estatuscitas" EntityType="Self.estatuscitas" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="etiquetas" EntityType="Self.etiquetas" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="facturas" EntityType="Self.facturas" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="fallas" EntityType="Self.fallas" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="fallascorreos" EntityType="Self.fallascorreos" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="herramientas" EntityType="Self.herramientas" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="horariorieles" EntityType="Self.horariorieles" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="horarios" EntityType="Self.horarios" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="impuls_logs" EntityType="Self.impuls_logs" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="informes" EntityType="Self.informes" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="kitdap" EntityType="Self.kitdap" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="mantenimientocorrectivo" EntityType="Self.mantenimientocorrectivo" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="mantenimientopreventivo" EntityType="Self.mantenimientopreventivo" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="mensajes" EntityType="Self.mensajes" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="niveleseervicio" EntityType="Self.niveleseervicio" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="obras" EntityType="Self.obras" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="obrasgestion" EntityType="Self.obrasgestion" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="ordencompra" EntityType="Self.ordencompra" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="ordencompradetalle" EntityType="Self.ordencompradetalle" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="perfiles" EntityType="Self.perfiles" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="perfilesroles" EntityType="Self.perfilesroles" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="previos" EntityType="Self.previos" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="protocolos" EntityType="Self.protocolos" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="proveedores" EntityType="Self.proveedores" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="requerimientos" EntityType="Self.requerimientos" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="requerimientoscorreos" EntityType="Self.requerimientoscorreos" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="rieles" EntityType="Self.rieles" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="scalealmacen" EntityType="Self.scalealmacen" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="sugerencias" EntityType="Self.sugerencias" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="tipocuentas" EntityType="Self.tipocuentas" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="tipousuario" EntityType="Self.tipousuario" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="ventas" EntityType="Self.ventas" Schema="dap" store:Type="Tables" />
+    <EntitySet Name="devoluciones" EntityType="Self.devoluciones" store:Type="Tables" store:Schema="dap">
+      <DefiningQuery>SELECT
+`devoluciones`.`id`, 
+`devoluciones`.`Referencia`, 
+`devoluciones`.`Material`, 
+`devoluciones`.`Descripcion`, 
+`devoluciones`.`Cantidad`, 
+`devoluciones`.`Importe`
+FROM `devoluciones` AS `devoluciones`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="pagos" EntityType="Self.pagos" store:Type="Tables" store:Schema="dap">
+      <DefiningQuery>SELECT
+`pagos`.`id`, 
+`pagos`.`RFC`, 
+`pagos`.`RazonSocial`, 
+`pagos`.`NumeroCompensacion`, 
+`pagos`.`Referencia`, 
+`pagos`.`FechaDePago`, 
+`pagos`.`FechaBase`, 
+`pagos`.`Importe`, 
+`pagos`.`ML`, 
+`pagos`.`TipoMovimiento`
+FROM `pagos` AS `pagos`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwdashboard" EntityType="Self.vwdashboard" store:Type="Views" store:Schema="dap">
+      <DefiningQuery>SELECT
+`vwdashboard`.`horarioRielId`, 
+`vwdashboard`.`Fecha`, 
+`vwdashboard`.`Disponibilidad`, 
+`vwdashboard`.`HorarioId`, 
+`vwdashboard`.`AlmacenRielId`, 
+`vwdashboard`.`CitaId`, 
+`vwdashboard`.`Riel`, 
+`vwdashboard`.`AndenId`, 
+`vwdashboard`.`Anden`, 
+`vwdashboard`.`Desde`, 
+`vwdashboard`.`Hasta`, 
+`vwdashboard`.`ProveedorId`
+FROM `vwdashboard` AS `vwdashboard`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwmensajes" EntityType="Self.vwmensajes" store:Type="Views" store:Schema="dap">
+      <DefiningQuery>SELECT
+`vwmensajes`.`Id`, 
+`vwmensajes`.`Titulo`, 
+`vwmensajes`.`Contenido`, 
+`vwmensajes`.`Archivo`, 
+`vwmensajes`.`FechaPublicacion`, 
+`vwmensajes`.`FechaCaducidad`, 
+`vwmensajes`.`EnviadoA`, 
+`vwmensajes`.`Visualizado`
+FROM `vwmensajes` AS `vwmensajes`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
+    </AssociationSet>
+    <AssociationSet Name="fk_acumulador_almacen" Association="Self.fk_acumulador_almacen">
+      <End Role="almacenes" EntitySet="almacenes" />
+      <End Role="acumuladores" EntitySet="acumuladores" />
+    </AssociationSet>
+    <AssociationSet Name="fk_asn_cita" Association="Self.fk_asn_cita">
+      <End Role="citas" EntitySet="citas" />
+      <End Role="asn" EntitySet="asn" />
+    </AssociationSet>
+    <AssociationSet Name="fk_aspnetuserroles_role" Association="Self.fk_aspnetuserroles_role">
+      <End Role="aspnetroles" EntitySet="aspnetroles" />
+      <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_aspnetuserroles_usuario" Association="Self.fk_aspnetuserroles_usuario">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_citas_estatus" Association="Self.fk_citas_estatus">
+      <End Role="estatuscitas" EntitySet="estatuscitas" />
+      <End Role="citas" EntitySet="citas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_citas_proveedor" Association="Self.fk_citas_proveedor">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="citas" EntitySet="citas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_citas_usuario" Association="Self.fk_citas_usuario">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="citas" EntitySet="citas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_crs_cita" Association="Self.fk_crs_cita">
+      <End Role="citas" EntitySet="citas" />
+      <End Role="crs" EntitySet="crs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuenta" Association="Self.fk_cuenta">
+      <End Role="cuentas" EntitySet="cuentas" />
+      <End Role="perfiles" EntitySet="perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentas_usuario" Association="Self.fk_cuentas_usuario">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="cuentas" EntitySet="cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentasmensajes_cuenta" Association="Self.fk_cuentasmensajes_cuenta">
+      <End Role="cuentas" EntitySet="cuentas" />
+      <End Role="cuentasmensajes" EntitySet="cuentasmensajes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentasmensajes_mensaje" Association="Self.fk_cuentasmensajes_mensaje">
+      <End Role="mensajes" EntitySet="mensajes" />
+      <End Role="cuentasmensajes" EntitySet="cuentasmensajes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentasmensajes_usuario" Association="Self.fk_cuentasmensajes_usuario">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="cuentasmensajes" EntitySet="cuentasmensajes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuetnasprov" Association="Self.fk_cuetnasprov">
+      <End Role="cuentas" EntitySet="cuentas" />
+      <End Role="cuentaproveedores" EntitySet="cuentaproveedores" />
+    </AssociationSet>
+    <AssociationSet Name="fk_etiquetas_proveedores" Association="Self.fk_etiquetas_proveedores">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="etiquetas" EntitySet="etiquetas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_facturas_proveedores" Association="Self.fk_facturas_proveedores">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="facturas" EntitySet="facturas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_horariorieles_citas" Association="Self.fk_horariorieles_citas">
+      <End Role="citas" EntitySet="citas" />
+      <End Role="horariorieles" EntitySet="horariorieles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_horariorieles_horarios" Association="Self.fk_horariorieles_horarios">
+      <End Role="horarios" EntitySet="horarios" />
+      <End Role="horariorieles" EntitySet="horariorieles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_horariorieles_rieles" Association="Self.fk_horariorieles_rieles">
+      <End Role="rieles" EntitySet="rieles" />
+      <End Role="horariorieles" EntitySet="horariorieles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_mensajes_usuario" Association="Self.fk_mensajes_usuario">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="mensajes" EntitySet="mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nivelservicio_proveedor" Association="Self.fk_nivelservicio_proveedor">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="niveleseervicio" EntitySet="niveleseervicio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ordencompra_proveedor" Association="Self.fk_ordencompra_proveedor">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ordencompradetalle_parent" Association="Self.fk_ordencompradetalle_parent">
+      <End Role="ordencompra" EntitySet="ordencompra" />
+      <End Role="ordencompradetalle" EntitySet="ordencompradetalle" />
+    </AssociationSet>
+    <AssociationSet Name="fk_perfil2" Association="Self.fk_perfil2">
+      <End Role="perfiles" EntitySet="perfiles" />
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_perfilesroles_perfil" Association="Self.fk_perfilesroles_perfil">
+      <End Role="perfiles" EntitySet="perfiles" />
+      <End Role="perfilesroles" EntitySet="perfilesroles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedores_cuenta" Association="Self.fk_proveedores_cuenta">
+      <End Role="cuentas" EntitySet="cuentas" />
+      <End Role="proveedores" EntitySet="proveedores" />
+    </AssociationSet>
+    <AssociationSet Name="fk_rieles_anden" Association="Self.fk_rieles_anden">
+      <End Role="andenes" EntitySet="andenes" />
+      <End Role="rieles" EntitySet="rieles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_role" Association="Self.fk_role">
+      <End Role="aspnetroles" EntitySet="aspnetroles" />
+      <End Role="perfilesroles" EntitySet="perfilesroles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

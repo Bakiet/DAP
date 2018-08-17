@@ -1,0 +1,1542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Modeldap" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="acumuladores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SemanaAno" Type="Int32" Nullable="false" />
+    <Property Name="CantidadPar" Type="Int32" Nullable="false" />
+    <Property Name="AlmacenId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="almacenes" Relationship="Self.fk_acumulador_almacen" FromRole="acumuladores" ToRole="almacenes" />
+  </EntityType>
+  <EntityType Name="almacenes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreAlmacen" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CapacidadDiaria" Type="Int32" Nullable="false" />
+    <Property Name="CapacidadSemanal" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="acumuladores" Relationship="Self.fk_acumulador_almacen" FromRole="almacenes" ToRole="acumuladores" />
+  </EntityType>
+  <EntityType Name="andenes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Anden" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="rieles" Relationship="Self.fk_rieles_anden" FromRole="andenes" ToRole="rieles" />
+  </EntityType>
+  <EntityType Name="asn">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CitaId" Type="Int32" />
+    <Property Name="OrdenNumeroDocumento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumeroPosicion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumeroMaterial" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NombreMaterial" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Tienda" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="citas" Relationship="Self.fk_asn_cita" FromRole="asn" ToRole="citas" />
+  </EntityType>
+  <EntityType Name="aspnetroles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="aspnetusers" Relationship="Self.aspnetuserroles" FromRole="aspnetroles" ToRole="aspnetusers" />
+    <NavigationProperty Name="perfiles" Relationship="Self.perfilesroles" FromRole="aspnetroles" ToRole="perfiles" />
+  </EntityType>
+  <EntityType Name="aspnetuserclaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="ClaimValue" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="aspnetusers" Relationship="Self.ApplicationUser_Claims" FromRole="aspnetuserclaims" ToRole="aspnetusers" />
+  </EntityType>
+  <EntityType Name="aspnetuserlogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="aspnetusers" Relationship="Self.ApplicationUser_Logins" FromRole="aspnetuserlogins" ToRole="aspnetusers" />
+  </EntityType>
+  <EntityType Name="aspnetusers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="EmailConfirmed" Type="Boolean" />
+    <Property Name="PasswordHash" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" />
+    <Property Name="LockoutEnabled" Type="Boolean" />
+    <Property Name="AccessFailedCount" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cargo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PerfilId" Type="Int32" Nullable="false" />
+    <Property Name="TerminosCondicionesFecha" Type="DateTime" />
+    <Property Name="Borrado" Type="SByte" />
+    <Property Name="FechaTx" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioIdTx" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="OperacionTx" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="aspnetuserclaims" Relationship="Self.ApplicationUser_Claims" FromRole="aspnetusers" ToRole="aspnetuserclaims" />
+    <NavigationProperty Name="aspnetuserlogins" Relationship="Self.ApplicationUser_Logins" FromRole="aspnetusers" ToRole="aspnetuserlogins" />
+    <NavigationProperty Name="citas" Relationship="Self.fk_citas_usuario" FromRole="aspnetusers" ToRole="citas" />
+    <NavigationProperty Name="cuentas" Relationship="Self.fk_cuentas_usuario" FromRole="aspnetusers" ToRole="cuentas" />
+    <NavigationProperty Name="cuentasmensajes" Relationship="Self.fk_cuentasmensajes_usuario" FromRole="aspnetusers" ToRole="cuentasmensajes" />
+    <NavigationProperty Name="mensajes" Relationship="Self.fk_mensajes_usuario" FromRole="aspnetusers" ToRole="mensajes" />
+    <NavigationProperty Name="perfiles" Relationship="Self.fk_perfil2" FromRole="aspnetusers" ToRole="perfiles" />
+    <NavigationProperty Name="aspnetroles" Relationship="Self.aspnetuserroles" FromRole="aspnetusers" ToRole="aspnetroles" />
+    <NavigationProperty Name="cuentas1" Relationship="Self.cuentasusuarios" FromRole="aspnetusers" ToRole="cuentas" />
+  </EntityType>
+  <EntityType Name="citas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCita" Type="DateTime" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" />
+    <Property Name="Almacen" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CantidadTotal" Type="Int32" />
+    <Property Name="ProveedorId" Type="Int32" Nullable="false" />
+    <Property Name="Borrado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaTx" Type="DateTime" />
+    <Property Name="UsuarioIdTx" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OperacionTx" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RielesOcupados" Type="SByte" Nullable="false" />
+    <Property Name="EstatusCitaId" Type="Int32" />
+    <Property Name="Penalizado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="asn" Relationship="Self.fk_asn_cita" FromRole="citas" ToRole="asn" />
+    <NavigationProperty Name="aspnetusers" Relationship="Self.fk_citas_usuario" FromRole="citas" ToRole="aspnetusers" />
+    <NavigationProperty Name="estatuscitas" Relationship="Self.fk_citas_estatus" FromRole="citas" ToRole="estatuscitas" />
+    <NavigationProperty Name="proveedores" Relationship="Self.fk_citas_proveedor" FromRole="citas" ToRole="proveedores" />
+    <NavigationProperty Name="crs" Relationship="Self.fk_crs_cita" FromRole="citas" ToRole="crs" />
+    <NavigationProperty Name="horariorieles" Relationship="Self.fk_horariorieles_citas" FromRole="citas" ToRole="horariorieles" />
+  </EntityType>
+  <EntityType Name="componenteselectricos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaFabricado" Type="DateTime" />
+    <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Fotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IdEquipos" Type="Int32" />
+    <Property Name="Tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FechaSustitucion" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="componenteselectricos_sustituciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaFabricado" Type="DateTime" />
+    <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Fotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IdEquipos" Type="Int32" />
+    <Property Name="Tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="componentesmecanicos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaFabricado" Type="DateTime" />
+    <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Fotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IdEquipos" Type="Int32" />
+    <Property Name="Tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FechaSustitucion" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="componentesmecanicos_sustituciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaFabricado" Type="DateTime" />
+    <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Fotografia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="IdEquipos" Type="Int32" />
+    <Property Name="Tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="configuraciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="crs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ArchivoCR" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" />
+    <Property Name="CitaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="citas" Relationship="Self.fk_crs_cita" FromRole="crs" ToRole="citas" />
+  </EntityType>
+  <EntityType Name="cuentaproveedores">
+    <Key>
+      <PropertyRef Name="NumeroProveedor" />
+      <PropertyRef Name="CuentaId" />
+    </Key>
+    <Property Name="NumeroProveedor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Ciudad" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Distrito" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="VendedorNombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="VendedorTelefono" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CompradorImpulsNombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CompradorImpulsTelefono" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CompradorImpulsEmail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CuentaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cuentas" Relationship="Self.fk_cuetnasprov" FromRole="cuentaproveedores" ToRole="cuentas" />
+  </EntityType>
+  <EntityType Name="cuentas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoProveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreCuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaRegistro" Type="DateTime" />
+    <Property Name="Tipo" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+    <Property Name="EsEspecial" Type="Boolean" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="Borrado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaTx" Type="DateTime" />
+    <Property Name="UsuarioIdTx" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="OperacionTx" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="aspnetusers" Relationship="Self.fk_cuentas_usuario" FromRole="cuentas" ToRole="aspnetusers" />
+    <NavigationProperty Name="cuentaproveedores" Relationship="Self.fk_cuetnasprov" FromRole="cuentas" ToRole="cuentaproveedores" />
+    <NavigationProperty Name="perfiles" Relationship="Self.fk_cuenta" FromRole="cuentas" ToRole="perfiles" />
+    <NavigationProperty Name="cuentasmensajes" Relationship="Self.fk_cuentasmensajes_cuenta" FromRole="cuentas" ToRole="cuentasmensajes" />
+    <NavigationProperty Name="proveedores" Relationship="Self.fk_proveedores_cuenta" FromRole="cuentas" ToRole="proveedores" />
+    <NavigationProperty Name="aspnetusers1" Relationship="Self.cuentasusuarios" FromRole="cuentas" ToRole="aspnetusers" />
+  </EntityType>
+  <EntityType Name="cuentasmensajes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaVisualizacion" Type="DateTime" />
+    <Property Name="MensajeId" Type="Int32" />
+    <Property Name="CuentaId" Type="Int32" />
+    <Property Name="UsuarioId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="aspnetusers" Relationship="Self.fk_cuentasmensajes_usuario" FromRole="cuentasmensajes" ToRole="aspnetusers" />
+    <NavigationProperty Name="cuentas" Relationship="Self.fk_cuentasmensajes_cuenta" FromRole="cuentasmensajes" ToRole="cuentas" />
+    <NavigationProperty Name="mensajes" Relationship="Self.fk_cuentasmensajes_mensaje" FromRole="cuentasmensajes" ToRole="mensajes" />
+  </EntityType>
+  <EntityType Name="envios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Obra" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="TipoComponente" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaPedido" Type="DateTime" />
+    <Property Name="FechaSalida" Type="DateTime" />
+    <Property Name="Tracking" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="EmpresaEnvio" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="StatusEnvio" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroBulto" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PesoTotal" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoArancelario" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CostoProducto" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="StatusPago" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroFactura" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="StatusEntrega" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="EntregaProducto" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaEntrega" Type="DateTime" />
+    <Property Name="obra_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="equipos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Referencia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="DimensionesCabina" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="DimensionesHueco" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CargaNominal" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Velocidad" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Recorrido" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Paradas" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Accesos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="VoltajeDeRed" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PotenciaDeMaquina" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="TipoDeManiobra" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroDeGuayas" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Fotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Plano" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="obra_id" Type="Int32" Nullable="false" />
+    <Property Name="CantidadPersonas" Type="Int32" />
+  </EntityType>
+  <EntityType Name="estatuscitas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="citas" Relationship="Self.fk_citas_estatus" FromRole="estatuscitas" ToRole="citas" />
+  </EntityType>
+  <EntityType Name="etiquetas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Archivo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" />
+    <Property Name="NumeroOrden" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProveedorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="proveedores" Relationship="Self.fk_etiquetas_proveedores" FromRole="etiquetas" ToRole="proveedores" />
+  </EntityType>
+  <EntityType Name="facturas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="proveedor_id" Type="Int32" Nullable="false" />
+    <Property Name="Uuid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Serie" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Folio" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Nullable="false" />
+    <Property Name="XmlRuta" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PdfRuta" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroGenerado" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="proveedores" Relationship="Self.fk_facturas_proveedores" FromRole="facturas" ToRole="proveedores" />
+  </EntityType>
+  <EntityType Name="fallas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaFalla" Type="DateTime" Nullable="false" />
+    <Property Name="Obra" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Equipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Componente" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Personal" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="StatusFalla" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaSolucion" Type="DateTime" />
+    <Property Name="NumeroReporte" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Condicion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="AccionesTomadas" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="AccionesRecomendadas" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PersonaReporte" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="GerenciaResponsable" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="obra_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="fallascorreos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="fallas_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="herramientas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="FechaSalida" Type="DateTime" />
+    <Property Name="Propiedad" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCulminacion" Type="DateTime" />
+    <Property Name="CantidadDeposito" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaEntrada" Type="DateTime" />
+    <Property Name="SupervisorObra" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TecnicoResponsable" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="previo_id" Type="Int32" />
+    <Property Name="obra_id" Type="Int32" Nullable="false" />
+    <Property Name="Archivo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="horariorieles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" />
+    <Property Name="Disponibilidad" Type="Boolean" Nullable="false" />
+    <Property Name="HorarioId" Type="Int32" Nullable="false" />
+    <Property Name="AlmacenRielId" Type="Int32" Nullable="false" />
+    <Property Name="CitaId" Type="Int32" />
+    <Property Name="ComentarioBloqueo" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="citas" Relationship="Self.fk_horariorieles_citas" FromRole="horariorieles" ToRole="citas" />
+    <NavigationProperty Name="horarios" Relationship="Self.fk_horariorieles_horarios" FromRole="horariorieles" ToRole="horarios" />
+    <NavigationProperty Name="rieles" Relationship="Self.fk_horariorieles_rieles" FromRole="horariorieles" ToRole="rieles" />
+  </EntityType>
+  <EntityType Name="horarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoraDesde" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HoraHasta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="horariorieles" Relationship="Self.fk_horariorieles_horarios" FromRole="horarios" ToRole="horariorieles" />
+  </EntityType>
+  <EntityType Name="impuls_logs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="log" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="informes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Url" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" />
+    <Property Name="IdVenta" Type="Int32" />
+  </EntityType>
+  <EntityType Name="kitdap">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IdPrevio" Type="Int32" />
+    <Property Name="obra_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mantenimientocorrectivo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PersonaJuridica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaVisita" Type="DateTime" />
+    <Property Name="FechaPublicacion" Type="DateTime" />
+    <Property Name="NombreDocumento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Tecnico" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="EquiposAtendidos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="StatusMantenimiento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Archivo" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="Evaluacion" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="HoraLlegada" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="HoraSalida" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="IdVenta" Type="Int32" />
+  </EntityType>
+  <EntityType Name="mantenimientopreventivo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PersonaJuridica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaVisita" Type="DateTime" />
+    <Property Name="FechaPublicacion" Type="DateTime" />
+    <Property Name="NombreDocumento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Tecnico" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="EquiposAtendidos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="StatusMantenimiento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Archivo" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="Evaluacion" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="HoraLlegada" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="HoraSalida" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="IdVenta" Type="Int32" />
+  </EntityType>
+  <EntityType Name="mensajes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contenido" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="Archivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaPublicacion" Type="DateTime" Nullable="false" />
+    <Property Name="FechaCaducidad" Type="DateTime" Nullable="false" />
+    <Property Name="EnviadoA" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+    <Property Name="Borrado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaTx" Type="DateTime" />
+    <Property Name="UsuarioIdTx" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="OperacionTx" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="aspnetusers" Relationship="Self.fk_mensajes_usuario" FromRole="mensajes" ToRole="aspnetusers" />
+    <NavigationProperty Name="cuentasmensajes" Relationship="Self.fk_cuentasmensajes_mensaje" FromRole="mensajes" ToRole="cuentasmensajes" />
+  </EntityType>
+  <EntityType Name="niveleseervicio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProveedorId" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" />
+    <Property Name="UltimoMes" Type="Decimal" Nullable="false" />
+    <Property Name="TemporadaActual" Type="Decimal" Nullable="false" />
+    <Property Name="AcumuladoAnual" Type="Decimal" Nullable="false" />
+    <Property Name="PedidoAtrasado" Type="Decimal" Nullable="false" />
+    <Property Name="PedidoEnTiempo" Type="Decimal" Nullable="false" />
+    <Property Name="PedidoTotal" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="proveedores" Relationship="Self.fk_nivelservicio_proveedor" FromRole="niveleseervicio" ToRole="proveedores" />
+  </EntityType>
+  <EntityType Name="obras">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PersonaJuridica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="DireccionFacturacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="DireccionOficina" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="DireccionObra" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoOficina" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Contacto" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Contacto2" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Email2" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="foto" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="mapa" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="oficina" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="obrasgestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="primercontacto" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contactotelefonicoobra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correoelectronicoobra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cargoobra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombreconstructora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contactotelefonicoempresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correoelectronicoempresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cargoempresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ubicacionobra" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tipoobra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numeroequipos" Type="String" Nullable="false" />
+    <Property Name="tipoequipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="vendidasclimb" Type="String" Nullable="false" />
+    <Property Name="vendidasotros" Type="String" Nullable="false" />
+    <Property Name="novendidas" Type="String" Nullable="false" />
+    <Property Name="paralizadas" Type="String" Nullable="false" />
+    <Property Name="direccionoficina" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ordencompra">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumeroDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Sociedad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TipoDocumento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ClaseDocumento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IndicadorControl" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IndicadorBorrado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EstatusDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacionSap" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IntervaloPosicion" Type="Int32" />
+    <Property Name="UltimoNumeroPos" Type="Int32" />
+    <Property Name="NumeroProveedor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ClavePago" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="OrganizacionCompra" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="GrupoCompra" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Moneda" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TipoCambio" Type="Int32" />
+    <Property Name="IndTipoCambio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FechaDocCompra" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCargaPortal" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProveedorId" Type="Int32" />
+    <Property Name="FechaVisualizado" Type="DateTime" />
+    <Property Name="CitaId" Type="Int32" />
+    <NavigationProperty Name="proveedores" Relationship="Self.fk_ordencompra_proveedor" FromRole="ordencompra" ToRole="proveedores" />
+    <NavigationProperty Name="ordencompradetalle" Relationship="Self.fk_ordencompradetalle_parent" FromRole="ordencompra" ToRole="ordencompradetalle" />
+  </EntityType>
+  <EntityType Name="ordencompradetalle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumeroDocumento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Ebelp" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionMaterial" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroMaterial" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="Centro" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Almacen" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="GrupoArticulos" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="CantidadPedido" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="UnidadMedidaPedido" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="UnidadMedidaPrecio" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ConversionUmpruMP" Type="Int32" />
+    <Property Name="ConversionUmUmBase" Type="Int32" />
+    <Property Name="DenominadorUmUmBase" Type="Int32" />
+    <Property Name="PrecioNeto" Type="Decimal" />
+    <Property Name="CantidadBase" Type="Int32" />
+    <Property Name="ValorNeto" Type="Decimal" />
+    <Property Name="ValorBruto" Type="Decimal" />
+    <Property Name="CantidadUnidadMedida" Type="Decimal" />
+    <Property Name="SapOrdenCompraId" Type="Int32" />
+    <Property Name="FechaCargaPortal" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CantidadComprometida" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="ordencompra" Relationship="Self.fk_ordencompradetalle_parent" FromRole="ordencompradetalle" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="perfiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CuentaId" Type="Int32" />
+    <NavigationProperty Name="aspnetusers" Relationship="Self.fk_perfil2" FromRole="perfiles" ToRole="aspnetusers" />
+    <NavigationProperty Name="cuentas" Relationship="Self.fk_cuenta" FromRole="perfiles" ToRole="cuentas" />
+    <NavigationProperty Name="aspnetroles" Relationship="Self.perfilesroles" FromRole="perfiles" ToRole="aspnetroles" />
+  </EntityType>
+  <EntityType Name="previos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaFirmaContrato" Type="DateTime" Nullable="false" />
+    <Property Name="FechaPagoInicialFabrica" Type="DateTime" Nullable="false" />
+    <Property Name="FechaPagoInicialEquipo" Type="DateTime" Nullable="false" />
+    <Property Name="FechaConstruccion" Type="DateTime" Nullable="false" />
+    <Property Name="FechaSalidaFabrica" Type="DateTime" Nullable="false" />
+    <Property Name="FechaSalidaBuque" Type="DateTime" Nullable="false" />
+    <Property Name="FechaLlegadaBuque" Type="DateTime" Nullable="false" />
+    <Property Name="FechaPeriodoNacionalizacion" Type="DateTime" Nullable="false" />
+    <Property Name="FechaSalidaPuertoObra" Type="DateTime" Nullable="false" />
+    <Property Name="FechaDescargaResguardo" Type="DateTime" Nullable="false" />
+    <Property Name="ActivacionProtocoloGarantiaFabrica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaInicioMontaje" Type="DateTime" Nullable="false" />
+    <Property Name="FechaEntregaSoso" Type="DateTime" Nullable="false" />
+    <Property Name="FechaCulminacionMontaje" Type="DateTime" Nullable="false" />
+    <Property Name="FechaConfiguracion" Type="DateTime" Nullable="false" />
+    <Property Name="FechaPeriodoPrueba" Type="DateTime" Nullable="false" />
+    <Property Name="FechaInspeccion" Type="DateTime" Nullable="false" />
+    <Property Name="TecnicoInstalador" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="InformeEntregaFinal" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaDescargaResguardoFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCulminacionMontajeFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaInspeccionFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaInspeccionVideo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="equipo_id" Type="Int32" Nullable="false" />
+    <Property Name="FechaFirmaContratoFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaPagoInicialFabricaFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaPagoInicialEquipoFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaConstruccionFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaSalidaFabricaFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaSalidaBuqueFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaLlegadaBuqueFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaPeriodoNacionalizacionFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaSalidaPuertoObraFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaInicioMontajeFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaEntregaSosoFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaConfiguracionFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FechaPeriodoPruebaFotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="CartaPresentacion" Type="DateTime" />
+    <Property Name="FechaIngresoProduccion" Type="DateTime" />
+    <Property Name="EstatusConstruccion" Type="DateTime" />
+    <Property Name="IngresoDepartamentoIngMan" Type="DateTime" />
+    <Property Name="SolicitudPagoInicialFabrica" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="protocolos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IdPrevio" Type="Int32" />
+    <Property Name="obra_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="proveedores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumeroProveedor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ClavePais" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre1" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre2" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre3" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre4" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Poblacion" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Distrito" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Apartado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoApartado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoPostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Region" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Calle" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Sociedad" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="OrganizacionCompra" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="ClaveMoned" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="VendedorResponsable" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroTelefono" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="CondicionPago" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="IncoTerminos1" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="IncoTerminos2" Type="String" MaxLength="28" FixedLength="false" Unicode="false" />
+    <Property Name="GrupoCompras" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="DenominacionGrupo" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoGrupoCompra" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoPrefijo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoExtension" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="241" FixedLength="false" Unicode="false" />
+    <Property Name="CuentaId" Type="Int32" Nullable="false" />
+    <Property Name="FechaCargaPortal" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioIdTx" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="OperacionTx" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rfc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Borrado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="citas" Relationship="Self.fk_citas_proveedor" FromRole="proveedores" ToRole="citas" />
+    <NavigationProperty Name="cuentas" Relationship="Self.fk_proveedores_cuenta" FromRole="proveedores" ToRole="cuentas" />
+    <NavigationProperty Name="etiquetas" Relationship="Self.fk_etiquetas_proveedores" FromRole="proveedores" ToRole="etiquetas" />
+    <NavigationProperty Name="facturas" Relationship="Self.fk_facturas_proveedores" FromRole="proveedores" ToRole="facturas" />
+    <NavigationProperty Name="niveleseervicio" Relationship="Self.fk_nivelservicio_proveedor" FromRole="proveedores" ToRole="niveleseervicio" />
+    <NavigationProperty Name="ordencompra" Relationship="Self.fk_ordencompra_proveedor" FromRole="proveedores" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="requerimientos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Obra" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaSolicitud" Type="DateTime" />
+    <Property Name="GerenciaResponsable" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Tecnicos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="StatusRequerimiento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCumplimientoSolicitud" Type="DateTime" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AccionesEjecutadas" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="obra_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="requerimientoscorreos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="url" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="IdRequerimientos" Type="Int32" />
+  </EntityType>
+  <EntityType Name="rieles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Riel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AndenId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="andenes" Relationship="Self.fk_rieles_anden" FromRole="rieles" ToRole="andenes" />
+    <NavigationProperty Name="horariorieles" Relationship="Self.fk_horariorieles_rieles" FromRole="rieles" ToRole="horariorieles" />
+  </EntityType>
+  <EntityType Name="scalealmacen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sap" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Scale" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sugerencias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <Property Name="Numero" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" />
+    <Property Name="AccionesTomadas" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="AccionesRecomendadas" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="GerenciaResponsable" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="IdVenta" Type="Int32" />
+    <Property Name="Caracteristica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tipocuentas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tipousuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ventas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="IdObra" Type="Int32" />
+  </EntityType>
+  <EntityType Name="devoluciones">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Referencia" />
+      <PropertyRef Name="Material" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Importe" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Referencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Material" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cantidad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Importe" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pagos">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="RFC" />
+      <PropertyRef Name="RazonSocial" />
+      <PropertyRef Name="NumeroCompensacion" />
+      <PropertyRef Name="Referencia" />
+      <PropertyRef Name="FechaDePago" />
+      <PropertyRef Name="FechaBase" />
+      <PropertyRef Name="Importe" />
+      <PropertyRef Name="ML" />
+      <PropertyRef Name="TipoMovimiento" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="RFC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RazonSocial" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumeroCompensacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Referencia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaDePago" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaBase" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Importe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ML" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoMovimiento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_acumulador_almacen">
+    <End Role="almacenes" Type="Self.almacenes" Multiplicity="1" />
+    <End Role="acumuladores" Type="Self.acumuladores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="almacenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="acumuladores">
+        <PropertyRef Name="AlmacenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_rieles_anden">
+    <End Role="andenes" Type="Self.andenes" Multiplicity="1" />
+    <End Role="rieles" Type="Self.rieles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="andenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="rieles">
+        <PropertyRef Name="AndenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_asn_cita">
+    <End Role="citas" Type="Self.citas" Multiplicity="0..1" />
+    <End Role="asn" Type="Self.asn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="citas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="asn">
+        <PropertyRef Name="CitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationUser_Claims">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aspnetuserclaims" Type="Self.aspnetuserclaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserclaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationUser_Logins">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aspnetuserlogins" Type="Self.aspnetuserlogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetuserlogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_citas_usuario">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1" />
+    <End Role="citas" Type="Self.citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="citas">
+        <PropertyRef Name="UsuarioIdTx" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentas_usuario">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="0..1" />
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentas">
+        <PropertyRef Name="UsuarioIdTx" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentasmensajes_usuario">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="0..1" />
+    <End Role="cuentasmensajes" Type="Self.cuentasmensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentasmensajes">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_mensajes_usuario">
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="0..1" />
+    <End Role="mensajes" Type="Self.mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnetusers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="mensajes">
+        <PropertyRef Name="UsuarioIdTx" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_perfil2">
+    <End Role="perfiles" Type="Self.perfiles" Multiplicity="1" />
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfiles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aspnetusers">
+        <PropertyRef Name="PerfilId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_citas_estatus">
+    <End Role="estatuscitas" Type="Self.estatuscitas" Multiplicity="0..1" />
+    <End Role="citas" Type="Self.citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estatuscitas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="citas">
+        <PropertyRef Name="EstatusCitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_citas_proveedor">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+    <End Role="citas" Type="Self.citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="citas">
+        <PropertyRef Name="ProveedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_crs_cita">
+    <End Role="citas" Type="Self.citas" Multiplicity="1" />
+    <End Role="crs" Type="Self.crs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="citas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="crs">
+        <PropertyRef Name="CitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_horariorieles_citas">
+    <End Role="citas" Type="Self.citas" Multiplicity="0..1" />
+    <End Role="horariorieles" Type="Self.horariorieles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="citas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="horariorieles">
+        <PropertyRef Name="CitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuetnasprov">
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="1" />
+    <End Role="cuentaproveedores" Type="Self.cuentaproveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentaproveedores">
+        <PropertyRef Name="CuentaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuenta">
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="0..1" />
+    <End Role="perfiles" Type="Self.perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="perfiles">
+        <PropertyRef Name="CuentaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentasmensajes_cuenta">
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="0..1" />
+    <End Role="cuentasmensajes" Type="Self.cuentasmensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentasmensajes">
+        <PropertyRef Name="CuentaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedores_cuenta">
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="1" />
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="proveedores">
+        <PropertyRef Name="CuentaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cuentasmensajes_mensaje">
+    <End Role="mensajes" Type="Self.mensajes" Multiplicity="0..1" />
+    <End Role="cuentasmensajes" Type="Self.cuentasmensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mensajes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cuentasmensajes">
+        <PropertyRef Name="MensajeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_etiquetas_proveedores">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+    <End Role="etiquetas" Type="Self.etiquetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="etiquetas">
+        <PropertyRef Name="ProveedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_facturas_proveedores">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+    <End Role="facturas" Type="Self.facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="facturas">
+        <PropertyRef Name="proveedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_horariorieles_horarios">
+    <End Role="horarios" Type="Self.horarios" Multiplicity="1" />
+    <End Role="horariorieles" Type="Self.horariorieles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="horarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="horariorieles">
+        <PropertyRef Name="HorarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_horariorieles_rieles">
+    <End Role="rieles" Type="Self.rieles" Multiplicity="1" />
+    <End Role="horariorieles" Type="Self.horariorieles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rieles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="horariorieles">
+        <PropertyRef Name="AlmacenRielId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nivelservicio_proveedor">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+    <End Role="niveleseervicio" Type="Self.niveleseervicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="niveleseervicio">
+        <PropertyRef Name="ProveedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ordencompra_proveedor">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="ProveedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ordencompradetalle_parent">
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="0..1" />
+    <End Role="ordencompradetalle" Type="Self.ordencompradetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ordencompra">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ordencompradetalle">
+        <PropertyRef Name="SapOrdenCompraId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="aspnetuserroles">
+    <End Role="aspnetroles" Type="Self.aspnetroles" Multiplicity="*" />
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="*" />
+  </Association>
+  <Association Name="cuentasusuarios">
+    <End Role="cuentas" Type="Self.cuentas" Multiplicity="*" />
+    <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="*" />
+  </Association>
+  <Association Name="perfilesroles">
+    <End Role="perfiles" Type="Self.perfiles" Multiplicity="*" />
+    <End Role="aspnetroles" Type="Self.aspnetroles" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="EntitiesDap" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="acumuladores" EntityType="Self.acumuladores" />
+    <EntitySet Name="almacenes" EntityType="Self.almacenes" />
+    <EntitySet Name="andenes" EntityType="Self.andenes" />
+    <EntitySet Name="asn" EntityType="Self.asn" />
+    <EntitySet Name="aspnetroles" EntityType="Self.aspnetroles" />
+    <EntitySet Name="aspnetuserclaims" EntityType="Self.aspnetuserclaims" />
+    <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogins" />
+    <EntitySet Name="aspnetusers" EntityType="Self.aspnetusers" />
+    <EntitySet Name="citas" EntityType="Self.citas" />
+    <EntitySet Name="componenteselectricos" EntityType="Self.componenteselectricos" />
+    <EntitySet Name="componenteselectricos_sustituciones" EntityType="Self.componenteselectricos_sustituciones" />
+    <EntitySet Name="componentesmecanicos" EntityType="Self.componentesmecanicos" />
+    <EntitySet Name="componentesmecanicos_sustituciones" EntityType="Self.componentesmecanicos_sustituciones" />
+    <EntitySet Name="configuraciones" EntityType="Self.configuraciones" />
+    <EntitySet Name="crs" EntityType="Self.crs" />
+    <EntitySet Name="cuentaproveedores" EntityType="Self.cuentaproveedores" />
+    <EntitySet Name="cuentas" EntityType="Self.cuentas" />
+    <EntitySet Name="cuentasmensajes" EntityType="Self.cuentasmensajes" />
+    <EntitySet Name="envios" EntityType="Self.envios" />
+    <EntitySet Name="equipos" EntityType="Self.equipos" />
+    <EntitySet Name="estatuscitas" EntityType="Self.estatuscitas" />
+    <EntitySet Name="etiquetas" EntityType="Self.etiquetas" />
+    <EntitySet Name="facturas" EntityType="Self.facturas" />
+    <EntitySet Name="fallas" EntityType="Self.fallas" />
+    <EntitySet Name="fallascorreos" EntityType="Self.fallascorreos" />
+    <EntitySet Name="herramientas" EntityType="Self.herramientas" />
+    <EntitySet Name="horariorieles" EntityType="Self.horariorieles" />
+    <EntitySet Name="horarios" EntityType="Self.horarios" />
+    <EntitySet Name="impuls_logs" EntityType="Self.impuls_logs" />
+    <EntitySet Name="informes" EntityType="Self.informes" />
+    <EntitySet Name="kitdap" EntityType="Self.kitdap" />
+    <EntitySet Name="mantenimientocorrectivo" EntityType="Self.mantenimientocorrectivo" />
+    <EntitySet Name="mantenimientopreventivo" EntityType="Self.mantenimientopreventivo" />
+    <EntitySet Name="mensajes" EntityType="Self.mensajes" />
+    <EntitySet Name="niveleseervicio" EntityType="Self.niveleseervicio" />
+    <EntitySet Name="obras" EntityType="Self.obras" />
+    <EntitySet Name="obrasgestion" EntityType="Self.obrasgestion" />
+    <EntitySet Name="ordencompra" EntityType="Self.ordencompra" />
+    <EntitySet Name="ordencompradetalle" EntityType="Self.ordencompradetalle" />
+    <EntitySet Name="perfiles" EntityType="Self.perfiles" />
+    <EntitySet Name="previos" EntityType="Self.previos" />
+    <EntitySet Name="protocolos" EntityType="Self.protocolos" />
+    <EntitySet Name="proveedores" EntityType="Self.proveedores" />
+    <EntitySet Name="requerimientos" EntityType="Self.requerimientos" />
+    <EntitySet Name="requerimientoscorreos" EntityType="Self.requerimientoscorreos" />
+    <EntitySet Name="rieles" EntityType="Self.rieles" />
+    <EntitySet Name="scalealmacen" EntityType="Self.scalealmacen" />
+    <EntitySet Name="sugerencias" EntityType="Self.sugerencias" />
+    <EntitySet Name="tipocuentas" EntityType="Self.tipocuentas" />
+    <EntitySet Name="tipousuario" EntityType="Self.tipousuario" />
+    <EntitySet Name="ventas" EntityType="Self.ventas" />
+    <EntitySet Name="devoluciones" EntityType="Self.devoluciones" />
+    <EntitySet Name="pagos" EntityType="Self.pagos" />
+    <AssociationSet Name="fk_acumulador_almacen" Association="Self.fk_acumulador_almacen">
+      <End Role="almacenes" EntitySet="almacenes" />
+      <End Role="acumuladores" EntitySet="acumuladores" />
+    </AssociationSet>
+    <AssociationSet Name="fk_rieles_anden" Association="Self.fk_rieles_anden">
+      <End Role="andenes" EntitySet="andenes" />
+      <End Role="rieles" EntitySet="rieles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_asn_cita" Association="Self.fk_asn_cita">
+      <End Role="citas" EntitySet="citas" />
+      <End Role="asn" EntitySet="asn" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
+    </AssociationSet>
+    <AssociationSet Name="fk_citas_usuario" Association="Self.fk_citas_usuario">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="citas" EntitySet="citas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentas_usuario" Association="Self.fk_cuentas_usuario">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="cuentas" EntitySet="cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentasmensajes_usuario" Association="Self.fk_cuentasmensajes_usuario">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="cuentasmensajes" EntitySet="cuentasmensajes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_mensajes_usuario" Association="Self.fk_mensajes_usuario">
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+      <End Role="mensajes" EntitySet="mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_perfil2" Association="Self.fk_perfil2">
+      <End Role="perfiles" EntitySet="perfiles" />
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_citas_estatus" Association="Self.fk_citas_estatus">
+      <End Role="estatuscitas" EntitySet="estatuscitas" />
+      <End Role="citas" EntitySet="citas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_citas_proveedor" Association="Self.fk_citas_proveedor">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="citas" EntitySet="citas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_crs_cita" Association="Self.fk_crs_cita">
+      <End Role="citas" EntitySet="citas" />
+      <End Role="crs" EntitySet="crs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_horariorieles_citas" Association="Self.fk_horariorieles_citas">
+      <End Role="citas" EntitySet="citas" />
+      <End Role="horariorieles" EntitySet="horariorieles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuetnasprov" Association="Self.fk_cuetnasprov">
+      <End Role="cuentas" EntitySet="cuentas" />
+      <End Role="cuentaproveedores" EntitySet="cuentaproveedores" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuenta" Association="Self.fk_cuenta">
+      <End Role="cuentas" EntitySet="cuentas" />
+      <End Role="perfiles" EntitySet="perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentasmensajes_cuenta" Association="Self.fk_cuentasmensajes_cuenta">
+      <End Role="cuentas" EntitySet="cuentas" />
+      <End Role="cuentasmensajes" EntitySet="cuentasmensajes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedores_cuenta" Association="Self.fk_proveedores_cuenta">
+      <End Role="cuentas" EntitySet="cuentas" />
+      <End Role="proveedores" EntitySet="proveedores" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cuentasmensajes_mensaje" Association="Self.fk_cuentasmensajes_mensaje">
+      <End Role="mensajes" EntitySet="mensajes" />
+      <End Role="cuentasmensajes" EntitySet="cuentasmensajes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_etiquetas_proveedores" Association="Self.fk_etiquetas_proveedores">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="etiquetas" EntitySet="etiquetas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_facturas_proveedores" Association="Self.fk_facturas_proveedores">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="facturas" EntitySet="facturas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_horariorieles_horarios" Association="Self.fk_horariorieles_horarios">
+      <End Role="horarios" EntitySet="horarios" />
+      <End Role="horariorieles" EntitySet="horariorieles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_horariorieles_rieles" Association="Self.fk_horariorieles_rieles">
+      <End Role="rieles" EntitySet="rieles" />
+      <End Role="horariorieles" EntitySet="horariorieles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nivelservicio_proveedor" Association="Self.fk_nivelservicio_proveedor">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="niveleseervicio" EntitySet="niveleseervicio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ordencompra_proveedor" Association="Self.fk_ordencompra_proveedor">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ordencompradetalle_parent" Association="Self.fk_ordencompradetalle_parent">
+      <End Role="ordencompra" EntitySet="ordencompra" />
+      <End Role="ordencompradetalle" EntitySet="ordencompradetalle" />
+    </AssociationSet>
+    <AssociationSet Name="aspnetuserroles" Association="Self.aspnetuserroles">
+      <End Role="aspnetroles" EntitySet="aspnetroles" />
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+    </AssociationSet>
+    <AssociationSet Name="cuentasusuarios" Association="Self.cuentasusuarios">
+      <End Role="cuentas" EntitySet="cuentas" />
+      <End Role="aspnetusers" EntitySet="aspnetusers" />
+    </AssociationSet>
+    <AssociationSet Name="perfilesroles" Association="Self.perfilesroles">
+      <End Role="perfiles" EntitySet="perfiles" />
+      <End Role="aspnetroles" EntitySet="aspnetroles" />
+    </AssociationSet>
+    <FunctionImport Name="add_user">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="PasswordHash" Mode="In" Type="String" />
+      <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="pUserName" Mode="In" Type="String" />
+      <Parameter Name="Tipo" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Cargo" Mode="In" Type="String" />
+      <Parameter Name="PerfilId" Mode="In" Type="Int32" />
+      <Parameter Name="TerminosCondicionesFecha" Mode="In" Type="DateTime" />
+      <Parameter Name="UsuarioIdTx" Mode="In" Type="Int32" />
+      <Parameter Name="CuentaId" Mode="In" Type="Int32" />
+      <Parameter Name="userId" Mode="Out" Type="String" />
+      <Parameter Name="messageError" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="config_appointment">
+      <Parameter Name="pFecha" Mode="In" Type="DateTime" />
+      <Parameter Name="pTotal" Mode="Out" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="delete_account">
+      <Parameter Name="p_cuentaId" Mode="In" Type="Int32" />
+      <Parameter Name="messageError" Mode="Out" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="componentesmecanicos_tipos" EntityType="Modeldap.componentesmecanicos_tipos" />
+    <EntitySet Name="equipo_tipo" EntityType="Modeldap.equipo_tipo" />
+    <EntitySet Name="componenteselectronicos_tipos" EntityType="Modeldap.componenteselectronicos_tipos" />
+    <EntitySet Name="fallas_status" EntityType="Modeldap.fallas_status" />
+    <EntitySet Name="fallas_tipo" EntityType="Modeldap.fallas_tipo" />
+    <EntitySet Name="envios_status" EntityType="Modeldap.envios_status" />
+    <EntitySet Name="requerimientos_status" EntityType="Modeldap.requerimientos_status" />
+    <EntitySet Name="requerimientos_tipo" EntityType="Modeldap.requerimientos_tipo" />
+    <EntitySet Name="obras_contactos" EntityType="Modeldap.obras_contactos" />
+    <EntitySet Name="archivos" EntityType="Modeldap.archivos" />
+    <EntitySet Name="gerenciaresponsable" EntityType="Modeldap.gerenciaresponsable" />
+    <EntitySet Name="events" EntityType="Modeldap.events" />
+    <EntitySet Name="obrasdato" EntityType="Modeldap.obrasdato" />
+  </EntityContainer>
+  <EntityType Name="componentesmecanicos_tipos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="equipo_tipo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="componenteselectronicos_tipos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="fallas_status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="fallas_tipo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="envios_status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="requerimientos_status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="requerimientos_tipo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="obras_contactos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="obra_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="archivos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="url" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="instancia_id" Type="Int32" />
+    <Property Name="caracteristica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="gerenciaresponsable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="events">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Start" Type="DateTime" Nullable="false" />
+    <Property Name="End" Type="DateTime" />
+    <Property Name="ThemeColor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IsFullDay" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="obrasdato">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="primercontacto" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="contactotelefonicoobra" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="correoelectronicoobra" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="cargoobra" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="nombreconstructora" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="contactotelefonicoempresa" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="correoelectronicoempresa" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="cargoempresa" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ubicacionobra" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tipoobra" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="numeroequipos" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tipoequipo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="vendidasclimb" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="vendidasotros" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="novendidas" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="paralizadas" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="direccionoficina" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

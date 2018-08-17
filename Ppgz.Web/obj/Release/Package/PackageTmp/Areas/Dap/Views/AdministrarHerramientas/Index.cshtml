@@ -1,0 +1,178 @@
+﻿@using Ppgz.Repository
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var obra = (obras)ViewBag.obra;
+}
+
+<h2 class="form-signin-heading">Herramientas en la obra</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de herramientas en la obra</i></p>*@
+
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarHerramientas")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Herramientas en la obra</a>
+</div>
+
+@*<div class="panel panel-default">
+    
+    <div class="panel-body">
+        <div class="row">
+            <label class="col-sm-2 control-label">Obra</label>
+            <div class="col-sm-3">
+                <div>@obra.Nombre</div>
+            </div>
+
+        </div>
+
+    </div>
+</div>*@
+
+<div class="panel panel-default">
+  
+    <div class="panel-body">
+        <div class="row">
+            <label class="col-sm-2 control-label">Obra</label>
+            <div class="col-sm-3">
+                @if (obra != null)
+                {
+                    <div class="h4">@obra.Nombre</div>
+                }
+            </div>
+            @*<label class="col-sm-2 control-label">Tecnico responsable</label>
+            <div class="col-sm-3">
+               
+            </div>
+            <label class="col-sm-2 control-label">Observaciones</label>
+            <div class="col-sm-3">
+              
+            </div>
+            <div class="col-sm-2">*@
+               
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Herramientas en la obra Registrados</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="obras">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Fecha de Salida</th>
+                    <th class="text-center">Propiedad</th>
+                    <th class="text-center">Fecha de Culminacion</th>
+                    <th class="text-center">Cantidad Deposito</th>
+                    <th class="text-center">Fecha de Entrada</th>
+                    <th class="text-center">Archivos</th>
+            </thead>
+            <tbody>
+                @foreach (var herramienta in (ViewBag.herramientas))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@herramienta.Id</td>*@
+                        <td class="text-center vert-align">@herramienta.Descripcion</td>
+                        <td class="text-center vert-align">@herramienta.Cantidad</td>
+                        @if(herramienta.FechaSalida != null){
+                        <td class="text-center vert-align">@herramienta.FechaSalida.ToString("dd/MM/yyyy")</td>
+                            }else{
+                        <td class="text-center vert-align"></td>
+                            }
+                        <td class="text-center vert-align">@herramienta.Propiedad</td>
+                        @if(herramienta.FechaCulminacion != null){
+                        <td class="text-center vert-align">@herramienta.FechaCulminacion.ToString("dd/MM/yyyy")</td>
+                        }else{
+                        <td class="text-center vert-align"></td>
+                        }
+                        <td class="text-center vert-align">@herramienta.CantidadDeposito</td>
+                        @if(herramienta.FechaEntrada != null){
+                        <td class="text-center vert-align">@herramienta.FechaEntrada.ToString("dd/MM/yyyy")</td>
+                        }else{
+                        <td class="text-center vert-align"></td>
+                        }
+                       
+                        @*<td class="text-center vert-align">
+                            @if (ViewBag.Fallas != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarDallas", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Envios != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarEnvios", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Requerimientos != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarRequerimientos", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>*@
+                        @*<td class="text-center vert-align">
+                            @if (@obra.Foto != null)
+                            {
+                                <a href="@Url.Content(@obra.Foto)" target="_blank">Ver</a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (obra.Satelital != null)
+                            {
+                                <a href="@Url.Content(@obra.Satelital)" target="_blank">Ver</a>
+                            }
+                        </td>*@                       
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarHerramientas", new { @id = @herramienta.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                </a>
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarHerramientas", new { @id = @herramienta.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarHerramientas", new { @id = @herramienta.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="La herramienta será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]],
+                "order": [[6, "desc"]]
+            });
+        });
+
+
+    </script>
+}

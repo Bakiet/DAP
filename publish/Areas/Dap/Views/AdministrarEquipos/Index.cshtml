@@ -1,0 +1,383 @@
+﻿@using Ppgz.Repository
+@model Ppgz.Web.Areas.Dap.Models.EquipoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var obra = (obras)ViewBag.obra;
+}
+
+<h2 class="form-signin-heading">Equipos</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de equipos</i></p>*@
+
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarEquipos", new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Equipo</a>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">Equipos Registrados</div>
+<div class="panel-body">
+    <div class="row">
+        <label class="col-sm-2 control-label">Obra</label>
+        <div class="col-sm-3">
+            <div class="h4">@obra.Nombre</div>
+        </div>
+
+        <div class="col-sm-2">
+           
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-body">
+        
+        <table class="table table-striped" id="obras">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Marca</th>
+                    <th class="text-center">Modelo</th>
+                    <th class="text-center">Detalle</th>
+                    <th class="text-center">Info.General de Equipo</th>
+                    <th class="text-center">Operaciones</th>
+                    
+
+            </thead>
+            <tbody>
+                @foreach (var equipo in (ViewBag.equipos))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@equipo.Id</td>*@
+                        <td class="text-center vert-align">@equipo.Nombre</td>
+                        <td class="text-center vert-align">@equipo.Marca</td>
+                        <td class="text-center vert-align">@equipo.Modelo</td>
+                       
+                        <td class="text-center vert-align">
+                           
+                            @if (ViewBag.previos != null)
+                            {
+                                <a class="btn btn-success btn-block" href="@Url.Action("Editar", "AdministrarPrevios", new { @id = @equipo.Id })">
+
+                                    <i class="fa fa-check" aria-hidden="true"></i> D.A.P Previo
+                                </a>
+                            }
+                            @if (ViewBag.componentesmecanicos != null)
+                            {
+                                <a class="btn btn-info btn-block" href="@Url.Action("ComponentesMecanicos", "AdministrarComponentesMecanicos", new { @id = @equipo.Id })">
+
+                                    <i class="fa fa-cogs" aria-hidden="true"></i> Componentes Mecánicos
+                                </a>
+                            }
+                            @if (ViewBag.componenteselectronicos != null)
+                            {
+                                <a class="btn btn-warning btn-block" href="@Url.Action("ComponentesElectronicos", "AdministrarComponentesElectronicos", new { @id = @equipo.Id })">
+
+                                    <i class="fa fa-code-fork" aria-hidden="true"></i> Componentes Electrónicos
+                                </a>
+                            }
+                        </td>
+                        @*<td class="text-center vert-align">
+                            @if (ViewBag.Fallas != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarDallas", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Envios != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarEnvios", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Requerimientos != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarRequerimientos", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>*@
+                        @*<td class="text-center vert-align">
+                            @if (@obra.Foto != null)
+                            {
+                                <a href="@Url.Content(@obra.Foto)" target="_blank">Ver</a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (obra.Satelital != null)
+                            {
+                                <a href="@Url.Content(@obra.Satelital)" target="_blank">Ver</a>
+                            }
+                        </td>*@  
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@equipo.Id" onclick="createModal('@Url.Action("Detalle", "AdministrarEquipos" , new {id=equipo.Id })')">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            </div>
+                        </td>                     
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("DetalleEquipo", "AdministrarEquipos", new { @id = @equipo.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                </a>
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarEquipos", new { @id = @equipo.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarEquipos", new { @id = @equipo.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El Equipo será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" id="modelContent">
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecGeneralObra('reportegeneralobra')">
+                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                </a>
+                <div id="reportegeneralobra">
+                    <div class="modal-header">
+                        @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                        </button>
+                        <h4 class="modal-title">Caracteristicas Generales del equipo</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.obra)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.obra_id)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Nombre)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.Nombre)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Marca)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.Marca)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Modelo)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.Modelo)
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Referencia)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.Referencia)
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.DimensionesCabina)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.DimensionesCabina)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.DimensionesHueco)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.DimensionesHueco)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.CargaNominal)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.CargaNominal)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Velocidad)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.Velocidad)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Recorrido)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.Recorrido)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Paradas)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.Paradas)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Accesos)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.Accesos)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.VoltajeDeRed)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.VoltajeDeRed)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.PotenciaDeMaquina)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.PotenciaDeMaquina)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.TipoDeManiobra)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.TipoDeManiobra)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.NumeroDeGuayas)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.NumeroDeGuayas)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.CantidadPersonas)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    @Html.DisplayFor(o => o.CantidadPersonas)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+                    <script type="text/javascript">
+
+                            function imprSelecGeneralObra(muestra) {
+                                var ficha = document.getElementById(muestra);
+                                var ventimp = window.open(' ', 'popimpr');
+                                ventimp.document.write(ficha.innerHTML);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();
+
+                            }
+                    </script>
+                    </div>
+                </div>
+    </div>
+</div>
+
+@section Scripts {
+    
+ 
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+           
+
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+
+            $('<input />').attr('type', 'hidden')
+                        .attr('name', "Pdf-Plano")
+                        .attr('value', "Pdf-Plano")
+                        .appendTo('#form');
+
+            $('<input />').attr('type', 'hidden')
+                              .attr('name', "Pdf-Fotografia")
+                              .attr('value', "Pdf-Fotografia")
+                              .appendTo('#form');
+        });
+
+
+</script>
+
+<script type="text/javascript">
+      function createModal(url){
+          $('#modelContent').load(url);
+         // $('#detalle-modal').modal('show');
+      }
+</script>
+}

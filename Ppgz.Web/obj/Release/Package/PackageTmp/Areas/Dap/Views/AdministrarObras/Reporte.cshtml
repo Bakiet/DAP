@@ -1,0 +1,238 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.ObraViewModel
+@{
+    
+}
+<a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecObra('reporteobra')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+<div id="reporteobra">
+    <div class="modal-header">
+        @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+        </button>
+        <h4 class="modal-title">Detalle de la obra</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Nombre)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Nombre)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.PersonaJuridica)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.PersonaJuridica)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.DireccionObra)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.DireccionObra)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.DireccionFacturacion)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.DireccionFacturacion)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.DireccionOficina)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.DireccionOficina)
+                </div>
+            </div>
+
+           
+
+
+          
+        </div>
+        @*<div class="form-group">
+            <label class="col-sm-3 control-label">Fotos</label>
+            <div class="col-sm-4">
+                <div>
+
+                    @foreach (var ArchivosFotografia in (ViewBag.ArchivosFotografia))
+                    {
+                        if (ArchivosFotografia.url != null)
+                        {
+                            var nombrearchivo = ArchivosFotografia.url.Replace("~/Uploads/", "");
+                            if (nombrearchivo.Contains(".docx"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".docx", "");
+                                <p>
+                                    <a class="fa fa-file-word-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".pdf"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".pdf", "");
+                                <p>
+                                    <a class="fa fa-file-pdf-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".pptx"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".pptx", "");
+                                <p>
+                                    <a class="fa fa-file-powerpoint-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".xlsx"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".xlsx", "");
+                                <p>
+                                    <a class="fa fa-file-excel-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".jpg"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".jpg", "");
+                                <p>
+                                    <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".png"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".png", "");
+                                <p>
+                                    <a class="fa fa-file-image-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    <a class="fa fa-file-archive-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Mapa satelital</label>
+            <div class="col-sm-4">
+                <div>
+
+                    @foreach (var ArchivosMapa in (ViewBag.ArchivosMapa))
+                    {
+                        if (ArchivosMapa.url != null)
+                        {
+                            var nombrearchivo = ArchivosMapa.url.Replace("~/Uploads/", "");
+                            if (nombrearchivo.Contains(".docx"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".docx", "");
+                                <p>
+                                    <a class="fa fa-file-word-o fa-1x" href="@Url.Content(ArchivosMapa.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".pdf"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".pdf", "");
+                                <p>
+                                    <a class="fa fa-file-pdf-o fa-1x" href="@Url.Content(ArchivosMapa.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".pptx"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".pptx", "");
+                                <p>
+                                    <a class="fa fa-file-powerpoint-o fa-1x" href="@Url.Content(ArchivosMapa.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".xlsx"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".xlsx", "");
+                                <p>
+                                    <a class="fa fa-file-excel-o fa-1x" href="@Url.Content(ArchivosMapa.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".jpg"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".jpg", "");
+                                <p>
+                                    <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(ArchivosMapa.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else if (nombrearchivo.Contains(".png"))
+                            {
+                                nombrearchivo = nombrearchivo.Replace(".png", "");
+                                <p>
+                                    <a class="fa fa-file-image-o fa-1x" href="@Url.Content(ArchivosMapa.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    <a class="fa fa-file-archive-o fa-1x" href="@Url.Content(ArchivosMapa.url)" target="_blank">@nombrearchivo</a>
+                                </p>
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2> <b>Contactos</b></h2>
+                        </div>
+
+                    </div>
+                </div>
+
+                <table class="table table-striped " id="obras">
+                    <thead>
+                        <tr>
+                            @*<th class="text-center">Id</th>*@
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Telefono</th>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var obracontacto in (ViewBag.contactos))
+                        {
+
+                            <tr>
+                                @*<td class="text-center vert-align">@obracontacto.id</td>*@
+                                <td class="text-center vert-align">@obracontacto.nombre</td>
+                                <td class="text-center vert-align">@obracontacto.email</td>
+                                <td class="text-center vert-align">@obracontacto.telefono</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        </div>
+  
+    <div class="modal-footer">
+
+    </div>
+</div>

@@ -1,0 +1,238 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.EquipoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Equipos</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Equipo</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de Equipos</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Crear", "AdministrarEquipos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(o => o.obra, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(o => o.obra_id, (IEnumerable<SelectListItem>)ViewBag.Obras, "Seleccione un Valor", new { @class = "form-control", @disabled="disabled"})
+                    @Html.ValidationMessageFor(o => o.obra_id)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o => o.Nombre, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(o => o.Nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(o => o.Nombre)
+                </div>
+            </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Marca, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Marca, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Marca)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Modelo, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Modelo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Modelo)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Referencia, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Referencia, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Referencia)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(o => o.DimensionesCabina, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.DimensionesCabina, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.DimensionesCabina)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.DimensionesHueco, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.DimensionesHueco, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.DimensionesHueco)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.CargaNominal, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.CargaNominal, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.CargaNominal)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Velocidad, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Velocidad, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Velocidad)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Recorrido, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Recorrido, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Recorrido)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Paradas, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Paradas, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Paradas)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Accesos, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.Accesos, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.Accesos)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.VoltajeDeRed, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.VoltajeDeRed, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.VoltajeDeRed)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.PotenciaDeMaquina, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.PotenciaDeMaquina, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.PotenciaDeMaquina)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.TipoDeManiobra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.TipoDeManiobra, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.TipoDeManiobra)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.NumeroDeGuayas, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.NumeroDeGuayas, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.NumeroDeGuayas)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.CantidadPersonas, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.CantidadPersonas, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(o => o.CantidadPersonas)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Fotografias</label>
+                    <div class="col-sm-4">
+                        <div>
+                            
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Cargar</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-Fotografia" id="Pdf-Fotografia">
+                                        @Html.ValidationMessageFor(k => k.Fotografia)
+
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Planos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">Cargar</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel1">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-Plano" id="Pdf-Plano">
+                                        @Html.ValidationMessageFor(k => k.Plano)
+
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-7">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarEquipos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    </div>
+                </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        
+     
+
+        $(document).ready(function () {
+
+            $("#Pdf").bind('change', function () {
+        
+                if (this.files[0].size / 1024 / 1024 > 3) {
+                    $(this).val("");
+
+                    alert('Debe incluir un archivo menor a 3Mb');
+                }
+            });
+
+
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+
+            $('<input />').attr('type', 'hidden')
+                        .attr('name', "Pdf-Plano")
+                        .attr('value', "Pdf-Plano")
+                        .appendTo('#form');
+
+            $('<input />').attr('type', 'hidden')
+                              .attr('name', "Pdf-Fotografia")
+                              .attr('value', "Pdf-Fotografia")
+                              .appendTo('#form');
+        });
+
+    </script>
+
+
+}

@@ -1,0 +1,66 @@
+﻿@using Ppgz.Repository
+@model Ppgz.Web.Areas.Dap.Models.EnvioViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2 class="form-signin-heading">Reporte de Envios</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra los reportes de fallas</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Envios Registrados</div>
+    <div class="panel-body">
+       
+        <table class="table table-striped" id="mensajes">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Obra</th>
+                    <th class="text-center">Tipo de Componente</th>
+                    <th class="text-center">Fecha de Pedido</th>
+                    <th class="text-center">fecha de Salida</th>
+                    <th class="text-center">Tracking</th>
+
+                    <th class="text-center">Empresa de Envio</th>
+                    <th class="text-center">Estatus de Envío</th>
+                   
+            </thead>
+            <tbody>
+                @foreach (var envio in (ViewBag.Envios))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@envio.Id</td>*@
+                        <td class="text-center vert-align">@envio.Obra</td>
+                        <td class="text-center vert-align">@envio.TipoComponente</td>
+                        <td class="text-center vert-align">@envio.FechaPedido.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center vert-align">@envio.FechaSalida.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center vert-align">@envio.Tracking</td>
+                        <td class="text-center vert-align">@envio.EmpresaEnvio</td>
+                        <td class="text-center vert-align">@envio.StatusEnvio</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

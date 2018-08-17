@@ -1,0 +1,207 @@
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Services.dll.config
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Services.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Services.pdb
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\EntityFramework.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\MySql.Data.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Facturas.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Repository.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\SapWrapper.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\sapnco.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\sapnco_utils.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Repository.pdb
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\SapWrapper.pdb
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Facturas.pdb
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\EntityFramework.xml
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\repos\impuls\Ppgz\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\repos\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.csprojResolveAssemblyReference.cache
+C:\repos\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.CommonMensajesResource.resources
+C:\repos\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.MensajesResource.resources
+C:\repos\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.csproj.GenerateResource.Cache
+C:\repos\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.dll
+C:\repos\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Services.dll.config
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Services.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Services.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\MySql.Data.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\SapWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\sapnco.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\sapnco_utils.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\SapWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.CommonMensajesResource.resources
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.MensajesResource.resources
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.csproj.GenerateResource.Cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Services\obj\Debug\Ppgz.Services.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll.config
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\MySql.Data.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\SapWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\SapWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.CommonMensajesResource.resources
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.MensajesResource.resources
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csproj.GenerateResource.Cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.CommonMensajesResource.resources
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.MensajesResource.resources
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csproj.GenerateResource.Cache
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll.config
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll.config
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\EntityFramework.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\MySql.Data.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\SapWrapper.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\SapWrapper.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\EntityFramework.xml
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csprojResolveAssemblyReference.cache
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.CommonMensajesResource.resources
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.MensajesResource.resources
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csproj.GenerateResource.Cache
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll.config
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.CommonMensajesResource.resources
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.MensajesResource.resources
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csproj.GenerateResource.Cache
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll.config
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\EntityFramework.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\MySql.Data.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\SapWrapper.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\SapWrapper.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\EntityFramework.xml
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csprojResolveAssemblyReference.cache
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.CommonMensajesResource.resources
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.MensajesResource.resources
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csproj.GenerateResource.Cache
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll.config
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Ppgz.Services.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.CommonMensajesResource.resources
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.MensajesResource.resources
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.csproj.GenerateResource.Cache
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Services\obj\Debug\Ppgz.Services.pdb

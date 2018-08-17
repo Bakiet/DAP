@@ -1,0 +1,75 @@
+﻿@using Ppgz.Repository
+@model Ppgz.Web.Areas.Dap.Models.FallaViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2 class="form-signin-heading">Reporte de Fallas</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra los reportes de fallas</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Fallas Registradas</div>
+    <div class="panel-body">
+       
+        <table class="table table-striped" id="mensajes">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Reporte</th>*@
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Obra</th>
+                   
+                    
+                    <th class="text-center">Equipo</th>
+                    <th class="text-center">Fecha Falla</th>
+                    <th class="text-center">Componente</th>
+                    <th class="text-center">Fecha Solución</th>
+                    <th class="text-center">Estatus Falla</th>
+                    
+                    <th class="text-center">Técnico</th>
+                    <th></th>
+            </thead>
+            <tbody>
+                @foreach (var falla in (ViewBag.Fallas))
+                {
+                    <tr>
+                     
+                               
+                        @*<td class="text-center vert-align">@falla.Id</td>*@
+                        <td class="text-center vert-align h3">@falla.Obra</td>
+                        
+                        
+                        <td class="text-center vert-align">@falla.Equipo</td>
+                        <td class="text-center vert-align">@falla.FechaFalla</td>
+                        <td class="text-center vert-align">@falla.Componente</td>
+                        <td class="text-center vert-align">@falla.FechaSolucion</td>
+                        <td class="text-center vert-align">@falla.StatusFalla</td>
+                        
+                        <td class="text-center vert-align">@falla.Personal</td>
+                      
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

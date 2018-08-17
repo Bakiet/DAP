@@ -1,0 +1,99 @@
+﻿@using Ppgz.Repository
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var obra = (obras)ViewBag.obra;
+}
+
+<h2 class="form-signin-heading">Informes Generales</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de Informes generales</i></p>*@
+@*<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Ventas", "AdministrarVentas", new { @id = TempData["IDOBRA"] })'">Volver</button>*@
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarInformes")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Informes generales</a>
+</div>
+<div class="panel panel-default">
+  
+    <div class="panel-body">
+        <div class="row">
+            <label class="col-sm-2 control-label">Obra</label>
+            <div class="col-sm-3">
+                @if(obra != null) { 
+                <div class="h4">@obra.Nombre</div>
+                }
+            </div>
+
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Informes generales Registrados</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="obras">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Fecha</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Ver</th>
+                    <th class="text-center"></th>
+            </thead>
+            <tbody>
+                @if(ViewBag.informes != null) { 
+                foreach (var informe in (ViewBag.informes))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@informe.Id</td>*@
+                        <td class="text-center vert-align">@informe.Fecha</td>
+                        <td class="text-center vert-align">@informe.Nombre</td>
+                        
+                        <td class="text-center vert-align">
+                            @if (@informe.Url != "")
+                            {
+                                <a class="fa fa-folder fa-2x" href="@Url.Content(@informe.Url)" target="_blank"></a>
+                            }
+                        </td>
+                        
+                       
+                       
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarInformes", new { @id = @informe.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarInformes", new { @id = @informe.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El informe general será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                }
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

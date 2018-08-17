@@ -1,0 +1,319 @@
+﻿@using System.Text
+@using Microsoft.AspNet.Identity
+@using Ppgz.Web.Infrastructure
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - ASCENSORES CLIMB</title>
+    @*<link rel="stylesheet" href="~/assets/css/main.css">*@
+   
+    @Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/bootstrap.min.css")
+    @Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/bootstrap-theme.min.css")
+
+   
+    @Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/ie10-viewport-bug-workaround.css")
+
+    @Styles.Render("~/assets/vendor/font-awesome-4.7.0/css/font-awesome.min.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Styles.Render("~/assets/vendor/dataTables-1.10.13/media/css/dataTables.bootstrap.min.css")
+
+    @Styles.Render("~/assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css")
+
+    @Styles.Render("~/assets/css/msgcolores.css")
+
+    @Styles.Render("~/assets/css/main.css")
+
+    @Styles.Render("~/assets/css/main2.css")
+
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+
+</head>
+<body>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-main navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="100"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">OPCIONES <span class="caret"></span></a>
+                            <ul id="menu" class="dropdown-menu">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    List<string> menuF = MenuConfig.GetMenuFuncionalidad(this.User);
+                                    foreach (var item in menuF)
+                                    {
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == item.Split('|')[1].ToString())
+                                        {
+                                            <li class="active"><a href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                        }
+                                        else
+                                        {
+                                            <li class=""><a href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                        }
+                                    }
+                                }
+                                <li role="separator" class="divider"></li>
+                                <li class=""><a href="@Url.Action("CambiarPassword","Account", new { Area = ""})"><i class="fa fa-key" aria-hidden="true"></i> Cambiar contraseña</a></li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"] != null)
+                        {
+                            if (Request.IsAuthenticated)
+                            {
+                               
+                                List<string> menuI = MenuConfig.GetMenuPaginaActual(
+                                    HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(),
+                                    HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"].ToString(),
+                                    HttpContext.Current.Request.Params);
+                                if (menuI.Count == 1)
+                                {
+                                    foreach (var item in menuI)
+                                    {
+                                        <li class="dropdown active">
+
+                                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li class="dropdown active">
+                                        @{
+                                            string nombreMenuInterno = MenuConfig.NombreXController(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"].ToString().ToUpper());
+                                        }
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="@nombreMenuInterno.Split('|')[4].ToString()" aria-hidden="true"></i> @nombreMenuInterno.Split('|')[1].ToString() <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var item in menuI)
+                                            {
+                                                if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == item.Split('|')[1].ToString())
+                                                {
+                                                    <li class="active"><a href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                                }
+                                                else
+                                                {
+                                                    @*<li class=""><a href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>*@
+                                                    <li class=""><a href="~/@item.Split('|')[5]/@item.Split('|')[3]/@item.Split('|')[2]"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                                }
+                                            }
+
+                                        </ul>
+                                    </li>
+                                                        }
+                                                    }
+                                                }
+                                            }
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+
+            </div><!--/.nav-collapse -->
+        </div>
+
+        @*<div class="wrapper">
+
+        <nav id="sidebar">
+
+            <div class="sidebar-header">
+                <h3>Collapsible Sidebar
+            </div>
+            <strong>BS</strong>
+
+
+
+    <ul class="list-unstyled components">
+        <li class="active">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="glyphicon glyphicon-home"></i>
+                Home
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="glyphicon glyphicon-briefcase"></i>
+                About
+            </a>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="glyphicon glyphicon-duplicate"></i>
+                Pages
+            </a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class="glyphicon glyphicon-link"></i>
+                Portfolio
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="glyphicon glyphicon-send"></i>
+                Contact
+            </a>
+        </li>
+    </ul>*@
+    
+
+    @*<div id="content">
+        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+            <i class="glyphicon glyphicon-align-left"></i>
+            Toggle Sidebar
+        </button>
+        <div>
+
+        </div>*@
+   </nav>
+
+        <div class="container body-content">
+            @if (TempData["FlashError"] != null)
+            {
+                <div class="alert alert-dismissible alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @TempData["FlashError"]
+                </div>
+            }
+            @if (TempData["FlashSuccess"] != null)
+            {
+                <div class="alert alert-dismissible alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @TempData["FlashSuccess"]
+                </div>
+            }
+
+            @RenderBody()
+
+            <hr />
+
+        </div>
+        <footer class="footer">
+            <p>&copy; @DateTime.Now.Year - ASCENSORES CLIMB</p>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/assets/vendor/bootstrap-3.3.6/js/bootstrap.min.js")
+        @Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/jquery.dataTables.min.js")
+        @Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/dataTables.bootstrap.min.js")
+        @Scripts.Render("~/assets/vendor/bootstrap-confirmation.min.js")
+        @Scripts.Render("~/assets/vendor/moment/moment-with-locales.min.js")
+        @Scripts.Render("~/assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js")
+        @Scripts.Render("~/assets/vendor/jquery.blockUI.js")
+
+        @Scripts.Render("~/assets/js/bootbox.js")
+        @Scripts.Render("~/assets/js/mensajes.js")
+        @Scripts.Render("~/assets/vendor/jquery.numeric.js")
+
+
+        <script type="text/javascript">
+            $('[data-toggle=confirmation]').confirmation({
+                rootSelector: '[data-toggle=confirmation]',
+                container: 'body'
+            });
+
+            $(document).ready(function () {
+                /* $(document).ajaxStart(function () {
+                     $.blockUI({
+                         message: 'Por favor espere...'
+                     });
+
+                 }).ajaxStop($.unblockUI);*/
+            });
+
+        </script>
+        @RenderSection("scripts", required: false)
+
+        @if (Request.IsAuthenticated)
+        {
+            <script type="text/javascript">
+                @{
+                var commonManager = new CommonManager();
+
+                var cuenta = commonManager.GetCuentaUsuarioAutenticado();
+            }
+
+            @if (cuenta != null)
+            {
+                <text>
+                $("#mensajes-notificador").hide();
+
+                var Url = "@Url.Action("MensajesSinLeer", "MensajesInstitucionales", new { area = cuenta.Tipo })";
+
+                function RefrescarMensajes() {
+                    $.ajax({
+                        type: "POST",
+                        url: Url,
+                        cache: false
+                    }).done(function (result) {
+                        var mensajesSinLeer = parseInt(result);
+
+                        if ((mensajesSinLeer) > 0) {
+                            $("#mensajes-notificador .badge").text(result);
+                            $("#mensajes-notificador").show();
+                        } else {
+                            $("#mensajes-notificador").hide();
+
+                        }
+
+                    });
+                }
+
+                (function () {
+
+                    $.ajax({
+                        type: "POST",
+                        url: Url,
+                        cache: false
+                    }).done(function (result) {
+                        var mensajesSinLeer = parseInt(result);
+
+                        if ((mensajesSinLeer) > 0) {
+                            $("#mensajes-notificador .badge").text(result);
+                            $("#mensajes-notificador").show();
+                        } else {
+                            $("#mensajes-notificador").hide();
+
+                        }
+
+                    });
+                    //cada 5 minutos refrescar
+                    setTimeout(arguments.callee, 500000);
+                })();
+                </text>
+            }
+            </script>
+    }
+        @*<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>*@
+       
+        @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+
+        <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+        </script>
+</body>
+</html>

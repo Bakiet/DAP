@@ -1,0 +1,1214 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.PrevioViewModel
+@using Ppgz.Repository
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var obra = (obras)ViewBag.obra;
+    var equipo = (equipos)ViewBag.equipo;
+}
+
+<h2 class="form-signin-heading">Editar Dap Previo</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Dap Previo</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Cuenta</div>
+    <div class="panel-body">
+        <div class="row">
+            <label class="col-sm-2 control-label">Obra</label>
+            <div class="col-sm-3">
+                <div>@obra.Nombre</div>
+            </div>
+            <label class="col-sm-2 control-label">Equipo</label>
+            <div class="col-sm-3">
+                <div>@equipo.Nombre</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de edición y detalle</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Editar", "AdministrarPrevios", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+
+
+                <div class="form-group">
+                    @if (Model.CartaPresentacion != null)
+                {
+                        @Html.LabelFor(p => p.CartaPresentacion, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(p => p.CartaPresentacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                            @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-5">
+                        <div>
+                            @if (ViewBag.CartaPresentacionFotografia != null)
+                            {
+                                foreach (var CartaPresentacionFotografia in (ViewBag.CartaPresentacionFotografia))
+                                {
+                                    var nombrearchivo = CartaPresentacionFotografia.url.Replace("~/Uploads/", "");
+
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="CartaPresentacionFotografia" href="@Url.Content(CartaPresentacionFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = CartaPresentacionFotografia.url, @tipo = "previos", @caracteristica = "CartaPresentacionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+
+
+                                }
+                            }
+                            @*<p>
+                        <a class="fa fa-file-picture-o fa-1x" name="FechaFirmaContratoFotografia" href="@Url.Content(@Model.FechaFirmaContratoFotografia)" target="_blank"></a>
+                    </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-CartaPresentacionFotografia" id="Pdf-CartaPresentacionFotografia">
+                                    @Html.ValidationMessageFor(p => p.CartaPresentacionFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                @if (Model.FechaFirmaContrato != null)
+                {
+                    @Html.LabelFor(p => p.FechaFirmaContrato, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaFirmaContrato, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-5">
+                        <div>
+                            @if(ViewBag.FechaFirmaContratoFotografia != null) { 
+                                foreach (var FechaFirmaContratoFotografia in (ViewBag.FechaFirmaContratoFotografia))
+                                {
+                                    var nombrearchivo = FechaFirmaContratoFotografia.url.Replace("~/Uploads/", "");
+                               
+                                        <p>
+                                            <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaFirmaContratoFotografia" href="@Url.Content(FechaFirmaContratoFotografia.url)" target="_blank">@nombrearchivo</a>
+                                            <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaFirmaContratoFotografia.url, @tipo = "previos", @caracteristica = "FechaFirmaContratoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                        </p>
+                               
+                                
+                                }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" name="FechaFirmaContratoFotografia" href="@Url.Content(@Model.FechaFirmaContratoFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel1">
+                                    <input type="file"  multiple="multiple" style="padding: 20px;" name="Pdf-FechaFirmaContratoFotografia" id="Pdf-FechaFirmaContratoFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaFirmaContratoFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaPagoInicialFabrica != null)
+                {
+                    @Html.LabelFor(p => p.FechaPagoInicialFabrica, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaPagoInicialFabrica, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaPagoInicialFabrica)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-5">
+                        <div>
+                            @if(ViewBag.FechaPagoInicialFabricaFotografia != null) { 
+                                foreach (var FechaPagoInicialFabricaFotografia in (ViewBag.FechaPagoInicialFabricaFotografia))
+                                {
+                                    var nombrearchivo = FechaPagoInicialFabricaFotografia.url.Replace("~/Uploads/", "");
+
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaPagoInicialFabricaFotografia" href="@Url.Content(FechaPagoInicialFabricaFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPagoInicialFabricaFotografia.url, @tipo = "previos", @caracteristica = "FechaPagoInicialFabricaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+
+
+                                }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaPagoInicialFabricaFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel2" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel2">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaPagoInicialFabricaFotografia" id="Pdf-FechaPagoInicialFabricaFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaPagoInicialFabricaFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @if (Model.FechaIngresoProduccion != null)
+                {
+                        @Html.LabelFor(p => p.FechaIngresoProduccion, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(p => p.FechaIngresoProduccion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                            @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-5">
+                        <div>
+                            @if (ViewBag.FechaIngresoProduccionFotografia != null)
+                            {
+                                foreach (var FechaIngresoProduccionFotografia in (ViewBag.FechaIngresoProduccionFotografia))
+                                {
+                                    var nombrearchivo = FechaIngresoProduccionFotografia.url.Replace("~/Uploads/", "");
+
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaIngresoProduccionFotografia" href="@Url.Content(FechaIngresoProduccionFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaIngresoProduccionFotografia.url, @tipo = "previos", @caracteristica = "FechaIngresoProduccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+
+
+                                }
+                            }
+                            @*<p>
+                        <a class="fa fa-file-picture-o fa-1x" name="FechaFirmaContratoFotografia" href="@Url.Content(@Model.FechaFirmaContratoFotografia)" target="_blank"></a>
+                    </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel3" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel3">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaIngresoProduccionFotografia" id="Pdf-FechaIngresoProduccionFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaIngresoProduccionFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                @if (Model.FechaPagoInicialEquipo != null)
+                {
+                    @Html.LabelFor(p => p.FechaPagoInicialEquipo, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaPagoInicialEquipo, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaPagoInicialEquipo)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documento de Fecha Pago inicial equipo</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaPagoInicialEquipoFotografia != null) { 
+                            foreach (var FechaPagoInicialEquipoFotografia in (ViewBag.FechaPagoInicialEquipoFotografia))
+                            {
+                                var nombrearchivo = FechaPagoInicialEquipoFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a class="fa fa-file-word-o fa-1x" name="FechaPagoInicialEquipoFotografia" href="@Url.Content(FechaPagoInicialEquipoFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPagoInicialEquipoFotografia.url, @tipo = "previos", @caracteristica = "FechaPagoInicialEquipoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                            }
+                            }
+                           <p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaPagoInicialEquipoFotografia)" target="_blank"></a>
+                            </p>
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel4" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel4">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaPagoInicialEquipoFotografia" id="Pdf-FechaPagoInicialEquipoFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaPagoInicialEquipoFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>*@
+                <div class="form-group">
+                @if (Model.FechaConstruccion != null)
+                {
+                    @Html.LabelFor(p => p.FechaConstruccion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaConstruccion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaConstruccion)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaConstruccionFotografia != null) { 
+                            foreach (var FechaConstruccionFotografia in (ViewBag.FechaConstruccionFotografia))
+                            {
+                                var nombrearchivo = FechaConstruccionFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaConstruccionFotografia" href="@Url.Content(FechaConstruccionFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaConstruccionFotografia.url, @tipo = "previos", @caracteristica = "FechaConstruccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                            }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x"  href="@Url.Content(@Model.FechaConstruccionFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel5" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel5">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaConstruccionFotografia" id="Pdf-FechaConstruccionFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaConstruccionFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @if (Model.EstatusConstruccion != null)
+                {
+                        @Html.LabelFor(p => p.EstatusConstruccion, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(p => p.EstatusConstruccion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                            @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-5">
+                        <div>
+                            @if (ViewBag.EstatusConstruccionFotografia != null)
+                            {
+                                foreach (var EstatusConstruccionFotografia in (ViewBag.EstatusConstruccionFotografia))
+                                {
+                                    var nombrearchivo = EstatusConstruccionFotografia.url.Replace("~/Uploads/", "");
+
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="EstatusConstruccionFotografia" href="@Url.Content(EstatusConstruccionFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = EstatusConstruccionFotografia.url, @tipo = "previos", @caracteristica = "EstatusConstruccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+
+
+                                }
+                            }
+                            @*<p>
+                        <a class="fa fa-file-picture-o fa-1x" name="FechaFirmaContratoFotografia" href="@Url.Content(@Model.FechaFirmaContratoFotografia)" target="_blank"></a>
+                    </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel6" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel6">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-EstatusConstruccionFotografia" id="Pdf-EstatusConstruccionFotografia">
+                                    @Html.ValidationMessageFor(p => p.EstatusConstruccionFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @if (Model.IngresoDepartamentoIngMan != null)
+                {
+                        @Html.LabelFor(p => p.IngresoDepartamentoIngMan, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(p => p.IngresoDepartamentoIngMan, new { @class = "form-control fecha-hora", @type = "datetime" })
+                            @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-5">
+                        <div>
+                            @if (ViewBag.IngresoDepartamentoIngManFotografia != null)
+                            {
+                                foreach (var IngresoDepartamentoIngManFotografia in (ViewBag.IngresoDepartamentoIngManFotografia))
+                                {
+                                    var nombrearchivo = IngresoDepartamentoIngManFotografia.url.Replace("~/Uploads/", "");
+
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="IngresoDepartamentoIngManFotografia" href="@Url.Content(IngresoDepartamentoIngManFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = IngresoDepartamentoIngManFotografia.url, @tipo = "previos", @caracteristica = "IngresoDepartamentoIngManFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+
+
+                                }
+                            }
+                            @*<p>
+                        <a class="fa fa-file-picture-o fa-1x" name="FechaFirmaContratoFotografia" href="@Url.Content(@Model.FechaFirmaContratoFotografia)" target="_blank"></a>
+                    </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel7" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel7">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-IngresoDepartamentoIngManFotografia" id="Pdf-IngresoDepartamentoIngManFotografia">
+                                    @Html.ValidationMessageFor(p => p.IngresoDepartamentoIngManFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @if (Model.SolicitudPagoInicialFabrica != null)
+                {
+                        @Html.LabelFor(p => p.SolicitudPagoInicialFabrica, new { @class = "col-sm-3 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(p => p.SolicitudPagoInicialFabrica, new { @class = "form-control fecha-hora", @type = "datetime" })
+                            @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-5">
+                        <div>
+                            @if (ViewBag.SolicitudPagoInicialFabricaFotografia != null)
+                            {
+                                foreach (var SolicitudPagoInicialFabricaFotografia in (ViewBag.SolicitudPagoInicialFabricaFotografia))
+                                {
+                                    var nombrearchivo = SolicitudPagoInicialFabricaFotografia.url.Replace("~/Uploads/", "");
+
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="SolicitudPagoInicialFabricaFotografia" href="@Url.Content(SolicitudPagoInicialFabricaFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = SolicitudPagoInicialFabricaFotografia.url, @tipo = "previos", @caracteristica = "SolicitudPagoInicialFabricaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+
+
+                                }
+                            }
+                            @*<p>
+                        <a class="fa fa-file-picture-o fa-1x" name="FechaFirmaContratoFotografia" href="@Url.Content(@Model.FechaFirmaContratoFotografia)" target="_blank"></a>
+                    </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel8" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel8">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-SolicitudPagoInicialFabricaFotografia" id="Pdf-SolicitudPagoInicialFabricaFotografia">
+                                    @Html.ValidationMessageFor(p => p.SolicitudPagoInicialFabricaFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                @if (Model.FechaSalidaFabrica != null)
+                {
+                    @Html.LabelFor(p => p.FechaSalidaFabrica, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaSalidaFabrica, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaSalidaFabrica)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaSalidaFabricaFotografia != null) { 
+                            foreach (var FechaSalidaFabricaFotografia in (ViewBag.FechaSalidaFabricaFotografia))
+                            {
+                                var nombrearchivo = FechaSalidaFabricaFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaSalidaFabricaFotografia" href="@Url.Content(FechaSalidaFabricaFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaSalidaFabricaFotografia.url, @tipo = "previos", @caracteristica = "FechaSalidaFabricaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                                }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaSalidaFabricaFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel9" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel9">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaSalidaFabricaFotografia" id="Pdf-FechaSalidaFabricaFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaSalidaFabricaFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaSalidaBuque != null)
+                {
+                    @Html.LabelFor(p => p.FechaSalidaBuque, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaSalidaBuque, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaSalidaBuque)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaSalidaBuqueFotografia != null) { 
+                            foreach (var FechaSalidaBuqueFotografia in (ViewBag.FechaSalidaBuqueFotografia))
+                            {
+                                var nombrearchivo = FechaSalidaBuqueFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaSalidaBuqueFotografia" href="@Url.Content(FechaSalidaBuqueFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaSalidaBuqueFotografia.url, @tipo = "previos", @caracteristica = "FechaSalidaBuqueFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                                }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaSalidaBuqueFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel10" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel10">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaSalidaBuqueFotografia" id="Pdf-FechaSalidaBuqueFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaSalidaBuqueFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaLlegadaBuque != null)
+                {
+                    @Html.LabelFor(p => p.FechaLlegadaBuque, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaLlegadaBuque, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaLlegadaBuque)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaLlegadaBuqueFotografia != null) { 
+                            foreach (var FechaLlegadaBuqueFotografia in (ViewBag.FechaLlegadaBuqueFotografia))
+                            {
+                                var nombrearchivo = FechaLlegadaBuqueFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaLlegadaBuqueFotografia" href="@Url.Content(FechaLlegadaBuqueFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaLlegadaBuqueFotografia.url, @tipo = "previos", @caracteristica = "FechaLlegadaBuqueFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                            }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaLlegadaBuqueFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel11" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel11">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaLlegadaBuqueFotografia" id="Pdf-FechaLlegadaBuqueFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaLlegadaBuqueFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaPeriodoNacionalizacion != null)
+                {
+                    @Html.LabelFor(p => p.FechaPeriodoNacionalizacion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaPeriodoNacionalizacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaPeriodoNacionalizacion)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaPeriodoNacionalizacionFotografia != null) { 
+                            foreach (var FechaPeriodoNacionalizacionFotografia in (ViewBag.FechaPeriodoNacionalizacionFotografia))
+                            {
+                                var nombrearchivo = FechaPeriodoNacionalizacionFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaPeriodoNacionalizacionFotografia" href="@Url.Content(FechaPeriodoNacionalizacionFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPeriodoNacionalizacionFotografia.url, @tipo = "previos", @caracteristica = "FechaPeriodoNacionalizacionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                                }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaPeriodoNacionalizacionFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel12" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel12">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaPeriodoNacionalizacionFotografia" id="Pdf-FechaPeriodoNacionalizacionFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaPeriodoNacionalizacionFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaSalidaPuertoObra != null)
+                {
+                    @Html.LabelFor(p => p.FechaSalidaPuertoObra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaSalidaPuertoObra, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaSalidaPuertoObra)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaSalidaPuertoObraFotografia != null) { 
+                            foreach (var FechaSalidaPuertoObraFotografia in (ViewBag.FechaSalidaPuertoObraFotografia))
+                            {
+                                var nombrearchivo = FechaSalidaPuertoObraFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaSalidaPuertoObraFotografia" href="@Url.Content(FechaSalidaPuertoObraFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaSalidaPuertoObraFotografia.url, @tipo = "previos", @caracteristica = "FechaSalidaPuertoObraFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                                }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaSalidaPuertoObraFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel13" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel13">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaSalidaPuertoObraFotografia" id="Pdf-FechaSalidaPuertoObraFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaSalidaPuertoObraFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaDescargaResguardo != null)
+                {
+                    @Html.LabelFor(p => p.FechaDescargaResguardo, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaDescargaResguardo, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaDescargaResguardo)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaDescargaResguardoFotografia != null) { 
+                            foreach (var FechaDescargaResguardoFotografia in (ViewBag.FechaDescargaResguardoFotografia))
+                            {
+                                var nombrearchivo = FechaDescargaResguardoFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaDescargaResguardoFotografia" href="@Url.Content(FechaDescargaResguardoFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaDescargaResguardoFotografia.url, @tipo = "previos", @caracteristica = "FechaDescargaResguardoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                            }
+                            }
+                                @*<p>
+                                    <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaDescargaResguardoFotografia)" target="_blank"></a>
+                                </p>*@
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel14" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel14">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaDescargaResguardoFotografia" id="Pdf-FechaDescargaResguardoFotografia">
+                                        @Html.ValidationMessageFor(p => p.FechaDescargaResguardoFotografia)
+
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.ActivacionProtocoloGarantiaFabrica != null)
+                {
+                    @Html.LabelFor(p => p.ActivacionProtocoloGarantiaFabrica, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.ActivacionProtocoloGarantiaFabrica, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.ActivacionProtocoloGarantiaFabrica)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                @if (Model.FechaInicioMontaje != null)
+                {
+                    @Html.LabelFor(p => p.FechaInicioMontaje, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaInicioMontaje, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaInicioMontaje)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaInicioMontajeFotografia != null) { 
+                            foreach (var FechaInicioMontajeFotografia in (ViewBag.FechaInicioMontajeFotografia))
+                            {
+                                var nombrearchivo = FechaInicioMontajeFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaInicioMontajeFotografia" href="@Url.Content(FechaInicioMontajeFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaInicioMontajeFotografia.url, @tipo = "previos", @caracteristica = "FechaInicioMontajeFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                            }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaInicioMontajeFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel15" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel15">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaInicioMontajeFotografia" id="Pdf-FechaInicioMontajeFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaInicioMontajeFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaEntregaSoso != null)
+                {
+                    @Html.LabelFor(p => p.FechaEntregaSoso, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaEntregaSoso, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaEntregaSoso)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaEntregaSosoFotografia != null) { 
+                            foreach (var FechaEntregaSosoFotografia in (ViewBag.FechaEntregaSosoFotografia))
+                            {
+                                var nombrearchivo = FechaEntregaSosoFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaEntregaSosoFotografia" href="@Url.Content(FechaEntregaSosoFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaEntregaSosoFotografia.url, @tipo = "previos", @caracteristica = "FechaEntregaSosoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                            }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaEntregaSosoFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel16" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel16">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaEntregaSosoFotografia" id="Pdf-FechaEntregaSosoFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaEntregaSosoFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaCulminacionMontaje != null)
+                {
+                    @Html.LabelFor(p => p.FechaCulminacionMontaje, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaCulminacionMontaje, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaCulminacionMontaje)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaCulminacionMontajeFotografia != null) { 
+                                foreach (var FechaCulminacionMontajeFotografia in (ViewBag.FechaCulminacionMontajeFotografia))
+                                {
+                                    var nombrearchivo = FechaCulminacionMontajeFotografia.url.Replace("~/Uploads/", "");
+
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaCulminacionMontajeFotografia" href="@Url.Content(FechaCulminacionMontajeFotografia.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaCulminacionMontajeFotografia.url, @tipo = "previos", @caracteristica = "FechaCulminacionMontajeFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+
+
+                                }
+                            }
+                                @*<p>
+                                    <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaCulminacionMontajeFotografia)" target="_blank"></a>
+                                </p>*@
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel17" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel17">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaCulminacionMontajeFotografia" id="Pdf-FechaCulminacionMontajeFotografia">
+                                        @Html.ValidationMessageFor(p => p.FechaCulminacionMontajeFotografia)
+
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                @if (Model.FechaConfiguracion != null)
+                {
+                    @Html.LabelFor(p => p.FechaConfiguracion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaConfiguracion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaConfiguracion)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaConfiguracionFotografia != null) { 
+                            foreach (var FechaConfiguracionFotografia in (ViewBag.FechaConfiguracionFotografia))
+                            {
+                                var nombrearchivo = FechaConfiguracionFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaConfiguracionFotografia" href="@Url.Content(FechaConfiguracionFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaConfiguracionFotografia.url, @tipo = "previos", @caracteristica = "FechaConfiguracionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                            }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaConfiguracionFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel18" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel18">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaConfiguracionFotografia" id="Pdf-FechaConfiguracionFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaConfiguracionFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaPeriodoPrueba != null)
+                {
+                    @Html.LabelFor(p => p.FechaPeriodoPrueba, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaPeriodoPrueba, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaPeriodoPrueba)
+                    </div>
+                }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaPeriodoPruebaFotografia != null) { 
+                            foreach (var FechaPeriodoPruebaFotografia in (ViewBag.FechaPeriodoPruebaFotografia))
+                            {
+                                var nombrearchivo = FechaPeriodoPruebaFotografia.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaPeriodoPruebaFotografia" href="@Url.Content(FechaPeriodoPruebaFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPeriodoPruebaFotografia.url, @tipo = "previos", @caracteristica = "FechaPeriodoPruebaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                            }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaPeriodoPruebaFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel19" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel19">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-FechaPeriodoPruebaFotografia" id="Pdf-FechaPeriodoPruebaFotografia">
+                                    @Html.ValidationMessageFor(p => p.FechaPeriodoPruebaFotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                @if (Model.FechaInspeccion != null)
+                {
+                    @Html.LabelFor(p => p.FechaInspeccion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.FechaInspeccion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(p => p.FechaInspeccion)
+                    </div>
+                }
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Documentos Inspección</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.FechaInspeccionFotografia != null) { 
+                           foreach (var FechaInspeccionFotografia in (ViewBag.FechaInspeccionFotografia))
+                           {
+                               var nombrearchivo = FechaInspeccionFotografia.url.Replace("~/Uploads/", "");
+
+                            <p>
+                                <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaInspeccionFotografia" href="@Url.Content(FechaInspeccionFotografia.url)" target="_blank">@nombrearchivo</a>
+                                <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaInspeccionFotografia.url, @tipo = "previos", @caracteristica = "FechaInspeccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                            </p>
+
+
+                           }
+                            }
+                            @*<p>
+                                <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaInspeccionFotografia)" target="_blank"></a>
+                            </p>*@
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+                               
+                                <li role="presentation" id="pdf"><a href="#pdf-panel20" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel20">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-fechainspeccion" id="Pdf-fechainspeccion">
+                                    @Html.ValidationMessageFor(p => p.FechaInspeccionFotografia)
+                                    @*<p><i>Descripción fotografica distribuida como <span class="label label-info">PDF</span></i></p>*@
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Inspección Videos</label>
+                    <div class="col-sm-4">
+                        <div>
+                                @if(ViewBag.FechaInspeccionVideo != null) { 
+                                foreach (var FechaInspeccionVideo in (ViewBag.FechaInspeccionVideo))
+                                {
+                                    var nombrearchivo = FechaInspeccionVideo.url.Replace("~/Uploads/", "");
+
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaInspeccionVideo" href="@Url.Content(FechaInspeccionVideo.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaInspeccionVideo.url, @tipo = "previos", @caracteristica = "FechaInspeccionVideo", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+
+
+                                }
+                                }
+                                @*<p>
+                                    <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.FechaInspeccionVideo)" target="_blank"></a>
+                                </p>*@
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel21" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo de video</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel21">
+                                        <input type="file" multiple="multiple"  style="padding: 20px;" name="Pdf-FechaInspeccionVideo" id="Pdf-FechaInspeccionVideo">
+                                        @Html.ValidationMessageFor(p => p.FechaInspeccionVideo)
+                                       
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="form-group">
+                    @if(Model.TecnicoInstalador != null){
+                    @Html.LabelFor(p => p.TecnicoInstalador, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.TecnicoInstalador, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.TecnicoInstalador)
+                        
+                    </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Informes Entrega Final</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @if(ViewBag.InformeEntregaFinal != null) { 
+                            foreach (var InformeEntregaFinal in (ViewBag.InformeEntregaFinal))
+                            {
+                                var nombrearchivo = InformeEntregaFinal.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="InformeEntregaFinal" href="@Url.Content(InformeEntregaFinal.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = InformeEntregaFinal.url, @tipo = "previos", @caracteristica = "InformeEntregaFinal", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+
+                            }
+                            }
+                                @*<p>
+                                    <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(@Model.InformeEntregaFinal)" target="_blank"></a>
+                                </p>*@
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel22" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel22">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-InformeEntregaFinal" id="Pdf-InformeEntregaFinal">
+                                        @Html.ValidationMessageFor(p => p.InformeEntregaFinal)
+                                        @*<p><i>Descripción fotografica distribuida como <span class="label label-info">PDF</span></i></p>*@
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+               
+               
+                <div class="form-group">
+                    @Html.Label("KIT DAP", new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        <a class="btn btn-default" href="@Url.Action("KitDaps", "AdministrarKitDaps", new { @id = @Model.previo_id })"><i class="fa fa-eye" aria-hidden="true"></i> VER </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Protocolos de chequeo", new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        <a class="btn btn-default" href="@Url.Action("Protocolos", "AdministrarProtocolos", new { @id = @Model.previo_id })"><i class="fa fa-eye" aria-hidden="true"></i> VER </a>
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    @Html.Label("Herramientas de la obra", new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        <a class="btn btn-default" href="@Url.Action("Herramientas", "AdministrarHerramientas", new { @id = @Model.previo_id })"><i class="fa fa-eye" aria-hidden="true"></i> VER </a>
+                    </div>
+                </div>*@
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-7">
+                        @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(m => m.FechaPublicacion)
+                    </div>
+                </div>*@
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarEquipos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+
+      
+        
+
+        $(document).ready(function () {
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+
+
+            $('<input />').attr('type', 'hidden')
+                         .attr('name', "Pdf-Plano")
+                         .attr('value', "Pdf-Plano")
+                         .appendTo('#form');
+
+            $('<input />').attr('type', 'hidden')
+                              .attr('name', "Pdf-Fotografia")
+                              .attr('value', "Pdf-Fotografia")
+                              .appendTo('#form');
+        });
+
+
+</script>
+
+}

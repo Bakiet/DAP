@@ -1,0 +1,225 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.MantenimientoCorrectivoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Editar Mantenimiento correctivo</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Mantenimiento correctivo</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Editar", "AdministrarMantenimientosCorrectivos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Tipo, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(c =>  c.Tipo, (IEnumerable<SelectListItem>)ViewBag.Equipo_Tipo, "Seleccione un Valor", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.Tipo)
+                    </div>
+                </div>
+
+                
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PersonaJuridica, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.PersonaJuridica, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PersonaJuridica)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FechaVisita, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.FechaVisita, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(m => m.FechaVisita)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(m => m.FechaPublicacion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NombreDocumento, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.NombreDocumento, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.NombreDocumento)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Tecnico, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Tecnico, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Tecnico)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EquiposAtendidos, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.EquiposAtendidos, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EquiposAtendidos)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.StatusMantenimiento, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.StatusMantenimiento, (IEnumerable<SelectListItem>)ViewBag.StatusMantenimiento3, "Seleccione un Valor", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.StatusMantenimiento)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Descripcion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(m => m.Descripcion, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                        @Html.ValidationMessageFor(m => m.Descripcion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Archivo</label>
+                    <div class="col-sm-4">
+                        <div>
+                            @foreach (var Archivos in (ViewBag.Archivos))
+                            {
+                                var nombrearchivo = Archivos.url.Replace("~/Uploads/", "");
+                               
+                                   // nombrearchivo = nombrearchivo.Replace(".docx", "");
+                                    <p>
+                                        <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" href="@Url.Content(Archivos.url)" target="_blank">@nombrearchivo</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarMantenimientosCorrectivos", new { @archivo = Archivos.url, @tipo = "mantenimientocorrectivo", @caracteristica = "archivo", @id = TempData["IDVENTA"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    </p>
+
+                            }
+                                @*<p>
+                                    <a class="fa fa-folder fa-2x" href="@Url.Content(@Model.Archivo)" target="_blank"></a>
+                                </p>*@
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf" id="Pdf">
+                                        @Html.ValidationMessageFor(k => k.Archivo)
+
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Evaluación</label>
+                    <div class="col-sm-4">
+                        <div>
+                               @foreach (var Evaluaciones in (ViewBag.Evaluaciones))
+                               {
+                                   var nombrearchivo = Evaluaciones.url.Replace("~/Uploads/", "");
+
+                                   // nombrearchivo = nombrearchivo.Replace(".docx", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" href="@Url.Content(Evaluaciones.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarMantenimientosCorrectivos", new { @archivo = Evaluaciones.url, @tipo = "mantenimientocorrectivo", @caracteristica = "evaluacion", @id = TempData["IDVENTA"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+
+                               }
+                                @*<p>
+                                    <a class="fa fa-folder fa-2x" href="@Url.Content(@Model.Evaluacion)" target="_blank"></a>
+                                </p>*@
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel1">
+                                        <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-evaluacion" id="Pdf-evaluacion">
+                                        @Html.ValidationMessageFor(k => k.Evaluacion)
+
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.HoraLlegada, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.HoraLlegada, new { @class = "form-control hora"})
+                        @Html.ValidationMessageFor(m => m.HoraLlegada)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.HoraSalida, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.HoraSalida, new { @class = "form-control hora"})
+                        @Html.ValidationMessageFor(m => m.HoraSalida)
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-7">
+                        @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(m => m.FechaPublicacion)
+                    </div>
+                </div>*@
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarMantenimientosCorrectivos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+            $('.hora').datetimepicker({
+                locale: 'es',
+
+                format: 'HH:mm A',
+                showClose: true,
+                sideBySide: true
+            });
+
+            $('<input />').attr('type', 'hidden')
+                          .attr('name', "Pdf")
+                          .attr('value', "pdf")
+                          .appendTo('#form');
+            $('<input />').attr('type', 'hidden')
+                         .attr('name', "Pdf-evaluacion")
+                         .attr('value', "pdf-evaluacion")
+                         .appendTo('#form');
+        });
+    </script>
+
+
+
+}

@@ -1,0 +1,89 @@
+﻿@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Administrar Perfiles</h2>
+<p class="page-description-title">
+    <i class="fa fa-list" aria-hidden="true"></i> <i>Registro de Perfiles</i>
+</p>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Lista de Perfiles</div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped " id="usuarios">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Nombre</th>
+                            <th class="text-left">Accesos</th>
+                            <th class="text-center" width="170px">
+                                <a href="@Url.Action("Crear", "AdministrarPerfilesNazan")" class="btn btn-primary btn-xs">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> Crear
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pefil in (ViewBag.Perfiles))
+                        {
+                            <tr>
+                                <td class="text-left vert-align">@(pefil.Nombre)</td>
+                                <td class="text-left vert-align">
+                                    <ul>
+                                        @foreach (var role in pefil.aspnetroles)
+                                        {
+                                            <li class="text-left"> @role.Description</li>
+                                        }
+                                    </ul>
+
+                                </td>
+                                <td class="text-center vert-align">
+                                    <div class="btn-group hidden-xs">
+                                        <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarPerfilesNazan", new {@id = @pefil.Id})">
+
+                                            <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                        </a>
+                                        <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarPerfilesNazan", new {@id = @pefil.Id})" data-toggle="confirmation" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El perfil será eliminado.">
+                                            <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                        </a>
+                                    </div>
+                                    <div class="btn-group-vertical visible-xs">
+                                        <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarPerfilesNazan", new {@id = @pefil.Id})">
+
+                                            <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                        </a>
+                                        <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarPerfilesNazan", new {@id = @pefil.Id})" data-toggle="confirmation" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El perfil será eliminado.">
+                                            <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#usuarios').DataTable({
+                "language": {
+                    "url": "@Url.Content("~/assets/vendor/dataTables-1.10.13/Spanish.json")"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

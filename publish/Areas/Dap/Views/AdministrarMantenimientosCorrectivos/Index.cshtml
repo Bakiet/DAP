@@ -1,0 +1,371 @@
+﻿@using Ppgz.Repository
+@model Ppgz.Web.Areas.Dap.Models.MantenimientoCorrectivoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var obra = (obras)ViewBag.obra;
+}
+
+<h2 class="form-signin-heading">Mantenimientos Correctivos</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de Mantenimientos Correctivos</i></p>*@
+@*<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Ventas", "AdministrarVentas", new { @id = TempData["IDOBRA"] })'">Volver</button>*@
+<a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallemantenimientoscorrectivos-modal" id="" onclick="createModal('@Url.Action("ReporteMantenimientosCorrectivos", "AdministrarMantenimientosCorrectivos" , new {id=ViewBag.id })')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarMantenimientosCorrectivos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Mantenimiento Correctivo</a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Mantenimientos correctivos Registrados</div>
+    <div class="panel-body">
+        <div class="row">
+            <label class="col-sm-2 control-label">Obra</label>
+            <div class="col-sm-3">
+                @if(obra != null) { 
+                <div class="h4">@obra.Nombre</div>
+                }
+            </div>
+
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+   
+    <div class="panel-body">
+        <table class="table table-striped" id="mensajes">
+            <thead>
+                <tr>
+                    <th class="text-center">Reporte</th>
+                    @*<th class="text-center">Id</th>*@
+                    <th data-field="date" class="text-center">Fecha Visita</th>
+                    <th class="text-center">Equipo</th>
+                    <th class="text-center">Descripción</th>
+                    @*<th class="text-center">Detalle</th>*@
+                    <th class="text-center">Estatus</th>
+                    <th class="text-center"></th>
+            </thead>
+            <tbody>
+                @if(ViewBag.mantenimientoscorrectivos != null) { 
+                foreach (var mantenimientocorrectivo in (ViewBag.mantenimientoscorrectivos))
+                {
+                    <tr>
+                        <td class="text-center vert-align">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@mantenimientocorrectivo.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarMantenimientosCorrectivos" , new { @id = mantenimientocorrectivo.Id })')">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            </div>
+                        </td>   
+                        @*<td class="text-center vert-align">@mantenimientocorrectivo.Id</td>*@
+                        <td class="text-center vert-align">@mantenimientocorrectivo.FechaVisita</td>
+                        <td class="text-center vert-align">@mantenimientocorrectivo.Tipo</td>
+                        <td class="text-center vert-align">@mantenimientocorrectivo.NombreDocumento</td>
+                        <td class="text-center vert-align">@mantenimientocorrectivo.StatusMantenimiento</td>
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarMantenimientosCorrectivos", new { @id = @mantenimientocorrectivo.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                </a>
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarMantenimientosCorrectivos", new { @id = @mantenimientocorrectivo.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarMantenimientosCorrectivos", new { @id = @mantenimientocorrectivo.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El mantenimiento correctivo será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                }
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modelContent">
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecMantenimientoCorrectivo('reportemantenimientocorrectivo')">
+                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            </a>
+            <div id="reportemantenimientocorrectivo">
+                <div class="modal-header">
+                    @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                    <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                    </button>
+                    <h4 class="modal-title">Reporte de Mantenimiento Correctivo</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tipo)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Tipo)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.PersonaJuridica)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.PersonaJuridica)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaVisita)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.FechaVisita)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaPublicacion)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.FechaPublicacion)
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.NombreDocumento)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.NombreDocumento)
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tecnico)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Tecnico)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.EquiposAtendidos)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.EquiposAtendidos)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.StatusMantenimiento)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.StatusMantenimiento)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Descripcion)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Descripcion)
+                            </div>
+                        </div>
+                        @*<div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Archivo)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Archivo)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Evaluacion)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.Evaluacion)
+                            </div>
+                        </div>*@
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.HoraLlegada)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.HoraLlegada)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.HoraSalida)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6" style="float:right;">
+                                @Html.DisplayFor(o => o.HoraSalida)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+                <script type="text/javascript">
+
+                    function imprSelecMantenimientoCorrectivo(muestra) {
+                                var ficha = document.getElementById(muestra);
+                                var ventimp = window.open(' ', 'popimpr');
+                                ventimp.document.write(ficha.innerHTML);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();
+
+                            }
+                </script>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detallemantenimientoscorrectivos-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modelContent" style="width:1000px;">
+
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
+                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            </a>
+            <div id="reporte">
+
+                <div class="modal-header">
+                    @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                    <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                    </button>
+                    <h4 class="modal-title">Mantenimientos Correctivos</h4>
+                </div>
+
+
+                <div class="responsive-table">
+                    <div class="container-fluid">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Mantenimientos Correctivos Registrados</div>
+                            <div class="panel-body">
+                                <table class="table table-striped" id="mensajesmodal" data-toggle="table" data-sort-name="date" data-sort-order="desc">
+                                    <thead>
+                                        <tr>
+
+                                            @*<th class="text-center">Id</th>*@
+                                            <th class="text-center">Fecha visita</th>
+                                            <th class="text-center">Equipo</th>
+                                            <th class="text-center">Nombre de Documento</th>
+                                            @*<th class="text-center">Detalle</th>*@
+                                            <th class="text-center">Estatus</th>
+                                    </thead>
+                                    <tbody>
+                                        @if(ViewBag.mantenimientoscorrectivos != null) { 
+                                        foreach (var mantenimientopreventivo in (ViewBag.mantenimientoscorrectivos))
+                                        {
+                                            <tr>
+
+                                                @*<td class="text-center vert-align">@mantenimientopreventivo.Id</td>*@
+                                                <td class="text-center vert-align" id="date">@mantenimientopreventivo.FechaVisita</td>
+                                                <td class="text-center vert-align">@mantenimientopreventivo.Tipo</td>
+                                                <td class="text-center vert-align">@mantenimientopreventivo.NombreDocumento</td>
+                                                <td class="text-center vert-align">@mantenimientopreventivo.StatusMantenimiento</td>
+
+
+                                            </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+                <script type="text/javascript">
+
+                            function imprSelec(muestra) {
+                                var ficha = document.getElementById(muestra);
+                                var ventimp = window.open(' ', 'popimpr');
+                                ventimp.document.write(ficha.innerHTML);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();
+                            }
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+<script type="text/javascript">
+      function createModal(url){
+          $('#modelContent').load(url);
+
+      }
+</script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+           
+            $('#mensajesmodal').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]],
+                "order": [[0, "desc"]]
+            });
+            
+
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]],
+                "order": [[1, "desc"]]
+            });
+        });
+
+
+    </script>
+}

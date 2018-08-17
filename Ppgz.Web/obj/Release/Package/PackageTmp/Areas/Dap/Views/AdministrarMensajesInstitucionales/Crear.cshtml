@@ -1,0 +1,149 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.MensajeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Mensajes Institucionales</h2>
+<p class="page-description-title"><i class="fa fa-envelope" aria-hidden="true"></i> <i>Crear mensaje Institucional</i></p>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario del nuevo mensaje</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Crear", "AdministrarMensajesInstitucionales", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Tipo de Proveedor</label>
+                <div class="col-sm-4">
+                    <div class="radio">
+                        <label>
+
+                            @Html.RadioButtonFor(m => m.TipoProveedor, "MERCADERIA")
+                            Mercadería
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            @Html.RadioButtonFor(m => m.TipoProveedor, "SERVICIO") Servicio
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            @Html.RadioButtonFor(m => m.TipoProveedor, "TODOS")
+                            Todos
+                        </label>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.TipoProveedor)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                    @Html.ValidationMessageFor(m => m.FechaPublicacion)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FechaCaducidad, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.FechaCaducidad, new { @class = "form-control  fecha-hora", @type = "datetime" })
+                    @Html.ValidationMessageFor(m => m.FechaCaducidad)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Titulo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.Titulo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Titulo)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Mensaje</label>
+                <div class="col-sm-7">
+                    <div>
+
+                        <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+                            <li role="presentation" id="texto-mensaje" class="active"><a href="#contenido-panel" aria-controls="contenido-panel" role="tab" data-toggle="tab">Mensaje Escrito</a></li>
+                            <li role="presentation" id="pdf-mensaje"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo PDF</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="contenido-panel">
+                                @Html.TextAreaFor(m => m.Contenido, new { @class = "form-control", @rows = "5", @placeholder = "Contenido del mensaje" })
+                                @Html.ValidationMessageFor(m => m.Contenido)
+                                <p><i>El tipo mensaje será distribuido como <span class="label label-info">TEXTO</span></i></p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                <input type="file" style="padding: 20px;" name="Pdf" id="Pdf">
+                                @Html.ValidationMessageFor(m => m.Pdf)
+                                <p><i>El tipo mensaje será distribuido como <span class="label label-info">PDF</span></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarMensajesInstitucionales")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        
+       
+
+        $(document).ready(function () {
+
+            $("#Pdf").bind('change', function () {
+        
+                if (this.files[0].size / 1024 / 1024 > 3) {
+                    $(this).val("");
+
+                    alert('Debe incluir un archivo menor a 3Mb');
+                }
+            });
+
+
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+
+            $("#form").submit(function (eventObj) {
+                if ($("ul#text-pdf li.active").attr("id") === "pdf-mensaje") {
+                    $('<input />').attr('type', 'hidden')
+                        .attr('name', "pdf-mensaje")
+                        .attr('value', "pdf-mensaje")
+                        .appendTo('#form');
+                }
+                return true;
+            });
+
+           
+        });
+
+    </script>
+
+
+}

@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<h2 class="form-signin-heading">Datos de Obras</h2>
+
+
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarDatosObras")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Datos de obra</a>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Datos de obras Registradas</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="mensajes">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>
+                    <th class="text-center">Primer Contacto</th>
+                    <th class="text-center">Contacto Telefonico</th>
+                    <th class="text-center">Correo Electronico</th>
+                    <th class="text-center">Cargo Obra</th>*@
+                    <th class="text-center">Nombre Constructora</th>
+                    <th class="text-center">Contacto telefonico</th>
+                    <th class="text-center">Correo electronico</th>
+                    <th class="text-center">Cargo de empresa</th>
+                    <th class="text-center">Direccion de oficina</th>
+                    <th></th>
+            </thead>
+            <tbody>
+
+                @foreach (var datoobra in (ViewBag.datoobras))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@gestionobra.Id</td>
+                        <td class="text-center vert-align">@gestionobra.primercontacto</td>
+                        <td class="text-center vert-align">@gestionobra.contactotelefonicoobra</td>
+                        <td class="text-center vert-align">@gestionobra.correoelectronicoobra</td>
+                        <td class="text-center vert-align">@gestionobra.cargoobra</td>*@
+                        <td class="text-center vert-align">@datoobra.nombreconstructora</td>
+                        <td class="text-center vert-align">@datoobra.contactotelefonicoempresa</td>
+                        <td class="text-center vert-align">@datoobra.correoelectronicoempresa</td>
+                        <td class="text-center vert-align">@datoobra.cargoempresa</td>
+                        <td class="text-center vert-align">@datoobra.direccionoficina</td>
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("Editar", "AdministrarDatosObras", new { @id = @datoobra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarDatosObras", new { @id = @datoobra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarDatosObras", new { @id = @datoobra.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="La gestion de obra será eliminada.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, - 1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

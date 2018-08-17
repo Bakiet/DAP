@@ -1,0 +1,91 @@
+C:\repos\impuls\Ppgz\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll.config
+C:\repos\impuls\Ppgz\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll
+C:\repos\impuls\Ppgz\Ppgz.Repository\bin\Debug\Ppgz.Repository.pdb
+C:\repos\impuls\Ppgz\Ppgz.Repository\bin\Debug\EntityFramework.dll
+C:\repos\impuls\Ppgz\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\repos\impuls\Ppgz\Ppgz.Repository\bin\Debug\MySql.Data.dll
+C:\repos\impuls\Ppgz\Ppgz.Repository\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\repos\impuls\Ppgz\Ppgz.Repository\bin\Debug\EntityFramework.xml
+C:\repos\impuls\Ppgz\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\repos\impuls\Ppgz\Ppgz.Repository\obj\Debug\Ppgz.Repository.dll
+C:\repos\impuls\Ppgz\Ppgz.Repository\obj\Debug\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll.config
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\bin\Debug\MySql.Data.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\obj\Debug\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\Ppgz.Repository\obj\Debug\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll.config
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\MySql.Data.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll.config
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll.config
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\bin\Debug\MySql.Data.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.dll
+C:\Users\Noriant\Desktop\jdsistemas\proyectos\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll.config
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll.config
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\bin\Debug\MySql.Data.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll.config
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.csprojResolveAssemblyReference.cache

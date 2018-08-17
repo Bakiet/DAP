@@ -1,0 +1,60 @@
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.CitaWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.CitaWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\EntityFramework.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\MySql.Data.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.Repository.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\SapWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\ScaleWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.Repository.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\SapWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\ScaleWrapper.pdb
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\EntityFramework.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\bin\Release\MySql.Data.xml
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.dll
+C:\Users\Bakiet\Desktop\JD SISTEMAS\CLIENTES\DAP\dap\impuls\Ppgz\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.CitaWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.CitaWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\ScaleWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\ScaleWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\MySql.Data.xml
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\DAP\DAP\Ppgz.CitaWrapper\bin\Release\MySql.Data.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.CitaWrapper.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.CitaWrapper.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\EntityFramework.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\MySql.Data.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.Repository.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\SapWrapper.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\ScaleWrapper.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.Repository.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\SapWrapper.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\ScaleWrapper.pdb
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\EntityFramework.xml
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\bin\Release\MySql.Data.xml
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.dll
+C:\Users\Mama\Desktop\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.CitaWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.CitaWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\EntityFramework.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\MySql.Data.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.Repository.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\SapWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\ScaleWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\Ppgz.Repository.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\SapWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\ScaleWrapper.pdb
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\EntityFramework.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\bin\Release\MySql.Data.xml
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.dll
+C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.CitaWrapper\obj\Release\Ppgz.CitaWrapper.pdb

@@ -1,0 +1,127 @@
+﻿@using Ppgz.Repository
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var obra = (obras)ViewBag.obra;
+}
+
+<h2 class="form-signin-heading">KIT D.A.P</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de Kit D.A.P</i></p>*@
+
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarKitDaps")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Kit D.A.P</a>
+</div>
+@*<div class="panel panel-default">
+    <div class="panel-heading">Cuenta</div>
+    <div class="panel-body">
+        <div class="row">
+            <label class="col-sm-2 control-label">Obra</label>
+            <div class="col-sm-3">
+                <div>@obra.Nombre</div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>*@
+<div class="panel panel-default">
+    <div class="panel-heading">Kit D.A.P Registrados</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="obras">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Ver</th>
+            </thead>
+            <tbody>
+                @foreach (var kitdap in (ViewBag.kitdaps))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@kitdap.Id</td>*@
+                        <td class="text-center vert-align">@kitdap.Nombre</td>
+                        <td class="text-center vert-align">
+                            @if (@kitdap.Url != null)
+                            {
+                                <a class="fa fa-folder fa-2x" href="@Url.Content(@kitdap.Url)" target="_blank"></a>
+                            }
+                        </td>
+                        
+                       
+                        @*<td class="text-center vert-align">
+                            @if (ViewBag.Fallas != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarDallas", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Envios != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarEnvios", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (ViewBag.Requerimientos != null)
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarRequerimientos", new { @id = @obra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+                            }
+                        </td>*@
+                        @*<td class="text-center vert-align">
+                            @if (@obra.Foto != null)
+                            {
+                                <a href="@Url.Content(@obra.Foto)" target="_blank">Ver</a>
+                            }
+                        </td>
+                        <td class="text-center vert-align">
+                            @if (obra.Satelital != null)
+                            {
+                                <a href="@Url.Content(@obra.Satelital)" target="_blank">Ver</a>
+                            }
+                        </td>*@                       
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarKitDaps", new { @id = @kitdap.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarKitDaps", new { @id = @kitdap.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El Kit dap será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

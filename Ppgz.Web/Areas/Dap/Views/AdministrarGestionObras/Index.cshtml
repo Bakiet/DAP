@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Gestión de Obras</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la gestiones de obras</i></p>*@
+
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarGestionObras")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Gestión de obra</a>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Gestión de obras Registradas</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="mensajes">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Primer Contacto</th>
+                    <th class="text-center">Contacto Telefonico</th>
+                    <th class="text-center">Correo Electronico</th>
+                    <th class="text-center">Cargo Obra</th>
+                    <th class="text-center">Nombre Constructora</th>
+                    <th class="text-center">Vendidas por Climb</th>
+                    <th class="text-center">Vendidas por Otros</th>
+                    <th class="text-center">No vendidas</th>
+                    <th class="text-center">Paralizadas</th>
+                    <th></th>
+            </thead>
+            <tbody>
+
+                @foreach (var gestionobra in (ViewBag.gestionobras))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@gestionobra.Id</td>*@
+                        <td class="text-center vert-align">@gestionobra.primercontacto</td>
+                        <td class="text-center vert-align">@gestionobra.contactotelefonicoobra</td>
+                        <td class="text-center vert-align">@gestionobra.correoelectronicoobra</td>
+                        <td class="text-center vert-align">@gestionobra.cargoobra</td>
+                        <td class="text-center vert-align">@gestionobra.nombreconstructora</td>
+                        <td class="text-center vert-align">@gestionobra.vendidasclimb</td>
+                        <td class="text-center vert-align">@gestionobra.vendidasotros</td>
+                        <td class="text-center vert-align">@gestionobra.novendidas</td>
+                        <td class="text-center vert-align">@gestionobra.paralizadas</td>
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("Editar", "AdministrarGestionObras", new { @id = @gestionobra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                </a>
+
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarGestionObras", new { @id = @gestionobra.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarGestionObras", new { @id = @gestionobra.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="La gestion de obra será eliminada.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, - 1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

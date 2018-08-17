@@ -1,0 +1,160 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.ComponenteMecanicoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Componentes Mecanicos</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Componentes Mecanicos</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de Componentes Mecanicos</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Crear", "AdministrarComponentesMecanicos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+
+
+            <div class="form-group">
+                @Html.LabelFor(c => c.Tipo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(c => c.Tipo, (IEnumerable<SelectListItem>)ViewBag.ComponentesMecanicos_Tipos, "Seleccione un Valor", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Tipo)
+                    <a class="btn btn-default" href="@Url.Action("Crear", "AdministrarComponentesMecanicosTipos")"><i class="fa fa-plus" aria-hidden="true"></i> Crear Nuevo</a>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(c => c.Caracteristicas, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(c => c.Caracteristicas, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                    @Html.ValidationMessageFor(c => c.Caracteristicas)
+                </div>
+            </div>
+                @*<div class="form-group">
+                    @Html.LabelFor(c => c.Descripcion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(c => c.Descripcion, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                        @Html.ValidationMessageFor(c => c.Descripcion)
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Marca, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(c => c.Marca, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.Marca)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Modelo, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(c => c.Modelo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.Modelo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Serial, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(c => c.Serial, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.Serial)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.FechaFabricado, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(c => c.FechaFabricado, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(c => c.FechaFabricado)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Duracion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(c => c.Duracion, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.Duracion)
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    @Html.LabelFor(c => c.Sustitucion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(c => c.Sustitucion, new { @class = "form-control fecha-hora", @type = "datetime"})
+                        @Html.ValidationMessageFor(c => c.Sustitucion)
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Fotográfias</label>
+                    <div class="col-sm-4">
+                        <div>
+
+                            <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivos</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                    <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf" id="Pdf">
+                                    @Html.ValidationMessageFor(k => k.Fotografia)
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-7">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                        <a class="btn btn-default" href="@Url.Action("ComponentesMecanicos", "AdministrarComponentesMecanicos",new { @id = TempData["equipo_id"] })"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    </div>
+                </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+       
+
+        $(document).ready(function () {
+
+            $("#Pdf").bind('change', function () {
+
+                if (this.files[0].size / 1024 / 1024 > 3) {
+                    $(this).val("");
+
+                    alert('Debe incluir un archivo menor a 3Mb');
+                }
+            });
+
+
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+
+            $('<input />').attr('type', 'hidden')
+                         .attr('name', "Pdf-Plano")
+                         .attr('value', "Pdf-Plano")
+                         .appendTo('#form');
+
+            $('<input />').attr('type', 'hidden')
+                              .attr('name', "Pdf-Fotografia")
+                              .attr('value', "Pdf-Fotografia")
+                              .appendTo('#form');
+        });
+
+    </script>
+
+
+}

@@ -1,0 +1,72 @@
+﻿@using Ppgz.Repository
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2 class="form-signin-heading">Tipos Componentes Electronicos</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de tipos de componentes Electronicos</i></p>*@
+
+<div class="clearfix">
+    <a href="@Url.Action("Crear", "AdministrarComponentesElectronicosTipos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Tipo de Componentes Electronicos</a>
+</div>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Tipos Componentes Electronicos</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="obras">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Descripción</th>
+                   
+            </thead>
+            <tbody>
+                @foreach (var componenteelectronico in (ViewBag.ComponentesElectronicosTipos))
+                {
+                    <tr>
+                        <td class="text-center vert-align">@componenteelectronico.id</td>
+                        <td class="text-center vert-align">@componenteelectronico.descripcion</td>
+
+                          
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarComponentesElectronicosTipos", new { @id = @componenteelectronico.id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarComponentesElectronicosTipos", new { @id = @componenteelectronico.id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El componente mecanico será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

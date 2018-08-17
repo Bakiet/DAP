@@ -1,0 +1,299 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.EquipoViewModel
+@{
+
+}
+<a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecGeneralObra('reportegeneralobra')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+<div id="reportegeneralobra">
+    <div class="modal-header">
+        <a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>
+        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+        </button>
+        <h4 class="modal-title">Caracteristicas Generales del equipo</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.obra)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.obra_id)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Nombre)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Nombre)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Marca)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Marca)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Modelo)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Modelo)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Referencia)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Referencia)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.DimensionesCabina)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.DimensionesCabina)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.DimensionesHueco)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.DimensionesHueco)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.CargaNominal)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.CargaNominal)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Velocidad)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Velocidad)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Recorrido)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Recorrido)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Paradas)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Paradas)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Accesos)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.Accesos)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.VoltajeDeRed)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.VoltajeDeRed)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.PotenciaDeMaquina)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.PotenciaDeMaquina)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.TipoDeManiobra)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.TipoDeManiobra)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.NumeroDeGuayas)</h4>
+                </div>
+                <div class="col-4 col-sm-6" style="float:right;">
+                    @Html.DisplayFor(o => o.NumeroDeGuayas)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 col-sm-6">
+                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.CantidadPersonas)</h4>
+            </div>
+            <div class="col-4 col-sm-6" style="float:right;">
+                @Html.DisplayFor(o => o.CantidadPersonas)
+            </div>
+        </div>
+    </div>
+
+
+    @*<div class="form-group">
+        <label class="col-sm-3 control-label">Fotos</label>
+        <div class="col-sm-4">
+            <div>
+
+
+                @foreach (var ArchivosFotografia in (ViewBag.ArchivosFotografia))
+            {
+                var nombrearchivo = ArchivosFotografia.url.Replace("~/Uploads/", "");
+                if (nombrearchivo.Contains(".docx"))
+                {
+                    nombrearchivo = nombrearchivo.Replace(".docx", "");
+                        <p>
+                            <a class="fa fa-file-word-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".pdf"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".pdf", "");
+                        <p>
+                            <a class="fa fa-file-pdf-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".pptx"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".pptx", "");
+                        <p>
+                            <a class="fa fa-file-powerpoint-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".xlsx"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".xlsx", "");
+                        <p>
+                            <a class="fa fa-file-excel-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".jpg"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".jpg", "");
+                        <p>
+                            <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".png"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".png", "");
+                        <p>
+                            <a class="fa fa-file-image-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            <a class="fa fa-file-archive-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                }
+
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Planos</label>
+        <div class="col-sm-4">
+            <div>
+
+                @foreach (var ArchivosPlano in (ViewBag.ArchivosPlano))
+            {
+                var nombrearchivo = ArchivosPlano.url.Replace("~/Uploads/", "");
+                if (nombrearchivo.Contains(".docx"))
+                {
+                    nombrearchivo = nombrearchivo.Replace(".docx", "");
+                        <p>
+                            <a class="fa fa-file-word-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".pdf"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".pdf", "");
+                        <p>
+                            <a class="fa fa-file-pdf-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".pptx"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".pptx", "");
+                        <p>
+                            <a class="fa fa-file-powerpoint-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".xlsx"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".xlsx", "");
+                        <p>
+                            <a class="fa fa-file-excel-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".jpg"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".jpg", "");
+                        <p>
+                            <a class="fa fa-file-picture-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else if (nombrearchivo.Contains(".png"))
+                    {
+                        nombrearchivo = nombrearchivo.Replace(".png", "");
+                        <p>
+                            <a class="fa fa-file-image-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            <a class="fa fa-file-archive-o fa-1x" href="@Url.Content(ArchivosPlano.url)" target="_blank">@nombrearchivo</a>
+                        </p>
+                    }
+                }
+
+
+            </div>
+        </div>
+    </div>*@
+
+    <div class="modal-footer">
+
+    </div>
+</div>

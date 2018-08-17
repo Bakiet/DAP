@@ -1,0 +1,103 @@
+﻿@using Ppgz.Repository
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var obra = (obras)ViewBag.obra;
+}
+
+<h2 class="form-signin-heading">POST VENTA</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de post venta</i></p>*@
+
+<div class="panel panel-default">
+    <div class="panel-heading">Post Ventas Registrados</div>
+    <div class="panel-body">
+        <div class="row">
+            <label class="col-sm-2 control-label">Obra</label>
+            <div class="col-sm-3">
+                <div class="h4">@obra.Nombre</div>
+            </div>
+
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-body">
+        <table class="table table-striped" id="obras">
+            <thead>
+                <tr>
+                    <th class="text-center">Orden</th>
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center">Detalle</th>
+                    
+            </thead>
+            <tbody>
+                @foreach (var venta in (ViewBag.ventas))
+                {
+                    <tr>
+                        <td class="text-center vert-align">@venta.Id</td>
+                        <td class="text-center vert-align">@venta.Descripcion</td>
+                        <td class="text-center vert-align">
+                            @if (@venta.Descripcion == "MANTENIMIENTOS PREVENTIVOS")
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarMantenimientosPreventivos", new { @id = @venta.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            }
+                            @if (@venta.Descripcion == "MANTENIMIENTOS CORRECTIVOS")
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarMantenimientosCorrectivos", new { @id = @venta.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            }
+                            @if (@venta.Descripcion == "INFORMES GENERALES")
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarInformes", new { @id = @venta.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            }
+                            @if (@venta.Descripcion == "REPORTES DE SUGERENCIAS")
+                            {
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarSugerencias", new { @id = @venta.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            }
+                        </td>
+                        
+                       
+                        
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, 10000 - 1], [10, 25, 50, 100, 500, 1000, 5000, 10000, "Todos"]],
+                "order": [[0, "desc"]]
+            });
+        });
+       
+    </script>
+}

@@ -1,0 +1,73 @@
+﻿@using Ppgz.Repository
+@model Ppgz.Web.Areas.Dap.Models.ObraViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2 class="form-signin-heading">Obras</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra los reportes de fallas</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Obras Registradas</div>
+    <div class="panel-body">
+       
+        <table class="table table-striped" id="mensajes">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Persona Jurídica</th>
+                    <th class="text-center">Dirección de obra</th>
+                    <th class="text-center">Dirección de facturación</th>
+                    <th class="text-center">Dirección de oficina</th>
+
+                    @*<th class="text-center">Telefono de oficina</th>
+                <th class="text-center">Contacto</th>
+
+                <th class="text-center">Email</th>*@
+                    <th class="text-center">INFO. GENERAL DE OBRA</th>
+                    <th class="text-center">Post Venta</th>
+                    <th class="text-center">Operación</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obra in (ViewBag.obras))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@obra.Id</td>*@
+                        <td class="text-center vert-align h4">@obra.Nombre</td>
+                        <td class="text-center vert-align">@obra.PersonaJuridica</td>
+                        <td class="text-center vert-align">@obra.DireccionObra</td>
+                        <td class="text-center vert-align">@obra.DireccionFacturacion</td>
+                        <td class="text-center vert-align">@obra.DireccionOficina</td>
+
+                       
+                       
+                       
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

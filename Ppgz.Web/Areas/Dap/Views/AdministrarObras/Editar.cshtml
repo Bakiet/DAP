@@ -1,0 +1,447 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.ObraViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Editar Obras</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Obras</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Editar", "AdministrarObras", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+           
+
+            <div class="form-group">
+                @Html.LabelFor(o => o.Nombre, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(o => o.Nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(o => o.Nombre)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o => o.PersonaJuridica, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(o => o.PersonaJuridica, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(o => o.PersonaJuridica)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o => o.DireccionObra, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(o => o.DireccionObra, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                    @Html.ValidationMessageFor(o => o.DireccionObra)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o => o.DireccionFacturacion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(o => o.DireccionFacturacion, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                    @Html.ValidationMessageFor(o => o.DireccionFacturacion)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(o => o.DireccionOficina, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-4">
+                    @Html.TextAreaFor(o => o.DireccionOficina, new { @class = "form-control" , style = "width: 700px; height:150px;" })
+                    @Html.ValidationMessageFor(o => o.DireccionOficina)
+                </div>
+            </div>
+
+            
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Fotos</label>
+                <div class="col-sm-4">
+                    <div>
+
+                        @foreach (var ArchivosFotografia in (ViewBag.ArchivosFotografia))
+                        {
+                            if (ArchivosFotografia.url != null)
+                            {
+                                var nombrearchivo = ArchivosFotografia.url.Replace("~/Uploads/", "");
+                                if (nombrearchivo.Contains(".docx"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".docx", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarObras", new { @archivo = ArchivosFotografia.url, @tipo = "obras", @caracteristica = "fotografia", @id = Model.Id })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+                                }
+                                else if (nombrearchivo.Contains(".pdf"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".pdf", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-pdf-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarObras", new { @archivo = ArchivosFotografia.url, @tipo = "obras", @caracteristica = "fotografia", @id = Model.Id })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+                                }
+                                else if (nombrearchivo.Contains(".pptx"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".pptx", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-powerpoint-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarObras", new { @archivo = ArchivosFotografia.url, @tipo = "obras", @caracteristica = "fotografia", @id = Model.Id })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+                                }
+                                else if (nombrearchivo.Contains(".xlsx"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".xlsx", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-excel-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarObras", new { @archivo = ArchivosFotografia.url, @tipo = "obras", @caracteristica = "fotografia", @id = Model.Id })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+                                }
+                                else if (nombrearchivo.Contains(".jpg"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".jpg", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-picture-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarObras", new { @archivo = ArchivosFotografia.url, @tipo = "obras", @caracteristica = "fotografia", @id = Model.Id })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+                                }
+                                else if (nombrearchivo.Contains(".png"))
+                                {
+                                    nombrearchivo = nombrearchivo.Replace(".png", "");
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-image-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarObras", new { @archivo = ArchivosFotografia.url, @tipo = "obras", @caracteristica = "fotografia", @id = Model.Id })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+                                }
+                                else
+                                {
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-file-archive-o fa-1x" href="@Url.Content(ArchivosFotografia.url)" target="_blank">@nombrearchivo</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarObras", new { @archivo = ArchivosFotografia.url, @tipo = "obras", @caracteristica = "fotografia", @id = Model.Id })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+                                }
+                            }
+                        }
+                        <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                            <li role="presentation" id="file-foto"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivos</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf-Fotografia" id="Pdf-Fotografia">
+                                @Html.ValidationMessageFor(o => o.foto)
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Mapa satelital</label>
+                <div class="col-sm-4">
+                    <div>
+
+                        @foreach (var ArchivosMapa in (ViewBag.ArchivosMapa))
+                        {
+                            if (ArchivosMapa.url != null)
+                            {
+                                var nombrearchivo = ArchivosMapa.url.Replace("~/Uploads/", "");
+
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-map-o fa-1x" href="@Url.Content(ArchivosMapa.url)" target="_blank"> Ver Coordenadas Google Map</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarObras", new { @archivo = ArchivosMapa.url, @tipo = "obras", @caracteristica = "mapa", @id = Model.Id })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                </p>
+                            }
+                        }
+
+
+                        <div class="tab-content">
+
+                            @Html.TextAreaFor(o => o.mapa, new { @class = "form-control", style = "width: 700px; height:150px;" })
+                            @Html.ValidationMessageFor(o => o.mapa)
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <form method="post">
+                    <div class="col-sm-offset-3 col-sm-7">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                        <a class="btn btn-default" href="@Url.Action("Editar", "AdministrarObras", new { @id = Model.Id })"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    </div>
+                </form>
+            </div>
+            <div class="form-group">
+                <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2> <b>Contactos</b></h2>
+                                </div>
+                                <div class="col-sm-6">
+                                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fa fa-floppy-o"> </i> <span>Agregar nuevo contacto</span></a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <table class="table table-striped " id="obras">
+                            <thead>
+                                <tr>
+                                    @*<th class="text-center">Id</th>*@
+                                    <th class="text-center">Nombre</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Telefono</th>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var obracontacto in (ViewBag.contactos))
+                                {
+
+                                    <tr>
+                                        @*<td class="text-center vert-align">@obracontacto.id</td>*@
+                                        <td class="text-center vert-align">@obracontacto.nombre</td>
+                                        <td class="text-center vert-align">@obracontacto.email</td>
+                                        <td class="text-center vert-align">@obracontacto.telefono</td>
+
+
+
+
+                                        @*<td class="text-center">
+
+                                                <div class="btn-group-vertical">
+                                                    <a class="btn btn-info btn-xs" href="@Url.Action("Editar_Contacto", "AdministrarObras", new { @id = @obracontacto.id })">
+
+                                                        <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                                    </a>
+                                                    <a class="btn btn-warning btn-xs" href="@Url.Action("Editar_Contacto", "AdministrarObras", new { @id = @obracontacto.id })">
+
+                                                        <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                                    </a>
+                                                    <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar_Contacto", "AdministrarObras", new { @id = @obracontacto.id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El contacto será eliminado.">
+                                                        <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                                    </a>
+                                                </div>
+                                            </td>*@
+                                        <td>
+                                            <div class="btn-group-vertical">
+                                                <a onclick="javascript: editcontacto();" href="#editEmployeeModal" class="btn btn-warning btn-xs" data-toggle="modal" data-id=@obracontacto.id data-nombre=@obracontacto.nombre data-email=@obracontacto.email data-telefono=@obracontacto.telefono><i class="fa fa-pencil" data-toggle="tooltip" title="Editar"> </i>Editar</a>
+                                                <a onclick="javascript: deletecontacto();" href="#deleteEmployeeModal" class="btn btn-danger btn-xs" data-toggle="modal" data-id=@obracontacto.id data-nombre=@obracontacto.nombre><i class="fa fa-times" data-toggle="tooltip" title="Eliminar"> </i>Eliminar</a>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="addEmployeeModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="formadd" method="post">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Agregar contacto</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>Nombre</label>
+                                                <input type="text" class="form-control" name="txtaddnombre" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" name="txtaddemail" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>Telefono</label>
+                                                <input type="text" class="form-control" name="txtaddtelefono" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                                        <input type="submit" class="btn btn-success" value="Agregar">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="editEmployeeModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="formedit" method="post">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Editar contacto</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <input type="hidden" id="txteditid" name="txteditid">
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>Nombre</label>
+                                                <input type="text" class="form-control" id="txteditnombre" name="txteditnombre" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" id="txteditemail" name="txteditemail" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>Telefono</label>
+                                                <input type="text" class="form-control" id="txtedittelefono" name="txtedittelefono" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                                        <input type="submit" class="btn btn-info" value="Guardar">
+
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div id="deleteEmployeeModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="formdelete" method="post">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Eliminar contacto</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" id="txtdeleteid" name="txtdeleteid">
+
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <label>Nombre</label>
+                                                <input type="text" enable="false" class="form-control" id="txtdeletenombre" name="txtdeletenombre">
+                                            </div>
+                                        </div>
+                                        <p>Esta seguro de eliminar este contacto?</p>
+                                        <p class="text-warning"><small>Esta acción es irreversible.</small></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                                        <input type="submit" class="btn btn-danger" value="Eliminar">
+                                    </div>
+                               </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+
+        }
+      </div>
+</div>
+
+@section Scripts {
+   
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Activate tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
+        });
+
+        $('<input />').attr('type', 'hidden')
+                         .attr('name', "Pdf-Plano")
+                         .attr('value', "Pdf-Plano")
+                         .appendTo('#form');
+
+        $('<input />').attr('type', 'hidden')
+                          .attr('name', "Pdf-Fotografia")
+                          .attr('value', "Pdf-Fotografia")
+                          .appendTo('#form');
+
+        document.getElementById("formedit").onsubmit = function () {
+            //var Id = document.getElementById("txteditid").value;
+            
+           // Window.location.href = '@Url.Action("Editar", "AdministrarObras")/' + Id;
+           //alert(Id);
+            @*$.ajax({
+                url: '@Url.Action("Editar", "AdministrarObras")',
+                data: { id: Id },
+                type: 'POST'
+            }).done(function (result) {
+                $('#addEmployeeModal').modal('show');
+                if (result.error) {
+
+                    $('#deleteEmployeeModal').modal('show');
+                    return;
+                }
+
+              
+
+
+            }).fail(function (response) {
+                $('#deleteEmployeeModal').modal('show');
+            });*@
+               
+     
+        }
+
+       
+
+        function editcontacto() {
+
+            $('#editEmployeeModal').on('show.bs.modal', function (event) {
+
+                var id = $(event.relatedTarget).attr('data-id');
+                var nombre = $(event.relatedTarget).attr('data-nombre');
+                var email = $(event.relatedTarget).attr('data-email');
+                var telefono = $(event.relatedTarget).attr('data-telefono');
+
+                $("#txteditid").val(id);
+                $("#txteditnombre").val(nombre);
+                $("#txteditemail").val(email);
+                $("#txtedittelefono").val(telefono);
+
+            });
+
+        }
+        function deletecontacto() {
+
+            $('#deleteEmployeeModal').on('show.bs.modal', function (event) {
+
+                var deleteid = $(event.relatedTarget).attr('data-id');
+                var deletenombre = $(event.relatedTarget).attr('data-nombre');
+
+                $("#txtdeleteid").val(deleteid);
+                $("#txtdeletenombre").val(deletenombre);
+
+
+            });
+        }
+    </script>
+
+
+
+}

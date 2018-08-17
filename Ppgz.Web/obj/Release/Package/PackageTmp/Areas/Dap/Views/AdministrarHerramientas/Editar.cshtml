@@ -1,0 +1,202 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.HerramientaViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Editar Herramientas de la Obra</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Herramientas de la Obra</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Editar", "AdministrarHerramientas", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <div class="form-group">
+                    @Html.LabelFor(o => o.obra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(o => o.obra_id, (IEnumerable<SelectListItem>)ViewBag.Obras, "Seleccione un Valor", new { @class = "form-control", @disabled = "disabled" })
+                        @Html.ValidationMessageFor(o => o.obra_id)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.Descripcion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(h => h.Descripcion, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(h => h.Descripcion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.Cantidad, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(h => h.Cantidad, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(h => h.Cantidad)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.FechaSalida, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(h => h.FechaSalida, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(h => h.FechaSalida)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.Propiedad, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(h => h.Propiedad, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(h => h.Propiedad)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.FechaCulminacion, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(h => h.FechaCulminacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.ValidationMessageFor(h => h.FechaCulminacion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.CantidadDeposito, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(h => h.CantidadDeposito, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(h => h.CantidadDeposito)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.FechaEntrada, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(h => h.FechaEntrada, new { @class = "form-control fecha-hora", @type = "datetime", @id = "confirmar" })
+                        @Html.ValidationMessageFor(h => h.FechaEntrada)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.SupervisorObra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(h => h.SupervisorObra, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(h => h.SupervisorObra)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.TecnicoResponsable, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(h => h.TecnicoResponsable, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(h => h.TecnicoResponsable)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(h => h.Observaciones, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(h => h.Observaciones, new { @class = "form-control", @rows = "5" })
+                        @Html.ValidationMessageFor(h => h.Observaciones)
+                    </div>
+                </div>  
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">ARCHIVO</label>
+                <div class="col-sm-4">
+                    <div>
+                    @foreach (var Archivos in (ViewBag.Archivos))
+                    {
+                        var nombrearchivo = Archivos.url.Replace("~/Uploads/", "");
+                        
+                            
+                            <p>
+                                <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" href="@Url.Content(Archivos.url)" target="_blank">@nombrearchivo</a>
+                                <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarHerramientas", new { @archivo = Archivos.url, @tipo = "herramientas", @caracteristica = "archivo", @id = TempData["previo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                            </p>
+                        
+                       
+                    }
+                        <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                            <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                <input type="file" multiple="multiple" style="padding: 20px;" name="Pdf" id="Pdf">
+                                @Html.ValidationMessageFor(k => k.Archivo)
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+            @*<div class="form-group">
+                @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                    @Html.ValidationMessageFor(m => m.FechaPublicacion)
+                </div>
+            </div>*@
+
+            <div class="modal fade" id="confirm-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p></p>
+                            <p>Esta seguro de de pasar al historico esta herramienta de la obra?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.href='@Url.Action("Editar", "AdministrarHerramientas", new { @id = TempData["previo"] })'">CANCELAR</button>
+
+                            <button id="confirm" type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> ACEPTAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarHerramientas")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+
+            $("#confirmar").bind('change', function () {
+                var st = this.options[this.selectedIndex].innerHTML;
+                if (st != null) {
+                    $("#confirm-edit").modal("show");
+                }
+
+            });
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+
+
+            $('<input />').attr('type', 'hidden')
+                          .attr('name', "Pdf")
+                          .attr('value', "pdf")
+                          .appendTo('#form');
+
+        });
+    </script>
+
+
+
+}

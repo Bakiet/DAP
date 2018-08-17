@@ -1,0 +1,838 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="impuls_portalModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="componenteselectricos">
+      <EntityTypeMapping TypeName="impuls_portalModel.componenteselectrico">
+        <MappingFragment StoreEntitySet="componenteselectricos">
+          <ScalarProperty Name="IdEquipos" ColumnName="IdEquipos" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+          <ScalarProperty Name="Sustitucion" ColumnName="Sustitucion" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="FechaFabricado" ColumnName="FechaFabricado" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="componenteselectricos_sustituciones">
+      <EntityTypeMapping TypeName="impuls_portalModel.componenteselectricos_sustituciones">
+        <MappingFragment StoreEntitySet="componenteselectricos_sustituciones">
+          <ScalarProperty Name="IdEquipos" ColumnName="IdEquipos" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+          <ScalarProperty Name="Sustitucion" ColumnName="Sustitucion" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="FechaFabricado" ColumnName="FechaFabricado" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="componentesmecanicos">
+      <EntityTypeMapping TypeName="impuls_portalModel.componentesmecanico">
+        <MappingFragment StoreEntitySet="componentesmecanicos">
+          <ScalarProperty Name="IdEquipos" ColumnName="IdEquipos" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+          <ScalarProperty Name="Sustitucion" ColumnName="Sustitucion" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="FechaFabricado" ColumnName="FechaFabricado" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="componentesmecanicos_sustituciones">
+      <EntityTypeMapping TypeName="impuls_portalModel.componentesmecanicos_sustituciones">
+        <MappingFragment StoreEntitySet="componentesmecanicos_sustituciones">
+          <ScalarProperty Name="IdEquipos" ColumnName="IdEquipos" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+          <ScalarProperty Name="Sustitucion" ColumnName="Sustitucion" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="FechaFabricado" ColumnName="FechaFabricado" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="envios">
+      <EntityTypeMapping TypeName="impuls_portalModel.envio">
+        <MappingFragment StoreEntitySet="envios">
+          <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+          <ScalarProperty Name="EntregaProducto" ColumnName="EntregaProducto" />
+          <ScalarProperty Name="StatusEntrega" ColumnName="StatusEntrega" />
+          <ScalarProperty Name="NumeroFactura" ColumnName="NumeroFactura" />
+          <ScalarProperty Name="StatusPago" ColumnName="StatusPago" />
+          <ScalarProperty Name="CostoProducto" ColumnName="CostoProducto" />
+          <ScalarProperty Name="Solicitado" ColumnName="Solicitado" />
+          <ScalarProperty Name="CodigoArancelario" ColumnName="CodigoArancelario" />
+          <ScalarProperty Name="PesoTotal" ColumnName="PesoTotal" />
+          <ScalarProperty Name="NumeroBulto" ColumnName="NumeroBulto" />
+          <ScalarProperty Name="StatusEnvio" ColumnName="StatusEnvio" />
+          <ScalarProperty Name="EmpresaEnvio" ColumnName="EmpresaEnvio" />
+          <ScalarProperty Name="Tracking" ColumnName="Tracking" />
+          <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+          <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+          <ScalarProperty Name="TipoComponente" ColumnName="TipoComponente" />
+          <ScalarProperty Name="Obra" ColumnName="Obra" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equipos">
+      <EntityTypeMapping TypeName="impuls_portalModel.equipos">
+        <MappingFragment StoreEntitySet="equipos">
+          <ScalarProperty Name="Plano" ColumnName="Plano" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+          <ScalarProperty Name="NumeroDeGuayas" ColumnName="NumeroDeGuayas" />
+          <ScalarProperty Name="TipoDeManiobra" ColumnName="TipoDeManiobra" />
+          <ScalarProperty Name="PotenciaDeMaquina" ColumnName="PotenciaDeMaquina" />
+          <ScalarProperty Name="VoltajeDeRed" ColumnName="VoltajeDeRed" />
+          <ScalarProperty Name="Accesos" ColumnName="Accesos" />
+          <ScalarProperty Name="Paradas" ColumnName="Paradas" />
+          <ScalarProperty Name="Recorrido" ColumnName="Recorrido" />
+          <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+          <ScalarProperty Name="CargaNominal" ColumnName="CargaNominal" />
+          <ScalarProperty Name="DimensionesHueco" ColumnName="DimensionesHueco" />
+          <ScalarProperty Name="DimensionesCabina" ColumnName="DimensionesCabina" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fallas">
+      <EntityTypeMapping TypeName="impuls_portalModel.falla">
+        <MappingFragment StoreEntitySet="fallas">
+          <ScalarProperty Name="GerenciaResponsable" ColumnName="GerenciaResponsable" />
+          <ScalarProperty Name="PersonaReporte" ColumnName="PersonaReporte" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="AccionesRecomendadas" ColumnName="AccionesRecomendadas" />
+          <ScalarProperty Name="AccionesTomadas" ColumnName="AccionesTomadas" />
+          <ScalarProperty Name="Condicion" ColumnName="Condicion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="NumeroReporte" ColumnName="NumeroReporte" />
+          <ScalarProperty Name="FechaSolucion" ColumnName="FechaSolucion" />
+          <ScalarProperty Name="StatusFalla" ColumnName="StatusFalla" />
+          <ScalarProperty Name="Personal" ColumnName="Personal" />
+          <ScalarProperty Name="Componente" ColumnName="Componente" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Equipo" ColumnName="Equipo" />
+          <ScalarProperty Name="Obra" ColumnName="Obra" />
+          <ScalarProperty Name="FechaFalla" ColumnName="FechaFalla" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fallascorreos">
+      <EntityTypeMapping TypeName="impuls_portalModel.fallascorreo">
+        <MappingFragment StoreEntitySet="fallascorreos">
+          <ScalarProperty Name="IdFallas" ColumnName="IdFallas" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="herramientas">
+      <EntityTypeMapping TypeName="impuls_portalModel.herramienta">
+        <MappingFragment StoreEntitySet="herramientas">
+          <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+          <ScalarProperty Name="CantidadDeposito" ColumnName="CantidadDeposito" />
+          <ScalarProperty Name="FechaCulminacion" ColumnName="FechaCulminacion" />
+          <ScalarProperty Name="Propiedad" ColumnName="Propiedad" />
+          <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="informes">
+      <EntityTypeMapping TypeName="impuls_portalModel.informe">
+        <MappingFragment StoreEntitySet="informes">
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kitdaps">
+      <EntityTypeMapping TypeName="impuls_portalModel.kitdap">
+        <MappingFragment StoreEntitySet="kitdap">
+          <ScalarProperty Name="IdPrevio" ColumnName="IdPrevio" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mantenimientocorrectivoes">
+      <EntityTypeMapping TypeName="impuls_portalModel.mantenimientocorrectivo">
+        <MappingFragment StoreEntitySet="mantenimientocorrectivo">
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+          <ScalarProperty Name="HoraLlegada" ColumnName="HoraLlegada" />
+          <ScalarProperty Name="Evaluacion" ColumnName="Evaluacion" />
+          <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+          <ScalarProperty Name="StatusMantenimiento" ColumnName="StatusMantenimiento" />
+          <ScalarProperty Name="EquiposAtendidos" ColumnName="EquiposAtendidos" />
+          <ScalarProperty Name="Tecnico" ColumnName="Tecnico" />
+          <ScalarProperty Name="NombreDocumento" ColumnName="NombreDocumento" />
+          <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
+          <ScalarProperty Name="FechaVisita" ColumnName="FechaVisita" />
+          <ScalarProperty Name="PersonaJuridica" ColumnName="PersonaJuridica" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mantenimientopreventivoes">
+      <EntityTypeMapping TypeName="impuls_portalModel.mantenimientopreventivo">
+        <MappingFragment StoreEntitySet="mantenimientopreventivo">
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+          <ScalarProperty Name="HoraLlegada" ColumnName="HoraLlegada" />
+          <ScalarProperty Name="Evaluacion" ColumnName="Evaluacion" />
+          <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+          <ScalarProperty Name="StatusMantenimiento" ColumnName="StatusMantenimiento" />
+          <ScalarProperty Name="EquiposAtendidos" ColumnName="EquiposAtendidos" />
+          <ScalarProperty Name="Tecnico" ColumnName="Tecnico" />
+          <ScalarProperty Name="NombreDocumento" ColumnName="NombreDocumento" />
+          <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
+          <ScalarProperty Name="FechaVisita" ColumnName="FechaVisita" />
+          <ScalarProperty Name="PersonaJuridica" ColumnName="PersonaJuridica" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="obras">
+      <EntityTypeMapping TypeName="impuls_portalModel.obra">
+        <MappingFragment StoreEntitySet="obras">
+          <ScalarProperty Name="Email2" ColumnName="Email2" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contacto2" ColumnName="Contacto2" />
+          <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+          <ScalarProperty Name="TelefonoOficina" ColumnName="TelefonoOficina" />
+          <ScalarProperty Name="DireccionObra" ColumnName="DireccionObra" />
+          <ScalarProperty Name="DireccionOficina" ColumnName="DireccionOficina" />
+          <ScalarProperty Name="DireccionFacturacion" ColumnName="DireccionFacturacion" />
+          <ScalarProperty Name="PersonaJuridica" ColumnName="PersonaJuridica" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="obrasgestions">
+      <EntityTypeMapping TypeName="impuls_portalModel.obrasgestion">
+        <MappingFragment StoreEntitySet="obrasgestion">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="previos">
+      <EntityTypeMapping TypeName="impuls_portalModel.previo">
+        <MappingFragment StoreEntitySet="previos">
+          <ScalarProperty Name="FechaInspeccionVideo" ColumnName="FechaInspeccionVideo" />
+          <ScalarProperty Name="FechaInspeccionFotografia" ColumnName="FechaInspeccionFotografia" />
+          <ScalarProperty Name="FechaCulminacionMontajeFotografia" ColumnName="FechaCulminacionMontajeFotografia" />
+          <ScalarProperty Name="FechaDescargaResguardoFotografia" ColumnName="FechaDescargaResguardoFotografia" />
+          <ScalarProperty Name="InformeEntregaFinal" ColumnName="InformeEntregaFinal" />
+          <ScalarProperty Name="TecnicoInstalador" ColumnName="TecnicoInstalador" />
+          <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
+          <ScalarProperty Name="FechaPeriodoPrueba" ColumnName="FechaPeriodoPrueba" />
+          <ScalarProperty Name="FechaConfiguracion" ColumnName="FechaConfiguracion" />
+          <ScalarProperty Name="FechaCulminacionMontaje" ColumnName="FechaCulminacionMontaje" />
+          <ScalarProperty Name="FechaEntregaSoso" ColumnName="FechaEntregaSoso" />
+          <ScalarProperty Name="FechaInicioMontaje" ColumnName="FechaInicioMontaje" />
+          <ScalarProperty Name="ActivacionProtocoloGarantiaFabrica" ColumnName="ActivacionProtocoloGarantiaFabrica" />
+          <ScalarProperty Name="FechaDescargaResguardo" ColumnName="FechaDescargaResguardo" />
+          <ScalarProperty Name="FechaSalidaPuertoObra" ColumnName="FechaSalidaPuertoObra" />
+          <ScalarProperty Name="FechaPeriodoNacionalizacion" ColumnName="FechaPeriodoNacionalizacion" />
+          <ScalarProperty Name="FechaLlegadaBuque" ColumnName="FechaLlegadaBuque" />
+          <ScalarProperty Name="FechaSalidaBuque" ColumnName="FechaSalidaBuque" />
+          <ScalarProperty Name="FechaSalidaFabrica" ColumnName="FechaSalidaFabrica" />
+          <ScalarProperty Name="FechaConstruccion" ColumnName="FechaConstruccion" />
+          <ScalarProperty Name="FechaPagoInicialEquipo" ColumnName="FechaPagoInicialEquipo" />
+          <ScalarProperty Name="FechaPagoInicialFabrica" ColumnName="FechaPagoInicialFabrica" />
+          <ScalarProperty Name="FechaFirmaContrato" ColumnName="FechaFirmaContrato" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="protocolos">
+      <EntityTypeMapping TypeName="impuls_portalModel.protocolo">
+        <MappingFragment StoreEntitySet="protocolos">
+          <ScalarProperty Name="IdPrevio" ColumnName="IdPrevio" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requerimientos">
+      <EntityTypeMapping TypeName="impuls_portalModel.requerimiento">
+        <MappingFragment StoreEntitySet="requerimientos">
+          <ScalarProperty Name="AccionesEjecutadas" ColumnName="AccionesEjecutadas" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaCumplimientoSolicitud" ColumnName="FechaCumplimientoSolicitud" />
+          <ScalarProperty Name="StatusRequerimiento" ColumnName="StatusRequerimiento" />
+          <ScalarProperty Name="Tecnicos" ColumnName="Tecnicos" />
+          <ScalarProperty Name="GerenciaResponsable" ColumnName="GerenciaResponsable" />
+          <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Obra" ColumnName="Obra" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requerimientoscorreos">
+      <EntityTypeMapping TypeName="impuls_portalModel.requerimientoscorreo">
+        <MappingFragment StoreEntitySet="requerimientoscorreos">
+          <ScalarProperty Name="IdRequerimientos" ColumnName="IdRequerimientos" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sugerencias">
+      <EntityTypeMapping TypeName="impuls_portalModel.sugerencia">
+        <MappingFragment StoreEntitySet="sugerencias">
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="GerenciaResponsable" ColumnName="GerenciaResponsable" />
+          <ScalarProperty Name="AccionesRecomendadas" ColumnName="AccionesRecomendadas" />
+          <ScalarProperty Name="AccionesTomadas" ColumnName="AccionesTomadas" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ventas">
+      <EntityTypeMapping TypeName="impuls_portalModel.venta">
+        <MappingFragment StoreEntitySet="ventas">
+          <ScalarProperty Name="IdObra" ColumnName="IdObra" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="add_user" FunctionName="impuls_portalModel.Store.add_user" />
+    <FunctionImportMapping FunctionImportName="config_appointment" FunctionName="impuls_portalModel.Store.config_appointment" />
+    <FunctionImportMapping FunctionImportName="delete_account" FunctionName="impuls_portalModel.Store.delete_account" />
+    <EntitySetMapping Name="acumuladores">
+      <EntityTypeMapping TypeName="impuls_portalModel.acumuladore">
+        <MappingFragment StoreEntitySet="acumuladores">
+          <ScalarProperty Name="AlmacenId" ColumnName="AlmacenId" />
+          <ScalarProperty Name="CantidadPar" ColumnName="CantidadPar" />
+          <ScalarProperty Name="SemanaAno" ColumnName="SemanaAno" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="almacenes">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.almacene)">
+        <MappingFragment StoreEntitySet="almacenes">
+          <ScalarProperty Name="CapacidadSemanal" ColumnName="CapacidadSemanal" />
+          <ScalarProperty Name="CapacidadDiaria" ColumnName="CapacidadDiaria" />
+          <ScalarProperty Name="NombreAlmacen" ColumnName="NombreAlmacen" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="andenes">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.andene)">
+        <MappingFragment StoreEntitySet="andenes">
+          <ScalarProperty Name="Anden" ColumnName="Anden" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="asns">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.asn)">
+        <MappingFragment StoreEntitySet="asn">
+          <ScalarProperty Name="Tienda" ColumnName="Tienda" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="NombreMaterial" ColumnName="NombreMaterial" />
+          <ScalarProperty Name="NumeroMaterial" ColumnName="NumeroMaterial" />
+          <ScalarProperty Name="NumeroPosicion" ColumnName="NumeroPosicion" />
+          <ScalarProperty Name="OrdenNumeroDocumento" ColumnName="OrdenNumeroDocumento" />
+          <ScalarProperty Name="CitaId" ColumnName="CitaId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.AspNetRole)">
+        <MappingFragment StoreEntitySet="aspnetroles">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.AspNetUser)">
+        <MappingFragment StoreEntitySet="aspnetusers">
+          <ScalarProperty Name="OperacionTx" ColumnName="OperacionTx" />
+          <ScalarProperty Name="UsuarioIdTx" ColumnName="UsuarioIdTx" />
+          <ScalarProperty Name="FechaTx" ColumnName="FechaTx" />
+          <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+          <ScalarProperty Name="TerminosCondicionesFecha" ColumnName="TerminosCondicionesFecha" />
+          <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.AspNetUserClaim)">
+        <MappingFragment StoreEntitySet="aspnetuserclaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.AspNetUserLogin)">
+        <MappingFragment StoreEntitySet="aspnetuserlogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="citas">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.cita)">
+        <MappingFragment StoreEntitySet="citas">
+          <ScalarProperty Name="Penalizado" ColumnName="Penalizado" />
+          <ScalarProperty Name="EstatusCitaId" ColumnName="EstatusCitaId" />
+          <ScalarProperty Name="RielesOcupados" ColumnName="RielesOcupados" />
+          <ScalarProperty Name="OperacionTx" ColumnName="OperacionTx" />
+          <ScalarProperty Name="UsuarioIdTx" ColumnName="UsuarioIdTx" />
+          <ScalarProperty Name="FechaTx" ColumnName="FechaTx" />
+          <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+          <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+          <ScalarProperty Name="CantidadTotal" ColumnName="CantidadTotal" />
+          <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaCita" ColumnName="FechaCita" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="configuraciones">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.configuracione)">
+        <MappingFragment StoreEntitySet="configuraciones">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="crs">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.cr)">
+        <MappingFragment StoreEntitySet="crs">
+          <ScalarProperty Name="CitaId" ColumnName="CitaId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="ArchivoCR" ColumnName="ArchivoCR" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuentas">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.cuenta)">
+        <MappingFragment StoreEntitySet="cuentas">
+          <ScalarProperty Name="OperacionTx" ColumnName="OperacionTx" />
+          <ScalarProperty Name="UsuarioIdTx" ColumnName="UsuarioIdTx" />
+          <ScalarProperty Name="FechaTx" ColumnName="FechaTx" />
+          <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="EsEspecial" ColumnName="EsEspecial" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="NombreCuenta" ColumnName="NombreCuenta" />
+          <ScalarProperty Name="CodigoProveedor" ColumnName="CodigoProveedor" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuentaproveedores">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.cuentaproveedore)">
+        <MappingFragment StoreEntitySet="cuentaproveedores">
+          <ScalarProperty Name="CuentaId" ColumnName="CuentaId" />
+          <ScalarProperty Name="CompradorImpulsEmail" ColumnName="CompradorImpulsEmail" />
+          <ScalarProperty Name="CompradorImpulsTelefono" ColumnName="CompradorImpulsTelefono" />
+          <ScalarProperty Name="CompradorImpulsNombre" ColumnName="CompradorImpulsNombre" />
+          <ScalarProperty Name="VendedorTelefono" ColumnName="VendedorTelefono" />
+          <ScalarProperty Name="VendedorNombre" ColumnName="VendedorNombre" />
+          <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="NumeroProveedor" ColumnName="NumeroProveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuentasmensajes">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.cuentasmensaje)">
+        <MappingFragment StoreEntitySet="cuentasmensajes">
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="CuentaId" ColumnName="CuentaId" />
+          <ScalarProperty Name="MensajeId" ColumnName="MensajeId" />
+          <ScalarProperty Name="FechaVisualizacion" ColumnName="FechaVisualizacion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="devoluciones">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.devolucione)">
+        <MappingFragment StoreEntitySet="devoluciones">
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estatuscitas">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.estatuscita)">
+        <MappingFragment StoreEntitySet="estatuscitas">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="etiquetas">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.etiqueta)">
+        <MappingFragment StoreEntitySet="etiquetas">
+          <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+          <ScalarProperty Name="NumeroOrden" ColumnName="NumeroOrden" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facturas">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.factura)">
+        <MappingFragment StoreEntitySet="facturas">
+          <ScalarProperty Name="NumeroGenerado" ColumnName="NumeroGenerado" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="PdfRuta" ColumnName="PdfRuta" />
+          <ScalarProperty Name="XmlRuta" ColumnName="XmlRuta" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Folio" ColumnName="Folio" />
+          <ScalarProperty Name="Serie" ColumnName="Serie" />
+          <ScalarProperty Name="Uuid" ColumnName="Uuid" />
+          <ScalarProperty Name="proveedor_id" ColumnName="proveedor_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="horarios">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.horario)">
+        <MappingFragment StoreEntitySet="horarios">
+          <ScalarProperty Name="HoraHasta" ColumnName="HoraHasta" />
+          <ScalarProperty Name="HoraDesde" ColumnName="HoraDesde" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="horariorieles">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.horarioriele)">
+        <MappingFragment StoreEntitySet="horariorieles">
+          <ScalarProperty Name="ComentarioBloqueo" ColumnName="ComentarioBloqueo" />
+          <ScalarProperty Name="CitaId" ColumnName="CitaId" />
+          <ScalarProperty Name="AlmacenRielId" ColumnName="AlmacenRielId" />
+          <ScalarProperty Name="HorarioId" ColumnName="HorarioId" />
+          <ScalarProperty Name="Disponibilidad" ColumnName="Disponibilidad" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="impuls_logs">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.impuls_logs)">
+        <MappingFragment StoreEntitySet="impuls_logs">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="log" ColumnName="log" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mensajes">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.mensaje)">
+        <MappingFragment StoreEntitySet="mensajes">
+          <ScalarProperty Name="OperacionTx" ColumnName="OperacionTx" />
+          <ScalarProperty Name="UsuarioIdTx" ColumnName="UsuarioIdTx" />
+          <ScalarProperty Name="FechaTx" ColumnName="FechaTx" />
+          <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+          <ScalarProperty Name="EnviadoA" ColumnName="EnviadoA" />
+          <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
+          <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
+          <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="niveleseervicios">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.niveleseervicio)">
+        <MappingFragment StoreEntitySet="niveleseervicio">
+          <ScalarProperty Name="PedidoTotal" ColumnName="PedidoTotal" />
+          <ScalarProperty Name="PedidoEnTiempo" ColumnName="PedidoEnTiempo" />
+          <ScalarProperty Name="PedidoAtrasado" ColumnName="PedidoAtrasado" />
+          <ScalarProperty Name="AcumuladoAnual" ColumnName="AcumuladoAnual" />
+          <ScalarProperty Name="TemporadaActual" ColumnName="TemporadaActual" />
+          <ScalarProperty Name="UltimoMes" ColumnName="UltimoMes" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ordencompras">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.ordencompra)">
+        <MappingFragment StoreEntitySet="ordencompra">
+          <ScalarProperty Name="CitaId" ColumnName="CitaId" />
+          <ScalarProperty Name="FechaVisualizado" ColumnName="FechaVisualizado" />
+          <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+          <ScalarProperty Name="FechaCargaPortal" ColumnName="FechaCargaPortal" />
+          <ScalarProperty Name="FechaDocCompra" ColumnName="FechaDocCompra" />
+          <ScalarProperty Name="IndTipoCambio" ColumnName="IndTipoCambio" />
+          <ScalarProperty Name="TipoCambio" ColumnName="TipoCambio" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="GrupoCompra" ColumnName="GrupoCompra" />
+          <ScalarProperty Name="OrganizacionCompra" ColumnName="OrganizacionCompra" />
+          <ScalarProperty Name="ClavePago" ColumnName="ClavePago" />
+          <ScalarProperty Name="NumeroProveedor" ColumnName="NumeroProveedor" />
+          <ScalarProperty Name="UltimoNumeroPos" ColumnName="UltimoNumeroPos" />
+          <ScalarProperty Name="IntervaloPosicion" ColumnName="IntervaloPosicion" />
+          <ScalarProperty Name="FechaCreacionSap" ColumnName="FechaCreacionSap" />
+          <ScalarProperty Name="EstatusDocumento" ColumnName="EstatusDocumento" />
+          <ScalarProperty Name="IndicadorBorrado" ColumnName="IndicadorBorrado" />
+          <ScalarProperty Name="IndicadorControl" ColumnName="IndicadorControl" />
+          <ScalarProperty Name="ClaseDocumento" ColumnName="ClaseDocumento" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="Sociedad" ColumnName="Sociedad" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ordencompradetalles">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.ordencompradetalle)">
+        <MappingFragment StoreEntitySet="ordencompradetalle">
+          <ScalarProperty Name="CantidadComprometida" ColumnName="CantidadComprometida" />
+          <ScalarProperty Name="FechaCargaPortal" ColumnName="FechaCargaPortal" />
+          <ScalarProperty Name="SapOrdenCompraId" ColumnName="SapOrdenCompraId" />
+          <ScalarProperty Name="CantidadUnidadMedida" ColumnName="CantidadUnidadMedida" />
+          <ScalarProperty Name="ValorBruto" ColumnName="ValorBruto" />
+          <ScalarProperty Name="ValorNeto" ColumnName="ValorNeto" />
+          <ScalarProperty Name="CantidadBase" ColumnName="CantidadBase" />
+          <ScalarProperty Name="PrecioNeto" ColumnName="PrecioNeto" />
+          <ScalarProperty Name="DenominadorUmUmBase" ColumnName="DenominadorUmUmBase" />
+          <ScalarProperty Name="ConversionUmUmBase" ColumnName="ConversionUmUmBase" />
+          <ScalarProperty Name="ConversionUmpruMP" ColumnName="ConversionUmpruMP" />
+          <ScalarProperty Name="UnidadMedidaPrecio" ColumnName="UnidadMedidaPrecio" />
+          <ScalarProperty Name="UnidadMedidaPedido" ColumnName="UnidadMedidaPedido" />
+          <ScalarProperty Name="CantidadPedido" ColumnName="CantidadPedido" />
+          <ScalarProperty Name="GrupoArticulos" ColumnName="GrupoArticulos" />
+          <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+          <ScalarProperty Name="Centro" ColumnName="Centro" />
+          <ScalarProperty Name="NumeroMaterial" ColumnName="NumeroMaterial" />
+          <ScalarProperty Name="DescripcionMaterial" ColumnName="DescripcionMaterial" />
+          <ScalarProperty Name="Ebelp" ColumnName="Ebelp" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagos">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.pago)">
+        <MappingFragment StoreEntitySet="pagos">
+          <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+          <ScalarProperty Name="ML" ColumnName="ML" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="FechaBase" ColumnName="FechaBase" />
+          <ScalarProperty Name="FechaDePago" ColumnName="FechaDePago" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="NumeroCompensacion" ColumnName="NumeroCompensacion" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="perfiles">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.perfile)">
+        <MappingFragment StoreEntitySet="perfiles">
+          <ScalarProperty Name="CuentaId" ColumnName="CuentaId" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proveedores">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.proveedore)">
+        <MappingFragment StoreEntitySet="proveedores">
+          <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+          <ScalarProperty Name="Rfc" ColumnName="Rfc" />
+          <ScalarProperty Name="OperacionTx" ColumnName="OperacionTx" />
+          <ScalarProperty Name="UsuarioIdTx" ColumnName="UsuarioIdTx" />
+          <ScalarProperty Name="FechaCargaPortal" ColumnName="FechaCargaPortal" />
+          <ScalarProperty Name="CuentaId" ColumnName="CuentaId" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="TelefonoExtension" ColumnName="TelefonoExtension" />
+          <ScalarProperty Name="TelefonoPrefijo" ColumnName="TelefonoPrefijo" />
+          <ScalarProperty Name="TelefonoGrupoCompra" ColumnName="TelefonoGrupoCompra" />
+          <ScalarProperty Name="DenominacionGrupo" ColumnName="DenominacionGrupo" />
+          <ScalarProperty Name="GrupoCompras" ColumnName="GrupoCompras" />
+          <ScalarProperty Name="IncoTerminos2" ColumnName="IncoTerminos2" />
+          <ScalarProperty Name="IncoTerminos1" ColumnName="IncoTerminos1" />
+          <ScalarProperty Name="CondicionPago" ColumnName="CondicionPago" />
+          <ScalarProperty Name="NumeroTelefono" ColumnName="NumeroTelefono" />
+          <ScalarProperty Name="VendedorResponsable" ColumnName="VendedorResponsable" />
+          <ScalarProperty Name="ClaveMoned" ColumnName="ClaveMoned" />
+          <ScalarProperty Name="OrganizacionCompra" ColumnName="OrganizacionCompra" />
+          <ScalarProperty Name="Sociedad" ColumnName="Sociedad" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="CodigoApartado" ColumnName="CodigoApartado" />
+          <ScalarProperty Name="Apartado" ColumnName="Apartado" />
+          <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+          <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+          <ScalarProperty Name="Nombre4" ColumnName="Nombre4" />
+          <ScalarProperty Name="Nombre3" ColumnName="Nombre3" />
+          <ScalarProperty Name="Nombre2" ColumnName="Nombre2" />
+          <ScalarProperty Name="Nombre1" ColumnName="Nombre1" />
+          <ScalarProperty Name="ClavePais" ColumnName="ClavePais" />
+          <ScalarProperty Name="NumeroProveedor" ColumnName="NumeroProveedor" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rieles">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.riele)">
+        <MappingFragment StoreEntitySet="rieles">
+          <ScalarProperty Name="AndenId" ColumnName="AndenId" />
+          <ScalarProperty Name="Riel" ColumnName="Riel" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScaleAlmacens">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.ScaleAlmacen)">
+        <MappingFragment StoreEntitySet="scalealmacen">
+          <ScalarProperty Name="Scale" ColumnName="Scale" />
+          <ScalarProperty Name="Sap" ColumnName="Sap" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipocuentas">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.tipocuenta)">
+        <MappingFragment StoreEntitySet="tipocuentas">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipousuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.tipousuario)">
+        <MappingFragment StoreEntitySet="tipousuario">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwdashboards">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.vwdashboard)">
+        <MappingFragment StoreEntitySet="vwdashboard">
+          <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+          <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+          <ScalarProperty Name="Desde" ColumnName="Desde" />
+          <ScalarProperty Name="Anden" ColumnName="Anden" />
+          <ScalarProperty Name="AndenId" ColumnName="AndenId" />
+          <ScalarProperty Name="Riel" ColumnName="Riel" />
+          <ScalarProperty Name="CitaId" ColumnName="CitaId" />
+          <ScalarProperty Name="AlmacenRielId" ColumnName="AlmacenRielId" />
+          <ScalarProperty Name="HorarioId" ColumnName="HorarioId" />
+          <ScalarProperty Name="Disponibilidad" ColumnName="Disponibilidad" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="horarioRielId" ColumnName="horarioRielId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwmensajes">
+      <EntityTypeMapping TypeName="IsTypeOf(impuls_portalModel.vwmensaje)">
+        <MappingFragment StoreEntitySet="vwmensajes">
+          <ScalarProperty Name="Visualizado" ColumnName="Visualizado" />
+          <ScalarProperty Name="EnviadoA" ColumnName="EnviadoA" />
+          <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
+          <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
+          <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

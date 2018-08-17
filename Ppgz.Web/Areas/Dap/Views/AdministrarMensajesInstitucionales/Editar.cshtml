@@ -1,0 +1,151 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.MensajeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Editar Mensajes  Institucionales</h2>
+<p class="page-description-title"><i class="fa fa-envelope" aria-hidden="true"></i> <i>Editar mensaje Institucional</i></p>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Editar", "AdministrarMensajesInstitucionales", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Tipo de Proveedor</label>
+                <div class="col-sm-7">
+                    <div class="radio">
+                        <label>
+
+                            @Html.RadioButtonFor(m => m.TipoProveedor, "MERCADERIA")
+                            Mercadería
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                             @Html.RadioButtonFor(m => m.TipoProveedor, "SERVICIO") Servicio
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            @Html.RadioButtonFor(m => m.TipoProveedor, "TODOS")
+                            Todos
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                    @Html.ValidationMessageFor(m => m.FechaPublicacion)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FechaCaducidad, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.FechaCaducidad, new { @class = "form-control  fecha-hora", @type = "datetime" })
+                    @Html.ValidationMessageFor(m => m.FechaCaducidad)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Titulo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.Titulo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Titulo)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Mensaje</label>
+                <div class="col-sm-7">
+                    <div>
+                        @if(string.IsNullOrWhiteSpace(Model.Pdf))
+                        {
+                            @Html.TextAreaFor(m => m.Contenido, new { @class = "form-control", @rows = "5", @placeholder = "Contenido del mensaje" })
+                            @Html.ValidationMessageFor(m => m.Contenido)
+                            <p><i>El tipo mensaje será distribuido como <span class="label label-info">TEXTO</span></i></p>
+                        }
+                        else
+                        {
+                            <p>
+                                <a href="@Url.Content(@Model.Pdf)" target="_blank">Archivo Orignal</a>
+                            </p>
+                            <p>
+                                <input type="file" name="Pdf" id="Pdf">
+                            </p>
+                            @Html.ValidationMessageFor(m => m.Pdf)
+                            <p><i>El tipo mensaje será distribuido como <span class="label label-info">PDF</span></i>
+                            </p>
+                        }
+
+                        @*<ul class="nav nav-tabs" role="tablist" id="text-pdf">
+                            <li role="presentation" id="texto-mensaje" class="active"><a href="#contenido-panel" aria-controls="contenido-panel" role="tab" data-toggle="tab">Mensaje Escrito</a></li>
+                            <li role="presentation" id="pdf-mensaje"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo PDF</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="contenido-panel">
+                                @Html.TextAreaFor(m => m.Contenido, new { @class = "form-control", @rows = "5", @placeholder = "Contenido del mensaje" })
+                                @Html.ValidationMessageFor(m => m.Contenido)
+                                <p><i>El tipo mensaje será distribuido como <span class="label label-info">TEXTO</span></i></p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                <p style="padding-left: 20px; padding-top: 20px; padding-bottom: 0; margin: 0; ">
+                                    <a href="@Url.Content(@Model.Pdf)" target="_blank">Archivo Orignal</a>
+                                </p>
+                                    <input type="file" style="padding: 20px;" name="Pdf" id="Pdf">
+                                @Html.ValidationMessageFor(m => m.Pdf)
+                                <p><i>El tipo mensaje será distribuido como <span class="label label-info">PDF</span></i>
+                                </p>
+                            </div>
+                        </div>*@
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarMensajesInstitucionales")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        
+       
+
+        $(document).ready(function () {
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+ 
+
+            
+        });
+
+
+    </script>
+
+
+
+}

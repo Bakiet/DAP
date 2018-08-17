@@ -1,0 +1,104 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.ProtocoloViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="form-signin-heading">Editar Protocolos de chequeo</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Protocolos de chequeo</i></p>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Editar", "AdministrarProtocolos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <div class="form-group">
+                    @Html.LabelFor(f => f.obra, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(f => f.obra, (IEnumerable<SelectListItem>)ViewBag.Obras, "Seleccione un Valor", new { @class = "form-control", @disabled = "disabled" })
+                        @Html.ValidationMessageFor(f => f.obra)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Nombre, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(p => p.Nombre, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Nombre)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">ARCHIVO</label>
+                    <div class="col-sm-4">
+                        <div>
+                           
+                                <p>
+                                    <a style="font-size:15px;" class="fa fa-folder fa-2x" href="@Url.Content(@Model.Url)" target="_blank"></a>
+                                </p>
+                                <ul class="nav nav-tabs" role="tablist" id="text-pdf">
+
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div role="tabpanel" class="tab-pane" id="pdf-panel">
+                                        <input type="file" style="padding: 20px;" name="Pdf" id="Pdf">
+                                        @Html.ValidationMessageFor(k => k.Url)
+
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                    @Html.ValidationMessageFor(m => m.FechaPublicacion)
+                </div>
+            </div>*@
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarProtocolos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+       
+        $(document).ready(function () {
+
+            $('.fecha-hora').datetimepicker({
+                locale: 'es',
+
+                format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+
+
+            $('<input />').attr('type', 'hidden')
+                          .attr('name', "Pdf")
+                          .attr('value', "pdf")
+                          .appendTo('#form');
+
+        });
+    </script>
+
+
+
+}

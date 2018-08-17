@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    
+}
+
+<h2 class="form-signin-heading">Actualizar Nivel de Servicio</h2>
+<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Actualizar Nivel de Servicio</i></p>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Actualizar</div>
+    <div class="panel-body">
+
+        <h4><strong>Última Actualización: </strong>@ViewBag.UltimaActualizacion</h4>
+        <hr/>
+        @using (Html.BeginForm("CargarExcel", "RegistrarNivelServicio", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+
+
+
+
+    <div class="form-group">
+        <label class="control-label col-sm-3">Actualizar desde Excel</label>
+        <div class="col-sm-7">
+            <a class="btn btn-link" href="@Url.Action("Descargar", "RegistrarNivelServicio")">
+                <i class="fa fa-file-excel-o" aria-hidden="true"></i> Descargar Plantilla
+            </a>
+            <input type="file" name="cargarexcel" id="cargarexcel">
+        </div>
+
+    </div>
+                    <hr />
+
+                        <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Cargar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "RegistrarNivelServicio")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+       
+
+    </script>
+}

@@ -1,0 +1,141 @@
+﻿@model Ppgz.Web.Areas.Dap.Models.CuentaViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/assets/css/bootstrap-formhelpers.min.css")
+<h2 class="form-signin-heading">Registrar Cuenta de Proveedor</h2>
+<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Registre una Cuenta de Proveedor, esto generará un usuario Maestro</i></p>
+<div class="panel panel-default">
+    <div class="panel-heading">Formulario de registro</div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Registrar", "AdministrarProveedores", new {ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Tipo de Cuenta</label>
+                <div class="col-sm-7">
+                    <div class="radio">
+                        <label>
+
+                            @Html.RadioButtonFor(m => m.TipoCuenta, "MERCADERIA")
+                            Mercaderías
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            @Html.RadioButtonFor(m => m.TipoCuenta, "SERVICIO") Servicio
+                        </label>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.TipoCuenta)
+                </div>
+            </div>
+            <div class="form-group">
+               
+                <div class="col-sm-offset-3 col-sm-7">
+                    @Html.CheckBoxFor(m => m.Especial, new { @class = "" }) ¿Es proveedor especial?
+                    @Html.ValidationMessageFor(m => m.Especial)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>
+            <p class="form-legend" style="">
+                <i>Datos de Empresa</i>
+            </p>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.NombreCuenta, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.NombreCuenta, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NombreCuenta)
+                </div>
+            </div>
+
+
+            <p class="form-legend" style="">
+                <i>Datos del Responsable (Usuario Maestro)</i>
+            </p>
+
+            
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ResponsableNombre, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.ResponsableNombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ResponsableNombre)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ResponsableApellido, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.ResponsableApellido, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ResponsableApellido)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ResponsableCargo, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.ResponsableCargo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ResponsableCargo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ResponsableEmail, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.ResponsableEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ResponsableEmail)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ResponsableTelefono, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(m => m.ResponsableTelefono, new { @class = "form-control  bfh-phone", @data_country = "MX", @data_format = "+dd (ddd) ddd-dddd" })                   
+                    @Html.ValidationMessageFor(m => m.ResponsableTelefono)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ResponsablePassword, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.PasswordFor(m => m.ResponsablePassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ResponsablePassword)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ResponsableConfirmarPassword, new { @class = "col-sm-3 control-label" })
+                <div class="col-sm-7">
+                    @Html.PasswordFor(m => m.ResponsableConfirmarPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ResponsableConfirmarPassword)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-7">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrar</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarProveedores")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/bootstrap-formhelpers-phone.en_US.js")
+    @Scripts.Render("~/Scripts/bootstrap-formhelpers-phone.js")
+}

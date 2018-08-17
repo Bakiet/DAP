@@ -1,0 +1,468 @@
+﻿@using System.Text
+@using Microsoft.AspNet.Identity
+@using Ppgz.Web.Infrastructure
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - ASCENSORES CLIMB</title>
+    <link rel="stylesheet" href="~/assets/css/main.css">
+   
+    @*@Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/bootstrap.min.css")
+    @Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/bootstrap-theme.min.css")
+
+   
+    @Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/ie10-viewport-bug-workaround.css")
+
+    @Styles.Render("~/assets/vendor/font-awesome-4.7.0/css/font-awesome.min.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Styles.Render("~/assets/vendor/dataTables-1.10.13/media/css/dataTables.bootstrap.min.css")
+
+    @Styles.Render("~/assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css")
+
+    @Styles.Render("~/assets/css/msgcolores.css")
+
+    @Styles.Render("~/assets/css/main.css")
+
+    @Styles.Render("~/assets/css/main2.css")*@
+
+    @Styles.Render("~/assets/vendor/font-awesome-4.7.0/css/font-awesome.min.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Styles.Render("~/assets/vendor/dataTables-1.10.13/media/css/dataTables.bootstrap.min.css")
+
+    @Styles.Render("~/assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css")
+
+    @Styles.Render("~/assets/css/msgcolores.css")
+
+    @Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/bootstrap.min.css")
+    @Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/bootstrap-theme.min.css")
+
+
+    
+    
+
+    @*@Styles.Render("~/assets/css/main2.css")*@
+
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
+
+    <!-- Full Calendar -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.print.css" media="print" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.6/combined/css/gijgo.min.css" />
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a class="navbar-brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="700"></a>
+            </div>
+           
+            <ul class="list-unstyled components">
+                @if (Request.IsAuthenticated)
+                {
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="collapsed">OPCIONES</a>
+                        <ul class="collapse in list-unstyled" id="homeSubmenu">
+                            @if (Request.IsAuthenticated)
+                            {
+                                List<string> menuF = MenuConfig.GetMenuFuncionalidad(this.User);
+                                foreach (var item in menuF)
+                                {
+                                    if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == item.Split('|')[1].ToString())
+                                    {
+                                        <li class=""><a class="" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class=""><a class="" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                    }
+                                }
+                            }
+                            <li role="separator" class=""></li>
+                            <li class=""><a class="" href="@Url.Action("CambiarPassword","Account", new { Area = ""})"><i class="fa fa-key" aria-hidden="true"></i> Cambiar contraseña</a></li>
+                        </ul>
+                    </li>
+
+
+                   
+                }
+                @*@if (Request.IsAuthenticated)
+                {
+                    if (HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"] != null)
+                    {
+                        if (Request.IsAuthenticated)
+                        {
+
+                            List<string> menuI = MenuConfig.GetMenuPaginaActual(
+                                HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(),
+                                HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"].ToString(),
+                                HttpContext.Current.Request.Params);
+                            if (menuI.Count == 1)
+                            {
+                                foreach (var item in menuI)
+                                {
+                                    <li class="dropdown active">
+
+                                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li class="dropdown active">
+                                    @{
+                                        string nombreMenuInterno = MenuConfig.NombreXController(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"].ToString().ToUpper());
+                                    }
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="@nombreMenuInterno.Split('|')[4].ToString()" aria-hidden="true"></i> @nombreMenuInterno.Split('|')[1].ToString() <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        @foreach (var item in menuI)
+                                        {
+                                            if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == item.Split('|')[1].ToString())
+                                            {
+                                                <li class="active"><a href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                            }
+                                            else
+                                            {
+
+                                                <li class=""><a href="~/@item.Split('|')[5]/@item.Split('|')[3]/@item.Split('|')[2]"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                            }
+                                        }
+
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    }
+                }*@
+
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                @*<li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>*@
+                
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
+                            <i class="glyphicon glyphicon-align-left"></i>
+                            <span>Menu</span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        
+                        <ul class="nav navbar-nav navbar-right">                         
+                            <li style="color:#245580;font-size:30px;font-weight: bold;">SI VAS A SUBIR, SUBE CON CLIMB</li>
+                            @*<img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"/>*@
+                        </ul>
+                    </div>
+
+                   
+                </div>
+            </nav>
+            <div class="container-fluid">
+            @Html.Partial("_LoginPartial")
+            </div>
+            <div class="container-fluid" style="padding-top:50px">
+                @if (TempData["FlashError"] != null)
+                {
+                    <div class="alert alert-dismissible alert-danger text-uppercase" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @TempData["FlashError"]
+                    </div>
+                }
+                @if (TempData["FlashSuccess"] != null)
+                {
+                    <div class="alert alert-dismissible alert-success text-uppercase" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @TempData["FlashSuccess"]
+                    </div>
+                }
+                @if (TempData["FlashEdit"] != null)
+                {
+                    <div class="alert alert-dismissible alert-success text-uppercase" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @TempData["FlashEdit"]
+                    </div>
+                }
+
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript: volver();">Volver</button>
+                
+                 <hr />
+
+                </div>
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+            <footer class="footer">
+                <a href="http://www.ascensoresclimb.com/" class="article text-uppercase"><p>&copy; @DateTime.Now.Year - www.ascensoresclimb.com</p> </a> 
+                <a style="float:left;" href="https://jdsistemas.net.ve" class="article text-uppercase">Realizado por JD Sistemas </a>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Static navbar -->
+    @*<nav class="navbar navbar-main navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="100"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">OPCIONES <span class="caret"></span></a>
+                            <ul id="menu" class="dropdown-menu">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    List<string> menuF = MenuConfig.GetMenuFuncionalidad(this.User);
+                                    foreach (var item in menuF)
+                                    {
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == item.Split('|')[1].ToString())
+                                        {
+                                            <li class="active"><a href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                        }
+                                        else
+                                        {
+                                            <li class=""><a href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                        }
+                                    }
+                                }
+                                <li role="separator" class="divider"></li>
+                                <li class=""><a href="@Url.Action("CambiarPassword","Account", new { Area = ""})"><i class="fa fa-key" aria-hidden="true"></i> Cambiar contraseña</a></li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"] != null)
+                        {
+                            if (Request.IsAuthenticated)
+                            {
+                               
+                                List<string> menuI = MenuConfig.GetMenuPaginaActual(
+                                    HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(),
+                                    HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"].ToString(),
+                                    HttpContext.Current.Request.Params);
+                                if (menuI.Count == 1)
+                                {
+                                    foreach (var item in menuI)
+                                    {
+                                        <li class="dropdown active">
+
+                                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li class="dropdown active">
+                                        @{
+                                            string nombreMenuInterno = MenuConfig.NombreXController(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"].ToString().ToUpper());
+                                        }
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="@nombreMenuInterno.Split('|')[4].ToString()" aria-hidden="true"></i> @nombreMenuInterno.Split('|')[1].ToString() <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var item in menuI)
+                                            {
+                                                if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == item.Split('|')[1].ToString())
+                                                {
+                                                    <li class="active"><a href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                                }
+                                                else
+                                                {
+                                                    
+                                                    <li class=""><a href="~/@item.Split('|')[5]/@item.Split('|')[3]/@item.Split('|')[2]"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                                }
+                                            }
+
+                                        </ul>
+                                    </li>
+                                                        }
+                                                    }
+                                                }
+                                            }
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+
+            </div>
+        </div>
+
+       
+   </nav>*@
+
+   
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+    <!-- Bootstrap Js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+        @Scripts.Render("~/bundles/jquery")
+        @*@Scripts.Render("~/assets/vendor/bootstrap-3.3.6/js/bootstrap.min.js")*@
+        @Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/jquery.dataTables.min.js")
+        @Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/dataTables.bootstrap.min.js")
+        @Scripts.Render("~/assets/vendor/bootstrap-confirmation.min.js")
+        @Scripts.Render("~/assets/vendor/moment/moment-with-locales.min.js")
+        @Scripts.Render("~/assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js")
+        @Scripts.Render("~/assets/vendor/jquery.blockUI.js")
+
+        @Scripts.Render("~/assets/js/bootbox.js")
+        @Scripts.Render("~/assets/js/mensajes.js")
+        @Scripts.Render("~/assets/vendor/jquery.numeric.js")
+
+   
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <!-- qTip -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
+
+    <!-- Full Calendar -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.min.js"></script>
+
+    @*<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.6/combined/js/gijgo.min.js"></script>*@
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js">
+
+     
+
+    @Scripts.Render("~/bundles/Script-calendar")
+
+
+
+   
+        @RenderSection("scripts", required: false)
+
+        @if (Request.IsAuthenticated)
+        {
+            <script type="text/javascript">
+                @{
+                var commonManager = new CommonManager();
+
+                var cuenta = commonManager.GetCuentaUsuarioAutenticado();
+            }
+
+            @if (cuenta != null)
+            {
+                <text>
+                $("#mensajes-notificador").hide();
+
+                var Url = "@Url.Action("MensajesSinLeer", "MensajesInstitucionales", new { area = cuenta.Tipo })";
+
+                function RefrescarMensajes() {
+                    $.ajax({
+                        type: "POST",
+                        url: Url,
+                        cache: false
+                    }).done(function (result) {
+                        var mensajesSinLeer = parseInt(result);
+
+                        if ((mensajesSinLeer) > 0) {
+                            $("#mensajes-notificador .badge").text(result);
+                            $("#mensajes-notificador").show();
+                        } else {
+                            $("#mensajes-notificador").hide();
+
+                        }
+
+                    });
+                }
+
+                (function () {
+
+                    $.ajax({
+                        type: "POST",
+                        url: Url,
+                        cache: false
+                    }).done(function (result) {
+                        var mensajesSinLeer = parseInt(result);
+
+                        if ((mensajesSinLeer) > 0) {
+                            $("#mensajes-notificador .badge").text(result);
+                            $("#mensajes-notificador").show();
+                        } else {
+                            $("#mensajes-notificador").hide();
+
+                        }
+
+                    });
+                    //cada 5 minutos refrescar
+                    setTimeout(arguments.callee, 500000);
+                })();
+                </text>
+            }
+            </script>
+    }
+    
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+
+
+                 html2canvas(document.body, {
+                     onrendered (canvas) {
+                         var link = document.getElementById('download');;
+                         var image = canvas.toDataURL();
+                         link.href = image;
+                         link.download = 'Impresion.jpg';
+                     }
+                 });
+             });
+
+        function volver() {
+
+            window.history.back();
+        }
+
+    </script>
+    <style>
+    .navbar-default{
+    border-color: #fff;
+    }
+    #content {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    width: 1500px;
+    }
+    .container {
+        width: 1570px;
+    }
+
+
+    </style>
+</body>
+</html>
