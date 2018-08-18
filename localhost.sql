@@ -1,0 +1,4321 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 18-08-2018 a las 16:40:39
+-- Versión del servidor: 5.5.24-log
+-- Versión de PHP: 5.4.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `dap`
+--
+CREATE DATABASE `dap` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `dap`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `acumuladores`
+--
+
+CREATE TABLE IF NOT EXISTS `acumuladores` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `SemanaAno` int(11) NOT NULL,
+  `CantidadPar` int(11) NOT NULL,
+  `AlmacenId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `fk_acumulador_almacen` (`AlmacenId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `almacenes`
+--
+
+CREATE TABLE IF NOT EXISTS `almacenes` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `NombreAlmacen` varchar(30) NOT NULL,
+  `CapacidadDiaria` int(11) NOT NULL,
+  `CapacidadSemanal` int(11) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `andenes`
+--
+
+CREATE TABLE IF NOT EXISTS `andenes` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Codigo` varchar(10) NOT NULL,
+  `Anden` varchar(20) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `andenes`
+--
+
+INSERT INTO `andenes` (`Id`, `Codigo`, `Anden`) VALUES
+(1, '0001', '1'),
+(2, '0002', '2'),
+(3, '0003', '3');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `archivos`
+--
+
+CREATE TABLE IF NOT EXISTS `archivos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(2000) DEFAULT NULL,
+  `tipo` varchar(500) DEFAULT NULL,
+  `caracteristica` varchar(500) DEFAULT NULL,
+  `instancia_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=186 ;
+
+--
+-- Volcado de datos para la tabla `archivos`
+--
+
+INSERT INTO `archivos` (`id`, `url`, `tipo`, `caracteristica`, `instancia_id`) VALUES
+(5, '~/Uploads/_CLIMB puntos faltantes.docx', 'obras', 'fotografia', 1),
+(6, '~/Uploads/localhost (2).sql', 'obras', 'fotografia', 1),
+(7, '~/Uploads/localhost.sql', 'obras', 'mapa', 1),
+(8, '~/Uploads/logo1.png', 'equipos', 'fotografia', 28),
+(9, '~/Uploads/logo2.png', 'equipos', 'fotografia', 28),
+(10, '~/Uploads/logo4.png', 'equipos', 'plano', 28),
+(11, '~/Uploads/mssql.png', 'equipos', 'plano', 28),
+(12, '~/Uploads/favicon.ico', 'obras', 'fotografia', 11),
+(13, '~/Uploads/favicon.png', 'obras', 'fotografia', 11),
+(14, '~/Uploads/_CLIMB puntos faltantes.docx', 'obras', 'mapa', 11),
+(15, '~/Uploads/SHC_logo-golf-course-3-300x126.jpg', 'obras', 'mapa', 11),
+(16, '~/Uploads/favicon.ico', 'obras', 'fotografia', 15),
+(17, '~/Uploads/SHC_logo-golf-course-3-300x126.jpg', 'obras', 'fotografia', 15),
+(18, '~/Uploads/_CLIMB puntos faltantes.docx', 'obras', 'mapa', 15),
+(19, '~/Uploads/_CLIMB puntos faltantes.docx', 'fallas', 'correo', 13),
+(20, '~/Uploads/SHC_logo-golf-course-3-300x126.jpg', 'fallas', 'correo', 13),
+(21, '~/Uploads/favicon.ico', 'fallas', 'correo', 15),
+(22, '~/Uploads/_CLIMB puntos faltantes.docx', 'obras', 'fotografia', 16),
+(23, '~/Uploads/tablas.txt', 'obras', 'fotografia', 16),
+(24, '~/Uploads/127_0_0_1.sql', 'obras', 'mapa', 16),
+(25, '~/Uploads/12.docx', 'componentesmecanicos', 'fotografia', 3),
+(27, '~/Uploads/hostingssi.png', 'obras', 'fotografia', 17),
+(34, '~/Uploads/3D-Game-Rainbow-Six-Siege-Wallpaper.jpg', 'equipos', 'fotografia', 36),
+(35, '~/Uploads/406-5.jpg', 'equipos', 'fotografia', 36),
+(36, '~/Uploads/38795090-rainbow-six-siege-wallpapers.jpg', 'equipos', 'plano', 36),
+(37, '~/Uploads/38795090-rainbow-six-siege-wallpapers.jpg', 'equipos', 'fotografia', 40),
+(38, '~/Uploads/3D-Game-Rainbow-Six-Siege-Wallpaper.jpg', 'equipos', 'plano', 40),
+(39, '~/Uploads/406-5.jpg', 'equipos', 'plano', 40),
+(40, NULL, 'obras', 'mapa', 18),
+(41, '~/Uploads/thumb-082-rainbow-six-siege-8.jpg', 'obras', 'fotografia', 18),
+(42, '~/Uploads/thumb-082-rainbow-six-siege-8.jpg', 'equipos', 'fotografia', 42),
+(43, '~/Uploads/thumb-1920-700493.jpg', 'equipos', 'plano', 42),
+(44, '~/Uploads/thumb-082-rainbow-six-siege-8.jpg', 'componentesmecanicos', 'fotografia', 4),
+(45, '~/Uploads/thumb-082-rainbow-six-siege-8.jpg', 'componentesmecanicos', 'fotografia', 5),
+(46, NULL, 'obras', 'mapa', 19),
+(47, 'https://www.google.co.ve/maps/@10.4798675,-66.8942892,15z', 'obras', 'mapa', 20),
+(48, '~/Uploads/B - P1 - LOFT C.jpg', 'obras', 'fotografia', 20),
+(49, '~/Uploads/B - P3 - LOFT C.jpg', 'obras', 'fotografia', 20),
+(50, '~/Uploads/B - P3 - LOFT C.jpg', 'equipos', 'fotografia', 44),
+(51, '~/Uploads/B -S1 - LOFT C.jpg', 'equipos', 'plano', 44),
+(52, '~/Uploads/DI- CABINA - LOFT C.jpg', 'componentesmecanicos', 'fotografia', 8),
+(53, '~/Uploads/CABINA 3 - LOFTC.jpg', 'componenteselectricos', 'fotografia', 9),
+(54, '~/Uploads/CABINA 3 - LOFTC.jpg', 'componentesmecanicos', 'fotografia', 10),
+(55, '~/Uploads/CABINA 3 - LOFT C.jpg', 'componenteselectricos', 'fotografia', 10),
+(56, 'WWWW', 'obras', 'mapa', 21),
+(57, '~/Uploads/B - PH - LOFT C.jpg', 'obras', 'fotografia', 21),
+(58, '~/Uploads/DS - CABINA - LOFT C.jpg', 'componenteselectricos', 'fotografia', 12),
+(59, '~/Uploads/CABINA 3 - LOFT C.jpg', 'componentesmecanicos', 'fotografia', 12),
+(60, '~/Uploads/DS - CABINA - LOFT C.jpg', 'componentesmecanicos', 'fotografia', 13),
+(61, '~/Uploads/B -S1 - LOFT C.jpg', 'obras', 'fotografia', 20),
+(62, 'WWW.GOGLE.COM', 'obras', 'mapa', 22),
+(63, '~/Uploads/B - PH - LOFT C.jpg', 'obras', 'fotografia', 22),
+(64, '~/Uploads/B - S1 - LOFT C.jpg', 'componentesmecanicos', 'fotografia', 14),
+(65, '~/Uploads/B -PB - LOFT C.jpg', 'componenteselectricos', 'fotografia', 13),
+(66, '~/Uploads/B -S1 - LOFT C.jpg', 'componenteselectricos', 'fotografia', 13),
+(67, '~/Uploads/PROTOCOLO DE OBSERVACIÓN.doc', 'requerimientos', 'correo', 8),
+(68, '~/Uploads/FICHA DE CONTACTO.pptx', 'equipos', 'fotografia', 47),
+(69, '~/Uploads/PROTOCOLO DE OBSERVACIÓN.doc', 'equipos', 'plano', 47),
+(70, '~/Uploads/PROGRAMACIÓN DE MANTENIMIENTOS AÑO 2018.doc', 'equipos', 'fotografia', 48),
+(71, '~/Uploads/FICHA DE CONTACTO.pptx', 'equipos', 'plano', 48),
+(72, '~/Uploads/B - PH - LOFT C.jpg', 'equipos', 'fotografia', 49),
+(73, '~/Uploads/CABINA 3 - LOFTC.jpg', 'equipos', 'plano', 49),
+(75, '~/Uploads/B - P1 - LOFT C.jpg', 'obras', 'fotografia', 23),
+(76, '~/Uploads/B - P3 - LOFT C.jpg', 'obras', 'fotografia', 23),
+(77, '~/Uploads/B - P1 - LOFT C.jpg', 'equipos', 'fotografia', 50),
+(78, '~/Uploads/B - P3 - LOFT C.jpg', 'equipos', 'fotografia', 50),
+(79, '~/Uploads/CARTA DE PRESENTACIÓN.doc', 'equipos', 'plano', 50),
+(80, '~/Uploads/PROTOCOLO DE OBSERVACIÓN.doc', 'equipos', 'fotografia', 23),
+(81, '~/Uploads/CARTA DE PRESENTACIÓN.doc', 'equipos', 'plano', 23),
+(82, '~/Uploads/B - S1 - LOFT C.jpg', 'equipos', 'fotografia', 54),
+(83, NULL, 'obras', 'mapa', 24),
+(84, '~/Uploads/F2-SALEM1 - copia.jpg', 'obras', 'fotografia', 24),
+(85, '~/Uploads/F-SALEM1.jpg', 'obras', 'fotografia', 24),
+(88, '~/Uploads/ACCESO- SOTANO1-SALEM1.jpg', 'obras', 'fotografia', 24),
+(89, '~/Uploads/ACCESO-P1-ASCEN PRIV-SALEM1.jpg', 'obras', 'fotografia', 24),
+(93, '~/Uploads/ACCESO-PH-SALEM1.jpg', 'componentesmecanicos', 'fotografia', 15),
+(94, '~/Uploads/ACCESO- SOTANO1-SALEM1.jpg', 'componentesmecanicos', 'fotografia', 15),
+(95, '~/Uploads/BOT CAB-ASCEN SERV-SALEM1.jpg', 'componentesmecanicos', 'fotografia', 16),
+(96, '~/Uploads/ACCESO- SOTANO1-SALEM1.jpg', 'componentesmecanicos', 'fotografia', 17),
+(97, '~/Uploads/ACCESO-PH-SALEM1.jpg', 'componenteselectricos', 'fotografia', 16),
+(99, NULL, 'obras', 'mapa', 26),
+(100, NULL, 'obras', 'mapa', 27),
+(101, 'https://www.google.com/maps/place/Los+Naranjos+de+las+Mercedes,+Caracas+1080,+Miranda/@10.4761015,-66.8646169,16z/data=!3m1!4b1!4m8!1m2!2m1!1ssector+los+naranjos+las+mercedes!3m4!1s0x8c2a58f3f0cf4e47:0xe227f50cc6f4277b!8m2!3d10.4758352!4d-66.8610549', 'obras', 'mapa', 25),
+(102, '~/Uploads/CABINA - I.jpg', 'equipos', 'fotografia', 65),
+(103, '~/Uploads/CABINA II.jpg', 'equipos', 'fotografia', 65),
+(104, '~/Uploads/ACCESO - I.jpg', 'equipos', 'fotografia', 65),
+(105, '~/Uploads/ACCESO II.jpg', 'equipos', 'fotografia', 65),
+(106, '~/Uploads/BOTONERA DE CABINA.jpg', 'equipos', 'plano', 65),
+(107, '~/Uploads/M3-ASCEN PRIV-SALEM1.jpg', 'componentesmecanicos', 'fotografia', 19),
+(108, '~/Uploads/M5 -ASCEN SERV- SALEM1.jpg', 'componentesmecanicos', 'fotografia', 19),
+(109, NULL, 'obras', 'mapa', 28),
+(110, '~/Uploads/F -SALEM2.jpg', 'obras', 'fotografia', 28),
+(111, '~/Uploads/F-SALEM2.jpg', 'obras', 'fotografia', 28),
+(112, 'https://www.google.com/maps/place/Los+Naranjos+de+las+Mercedes,+Caracas+1080,+Miranda/@10.4761015,-66.8646169,16z/data=!3m1!4b1!4m8!1m2!2m1!1ssector+los+naranjos+las+mercedes!3m4!1s0x8c2a58f3f0cf4e47:0xe227f50cc6f4277b!8m2!3d10.4758352!4d-66.8610549', 'obras', 'mapa', 28),
+(113, '~/Uploads/PLANO.pdf', 'equipos', 'plano', 65),
+(114, '~/Uploads/CAB INT-ASCEN SERV-SALEM1.jpg', 'equipos', 'fotografia', 66),
+(115, '~/Uploads/CAB-ASCEN SERV-SALEM1.jpg', 'equipos', 'fotografia', 66),
+(116, '~/Uploads/PP-PB-ASCE SERV-SALEM1.jpg', 'equipos', 'fotografia', 66),
+(117, '~/Uploads/ACCESO - I.jpg', 'componentesmecanicos', 'fotografia', 37),
+(118, '~/Uploads/ACCESO II.jpg', 'componentesmecanicos', 'fotografia', 37),
+(119, NULL, 'obras', 'mapa', 29),
+(120, 'https://www.google.co.ve/maps/search/Cerro+Verde,+Caracas,+Distrito+Capital+parcela+40/@10.4536385,-66.8428909,16z/data=!3m1!4b1', 'obras', 'mapa', 29),
+(121, '~/Uploads/16.png', 'requerimientos', 'correo', 14),
+(123, '~/Uploads/1.png', 'componentesmecanicos', 'fotografia', 39),
+(124, '~/Uploads/1.png', 'componentesmecanicos', 'fotografia', 28),
+(127, '~/Uploads/3.png', 'previos', 'FechaPagoInicialFabricaFotografia', 32),
+(130, '~/Uploads/3.png', 'previos', 'FechaPagoInicialFabricaFotografia', 32),
+(133, '~/Uploads/3.png', 'previos', 'FechaPagoInicialFabricaFotografia', 32),
+(136, '~/Uploads/3.png', 'previos', 'FechaPagoInicialFabricaFotografia', 32),
+(138, '~/Uploads/2.png', 'previos', 'FechaFirmaContratoFotografia', 32),
+(139, '~/Uploads/3.png', 'previos', 'FechaPagoInicialFabricaFotografia', 32),
+(140, '~/Uploads/LOGO.jpg', 'previos', 'FechaFirmaContratoFotografia', 32),
+(141, '~/Uploads/j.pdf', 'requerimientos', 'correo', 10),
+(142, '~/Uploads/LOGO.jpg', 'requerimientos', 'correo', 10),
+(143, '~/Uploads/j.pdf', 'componentesmecanicos', 'fotografia', 40),
+(144, '~/Uploads/LOGO.jpg', 'componentesmecanicos', 'fotografia', 40),
+(145, '~/Uploads/Mercantil en Línea.pdf', 'componentesmecanicos', 'fotografia', 41),
+(146, '~/Uploads/j.pdf', 'componentesmecanicos', 'fotografia', 44),
+(147, '~/Uploads/LOGO.jpg', 'componentesmecanicos', 'fotografia', 44),
+(148, '~/Uploads/j.pdf', 'componenteselectricos', 'fotografia', 39),
+(151, '~/Uploads/j.pdf', 'mantenimientopreventivo', 'archivo', 35),
+(152, '~/Uploads/LOGO.jpg', 'mantenimientopreventivo', 'archivo', 35),
+(153, '~/Uploads/PayPal.php', 'mantenimientopreventivo', 'evaluacion', 35),
+(161, '~/Uploads/Formato_de_propuesta.dotx', 'mantenimientopreventivo', 'evaluacion', 36),
+(163, '~/Uploads/LOGO - copia.jpg', 'previos', 'CartaPresentacionFotografia', 32),
+(164, '~/Uploads/LOGO - copia (2).jpg', 'previos', 'FechaIngresoProduccionFotografia', 32),
+(165, '~/Uploads/LOGO - copia (3).jpg', 'previos', 'FechaConstruccionFotografia', 32),
+(166, '~/Uploads/LOGO - copia (4).jpg', 'previos', 'EstatusConstruccionFotografia', 32),
+(167, '~/Uploads/LOGO - copia (5).jpg', 'previos', 'IngresoDepartamentoIngManFotografia', 32),
+(168, '~/Uploads/LOGO - copia (6).jpg', 'previos', 'SolicitudPagoInicialFabricaFotografia', 32),
+(169, '~/Uploads/LOGO - copia (7).jpg', 'previos', 'FechaSalidaFabricaFotografia', 32),
+(170, '~/Uploads/LOGO - copia (8).jpg', 'previos', 'FechaSalidaBuqueFotografia', 32),
+(171, '~/Uploads/LOGO - copia (9).jpg', 'previos', 'FechaLlegadaBuqueFotografia', 32),
+(172, '~/Uploads/LOGO - copia (10).jpg', 'previos', 'FechaPeriodoNacionalizacionFotografia', 32),
+(173, '~/Uploads/LOGO - copia (11).jpg', 'previos', 'FechaSalidaPuertoObraFotografia', 32),
+(174, '~/Uploads/LOGO - copia (12).jpg', 'previos', 'FechaDescargaResguardoFotografia', 32),
+(175, '~/Uploads/LOGO - copia (13).jpg', 'previos', 'FechaInicioMontajeFotografia', 32),
+(176, '~/Uploads/LOGO - copia (14).jpg', 'previos', 'FechaEntregaSosoFotografia', 32),
+(177, '~/Uploads/LOGO - copia (15).jpg', 'previos', 'FechaCulminacionMontajeFotografia', 32),
+(178, '~/Uploads/LOGO - copia (16).jpg', 'previos', 'FechaConfiguracionFotografia', 32),
+(179, '~/Uploads/LOGO - copia (17).jpg', 'previos', 'FechaPeriodoPruebaFotografia', 32),
+(180, '~/Uploads/LOGO - copia (19).jpg', 'previos', 'FechaInspeccionVideo', 32),
+(181, '~/Uploads/Mercantil en Línea.pdf', 'previos', 'InformeEntregaFinal', 32),
+(182, '~/Uploads/j.pdf', 'requerimientos', 'correo', 17),
+(183, '~/Uploads/LOGO - copia (2).jpg', 'requerimientos', 'correo', 17),
+(184, '~/Uploads/LOGO - copia (11).jpg', 'herramientas', 'archivo', 51),
+(185, '~/Uploads/LOGO - copia (2).jpg', 'herramientas', 'archivo', 51);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asn`
+--
+
+CREATE TABLE IF NOT EXISTS `asn` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CitaId` int(11) DEFAULT NULL,
+  `OrdenNumeroDocumento` varchar(30) NOT NULL,
+  `NumeroPosicion` varchar(10) NOT NULL,
+  `NumeroMaterial` varchar(30) NOT NULL,
+  `NombreMaterial` varchar(200) NOT NULL,
+  `Cantidad` int(11) NOT NULL,
+  `Tienda` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `fk_cita_asn_idx` (`CitaId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3803 ;
+
+--
+-- Volcado de datos para la tabla `asn`
+--
+
+INSERT INTO `asn` (`Id`, `CitaId`, `OrdenNumeroDocumento`, `NumeroPosicion`, `NumeroMaterial`, `NombreMaterial`, `Cantidad`, `Tienda`) VALUES
+(3415, 57, '4501174883', '00010', '000000000011507101', 'FLEXI 58903 MOCASIN PIEL NEGRO 22.0', 2, '135'),
+(3416, 57, '4501174883', '00020', '000000000011507102', 'FLEXI 58903 MOCASIN PIEL NEGRO 22.5', 2, '135'),
+(3417, 57, '4501174883', '00030', '000000000011507103', 'FLEXI 58903 MOCASIN PIEL NEGRO 23.0', 4, '135'),
+(3418, 57, '4501174883', '00040', '000000000011507104', 'FLEXI 58903 MOCASIN PIEL NEGRO 23.5', 2, '135'),
+(3419, 57, '4501174883', '00050', '000000000011507105', 'FLEXI 58903 MOCASIN PIEL NEGRO 24.0', 8, '135'),
+(3420, 57, '4501174883', '00060', '000000000011507106', 'FLEXI 58903 MOCASIN PIEL NEGRO 24.5', 3, '135'),
+(3421, 57, '4501174883', '00070', '000000000011507107', 'FLEXI 58903 MOCASIN PIEL NEGRO 25.0', 6, '135'),
+(3422, 57, '4501174883', '00080', '000000000011507108', 'FLEXI 58903 MOCASIN PIEL NEGRO 25.5', 2, '135'),
+(3423, 57, '4501174883', '00090', '000000000011507109', 'FLEXI 58903 MOCASIN PIEL NEGRO 26.0', 3, '135'),
+(3424, 57, '4501174883', '00100', '000000000011507110', 'FLEXI 58903 MOCASIN PIEL NEGRO 26.5', 2, '135'),
+(3425, 57, '4501174883', '00110', '000000000011507111', 'FLEXI 58903 MOCASIN PIEL NEGRO 27.0', 2, '135'),
+(3426, 57, '4501174883', '00120', '000000000014630601', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3427, 57, '4501174883', '00130', '000000000014630602', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3428, 57, '4501174883', '00140', '000000000014630603', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 23.0', 4, '135'),
+(3429, 57, '4501174883', '00150', '000000000014630604', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3430, 57, '4501174883', '00160', '000000000014630605', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 24.0', 6, '135'),
+(3431, 57, '4501174883', '00170', '000000000014630606', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3432, 57, '4501174883', '00180', '000000000014630607', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 25.0', 6, '135'),
+(3433, 57, '4501174883', '00190', '000000000014630608', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3434, 57, '4501174883', '00200', '000000000014630609', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 26.0', 3, '135'),
+(3435, 57, '4501174883', '00210', '000000000014630610', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3436, 57, '4501174883', '00220', '000000000014630611', 'FLEXI 15417 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3437, 57, '4501174883', '00230', '000000000014630701', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3438, 57, '4501174883', '00240', '000000000014630702', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3439, 57, '4501174883', '00250', '000000000014630703', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 23.0', 6, '135'),
+(3440, 57, '4501174883', '00260', '000000000014630704', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 23.5', 4, '135'),
+(3441, 57, '4501174883', '00270', '000000000014630705', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 24.0', 12, '135'),
+(3442, 57, '4501174883', '00280', '000000000014630706', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 24.5', 6, '135'),
+(3443, 57, '4501174883', '00290', '000000000014630707', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 25.0', 11, '135'),
+(3444, 57, '4501174883', '00300', '000000000014630708', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 25.5', 5, '135'),
+(3445, 57, '4501174883', '00310', '000000000014630709', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 26.0', 7, '135'),
+(3446, 57, '4501174883', '00320', '000000000014630710', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 26.5', 3, '135'),
+(3447, 57, '4501174883', '00330', '000000000014630711', 'FLEXI 17227 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3448, 57, '4501174883', '00340', '000000000014630801', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 22.0', 2, '135'),
+(3449, 57, '4501174883', '00350', '000000000014630802', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 22.5', 2, '135'),
+(3450, 57, '4501174883', '00360', '000000000014630803', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 23.0', 2, '135'),
+(3451, 57, '4501174883', '00370', '000000000014630804', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 23.5', 2, '135'),
+(3452, 57, '4501174883', '00380', '000000000014630805', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 24.0', 4, '135'),
+(3453, 57, '4501174883', '00390', '000000000014630806', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 24.5', 2, '135'),
+(3454, 57, '4501174883', '00400', '000000000014630807', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 25.0', 2, '135'),
+(3455, 57, '4501174883', '00410', '000000000014630808', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 25.5', 2, '135'),
+(3456, 57, '4501174883', '00420', '000000000014630809', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 26.0', 2, '135'),
+(3457, 57, '4501174883', '00430', '000000000014630810', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 26.5', 2, '135'),
+(3458, 57, '4501174883', '00440', '000000000014630811', 'FLEXI 18119 FLOR ENTERA MARRON 22/, 27.0', 2, '135'),
+(3459, 57, '4501174883', '00450', '000000000014630901', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3460, 57, '4501174883', '00460', '000000000014630902', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3461, 57, '4501174883', '00470', '000000000014630903', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3462, 57, '4501174883', '00480', '000000000014630904', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3463, 57, '4501174883', '00490', '000000000014630905', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 24.0', 4, '135'),
+(3464, 57, '4501174883', '00500', '000000000014630906', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 24.5', 2, '135'),
+(3465, 57, '4501174883', '00510', '000000000014630907', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 25.0', 2, '135'),
+(3466, 57, '4501174883', '00520', '000000000014630908', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3467, 57, '4501174883', '00530', '000000000014630909', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3468, 57, '4501174883', '00540', '000000000014630910', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3469, 57, '4501174883', '00550', '000000000014630911', 'FLEXI 18119 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3470, 57, '4501174883', '00560', '000000000014631001', 'FLEXI 19309 NOBUCK TRIGO 22/27, 22.0', 2, '135'),
+(3471, 57, '4501174883', '00570', '000000000014631002', 'FLEXI 19309 NOBUCK TRIGO 22/27, 22.5', 2, '135'),
+(3472, 57, '4501174883', '00580', '000000000014631003', 'FLEXI 19309 NOBUCK TRIGO 22/27, 23.0', 2, '135'),
+(3473, 57, '4501174883', '00590', '000000000014631004', 'FLEXI 19309 NOBUCK TRIGO 22/27, 23.5', 2, '135'),
+(3474, 57, '4501174883', '00600', '000000000014631005', 'FLEXI 19309 NOBUCK TRIGO 22/27, 24.0', 3, '135'),
+(3475, 57, '4501174883', '00610', '000000000014631006', 'FLEXI 19309 NOBUCK TRIGO 22/27, 24.5', 2, '135'),
+(3476, 57, '4501174883', '00620', '000000000014631007', 'FLEXI 19309 NOBUCK TRIGO 22/27, 25.0', 3, '135'),
+(3477, 57, '4501174883', '00630', '000000000014631008', 'FLEXI 19309 NOBUCK TRIGO 22/27, 25.5', 2, '135'),
+(3478, 57, '4501174883', '00640', '000000000014631009', 'FLEXI 19309 NOBUCK TRIGO 22/27, 26.0', 2, '135'),
+(3479, 57, '4501174883', '00650', '000000000014631010', 'FLEXI 19309 NOBUCK TRIGO 22/27, 26.5', 2, '135'),
+(3480, 57, '4501174883', '00660', '000000000014631011', 'FLEXI 19309 NOBUCK TRIGO 22/27, 27.0', 2, '135'),
+(3481, 57, '4501174883', '00670', '000000000014631101', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3482, 57, '4501174883', '00680', '000000000014631102', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3483, 57, '4501174883', '00690', '000000000014631103', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3484, 57, '4501174883', '00700', '000000000014631104', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3485, 57, '4501174883', '00710', '000000000014631105', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 24.0', 4, '135'),
+(3486, 57, '4501174883', '00720', '000000000014631106', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 24.5', 2, '135'),
+(3487, 57, '4501174883', '00730', '000000000014631107', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 25.0', 2, '135'),
+(3488, 57, '4501174883', '00740', '000000000014631108', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3489, 57, '4501174883', '00750', '000000000014631109', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3490, 57, '4501174883', '00760', '000000000014631110', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3491, 57, '4501174883', '00770', '000000000014631111', 'FLEXI 19317 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3492, 57, '4501174883', '00780', '000000000014631201', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 22.0', 2, '135'),
+(3493, 57, '4501174883', '00790', '000000000014631202', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 22.5', 2, '135'),
+(3494, 57, '4501174883', '00800', '000000000014631203', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 23.0', 3, '135'),
+(3495, 57, '4501174883', '00810', '000000000014631204', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 23.5', 2, '135'),
+(3496, 57, '4501174883', '00820', '000000000014631205', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 24.0', 5, '135'),
+(3497, 57, '4501174883', '00830', '000000000014631206', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 24.5', 3, '135'),
+(3498, 57, '4501174883', '00840', '000000000014631207', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 25.0', 4, '135'),
+(3499, 57, '4501174883', '00850', '000000000014631208', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 25.5', 2, '135'),
+(3500, 57, '4501174883', '00860', '000000000014631209', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 26.0', 3, '135'),
+(3501, 57, '4501174883', '00870', '000000000014631210', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 26.5', 2, '135'),
+(3502, 57, '4501174883', '00880', '000000000014631211', 'FLEXI 25520 FLOR ENTERA CHOCOLATE, 27.0', 2, '135'),
+(3503, 57, '4501174883', '00890', '000000000014631301', 'FLEXI 25523 NOBUCK TRIGO 22/27, 22.0', 2, '135'),
+(3504, 57, '4501174883', '00900', '000000000014631302', 'FLEXI 25523 NOBUCK TRIGO 22/27, 22.5', 2, '135'),
+(3505, 57, '4501174883', '00910', '000000000014631303', 'FLEXI 25523 NOBUCK TRIGO 22/27, 23.0', 4, '135'),
+(3506, 57, '4501174883', '00920', '000000000014631304', 'FLEXI 25523 NOBUCK TRIGO 22/27, 23.5', 2, '135'),
+(3507, 57, '4501174883', '00930', '000000000014631305', 'FLEXI 25523 NOBUCK TRIGO 22/27, 24.0', 7, '135'),
+(3508, 57, '4501174883', '00940', '000000000014631306', 'FLEXI 25523 NOBUCK TRIGO 22/27, 24.5', 3, '135'),
+(3509, 57, '4501174883', '00950', '000000000014631307', 'FLEXI 25523 NOBUCK TRIGO 22/27, 25.0', 5, '135'),
+(3510, 57, '4501174883', '00960', '000000000014631308', 'FLEXI 25523 NOBUCK TRIGO 22/27, 25.5', 2, '135'),
+(3511, 57, '4501174883', '00970', '000000000014631309', 'FLEXI 25523 NOBUCK TRIGO 22/27, 26.0', 3, '135'),
+(3512, 57, '4501174883', '00980', '000000000014631310', 'FLEXI 25523 NOBUCK TRIGO 22/27, 26.5', 2, '135'),
+(3513, 57, '4501174883', '00990', '000000000014631311', 'FLEXI 25523 NOBUCK TRIGO 22/27, 27.0', 2, '135'),
+(3514, 57, '4501174883', '01000', '000000000014631401', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 22.0', 2, '135'),
+(3515, 57, '4501174883', '01010', '000000000014631402', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 22.5', 2, '135'),
+(3516, 57, '4501174883', '01020', '000000000014631403', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 23.0', 3, '135'),
+(3517, 57, '4501174883', '01030', '000000000014631404', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 23.5', 2, '135'),
+(3518, 57, '4501174883', '01040', '000000000014631405', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 24.0', 4, '135'),
+(3519, 57, '4501174883', '01050', '000000000014631406', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 24.5', 2, '135'),
+(3520, 57, '4501174883', '01060', '000000000014631407', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 25.0', 4, '135'),
+(3521, 57, '4501174883', '01070', '000000000014631408', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 25.5', 2, '135'),
+(3522, 57, '4501174883', '01080', '000000000014631409', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 26.0', 3, '135'),
+(3523, 57, '4501174883', '01090', '000000000014631410', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 26.5', 2, '135'),
+(3524, 57, '4501174883', '01100', '000000000014631411', 'FLEXI 25524 FLOR ENTERA WISKY 22/2, 27.0', 2, '135'),
+(3525, 57, '4501174883', '01110', '000000000014631501', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3526, 57, '4501174883', '01120', '000000000014631502', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3527, 57, '4501174883', '01130', '000000000014631503', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 23.0', 3, '135'),
+(3528, 57, '4501174883', '01140', '000000000014631504', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3529, 57, '4501174883', '01150', '000000000014631505', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 24.0', 8, '135'),
+(3530, 57, '4501174883', '01160', '000000000014631506', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3531, 57, '4501174883', '01170', '000000000014631507', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 25.0', 8, '135'),
+(3532, 57, '4501174883', '01180', '000000000014631508', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 25.5', 4, '135'),
+(3533, 57, '4501174883', '01190', '000000000014631509', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 26.0', 6, '135'),
+(3534, 57, '4501174883', '01200', '000000000014631510', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3535, 57, '4501174883', '01210', '000000000014631511', 'FLEXI 25904 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3536, 57, '4501174883', '01220', '000000000014631601', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3537, 57, '4501174883', '01230', '000000000014631602', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3538, 57, '4501174883', '01240', '000000000014631603', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3539, 57, '4501174883', '01250', '000000000014631604', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3540, 57, '4501174883', '01260', '000000000014631605', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 24.0', 4, '135'),
+(3541, 57, '4501174883', '01270', '000000000014631606', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 24.5', 2, '135'),
+(3542, 57, '4501174883', '01280', '000000000014631607', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 25.0', 2, '135'),
+(3543, 57, '4501174883', '01290', '000000000014631608', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3544, 57, '4501174883', '01300', '000000000014631609', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3545, 57, '4501174883', '01310', '000000000014631610', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3546, 57, '4501174883', '01320', '000000000014631611', 'FLEXI 25909 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3547, 57, '4501174883', '01330', '000000000014631701', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3548, 57, '4501174883', '01340', '000000000014631702', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3549, 57, '4501174883', '01350', '000000000014631703', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3550, 57, '4501174883', '01360', '000000000014631704', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3551, 57, '4501174883', '01370', '000000000014631705', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 24.0', 6, '135'),
+(3552, 57, '4501174883', '01380', '000000000014631706', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3553, 57, '4501174883', '01390', '000000000014631707', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 25.0', 4, '135'),
+(3554, 57, '4501174883', '01400', '000000000014631708', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3555, 57, '4501174883', '01410', '000000000014631709', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 26.0', 3, '135'),
+(3556, 57, '4501174883', '01420', '000000000014631710', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3557, 57, '4501174883', '01430', '000000000014631711', 'FLEXI 33502 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3558, 57, '4501174883', '01440', '000000000014631801', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 22.0', 2, '135'),
+(3559, 57, '4501174883', '01450', '000000000014631802', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 22.5', 2, '135'),
+(3560, 57, '4501174883', '01460', '000000000014631803', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 23.0', 4, '135'),
+(3561, 57, '4501174883', '01470', '000000000014631804', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 23.5', 2, '135'),
+(3562, 57, '4501174883', '01480', '000000000014631805', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 24.0', 8, '135'),
+(3563, 57, '4501174883', '01490', '000000000014631806', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 24.5', 3, '135'),
+(3564, 57, '4501174883', '01500', '000000000014631807', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 25.0', 6, '135'),
+(3565, 57, '4501174883', '01510', '000000000014631808', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 25.5', 2, '135'),
+(3566, 57, '4501174883', '01520', '000000000014631809', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 26.0', 3, '135'),
+(3567, 57, '4501174883', '01530', '000000000014631810', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 26.5', 2, '135'),
+(3568, 57, '4501174883', '01540', '000000000014631811', 'FLEXI 33506 FLOR ENTERA ORO 22/27, 27.0', 2, '135'),
+(3569, 57, '4501174883', '01550', '000000000014631901', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3570, 57, '4501174883', '01560', '000000000014631902', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3571, 57, '4501174883', '01570', '000000000014631903', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3572, 57, '4501174883', '01580', '000000000014631904', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3573, 57, '4501174883', '01590', '000000000014631905', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 24.0', 4, '135'),
+(3574, 57, '4501174883', '01600', '000000000014631906', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 24.5', 2, '135'),
+(3575, 57, '4501174883', '01610', '000000000014631907', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 25.0', 2, '135'),
+(3576, 57, '4501174883', '01620', '000000000014631908', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3577, 57, '4501174883', '01630', '000000000014631909', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3578, 57, '4501174883', '01640', '000000000014631910', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3579, 57, '4501174883', '01650', '000000000014631911', 'FLEXI 33606 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3580, 57, '4501174883', '01660', '000000000014632001', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3581, 57, '4501174883', '01670', '000000000014632002', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3582, 57, '4501174883', '01680', '000000000014632003', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3583, 57, '4501174883', '01690', '000000000014632004', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3584, 57, '4501174883', '01700', '000000000014632005', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 24.0', 4, '135'),
+(3585, 57, '4501174883', '01710', '000000000014632006', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3586, 57, '4501174883', '01720', '000000000014632007', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 25.0', 4, '135'),
+(3587, 57, '4501174883', '01730', '000000000014632008', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 25.5', 3, '135'),
+(3588, 57, '4501174883', '01740', '000000000014632009', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3589, 57, '4501174883', '01750', '000000000014632010', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3590, 57, '4501174883', '01760', '000000000014632011', 'FLEXI 33609 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3591, 57, '4501174883', '01770', '000000000014632101', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3592, 57, '4501174883', '01780', '000000000014632102', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3593, 57, '4501174883', '01790', '000000000014632103', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3594, 57, '4501174883', '01800', '000000000014632104', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3595, 57, '4501174883', '01810', '000000000014632105', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 24.0', 4, '135'),
+(3596, 57, '4501174883', '01820', '000000000014632106', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3597, 57, '4501174883', '01830', '000000000014632107', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 25.0', 4, '135'),
+(3598, 57, '4501174883', '01840', '000000000014632108', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 25.5', 3, '135'),
+(3599, 57, '4501174883', '01850', '000000000014632109', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3600, 57, '4501174883', '01860', '000000000014632110', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3601, 57, '4501174883', '01870', '000000000014632111', 'FLEXI 33610 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3602, 57, '4501174883', '01880', '000000000014632201', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 22.0', 2, '135'),
+(3603, 57, '4501174883', '01890', '000000000014632202', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 22.5', 2, '135'),
+(3604, 57, '4501174883', '01900', '000000000014632203', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 23.0', 2, '135'),
+(3605, 57, '4501174883', '01910', '000000000014632204', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 23.5', 2, '135'),
+(3606, 57, '4501174883', '01920', '000000000014632205', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 24.0', 4, '135'),
+(3607, 57, '4501174883', '01930', '000000000014632206', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 24.5', 3, '135'),
+(3608, 57, '4501174883', '01940', '000000000014632207', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 25.0', 4, '135'),
+(3609, 57, '4501174883', '01950', '000000000014632208', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 25.5', 3, '135'),
+(3610, 57, '4501174883', '01960', '000000000014632209', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 26.0', 2, '135'),
+(3611, 57, '4501174883', '01970', '000000000014632210', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 26.5', 2, '135'),
+(3612, 57, '4501174883', '01980', '000000000014632211', 'FLEXI 33710 FLOR ENTERA COGNAC 22/, 27.0', 2, '135'),
+(3613, 57, '4501174883', '01990', '000000000014632301', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3614, 57, '4501174883', '02000', '000000000014632302', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3615, 57, '4501174883', '02010', '000000000014632303', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3616, 57, '4501174883', '02020', '000000000014632304', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3617, 57, '4501174883', '02030', '000000000014632305', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 24.0', 4, '135'),
+(3618, 57, '4501174883', '02040', '000000000014632306', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3619, 57, '4501174883', '02050', '000000000014632307', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 25.0', 4, '135'),
+(3620, 57, '4501174883', '02060', '000000000014632308', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 25.5', 3, '135'),
+(3621, 57, '4501174883', '02070', '000000000014632309', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3622, 57, '4501174883', '02080', '000000000014632310', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3623, 57, '4501174883', '02090', '000000000014632311', 'FLEXI 33710 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3624, 57, '4501174883', '02100', '000000000014632401', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 22.0', 2, '135'),
+(3625, 57, '4501174883', '02110', '000000000014632402', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 22.5', 2, '135'),
+(3626, 57, '4501174883', '02120', '000000000014632403', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 23.0', 3, '135'),
+(3627, 57, '4501174883', '02130', '000000000014632404', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 23.5', 2, '135'),
+(3628, 57, '4501174883', '02140', '000000000014632405', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 24.0', 5, '135'),
+(3629, 57, '4501174883', '02150', '000000000014632406', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 24.5', 3, '135'),
+(3630, 57, '4501174883', '02160', '000000000014632407', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 25.0', 4, '135'),
+(3631, 57, '4501174883', '02170', '000000000014632408', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 25.5', 2, '135'),
+(3632, 57, '4501174883', '02180', '000000000014632409', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 26.0', 3, '135'),
+(3633, 57, '4501174883', '02190', '000000000014632410', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 26.5', 2, '135'),
+(3634, 57, '4501174883', '02200', '000000000014632411', 'FLEXI 45108 FLOR ENTERA COGNAC 22/, 27.0', 2, '135'),
+(3635, 57, '4501174883', '02210', '000000000014632501', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3636, 57, '4501174883', '02220', '000000000014632502', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3637, 57, '4501174883', '02230', '000000000014632503', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 23.0', 3, '135'),
+(3638, 57, '4501174883', '02240', '000000000014632504', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3639, 57, '4501174883', '02250', '000000000014632505', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 24.0', 5, '135'),
+(3640, 57, '4501174883', '02260', '000000000014632506', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3641, 57, '4501174883', '02270', '000000000014632507', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 25.0', 4, '135'),
+(3642, 57, '4501174883', '02280', '000000000014632508', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3643, 57, '4501174883', '02290', '000000000014632509', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 26.0', 3, '135'),
+(3644, 57, '4501174883', '02300', '000000000014632510', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3645, 57, '4501174883', '02310', '000000000014632511', 'FLEXI 45108 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3646, 57, '4501174883', '02320', '000000000014632601', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3647, 57, '4501174883', '02330', '000000000014632602', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3648, 57, '4501174883', '02340', '000000000014632603', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 23.0', 4, '135'),
+(3649, 57, '4501174883', '02350', '000000000014632604', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3650, 57, '4501174883', '02360', '000000000014632605', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 24.0', 8, '135'),
+(3651, 57, '4501174883', '02370', '000000000014632606', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3652, 57, '4501174883', '02380', '000000000014632607', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 25.0', 6, '135'),
+(3653, 57, '4501174883', '02390', '000000000014632608', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3654, 57, '4501174883', '02400', '000000000014632609', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 26.0', 3, '135'),
+(3655, 57, '4501174883', '02410', '000000000014632610', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3656, 57, '4501174883', '02420', '000000000014632611', 'FLEXI 45202 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3657, 57, '4501174883', '02430', '000000000014632701', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3658, 57, '4501174883', '02440', '000000000014632702', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3659, 57, '4501174883', '02450', '000000000014632703', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3660, 57, '4501174883', '02460', '000000000014632704', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3661, 57, '4501174883', '02470', '000000000014632705', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 24.0', 6, '135'),
+(3662, 57, '4501174883', '02480', '000000000014632706', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3663, 57, '4501174883', '02490', '000000000014632707', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 25.0', 5, '135'),
+(3664, 57, '4501174883', '02500', '000000000014632708', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3665, 57, '4501174883', '02510', '000000000014632709', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3666, 57, '4501174883', '02520', '000000000014632710', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3667, 57, '4501174883', '02530', '000000000014632711', 'FLEXI 45207 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3668, 57, '4501174883', '02540', '000000000014632801', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3669, 57, '4501174883', '02550', '000000000014632802', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3670, 57, '4501174883', '02560', '000000000014632803', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3671, 57, '4501174883', '02570', '000000000014632804', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3672, 57, '4501174883', '02580', '000000000014632805', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 24.0', 6, '135'),
+(3673, 57, '4501174883', '02590', '000000000014632806', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3674, 57, '4501174883', '02600', '000000000014632807', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 25.0', 5, '135'),
+(3675, 57, '4501174883', '02610', '000000000014632808', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 25.5', 2, '135'),
+(3676, 57, '4501174883', '02620', '000000000014632809', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3677, 57, '4501174883', '02630', '000000000014632810', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3678, 57, '4501174883', '02640', '000000000014632811', 'FLEXI 45908 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3679, 57, '4501174883', '02650', '000000000014632901', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 22.0', 2, '135'),
+(3680, 57, '4501174883', '02660', '000000000014632902', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 22.5', 2, '135'),
+(3681, 57, '4501174883', '02670', '000000000014632903', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 23.0', 2, '135'),
+(3682, 57, '4501174883', '02680', '000000000014632904', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 23.5', 2, '135'),
+(3683, 57, '4501174883', '02690', '000000000014632905', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 24.0', 4, '135'),
+(3684, 57, '4501174883', '02700', '000000000014632906', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 24.5', 3, '135'),
+(3685, 57, '4501174883', '02710', '000000000014632907', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 25.0', 4, '135'),
+(3686, 57, '4501174883', '02720', '000000000014632908', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 25.5', 3, '135'),
+(3687, 57, '4501174883', '02730', '000000000014632909', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 26.0', 2, '135'),
+(3688, 57, '4501174883', '02740', '000000000014632910', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 26.5', 2, '135'),
+(3689, 57, '4501174883', '02750', '000000000014632911', 'FLEXI 45908 FLOR ENTERA WISKY 22/2, 27.0', 2, '135'),
+(3690, 57, '4501174883', '02760', '000000000014633001', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 22.0', 2, '135'),
+(3691, 57, '4501174883', '02770', '000000000014633002', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 22.5', 2, '135'),
+(3692, 57, '4501174883', '02780', '000000000014633003', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 23.0', 2, '135'),
+(3693, 57, '4501174883', '02790', '000000000014633004', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 23.5', 2, '135'),
+(3694, 57, '4501174883', '02800', '000000000014633005', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 24.0', 4, '135'),
+(3695, 57, '4501174883', '02810', '000000000014633006', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 24.5', 3, '135'),
+(3696, 57, '4501174883', '02820', '000000000014633007', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 25.0', 4, '135'),
+(3697, 57, '4501174883', '02830', '000000000014633008', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 25.5', 3, '135'),
+(3698, 57, '4501174883', '02840', '000000000014633009', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 26.0', 2, '135'),
+(3699, 57, '4501174883', '02850', '000000000014633010', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 26.5', 2, '135'),
+(3700, 57, '4501174883', '02860', '000000000014633011', 'FLEXI 46007 FLOR ENTERA COGNAC 22/, 27.0', 2, '135'),
+(3701, 57, '4501174883', '02870', '000000000014633101', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3702, 57, '4501174883', '02880', '000000000014633102', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3703, 57, '4501174883', '02890', '000000000014633103', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3704, 57, '4501174883', '02900', '000000000014633104', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 23.5', 2, '135'),
+(3705, 57, '4501174883', '02910', '000000000014633105', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 24.0', 4, '135'),
+(3706, 57, '4501174883', '02920', '000000000014633106', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 24.5', 3, '135'),
+(3707, 57, '4501174883', '02930', '000000000014633107', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 25.0', 4, '135'),
+(3708, 57, '4501174883', '02940', '000000000014633108', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 25.5', 3, '135'),
+(3709, 57, '4501174883', '02950', '000000000014633109', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 26.0', 2, '135'),
+(3710, 57, '4501174883', '02960', '000000000014633110', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3711, 57, '4501174883', '02970', '000000000014633111', 'FLEXI 46007 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3712, 57, '4501174883', '02980', '000000000014633201', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 22.0', 2, '135'),
+(3713, 57, '4501174883', '02990', '000000000014633202', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 22.5', 2, '135'),
+(3714, 57, '4501174883', '03000', '000000000014633203', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 23.0', 2, '135'),
+(3715, 57, '4501174883', '03010', '000000000014633204', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 23.5', 4, '135'),
+(3716, 57, '4501174883', '03020', '000000000014633205', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 24.0', 5, '135'),
+(3717, 57, '4501174883', '03030', '000000000014633206', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 24.5', 4, '135'),
+(3718, 57, '4501174883', '03040', '000000000014633207', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 25.0', 5, '135'),
+(3719, 57, '4501174883', '03050', '000000000014633208', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 25.5', 4, '135'),
+(3720, 57, '4501174883', '03060', '000000000014633209', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 26.0', 4, '135'),
+(3721, 57, '4501174883', '03070', '000000000014633210', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 26.5', 2, '135'),
+(3722, 57, '4501174883', '03080', '000000000014633211', 'FLEXI 46608 FLOR ENTERA NEGRO 22/2, 27.0', 2, '135'),
+(3723, 57, '4501174883', '03090', '000000000014633301', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 22.0', 2, '135'),
+(3724, 57, '4501174883', '03100', '000000000014633302', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 22.5', 2, '135'),
+(3725, 57, '4501174883', '03110', '000000000014633303', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 23.0', 3, '135'),
+(3726, 57, '4501174883', '03120', '000000000014633304', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 23.5', 2, '135'),
+(3727, 57, '4501174883', '03130', '000000000014633305', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 24.0', 5, '135'),
+(3728, 57, '4501174883', '03140', '000000000014633306', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 24.5', 3, '135'),
+(3729, 57, '4501174883', '03150', '000000000014633307', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 25.0', 4, '135'),
+(3730, 57, '4501174883', '03160', '000000000014633308', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 25.5', 2, '135'),
+(3731, 57, '4501174883', '03170', '000000000014633309', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 26.0', 3, '135'),
+(3732, 57, '4501174883', '03180', '000000000014633310', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 26.5', 2, '135'),
+(3733, 57, '4501174883', '03190', '000000000014633311', 'FLEXI 46608 FLOR ENTERA OPORTO 22/, 27.0', 2, '135'),
+(3734, 57, '4501174883', '03200', '000000000014633401', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 22.0', 2, '135'),
+(3735, 57, '4501174883', '03210', '000000000014633402', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 22.5', 2, '135'),
+(3736, 57, '4501174883', '03220', '000000000014633403', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 23.0', 3, '135'),
+(3737, 57, '4501174883', '03230', '000000000014633404', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 23.5', 2, '135'),
+(3738, 57, '4501174883', '03240', '000000000014633405', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 24.0', 5, '135'),
+(3739, 57, '4501174883', '03250', '000000000014633406', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 24.5', 3, '135'),
+(3740, 57, '4501174883', '03260', '000000000014633407', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 25.0', 4, '135'),
+(3741, 57, '4501174883', '03270', '000000000014633408', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 25.5', 2, '135'),
+(3742, 57, '4501174883', '03280', '000000000014633409', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 26.0', 3, '135'),
+(3743, 57, '4501174883', '03290', '000000000014633410', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 26.5', 2, '135'),
+(3744, 57, '4501174883', '03300', '000000000014633411', 'FLEXI 46908 FLOR ENTERA CAFE 22/27, 27.0', 2, '135'),
+(3745, 57, '4501174883', '03310', '000000000014633501', 'FLEXI 46908 NOBUCK TRIGO 22/27, 22.0', 2, '135'),
+(3746, 57, '4501174883', '03320', '000000000014633502', 'FLEXI 46908 NOBUCK TRIGO 22/27, 22.5', 2, '135'),
+(3747, 57, '4501174883', '03330', '000000000014633503', 'FLEXI 46908 NOBUCK TRIGO 22/27, 23.0', 4, '135'),
+(3748, 57, '4501174883', '03340', '000000000014633504', 'FLEXI 46908 NOBUCK TRIGO 22/27, 23.5', 2, '135'),
+(3749, 57, '4501174883', '03350', '000000000014633505', 'FLEXI 46908 NOBUCK TRIGO 22/27, 24.0', 7, '135'),
+(3750, 57, '4501174883', '03360', '000000000014633506', 'FLEXI 46908 NOBUCK TRIGO 22/27, 24.5', 3, '135'),
+(3751, 57, '4501174883', '03370', '000000000014633507', 'FLEXI 46908 NOBUCK TRIGO 22/27, 25.0', 5, '135'),
+(3752, 57, '4501174883', '03380', '000000000014633508', 'FLEXI 46908 NOBUCK TRIGO 22/27, 25.5', 2, '135'),
+(3753, 57, '4501174883', '03390', '000000000014633509', 'FLEXI 46908 NOBUCK TRIGO 22/27, 26.0', 3, '135'),
+(3754, 57, '4501174883', '03400', '000000000014633510', 'FLEXI 46908 NOBUCK TRIGO 22/27, 26.5', 2, '135'),
+(3755, 57, '4501174883', '03410', '000000000014633511', 'FLEXI 46908 NOBUCK TRIGO 22/27, 27.0', 2, '135'),
+(3756, 57, '4501174883', '03420', '000000000014633601', 'FLEXI 47401 CHAROL NEGRO 22/27, 22.0', 2, '135'),
+(3757, 57, '4501174883', '03430', '000000000014633602', 'FLEXI 47401 CHAROL NEGRO 22/27, 22.5', 2, '135'),
+(3758, 57, '4501174883', '03440', '000000000014633603', 'FLEXI 47401 CHAROL NEGRO 22/27, 23.0', 2, '135'),
+(3759, 57, '4501174883', '03450', '000000000014633604', 'FLEXI 47401 CHAROL NEGRO 22/27, 23.5', 2, '135'),
+(3760, 57, '4501174883', '03460', '000000000014633605', 'FLEXI 47401 CHAROL NEGRO 22/27, 24.0', 6, '135'),
+(3761, 57, '4501174883', '03470', '000000000014633606', 'FLEXI 47401 CHAROL NEGRO 22/27, 24.5', 3, '135'),
+(3762, 57, '4501174883', '03480', '000000000014633607', 'FLEXI 47401 CHAROL NEGRO 22/27, 25.0', 4, '135'),
+(3763, 57, '4501174883', '03490', '000000000014633608', 'FLEXI 47401 CHAROL NEGRO 22/27, 25.5', 2, '135'),
+(3764, 57, '4501174883', '03500', '000000000014633609', 'FLEXI 47401 CHAROL NEGRO 22/27, 26.0', 3, '135'),
+(3765, 57, '4501174883', '03510', '000000000014633610', 'FLEXI 47401 CHAROL NEGRO 22/27, 26.5', 2, '135'),
+(3766, 57, '4501174883', '03520', '000000000014633611', 'FLEXI 47401 CHAROL NEGRO 22/27, 27.0', 2, '135'),
+(3767, 57, '4501174883', '03530', '000000000014633701', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 22.0', 2, '135'),
+(3768, 57, '4501174883', '03540', '000000000014633702', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 22.5', 2, '135'),
+(3769, 57, '4501174883', '03550', '000000000014633703', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 23.0', 2, '135'),
+(3770, 57, '4501174883', '03560', '000000000014633704', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 23.5', 2, '135'),
+(3771, 57, '4501174883', '03570', '000000000014633705', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 24.0', 6, '135'),
+(3772, 57, '4501174883', '03580', '000000000014633706', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 24.5', 3, '135'),
+(3773, 57, '4501174883', '03590', '000000000014633707', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 25.0', 5, '135'),
+(3774, 57, '4501174883', '03600', '000000000014633708', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 25.5', 2, '135'),
+(3775, 57, '4501174883', '03610', '000000000014633709', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 26.0', 2, '135'),
+(3776, 57, '4501174883', '03620', '000000000014633710', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 26.5', 2, '135'),
+(3777, 57, '4501174883', '03630', '000000000014633711', 'FLEXI 58920 FLOR ENETRA NEGRO 22/2, 27.0', 2, '135'),
+(3778, 57, '4501174883', '03640', '000000000014633901', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 22.0', 2, '135'),
+(3779, 57, '4501174883', '03650', '000000000014633902', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 22.5', 2, '135'),
+(3780, 57, '4501174883', '03660', '000000000014633903', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 23.0', 2, '135'),
+(3781, 57, '4501174883', '03670', '000000000014633904', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 23.5', 2, '135'),
+(3782, 57, '4501174883', '03680', '000000000014633905', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 24.0', 6, '135'),
+(3783, 57, '4501174883', '03690', '000000000014633906', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 24.5', 3, '135'),
+(3784, 57, '4501174883', '03700', '000000000014633907', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 25.0', 4, '135'),
+(3785, 57, '4501174883', '03710', '000000000014633908', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 25.5', 2, '135'),
+(3786, 57, '4501174883', '03720', '000000000014633909', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 26.0', 3, '135'),
+(3787, 57, '4501174883', '03730', '000000000014633910', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 26.5', 2, '135'),
+(3788, 57, '4501174883', '03740', '000000000014633911', 'FLEXI 27808 FLOR ENTERA/CHAROL NGO, 27.0', 2, '135'),
+(3789, 57, '4501174883', '03750', '000000000014634001', 'FLEXI 25225 FLOR ENTERA NEGRO 18/2, 18.0', 6, '135'),
+(3790, 57, '4501174883', '03760', '000000000014634002', 'FLEXI 25225 FLOR ENTERA NEGRO 18/2, 18.5', 4, '135'),
+(3791, 57, '4501174883', '03770', '000000000014634003', 'FLEXI 25225 FLOR ENTERA NEGRO 18/2, 19.0', 5, '135'),
+(3792, 57, '4501174883', '03780', '000000000014634004', 'FLEXI 25225 FLOR ENTERA NEGRO 18/2, 19.5', 2, '135'),
+(3793, 57, '4501174883', '03790', '000000000014634005', 'FLEXI 25225 FLOR ENTERA NEGRO 18/2, 20.0', 7, '135'),
+(3794, 57, '4501174883', '03800', '000000000014634006', 'FLEXI 25225 FLOR ENTERA NEGRO 18/2, 20.5', 4, '135'),
+(3795, 57, '4501174883', '03810', '000000000014634007', 'FLEXI 25225 FLOR ENTERA NEGRO 18/2, 21.0', 8, '135'),
+(3796, 57, '4501174883', '03820', '000000000014635001', 'FLEXI 25227 FLOR ENTERA NEGRO 18/2, 18.0', 6, '135'),
+(3797, 57, '4501174883', '03830', '000000000014635002', 'FLEXI 25227 FLOR ENTERA NEGRO 18/2, 18.5', 4, '135'),
+(3798, 57, '4501174883', '03840', '000000000014635003', 'FLEXI 25227 FLOR ENTERA NEGRO 18/2, 19.0', 5, '135'),
+(3799, 57, '4501174883', '03850', '000000000014635004', 'FLEXI 25227 FLOR ENTERA NEGRO 18/2, 19.5', 2, '135'),
+(3800, 57, '4501174883', '03860', '000000000014635005', 'FLEXI 25227 FLOR ENTERA NEGRO 18/2, 20.0', 7, '135'),
+(3801, 57, '4501174883', '03870', '000000000014635006', 'FLEXI 25227 FLOR ENTERA NEGRO 18/2, 20.5', 4, '135'),
+(3802, 57, '4501174883', '03880', '000000000014635007', 'FLEXI 25227 FLOR ENTERA NEGRO 18/2, 21.0', 8, '135');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aspnetroles`
+--
+
+CREATE TABLE IF NOT EXISTS `aspnetroles` (
+  `Id` varchar(128) NOT NULL,
+  `Name` varchar(256) DEFAULT NULL,
+  `Description` varchar(1000) DEFAULT NULL,
+  `Tipo` enum('DAP','MERCADERIA','SERVICIO') DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `aspnetroles`
+--
+
+INSERT INTO `aspnetroles` (`Id`, `Name`, `Description`, `Tipo`) VALUES
+('MAESTRO-MERCADERIA', 'MAESTRO-MERCADERIA', 'Administrador', 'MERCADERIA'),
+('MAESTRO-NAZAN', 'MAESTRO-NAZAN', 'Administrador', 'DAP'),
+('MAESTRO-SERVICIO', 'MAESTRO-SERVICIO', 'Administrador', 'SERVICIO'),
+('MERCADERIA-ADMINISTRARPERFILES-LISTAR', 'MERCADERIA-ADMINISTRARPERFILES-LISTAR', 'Consultar Perfiles', 'MERCADERIA'),
+('MERCADERIA-ADMINISTRARPERFILES-MODIFICAR', 'MERCADERIA-ADMINISTRARPERFILES-MODIFICAR', 'Modificar Perfiles', 'MERCADERIA'),
+('MERCADERIA-ADMINISTRARUSUARIOS-LISTAR', 'MERCADERIA-ADMINISTRARUSUARIOS-LISTAR', 'Consultar Usuarios', 'MERCADERIA'),
+('MERCADERIA-ADMINISTRARUSUARIOS-MODIFICAR', 'MERCADERIA-ADMINISTRARUSUARIOS-MODIFICAR', 'Modificar Usuarios', 'MERCADERIA'),
+('MERCADERIA-COMPROBANTESRECIBO', 'MERCADERIA-COMPROBANTESRECIBO', 'Comprobantes de Recibo', 'MERCADERIA'),
+('MERCADERIA-CONTROLCITAS', 'MERCADERIA-CONTROLCITAS', 'Control de Citas', 'MERCADERIA'),
+('MERCADERIA-CUENTASPAGAR', 'MERCADERIA-CUENTASPAGAR', 'Cuentas por Pagar', 'MERCADERIA'),
+('MERCADERIA-FACTURAS', 'MERCADERIA-FACTURAS', 'Gestion de Facturas', 'MERCADERIA'),
+('MERCADERIA-GESTIONPROVEEDORES', 'MERCADERIA-GESTIONPROVEEDORES', 'Gestión de Proveedores', 'MERCADERIA'),
+('MERCADERIA-IMPRESIONETIQUETAS', 'MERCADERIA-IMPRESIONETIQUETAS', 'Impresion de Etiquetas', 'MERCADERIA'),
+('MERCADERIA-MENSAJESINSTITUCIONALES', 'MERCADERIA-MENSAJESINSTITUCIONALES', 'Mensajes Institucionales', 'MERCADERIA'),
+('MERCADERIA-ORDENESCOMPRA', 'MERCADERIA-ORDENESCOMPRA', 'Ordenes de Compra', 'MERCADERIA'),
+('MERCADERIA-REPORTESPROVEEDORES', 'MERCADERIA-REPORTESPROVEEDORES', 'Reportes Proveedores', 'MERCADERIA'),
+('NAZAN-ADMINISTRARCALENDARIO-CONSULTAR', 'NAZAN-ADMINISTRARCALENDARIO-CONSULTAR', 'Consultar Calendario', 'DAP'),
+('NAZAN-ADMINISTRARCALENDARIO-CREAR', 'NAZAN-ADMINISTRARCALENDARIO-CREAR', 'Crear Calendario', 'DAP'),
+('NAZAN-ADMINISTRARCALENDARIO-ELIMINAR', 'NAZAN-ADMINISTRARCALENDARIO-ELIMINAR', 'Eliminar Calendario', 'DAP'),
+('NAZAN-ADMINISTRARCALENDARIO-MODIFICAR', 'NAZAN-ADMINISTRARCALENDARIO-MODIFICAR', 'Modificar Calendario', 'DAP'),
+('NAZAN-ADMINISTRARCITAS', 'NAZAN-ADMINISTRARCITAS', 'Administrar Citas', NULL),
+('NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CONSULTAR', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CONSULTAR', 'Consultar Componentes Electronicos', 'DAP'),
+('NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CREAR', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CREAR', 'Crear Componentes Electronicos', 'DAP'),
+('NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-ELIMINAR', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-ELIMINAR', 'Eliminar Componentes Electronicos', 'DAP'),
+('NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-MODIFICAR', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-MODIFICAR', 'Modificar Componentes Electronicos', 'DAP'),
+('NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CONSULTAR', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CONSULTAR', 'Consultar Componentes Mecanicos', 'DAP'),
+('NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CREAR', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CREAR', 'Crear Componentes Mecanicos', 'DAP'),
+('NAZAN-ADMINISTRARCOMPONENTESMECANICOS-ELIMINAR', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-ELIMINAR', 'Eliminar Componentes Mecanicos', 'DAP'),
+('NAZAN-ADMINISTRARCOMPONENTESMECANICOS-MODIFICAR', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-MODIFICAR', 'Modificar Componentes Mecanicos', 'DAP'),
+('NAZAN-ADMINISTRARENVIOS-CONSULTAR', 'NAZAN-ADMINISTRARENVIOS-CONSULTAR', 'Consultar Envios', 'DAP'),
+('NAZAN-ADMINISTRARENVIOS-CREAR', 'NAZAN-ADMINISTRARENVIOS-CREAR', 'Crear Envios', 'DAP'),
+('NAZAN-ADMINISTRARENVIOS-ELIMINAR', 'NAZAN-ADMINISTRARENVIOS-ELIMINAR', 'Eliminar Envios', 'DAP'),
+('NAZAN-ADMINISTRARENVIOS-MODIFICAR', 'NAZAN-ADMINISTRARENVIOS-MODIFICAR', 'Modificar Envios', 'DAP'),
+('NAZAN-ADMINISTRARENVIOSS-MODIFICAR', 'NAZAN-ADMINISTRARENVIOSS-MODIFICAR', '', 'DAP'),
+('NAZAN-ADMINISTRAREQUIPOS-CONSULTAR', 'NAZAN-ADMINISTRAREQUIPOS-CONSULTAR', 'Consultar Equipos', 'DAP'),
+('NAZAN-ADMINISTRAREQUIPOS-CREAR', 'NAZAN-ADMINISTRAREQUIPOS-CREAR', 'Crear Equipos', 'DAP'),
+('NAZAN-ADMINISTRAREQUIPOS-ELIMINAR', 'NAZAN-ADMINISTRAREQUIPOS-ELIMINAR', 'Eliminar Equipos', 'DAP'),
+('NAZAN-ADMINISTRAREQUIPOS-MODIFICAR', 'NAZAN-ADMINISTRAREQUIPOS-MODIFICAR', 'Modificar Equipos', 'DAP'),
+('NAZAN-ADMINISTRARFACTURAS', 'NAZAN-ADMINISTRARFACTURAS', 'Administrar Facturas', NULL),
+('NAZAN-ADMINISTRARFALLAS-CONSULTAR', 'NAZAN-ADMINISTRARFALLAS-CONSULTAR', 'Consultar Fallas', 'DAP'),
+('NAZAN-ADMINISTRARFALLAS-CREAR', 'NAZAN-ADMINISTRARFALLAS-CREAR', 'Crear Fallas', 'DAP'),
+('NAZAN-ADMINISTRARFALLAS-ELIMINAR', 'NAZAN-ADMINISTRARFALLAS-ELIMINAR', 'Eliminar Fallas', 'DAP'),
+('NAZAN-ADMINISTRARFALLAS-MODIFICAR', 'NAZAN-ADMINISTRARFALLAS-MODIFICAR', 'Modificar Fallas', 'DAP'),
+('NAZAN-ADMINISTRARGESTIONOBRAS-CONSULTAR', 'NAZAN-ADMINISTRARGESTIONOBRAS-CONSULTAR', 'Consultar Gestion de Obras', 'DAP'),
+('NAZAN-ADMINISTRARGESTIONOBRAS-CREAR', 'NAZAN-ADMINISTRARGESTIONOBRAS-CREAR', 'Crear Gestion de Obras', 'DAP'),
+('NAZAN-ADMINISTRARGESTIONOBRAS-ELIMINAR', 'NAZAN-ADMINISTRARGESTIONOBRAS-ELIMINAR', 'Eliminar Gestion de Obras', 'DAP'),
+('NAZAN-ADMINISTRARGESTIONOBRAS-MODIFICAR', 'NAZAN-ADMINISTRARGESTIONOBRAS-MODIFICAR', 'Modificar Gestion de Obras', 'DAP'),
+('NAZAN-ADMINISTRARHERRAMIENTAS-CONSULTAR', 'NAZAN-ADMINISTRARHERRAMIENTAS-CONSULTAR', 'Consultar Herramientas', 'DAP'),
+('NAZAN-ADMINISTRARHERRAMIENTAS-CREAR', 'NAZAN-ADMINISTRARHERRAMIENTAS-CREAR', 'Crear Herramientas', 'DAP'),
+('NAZAN-ADMINISTRARHERRAMIENTAS-ELIMINAR', 'NAZAN-ADMINISTRARHERRAMIENTAS-ELIMINAR', 'Eliminar Herramientas', 'DAP'),
+('NAZAN-ADMINISTRARHERRAMIENTAS-MODIFICAR', 'NAZAN-ADMINISTRARHERRAMIENTAS-MODIFICAR', 'Modificar Herramientas', 'DAP'),
+('NAZAN-ADMINISTRARINFORMES-CONSULTAR', 'NAZAN-ADMINISTRARINFORMES-CONSULTAR', 'Consultar Informes', 'DAP'),
+('NAZAN-ADMINISTRARINFORMES-CREAR', 'NAZAN-ADMINISTRARINFORMES-CREAR', 'Crear Informes', 'DAP'),
+('NAZAN-ADMINISTRARINFORMES-ELIMINAR', 'NAZAN-ADMINISTRARINFORMES-ELIMINAR', 'Eliminar Informes', 'DAP'),
+('NAZAN-ADMINISTRARINFORMES-MODIFICAR', 'NAZAN-ADMINISTRARINFORMES-MODIFICAR', 'Modificar Informes', 'DAP'),
+('NAZAN-ADMINISTRARKITDAPS-CONSULTAR', 'NAZAN-ADMINISTRARKITDAPS-CONSULTAR', 'Consultar Kit Daps', 'DAP'),
+('NAZAN-ADMINISTRARKITDAPS-CREAR', 'NAZAN-ADMINISTRARKITDAPS-CREAR', 'Crear Kit Daps', 'DAP'),
+('NAZAN-ADMINISTRARKITDAPS-ELIMINAR', 'NAZAN-ADMINISTRARKITDAPS-ELIMINAR', 'Eliminar Kit Daps', 'DAP'),
+('NAZAN-ADMINISTRARKITDAPS-MODIFICAR', 'NAZAN-ADMINISTRARKITDAPS-MODIFICAR', 'Modificar Kit Daps', 'DAP'),
+('NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CONSULTAR', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CONSULTAR', 'Consultar Mantenimientos Correctivos', 'DAP'),
+('NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CREAR', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CREAR', 'Crear Mantenimientos Correctivos', 'DAP'),
+('NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-ELIMINAR', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-ELIMINAR', 'Eliminar Mantenimientos Correctivos', 'DAP'),
+('NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-MODIFICAR', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-MODIFICAR', 'Modificar Mantenimientos Correctivos', 'DAP'),
+('NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CONSULTAR', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CONSULTAR', 'Consultar Mantenimientos Preventivos', 'DAP'),
+('NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CREAR', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CREAR', 'Crear Mantenimientos Preventivos', 'DAP'),
+('NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-ELIMINAR', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-ELIMINAR', 'Eliminar Mantenimientos Preventivos', 'DAP'),
+('NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-MODIFICAR', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-MODIFICAR', 'Modificar Mantenimientos Preventivos', 'DAP'),
+('NAZAN-ADMINISTRARMENSAJESINSTITUCIONALES-LISTAR', 'NAZAN-ADMINISTRARMENSAJESINSTITUCIONALES-LISTAR', 'Consultar Mensajes Insitucionales', NULL),
+('NAZAN-ADMINISTRARMENSAJESINSTITUCIONALES-MODIFICAR', 'NAZAN-ADMINISTRARMENSAJESINSTITUCIONALES-MODIFICAR', 'Modificar Mensajes Institucionales', NULL),
+('NAZAN-ADMINISTRAROBRAS-CONSULTAR', 'NAZAN-ADMINISTRAROBRAS-CONSULTAR', 'Consultar Obras', 'DAP'),
+('NAZAN-ADMINISTRAROBRAS-CREAR', 'NAZAN-ADMINISTRAROBRAS-CREAR', 'Crear Obras', 'DAP'),
+('NAZAN-ADMINISTRAROBRAS-ELIMINAR', 'NAZAN-ADMINISTRAROBRAS-ELIMINAR', 'Eliminar Obras', 'DAP'),
+('NAZAN-ADMINISTRAROBRAS-MODIFICAR', 'NAZAN-ADMINISTRAROBRAS-MODIFICAR', 'Modificar Obras', 'DAP'),
+('NAZAN-ADMINISTRARPERFILESNAZAN-LISTAR', 'NAZAN-ADMINISTRARPERFILESNAZAN-LISTAR', 'Consultar Perfiles', 'DAP'),
+('NAZAN-ADMINISTRARPERFILESNAZAN-MODIFICAR', 'NAZAN-ADMINISTRARPERFILESNAZAN-MODIFICAR', 'Modificar Perfiles', 'DAP'),
+('NAZAN-ADMINISTRARPREVIOS-CONSULTAR', 'NAZAN-ADMINISTRARPREVIOS-CONSULTAR', 'Consultar Dap Previos', 'DAP'),
+('NAZAN-ADMINISTRARPREVIOS-CREAR', 'NAZAN-ADMINISTRARPREVIOS-CREAR', 'Crear Dap Previos', 'DAP'),
+('NAZAN-ADMINISTRARPREVIOS-ELIMINAR', 'NAZAN-ADMINISTRARPREVIOS-ELIMINAR', 'Eliminar Dap Previos', 'DAP'),
+('NAZAN-ADMINISTRARPREVIOS-MODIFICAR', 'NAZAN-ADMINISTRARPREVIOS-MODIFICAR', 'Modificar Dap Previos', 'DAP'),
+('NAZAN-ADMINISTRARPROTOCOLOS-CONSULTAR', 'NAZAN-ADMINISTRARPROTOCOLOS-CONSULTAR', 'Consultar Protocolos', 'DAP'),
+('NAZAN-ADMINISTRARPROTOCOLOS-CREAR', 'NAZAN-ADMINISTRARPROTOCOLOS-CREAR', 'Crear Protocolos', 'DAP'),
+('NAZAN-ADMINISTRARPROTOCOLOS-ELIMINAR', 'NAZAN-ADMINISTRARPROTOCOLOS-ELIMINAR', 'Eliminar Protocolos', 'DAP'),
+('NAZAN-ADMINISTRARPROTOCOLOS-MODIFICAR', 'NAZAN-ADMINISTRARPROTOCOLOS-MODIFICAR', 'Modificar Protocolos', 'DAP'),
+('NAZAN-ADMINISTRARPROVEEDORESNAZAN-LISTAR', 'NAZAN-ADMINISTRARPROVEEDORESNAZAN-LISTAR', 'Consultar Proveedores', NULL),
+('NAZAN-ADMINISTRARPROVEEDORESNAZAN-MODIFICAR', 'NAZAN-ADMINISTRARPROVEEDORESNAZAN-MODIFICAR', 'Modificar Proveedores', NULL),
+('NAZAN-ADMINISTRARREQUERIMIENTOS-CONSULTAR', 'NAZAN-ADMINISTRARREQUERIMIENTOS-CONSULTAR', 'Consultar Requerimientos', 'DAP'),
+('NAZAN-ADMINISTRARREQUERIMIENTOS-CREAR', 'NAZAN-ADMINISTRARREQUERIMIENTOS-CREAR', 'Crear Requerimientos', 'DAP'),
+('NAZAN-ADMINISTRARREQUERIMIENTOS-ELIMINAR	', 'NAZAN-ADMINISTRARREQUERIMIENTOS-ELIMINAR	', '', 'DAP'),
+('NAZAN-ADMINISTRARREQUERIMIENTOS-ELIMINAR    ', 'NAZAN-ADMINISTRARREQUERIMIENTOS-ELIMINAR    ', 'Eliminar Requerimientos', 'DAP'),
+('NAZAN-ADMINISTRARREQUERIMIENTOS-MODIFICAR', 'NAZAN-ADMINISTRARREQUERIMIENTOS-MODIFICAR', 'Modificar Requerimientos', 'DAP'),
+('NAZAN-ADMINISTRARSUGERENCIAS-CONSULTAR', 'NAZAN-ADMINISTRARSUGERENCIAS-CONSULTAR', 'Consultar Sugerencias', 'DAP'),
+('NAZAN-ADMINISTRARSUGERENCIAS-CREAR', 'NAZAN-ADMINISTRARSUGERENCIAS-CREAR', 'Crear Sugerencias', 'DAP'),
+('NAZAN-ADMINISTRARSUGERENCIAS-ELIMINAR', 'NAZAN-ADMINISTRARSUGERENCIAS-ELIMINAR', 'Eliminar Sugerencias', 'DAP'),
+('NAZAN-ADMINISTRARSUGERENCIAS-MODIFICAR', 'NAZAN-ADMINISTRARSUGERENCIAS-MODIFICAR', 'Modificar Sugerencias', 'DAP'),
+('NAZAN-ADMINISTRARUSUARIOS-LISTAR', 'NAZAN-ADMINISTRARUSUARIOS-LISTAR', 'Consultar Usuarios', 'DAP'),
+('NAZAN-ADMINISTRARUSUARIOSNAZAN-LISTAR', 'NAZAN-ADMINISTRARUSUARIOSNAZAN-LISTAR', 'Consultar Usuarios', 'DAP'),
+('NAZAN-ADMINISTRARUSUARIOSNAZAN-MODIFICAR', 'NAZAN-ADMINISTRARUSUARIOSNAZAN-MODIFICAR', 'Modificar Usuarios', 'DAP'),
+('NAZAN-ADMINISTRARVENTAS-CONSULTAR', 'NAZAN-ADMINISTRARVENTAS-CONSULTAR', 'Consultar Post Ventas', 'DAP'),
+('NAZAN-ADMINISTRARVENTAS-CREAR', 'NAZAN-ADMINISTRARVENTAS-CREAR', 'Crear Post Ventas', 'DAP'),
+('NAZAN-ADMINISTRARVENTAS-ELIMINAR', 'NAZAN-ADMINISTRARVENTAS-ELIMINAR', 'Eliminar Post Ventas', 'DAP'),
+('NAZAN-ADMINISTRARVENTAS-MODIFICAR', 'NAZAN-ADMINISTRARVENTAS-MODIFICAR', 'Modificar Post Ventas', 'DAP'),
+('NAZAN-CONFIGSYS', 'NAZAN-CONFIGSYS', 'Configurar el Sistema', 'DAP'),
+('NAZAN-NIVELSERVICIO', 'NAZAN-NIVELSERVICIO', 'Actualizar Niveles de Servicio', NULL),
+('SERVICIO-ADMINISTRARPERFILES-LISTAR', 'SERVICIO-ADMINISTRARPERFILES-LISTAR', 'Consultar Perfiles', 'SERVICIO'),
+('SERVICIO-ADMINISTRARPERFILES-MODIFICAR', 'SERVICIO-ADMINISTRARPERFILES-MODIFICAR', 'Modificar Perfiles', 'SERVICIO'),
+('SERVICIO-ADMINISTRARUSUARIOS-LISTAR', 'SERVICIO-ADMINISTRARUSUARIOS-LISTAR', 'Consultar Usuarios', 'SERVICIO'),
+('SERVICIO-ADMINISTRARUSUARIOS-MODIFICAR', 'SERVICIO-ADMINISTRARUSUARIOS-MODIFICAR', 'Modificar usuarios', 'SERVICIO'),
+('SERVICIO-CUENTASPAGAR', 'SERVICIO-CUENTASPAGAR', 'Cuentas por Pagar', 'SERVICIO'),
+('SERVICIO-FACTURAS', 'SERVICIO-FACTURAS', 'Gestion de facturas', 'SERVICIO'),
+('SERVICIO-GESTIONPROVEEDORES', 'SERVICIO-GESTIONPROVEEDORES', 'Gestión de Proveedores', 'SERVICIO'),
+('SERVICIO-MENSAJESINSTITUCIONALES', 'SERVICIO-MENSAJESINSTITUCIONALES', 'Mensajes Insitucionales', 'SERVICIO'),
+('SERVICIO-ORDENESCOMPRA', 'SERVICIO-ORDENESCOMPRA', 'Ordenes de Compra', 'SERVICIO'),
+('SERVICIO-REPORTESPROVEEDORES', 'SERVICIO-REPORTESPROVEEDORES', 'Reportes Proveedores', 'SERVICIO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aspnetuserclaims`
+--
+
+CREATE TABLE IF NOT EXISTS `aspnetuserclaims` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `UserId` varchar(128) NOT NULL,
+  `ClaimType` longtext,
+  `ClaimValue` longtext,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `UserId` (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aspnetuserlogins`
+--
+
+CREATE TABLE IF NOT EXISTS `aspnetuserlogins` (
+  `LoginProvider` varchar(128) NOT NULL,
+  `ProviderKey` varchar(128) NOT NULL,
+  `UserId` varchar(128) NOT NULL,
+  PRIMARY KEY (`LoginProvider`,`ProviderKey`,`UserId`),
+  KEY `ApplicationUser_Logins` (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aspnetuserroles`
+--
+
+CREATE TABLE IF NOT EXISTS `aspnetuserroles` (
+  `UserId` varchar(128) NOT NULL,
+  `RoleId` varchar(128) NOT NULL DEFAULT '',
+  PRIMARY KEY (`UserId`,`RoleId`),
+  KEY `fk_aspnetuserroles_role` (`RoleId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `aspnetuserroles`
+--
+
+INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
+('8e44fa7a-71ef-4228-963d-77bc41aacf3f', 'MAESTRO-MERCADERIA'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'MAESTRO-NAZAN'),
+('5bce66ac-0175-4bd7-93aa-3fd03c9c0673', 'MERCADERIA-ADMINISTRARPERFILES-LISTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCALENDARIO-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCALENDARIO-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCALENDARIO-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCALENDARIO-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCALENDARIO-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCALENDARIO-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCALENDARIO-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCALENDARIO-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARENVIOS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARENVIOS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARENVIOS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARENVIOS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARENVIOS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARENVIOS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARENVIOS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARENVIOS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRAREQUIPOS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRAREQUIPOS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRAREQUIPOS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRAREQUIPOS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRAREQUIPOS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRAREQUIPOS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRAREQUIPOS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRAREQUIPOS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARFALLAS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARFALLAS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARFALLAS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARFALLAS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARFALLAS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARFALLAS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARFALLAS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARFALLAS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARGESTIONOBRAS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARGESTIONOBRAS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARGESTIONOBRAS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARGESTIONOBRAS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARGESTIONOBRAS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARGESTIONOBRAS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARGESTIONOBRAS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARGESTIONOBRAS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARHERRAMIENTAS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARHERRAMIENTAS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARHERRAMIENTAS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARHERRAMIENTAS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARHERRAMIENTAS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARHERRAMIENTAS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARHERRAMIENTAS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARHERRAMIENTAS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARINFORMES-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARINFORMES-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARINFORMES-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARINFORMES-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARINFORMES-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARINFORMES-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARINFORMES-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARINFORMES-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARKITDAPS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARKITDAPS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARKITDAPS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARKITDAPS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARKITDAPS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARKITDAPS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARKITDAPS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARKITDAPS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRAROBRAS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRAROBRAS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRAROBRAS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRAROBRAS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRAROBRAS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRAROBRAS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRAROBRAS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRAROBRAS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPERFILESNAZAN-LISTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPERFILESNAZAN-LISTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPERFILESNAZAN-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPERFILESNAZAN-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPREVIOS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPREVIOS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPREVIOS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPREVIOS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPREVIOS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPREVIOS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPREVIOS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPREVIOS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPROTOCOLOS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPROTOCOLOS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPROTOCOLOS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPROTOCOLOS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPROTOCOLOS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPROTOCOLOS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARPROTOCOLOS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARPROTOCOLOS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARREQUERIMIENTOS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARREQUERIMIENTOS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARREQUERIMIENTOS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARREQUERIMIENTOS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARREQUERIMIENTOS-ELIMINAR    '),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARREQUERIMIENTOS-ELIMINAR    '),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARREQUERIMIENTOS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARREQUERIMIENTOS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARSUGERENCIAS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARSUGERENCIAS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARSUGERENCIAS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARSUGERENCIAS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARSUGERENCIAS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARSUGERENCIAS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARSUGERENCIAS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARSUGERENCIAS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARUSUARIOS-LISTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARUSUARIOSNAZAN-LISTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARUSUARIOSNAZAN-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARVENTAS-CONSULTAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARVENTAS-CONSULTAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARVENTAS-CREAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARVENTAS-CREAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARVENTAS-ELIMINAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARVENTAS-ELIMINAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-ADMINISTRARVENTAS-MODIFICAR'),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'NAZAN-ADMINISTRARVENTAS-MODIFICAR'),
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'NAZAN-CONFIGSYS');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aspnetusers`
+--
+
+CREATE TABLE IF NOT EXISTS `aspnetusers` (
+  `Id` varchar(128) NOT NULL,
+  `Email` varchar(256) DEFAULT NULL,
+  `EmailConfirmed` tinyint(1) DEFAULT NULL,
+  `PasswordHash` longtext,
+  `SecurityStamp` longtext,
+  `PhoneNumber` longtext,
+  `PhoneNumberConfirmed` tinyint(1) DEFAULT NULL,
+  `TwoFactorEnabled` tinyint(1) DEFAULT NULL,
+  `LockoutEndDateUtc` datetime DEFAULT NULL,
+  `LockoutEnabled` tinyint(1) DEFAULT NULL,
+  `AccessFailedCount` int(11) DEFAULT NULL,
+  `UserName` varchar(256) NOT NULL,
+  `Tipo` enum('DAP','MAESTRO-PROVEEDOR','PROVEEDOR') NOT NULL,
+  `Activo` tinyint(1) NOT NULL,
+  `Nombre` varchar(100) NOT NULL,
+  `Apellido` varchar(100) NOT NULL,
+  `Cargo` varchar(200) DEFAULT NULL,
+  `PerfilId` int(11) NOT NULL,
+  `TerminosCondicionesFecha` datetime DEFAULT NULL,
+  `Borrado` tinyint(4) DEFAULT '0',
+  `FechaTx` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `UsuarioIdTx` varchar(128) DEFAULT NULL,
+  `OperacionTx` enum('CREATE','UPDATE','DELETE') DEFAULT 'CREATE',
+  PRIMARY KEY (`Id`),
+  KEY `fk_aspnetusers_usuario` (`UsuarioIdTx`),
+  KEY `fk_aspnetusers_perfil` (`PerfilId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `aspnetusers`
+--
+
+INSERT INTO `aspnetusers` (`Id`, `Email`, `EmailConfirmed`, `PasswordHash`, `SecurityStamp`, `PhoneNumber`, `PhoneNumberConfirmed`, `TwoFactorEnabled`, `LockoutEndDateUtc`, `LockoutEnabled`, `AccessFailedCount`, `UserName`, `Tipo`, `Activo`, `Nombre`, `Apellido`, `Cargo`, `PerfilId`, `TerminosCondicionesFecha`, `Borrado`, `FechaTx`, `UsuarioIdTx`, `OperacionTx`) VALUES
+('0d21ebe4-3936-4cfb-8935-d82921b5b86e', 'superusuario', 0, 'ADq2Z+WZ/Ta1/ybYfumQgziVQ3fRPXQeyvl5iAhRLjSgNLYasZA+YCwX9QBLEwxz7Q==', '0e1cdfe9-d291-4d65-b21f-0f7696816c31', NULL, 0, 0, '2018-07-29 23:45:31', 1, 0, 'superusuario', 'DAP', 1, 'superusuario', 'superusuario', NULL, 129, NULL, 0, NULL, NULL, NULL),
+('5bce66ac-0175-4bd7-93aa-3fd03c9c0673', 'cuentajuandelgado@gmail.com', 0, 'ACstQ07kF5RF1IYiasrYJs8NklrKn9sOXY75TUi3ko/JUr5qXeTgkUhc8APeyEuwUA==', '57ab6921-871e-4ed8-8fec-aa98b50cb043', '+52 (154) 258-5200', 0, 0, NULL, 1, 0, 'juand', 'PROVEEDOR', 1, 'juan', 'delgado', NULL, 131, '2017-06-05 14:26:32', 0, NULL, NULL, NULL),
+('74ba962a-2051-4eff-a54e-b2e85a2d024b', 'dap.climb@gmail.com', 0, 'AMJRlo/Q4pAvilIzDGw7cRLxNCziYvL4mvXH9ciiUf5IQpBIsSuEpXqatdDYpVTGIA==', '3b44c697-21b1-4e1d-ac2b-b118c388f399', '+52 (414) 300-6075', 0, 0, NULL, 1, 0, 'CTOLEDO', 'DAP', 1, 'CARLOS ', 'TOLEDO', NULL, 138, NULL, 0, '2018-08-05 20:47:02', NULL, NULL),
+('8e44fa7a-71ef-4228-963d-77bc41aacf3f', 'g.juanch14@gmail.com', 0, 'ANoVJ8tmGFpuYT/3n+XnC5Wg8w7GeR1SP744UiX49KxFlhkU94miwLm7nSB2xDWKVA==', '1722fd12-75b8-44e0-ae7b-4aefe43b7b0d', '+52 (213) 213-1313', 0, 0, NULL, 1, 0, 'cuentamercaderia', 'MAESTRO-PROVEEDOR', 1, 'Juan', 'Godoy', 'Gerente', 130, '2017-06-04 15:51:03', 0, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `citas`
+--
+
+CREATE TABLE IF NOT EXISTS `citas` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Codigo` varchar(5) DEFAULT NULL,
+  `FechaCita` datetime NOT NULL,
+  `FechaCreacion` datetime DEFAULT NULL,
+  `Almacen` varchar(45) DEFAULT NULL,
+  `CantidadTotal` int(11) DEFAULT NULL,
+  `ProveedorId` int(11) NOT NULL,
+  `Borrado` tinyint(1) NOT NULL DEFAULT '0',
+  `FechaTx` datetime DEFAULT NULL,
+  `UsuarioIdTx` varchar(128) NOT NULL,
+  `OperacionTx` enum('CREATE','UPDATE','DELETE') NOT NULL DEFAULT 'CREATE',
+  `RielesOcupados` tinyint(4) NOT NULL DEFAULT '1',
+  `EstatusCitaId` int(11) DEFAULT NULL,
+  `Penalizado` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`),
+  KEY `fk_citas_usuario` (`UsuarioIdTx`),
+  KEY `fk_citas_estatus` (`EstatusCitaId`),
+  KEY `fk_citas_proveedor_idx` (`ProveedorId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=58 ;
+
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`Id`, `Codigo`, `FechaCita`, `FechaCreacion`, `Almacen`, `CantidadTotal`, `ProveedorId`, `Borrado`, `FechaTx`, `UsuarioIdTx`, `OperacionTx`, `RielesOcupados`, `EstatusCitaId`, `Penalizado`) VALUES
+(57, NULL, '2017-06-16 00:00:00', NULL, 'Cross Dock', 1118, 69, 0, NULL, '8e44fa7a-71ef-4228-963d-77bc41aacf3f', 'CREATE', 4, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `componenteselectricos`
+--
+
+CREATE TABLE IF NOT EXISTS `componenteselectricos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Tipo` varchar(500) DEFAULT NULL,
+  `Caracteristicas` varchar(500) DEFAULT NULL,
+  `Descripcion` varchar(45) DEFAULT NULL,
+  `Marca` varchar(45) DEFAULT NULL,
+  `Modelo` varchar(45) DEFAULT NULL,
+  `Serial` varchar(45) DEFAULT NULL,
+  `FechaFabricado` datetime DEFAULT NULL,
+  `Duracion` varchar(45) DEFAULT NULL,
+  `Sustitucion` varchar(45) DEFAULT NULL,
+  `FechaSustitucion` datetime DEFAULT NULL,
+  `Fotografia` varchar(1000) DEFAULT NULL,
+  `IdEquipos` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='	' AUTO_INCREMENT=40 ;
+
+--
+-- Volcado de datos para la tabla `componenteselectricos`
+--
+
+INSERT INTO `componenteselectricos` (`Id`, `Tipo`, `Caracteristicas`, `Descripcion`, `Marca`, `Modelo`, `Serial`, `FechaFabricado`, `Duracion`, `Sustitucion`, `FechaSustitucion`, `Fotografia`, `IdEquipos`) VALUES
+(1, 'MECANISMOS DE PUERTAS', 'ninguna', 'ninguna', 'marca', '5454', 'a7d54dfew5', '2018-04-03 00:00:00', '3 años', 'SI', NULL, '~/Uploads/referencia.pdf', 36),
+(2, '4', 'ninguna', 'ninguna', 'marca', '5454', 'a7d54dfew5', '2018-04-03 00:00:00', '3 años', 'SI', NULL, '~/Uploads/referencia.pdf', 36),
+(3, 'MECANISMOS DE PUERTAS', 'ninguna', 'ninguna', 'marca', '5454', 'a7d54dfew5', '2018-04-03 00:00:00', '3 años', 'SI', NULL, '~/Uploads/referencia.pdf', 36),
+(4, 'MECANISMOS DE PUERTAS', 'ninguna', 'ninguna', 'marca', '5454', 'a7d54dfew5', '2018-04-03 00:00:00', '3 años', 'SI', NULL, '~/Uploads/referencia.pdf', 37),
+(5, '5', 'WEFWEF', 'WEF', 'EWF', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', NULL, '', 0),
+(8, 'KIT DE POZO', 'iiy', '8i', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', NULL, '', 42),
+(9, 'SISTEMA DE PARACAIDAS', 'rar', 'null', 'ra', 'DEDFRR', 'd', '2018-07-24 00:00:00', '2', 'SI', '2018-07-22 00:00:00', '~/Uploads/DI- CABINA - LOFT C.jpg', 44),
+(10, 'SISTEMA DE PARACAIDAS', 'ra', 'null', 'orona', '444', 'x', '2018-07-24 00:00:00', '2', 'NO', '2018-07-22 00:00:00', '~/Uploads/CABINA 3 - LOFT C.jpg', 44),
+(11, 'TABLERO DE CONTROL', 'ra', 'null', 'orona', 'r', 'x', '2018-07-24 00:00:00', '2', 'NO', '2018-07-22 00:00:00', '', 44),
+(12, 'SWICHES FINAL DE CARRERA', 'RACA', 'null', 'v', '444', 'd', '2018-07-17 00:00:00', '2', 'NO', '2018-07-22 00:00:00', '~/Uploads/CABINA 3 - LOFTC.jpg', 45),
+(13, 'MECANISMOS DE PUERTAS', 'RAA', 'null', 'orona', '444', 'x', '2018-07-25 00:00:00', '2', 'SI', '2018-07-31 00:00:00', '', 46),
+(18, 'OPERADOR DE PUERTA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(17, 'MECANISMOS DE PUERTAS', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(16, 'SISTEMA DE PARACAIDAS', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 60),
+(19, 'LIMITADOR DE VELOCIDAD', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(20, 'SWICHES FINAL DE CARRERA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(21, 'SISTEMA DE PARACAIDAS', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(22, 'TABLERO DE CONTROL', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(23, 'KIT DE POZO', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(24, 'DISPLAY', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(25, 'FOTOCELULAS', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(26, 'ILUMINACION DE CABINA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(27, 'BOTONERA DE CABINA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(28, 'MECANISMOS DE PUERTAS', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(29, 'OPERADOR DE PUERTA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(30, 'LIMITADOR DE VELOCIDAD', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(31, 'SWICHES FINAL DE CARRERA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(32, 'SISTEMA DE PARACAIDAS', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(33, 'TABLERO DE CONTROL', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(34, 'KIT DE POZO', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(35, 'DISPLAY', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(36, 'FOTOCELULAS', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(37, 'ILUMINACION DE CABINA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(38, 'BOTONERA DE CABINA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(39, 'KIT DE POZO', 'NUEVO', NULL, 'sds', NULL, NULL, NULL, NULL, 'NO', NULL, '', 66);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `componenteselectricos_sustituciones`
+--
+
+CREATE TABLE IF NOT EXISTS `componenteselectricos_sustituciones` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Tipo` varchar(500) DEFAULT NULL,
+  `Caracteristicas` varchar(500) DEFAULT NULL,
+  `Descripcion` varchar(45) DEFAULT NULL,
+  `Marca` varchar(45) DEFAULT NULL,
+  `Modelo` varchar(45) DEFAULT NULL,
+  `Serial` varchar(45) DEFAULT NULL,
+  `FechaFabricado` datetime DEFAULT NULL,
+  `Duracion` varchar(45) DEFAULT NULL,
+  `Sustitucion` varchar(45) DEFAULT NULL,
+  `Fotografia` varchar(1000) DEFAULT NULL,
+  `IdEquipos` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='	' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `componenteselectronicos_tipos`
+--
+
+CREATE TABLE IF NOT EXISTS `componenteselectronicos_tipos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Volcado de datos para la tabla `componenteselectronicos_tipos`
+--
+
+INSERT INTO `componenteselectronicos_tipos` (`id`, `descripcion`) VALUES
+(4, 'MECANISMOS DE PUERTAS'),
+(5, 'OPERADOR DE PUERTA'),
+(6, 'LIMITADOR DE VELOCIDAD'),
+(7, 'SWICHES FINAL DE CARRERA'),
+(8, 'SISTEMA DE PARACAIDAS'),
+(9, 'TABLERO DE CONTROL'),
+(10, 'KIT DE POZO'),
+(11, 'DISPLAY'),
+(12, 'FOTOCELULAS'),
+(13, 'ILUMINACION DE CABINA'),
+(14, 'BOTONERA DE CABINA');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `componentesmecanicos`
+--
+
+CREATE TABLE IF NOT EXISTS `componentesmecanicos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Tipo` varchar(500) DEFAULT NULL,
+  `Caracteristicas` varchar(500) DEFAULT NULL,
+  `Descripcion` varchar(45) DEFAULT NULL,
+  `Marca` varchar(45) DEFAULT NULL,
+  `Modelo` varchar(45) DEFAULT NULL,
+  `Serial` varchar(45) DEFAULT NULL,
+  `FechaFabricado` datetime DEFAULT NULL,
+  `Duracion` varchar(45) DEFAULT NULL,
+  `Sustitucion` varchar(45) DEFAULT NULL,
+  `FechaSustitucion` datetime DEFAULT NULL,
+  `Fotografia` varchar(1000) DEFAULT NULL,
+  `IdEquipos` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='	' AUTO_INCREMENT=45 ;
+
+--
+-- Volcado de datos para la tabla `componentesmecanicos`
+--
+
+INSERT INTO `componentesmecanicos` (`Id`, `Tipo`, `Caracteristicas`, `Descripcion`, `Marca`, `Modelo`, `Serial`, `FechaFabricado`, `Duracion`, `Sustitucion`, `FechaSustitucion`, `Fotografia`, `IdEquipos`) VALUES
+(1, 'MOTOR', 'tubos en el motor', 'motor de ascensor', 'phillip', '05421', '878787aaaa8889', '2018-04-03 00:00:00', '2 años', 'SI', NULL, '~/Uploads/Factura-1279.pdf', 36),
+(2, '1', 'cc', 'ra', 'c', 'c', 'c', '2018-07-17 00:00:00', 'c', 'SI', NULL, '', 36),
+(3, '9', 'e', 'e', 'e', 'e', 'e', '2018-07-17 00:00:00', 'tyjty', 'SI', NULL, '', 36),
+(4, '1', 'sf', 'df', 'df', 'feef', '34554', '2018-07-26 00:00:00', 'tyjty', '3434', NULL, '', NULL),
+(5, '2', 'sds', 'dsd', 'sds', 'c', '324434', '2018-07-21 00:00:00', 'tyjty', '4554', NULL, '', NULL),
+(6, '1', 'wewe', 'wew', 'wef', 'null', 'null', '2018-07-22 00:00:00', 'null', 'null', NULL, '', NULL),
+(7, '1', 'FF', 'QWD', 'public', 'null', 'null', '2018-07-22 00:00:00', 'null', 'SI', NULL, '', 42),
+(8, 'PATINES DE CONTRAPESO', 'rr', 'null', 'orona', '444', 'x', '2018-07-26 00:00:00', '2', 'SI', '2018-07-28 00:00:00', '', 44),
+(9, 'MOTOR', 'r', 'null', 'v', '444', 'x', '2018-07-26 00:00:00', '2', 'NO', '2018-07-22 00:00:00', '', 44),
+(10, 'PUERTAS DE PASILLO', 'afa', 'null', 'orona', 'r', '5854875', '2018-07-23 00:00:00', '10', 'NO', '2018-07-22 00:00:00', '', 0),
+(11, 'PUERTAS DE CABINA', 'r', 'null', 'orona', '444', 'x', '2018-07-04 00:00:00', '2', 'NO', '2018-07-22 00:00:00', '', 44),
+(12, 'PORTA PATINES DE CABINA', 'ra', 'null', 'ea', '444', 'ea', '2018-07-19 00:00:00', '2', 'NO', '2018-07-22 00:00:00', '', 45),
+(13, 'PORTA PATINES DE CABINA', 'ra', 'null', 'orona', 'r', 'r', '2018-07-25 00:00:00', '2', 'NO', '2018-07-22 00:00:00', '', 45),
+(14, 'PUERTAS DE CABINA', 'EXCELENTE', 'null', 'CTV', '444', 'x', '2018-07-18 00:00:00', '2', 'SI', '2018-07-29 00:00:00', '', 46),
+(17, 'PORTA PATINES DE CONTRAPESO', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 60),
+(19, 'MOTOR', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(20, 'PUERTAS DE PASILLO', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(21, 'PATINES DE CONTRAPESO', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(22, 'PORTA PATINES DE CONTRAPESO', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(23, 'PATINES DE CABINA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(24, 'PORTA PATINES DE CABINA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(25, 'GUAYAS LIMITADOR DE VELOCIDAD', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(26, 'GUAYAS DE TRACCION', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(27, 'GUAYAS DE TRACCION', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 65),
+(28, 'PUERTAS DE PASILLO', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(29, 'MOTOR', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(30, 'PATINES DE CONTRAPESO', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(31, 'PORTA PATINES DE CONTRAPESO', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(32, 'PATINES DE CABINA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(33, 'GUAYAS LIMITADOR DE VELOCIDAD', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(34, 'GUAYAS DE TRACCION', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(35, 'AMORTIGUADORES', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(36, 'PUERTAS DE CABINA', 'null', 'null', 'null', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 66),
+(37, 'PATINES DE CABINA', 'Prueba', 'null', 'orona', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 67),
+(38, 'MOTOR', 'null', 'null', 'ORONA', 'null', 'null', '2018-07-22 00:00:00', 'null', 'NO', '2018-07-22 00:00:00', '', 70),
+(39, 'MOTOR', NULL, NULL, 'public', 'modelo', NULL, '2018-08-11 00:00:00', NULL, 'NO', NULL, '', 66),
+(40, 'MOTOR', 'nuevo', NULL, NULL, NULL, NULL, NULL, '25', 'NO', NULL, '', 66),
+(41, 'PATINES DE CABINA', 'nuevos', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', NULL, '', 66),
+(42, 'PATINES DE CONTRAPESO', 'nuevo', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', NULL, '', 66),
+(43, 'PATINES DE CONTRAPESO', 'nuevo', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', NULL, '', 66),
+(44, 'GUAYAS LIMITADOR DE VELOCIDAD', 'NUEVO', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', NULL, '', 66);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `componentesmecanicos_sustituciones`
+--
+
+CREATE TABLE IF NOT EXISTS `componentesmecanicos_sustituciones` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Tipo` varchar(500) DEFAULT NULL,
+  `Caracteristicas` varchar(500) DEFAULT NULL,
+  `Descripcion` varchar(45) DEFAULT NULL,
+  `Marca` varchar(45) DEFAULT NULL,
+  `Modelo` varchar(45) DEFAULT NULL,
+  `Serial` varchar(45) DEFAULT NULL,
+  `FechaFabricado` datetime DEFAULT NULL,
+  `Duracion` varchar(45) DEFAULT NULL,
+  `Sustitucion` varchar(45) DEFAULT NULL,
+  `Fotografia` varchar(45) DEFAULT NULL,
+  `IdEquipos` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `componentesmecanicos_tipos`
+--
+
+CREATE TABLE IF NOT EXISTS `componentesmecanicos_tipos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Volcado de datos para la tabla `componentesmecanicos_tipos`
+--
+
+INSERT INTO `componentesmecanicos_tipos` (`id`, `descripcion`) VALUES
+(1, 'PUERTAS DE PASILLO'),
+(2, 'MOTOR'),
+(7, 'PATINES DE CONTRAPESO'),
+(8, 'PORTA PATINES DE CONTRAPESO'),
+(9, 'PATINES DE CABINA'),
+(10, 'PORTA PATINES DE CABINA'),
+(11, 'GUAYAS LIMITADOR DE VELOCIDAD'),
+(12, 'GUAYAS DE TRACCION'),
+(13, 'AMORTIGUADORES'),
+(14, 'PUERTAS DE CABINA');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `configuraciones`
+--
+
+CREATE TABLE IF NOT EXISTS `configuraciones` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Clave` varchar(50) DEFAULT NULL,
+  `Valor` varchar(200) DEFAULT NULL,
+  `Habilitado` tinyint(1) NOT NULL DEFAULT '1',
+  `Descripcion` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=126 ;
+
+--
+-- Volcado de datos para la tabla `configuraciones`
+--
+
+INSERT INTO `configuraciones` (`Id`, `Clave`, `Valor`, `Habilitado`, `Descripcion`) VALUES
+(72, 'warehouse.working-day.enabled', '2,3,4,5,6', 1, 'Indica los dias de la semana, donde 1=Domingo, 2=Lunes,...7=Sabado, donde se pueden hacer las recepciones de mercancias o entregas'),
+(73, 'warehouse.special-day.provider', '4', 1, 'Indica el dia de entrega para los proveedores especiales o vip de impuls'),
+(74, 'warehouse.max-pairs.per-day', '27000', 1, 'Indica la cantidad maxima de pares por dia permitida'),
+(75, 'warehouse.max-pairs.per-week', '90000', 1, 'Indica la cantidad maxima de pares por semana permitida'),
+(76, 'warehouse.crossdock-max-pairs.per-day', '27000', 1, 'Indica la cantidad maxima de pares por dia permitida para crossdock'),
+(77, 'warehouse.platform-rail.max-pair.hour', '700', 1, 'Indica la cantidad maxima de pares por hora por riel permitida'),
+(78, 'warehouse.platform-rail.max-pair.30min', '250', 1, 'Indica la cantidad maxima de pares cada media hora por riel permitida'),
+(79, 'site.url', 'http://ppgz.com', 1, 'Indica la dirección del portal'),
+(80, 'mail.main.address', 'impuls.ppgz@gmail.com', 1, 'Indica  la dirección del del correo emisor'),
+(81, 'mail.main.password', 'Venezuela2017', 1, 'Indica la contraseña del del correo emisor'),
+(82, 'mail.main.smtp.host', 'smtp.gmail.com', 1, 'Indica el host del servidor smtp del correo emisor'),
+(83, 'mail.main.smtp.port', '587', 1, 'Indica el puerto del servidor smtp del correo emisor'),
+(84, 'mail.main.smtp.enablessl', '1', 1, 'Indica si la conexión del servidor smtp require ssl'),
+(85, 'rfc.bw.name', 'QIM', 1, ''),
+(86, 'rfc.bw.appserverhost', '172.18.3.16', 1, ''),
+(87, 'rfc.bw.user', 'USRPORTAL', 1, ''),
+(88, 'rfc.bw.password', 'wspportalp', 1, ''),
+(89, 'rfc.bw.client', '600', 1, ''),
+(90, 'rfc.bw.systemnumber', '50', 1, ''),
+(91, 'rfc.bw.language', 'EN', 1, ''),
+(92, 'rfc.bw.poolsize', '5', 1, ''),
+(93, 'rfc.bw.peakconnectionslimit', '35', 1, ''),
+(94, 'rfc.bw.idletimeout', '500', 1, ''),
+(95, 'rfc.main.name', 'QIM', 1, ''),
+(96, 'rfc.main.appserverhost', '172.18.3.21', 1, ''),
+(97, 'rfc.main.user', 'WSPRR', 1, ''),
+(98, 'rfc.main.password', 'wsp2017', 1, ''),
+(99, 'rfc.main.client', '300', 1, ''),
+(100, 'rfc.main.systemnumber', '22', 1, ''),
+(101, 'rfc.main.language', 'EN', 1, ''),
+(102, 'rfc.main.poolsize', '5', 1, ''),
+(103, 'rfc.main.peakconnectionslimit', '35', 1, ''),
+(104, 'rfc.main.idletimeout', '500', 1, ''),
+(105, 'warehouse.platform-rail.max-pair-hour.tolerance', '0.16', 1, 'Indica la tolerancia en márgenes de pares por hora'),
+(106, 'batchfile.wrongfilespath', 'C:\\temp\\Ppgz\\WrongFiles', 1, ''),
+(107, 'batchfile.crinboxpath', 'C:\\temp\\Ppgz\\Cr\\Inbox', 1, ''),
+(108, 'batchfile.crpath', 'C:\\temp\\Ppgz\\Cr\\Processed', 1, ''),
+(109, 'batchfile.crfilter', 'cr_*.pdf', 1, ''),
+(110, 'batchfile.etiquetasinboxpath', 'C:\\temp\\Ppgz\\Etiquetas\\Inbox', 1, ''),
+(111, 'batchfile.etiquetaspath', 'C:\\temp\\Ppgz\\Etiquetas\\Processed', 1, ''),
+(112, 'batchfile.etiquetasfilter', 'etq_*.csv', 1, ''),
+(113, 'rfc.common.function.param.bukrs.mercaderia', '1001', 1, ''),
+(114, 'rfc.common.function.param.bukrs.servicio', '1000', 1, ''),
+(115, 'facturas.rootdirectory', 'c:\\temp\\facturas\\', 1, ''),
+(116, 'warehouse.warehouses', 'CD01,CD02,CD03,CD04,CD05,CD06', 1, 'Codigos SAP de todos los almacenes'),
+(117, 'warehouse.limited-warehouses-per-day', 'CD01,CD06', 1, 'Codigos SAP de los almacenes que tienen cantidades limitadas por dia'),
+(118, 'warehouse.limited-warehouses-per-week', 'CD01,CD06', 1, 'Codigos SAP de los almacenes que tienen cantidades limitadas por semana'),
+(119, 'rfc.common.function.param.ekorg.mercaderia', 'OC01', 1, 'Parámetro de la Organización de Compras que será enviado para todos los proveedores registrados como Mercaderías'),
+(120, 'rfc.common.function.param.ekorg.servicio', 'OC02', 1, 'Parámetro de la Organización de Compras que será enviado para todos los proveedores registrados como Servicio'),
+(121, 'wfc.url.cita.add', 'http://localhost:14766/CitationControlService.svc/rest/AddCitation', 1, 'Url para el servicio que persiste las citas'),
+(122, 'cfdi.token', 'tokSY9Db304Kx', 1, 'Parámetro requerido para el servicio web de validación de facturas'),
+(123, 'cfdi.password', 'pswNfFPAaQhJ2', 1, 'Parámetro requerido para el servicio web de validación de facturas'),
+(124, 'cfdi.user', 'usraLYhIjXOCJ', 1, 'Parámetro requerido para el servicio web de validación de facturas'),
+(125, 'cfdi.cuenta', 'ctaduPw4Xeh0w', 1, 'Parámetro requerido para el servicio web de validación de facturas');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `crs`
+--
+
+CREATE TABLE IF NOT EXISTS `crs` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Codigo` varchar(20) DEFAULT NULL,
+  `ArchivoCR` varchar(1000) DEFAULT NULL,
+  `Fecha` datetime DEFAULT NULL,
+  `CitaId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `CitaId` (`CitaId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuentaproveedores`
+--
+
+CREATE TABLE IF NOT EXISTS `cuentaproveedores` (
+  `NumeroProveedor` varchar(45) NOT NULL,
+  `Nombre` varchar(45) DEFAULT NULL,
+  `Ciudad` varchar(45) DEFAULT NULL,
+  `Distrito` varchar(45) DEFAULT NULL,
+  `VendedorNombre` varchar(45) DEFAULT NULL,
+  `VendedorTelefono` varchar(45) DEFAULT NULL,
+  `CompradorImpulsNombre` varchar(45) DEFAULT NULL,
+  `CompradorImpulsTelefono` varchar(45) DEFAULT NULL,
+  `CompradorImpulsEmail` varchar(45) DEFAULT NULL,
+  `CuentaId` int(11) NOT NULL,
+  PRIMARY KEY (`NumeroProveedor`,`CuentaId`),
+  KEY `fk_cuetnasprov` (`CuentaId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuentas`
+--
+
+CREATE TABLE IF NOT EXISTS `cuentas` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CodigoProveedor` varchar(50) DEFAULT NULL,
+  `NombreCuenta` varchar(50) DEFAULT NULL,
+  `FechaRegistro` datetime DEFAULT NULL,
+  `Tipo` enum('MERCADERIA','SERVICIO') DEFAULT NULL,
+  `EsEspecial` tinyint(1) NOT NULL DEFAULT '0',
+  `Activo` tinyint(1) NOT NULL DEFAULT '1',
+  `Borrado` tinyint(1) NOT NULL DEFAULT '0',
+  `FechaTx` datetime DEFAULT NULL,
+  `UsuarioIdTx` varchar(128) DEFAULT NULL,
+  `OperacionTx` enum('CREATE','UPDATE','DELETE') DEFAULT 'CREATE',
+  PRIMARY KEY (`Id`),
+  KEY `fk_cuentas_usuario` (`UsuarioIdTx`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=100 ;
+
+--
+-- Volcado de datos para la tabla `cuentas`
+--
+
+INSERT INTO `cuentas` (`Id`, `CodigoProveedor`, `NombreCuenta`, `FechaRegistro`, `Tipo`, `EsEspecial`, `Activo`, `Borrado`, `FechaTx`, `UsuarioIdTx`, `OperacionTx`) VALUES
+(99, '57534be6-3331-48d2-a2b7-801794824402', 'cuentamercaderia', NULL, 'MERCADERIA', 1, 1, 0, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuentasmensajes`
+--
+
+CREATE TABLE IF NOT EXISTS `cuentasmensajes` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `FechaVisualizacion` datetime DEFAULT NULL,
+  `MensajeId` int(11) DEFAULT NULL,
+  `CuentaId` int(11) DEFAULT NULL,
+  `UsuarioId` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `fk_cuentasmensajes_mensaje` (`MensajeId`),
+  KEY `fk_cuentasmensajes_cuenta` (`CuentaId`),
+  KEY `fk_cuentasmensajes_usuario` (`UsuarioId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuentasusuarios`
+--
+
+CREATE TABLE IF NOT EXISTS `cuentasusuarios` (
+  `UsuarioId` varchar(128) NOT NULL,
+  `CuentaId` int(11) NOT NULL,
+  PRIMARY KEY (`UsuarioId`,`CuentaId`),
+  KEY `fk_cuentas` (`CuentaId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cuentasusuarios`
+--
+
+INSERT INTO `cuentasusuarios` (`UsuarioId`, `CuentaId`) VALUES
+('5bce66ac-0175-4bd7-93aa-3fd03c9c0673', 99),
+('8e44fa7a-71ef-4228-963d-77bc41aacf3f', 99);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `devoluciones`
+--
+
+CREATE TABLE IF NOT EXISTS `devoluciones` (
+  `id` int(11) NOT NULL,
+  `Referencia` varchar(200) NOT NULL,
+  `Material` varchar(200) NOT NULL,
+  `Descripcion` varchar(200) NOT NULL,
+  `Cantidad` varchar(200) NOT NULL,
+  `Importe` int(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `envios`
+--
+
+CREATE TABLE IF NOT EXISTS `envios` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Obra` varchar(45) DEFAULT NULL,
+  `TipoComponente` varchar(45) DEFAULT NULL,
+  `FechaPedido` datetime DEFAULT NULL,
+  `FechaSalida` datetime DEFAULT NULL,
+  `Tracking` varchar(45) DEFAULT NULL,
+  `EmpresaEnvio` varchar(45) DEFAULT NULL,
+  `StatusEnvio` varchar(45) DEFAULT NULL,
+  `NumeroBulto` varchar(45) DEFAULT NULL,
+  `PesoTotal` varchar(45) DEFAULT NULL,
+  `CodigoArancelario` varchar(45) DEFAULT NULL,
+  `Solicitado` varchar(45) DEFAULT NULL,
+  `CostoProducto` varchar(45) DEFAULT NULL,
+  `StatusPago` varchar(45) DEFAULT NULL,
+  `NumeroFactura` varchar(45) DEFAULT NULL,
+  `StatusEntrega` varchar(45) DEFAULT NULL,
+  `EntregaProducto` varchar(45) DEFAULT NULL,
+  `FechaEntrega` datetime DEFAULT NULL,
+  `obra_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+--
+-- Volcado de datos para la tabla `envios`
+--
+
+INSERT INTO `envios` (`Id`, `Obra`, `TipoComponente`, `FechaPedido`, `FechaSalida`, `Tracking`, `EmpresaEnvio`, `StatusEnvio`, `NumeroBulto`, `PesoTotal`, `CodigoArancelario`, `Solicitado`, `CostoProducto`, `StatusPago`, `NumeroFactura`, `StatusEntrega`, `EntregaProducto`, `FechaEntrega`, `obra_id`) VALUES
+(14, 'EF RAFAEL', 'FOTOCELULA', '2018-07-05 00:00:00', '2018-07-12 00:00:00', '123456', 'null', 'RECIBIDO', 'null', 'null', 'null', 'null', 'null', 'NO CANCELADO', '123', NULL, 'null', '2018-07-29 00:00:00', 23),
+(15, 'SALEM I', 'iiiiiiiiii', '2018-08-07 00:00:00', '2018-08-08 00:00:00', '5645633', 'null', 'EN TRANSITO', 'null', 'null', 'null', 'null', 'null', 'NO CANCELADO', 'null', NULL, 'null', '2018-08-07 14:50:30', 25),
+(16, 'SALEM I', 'YH', '2018-08-08 00:00:00', '2018-08-08 21:26:05', 'null', 'null', 'EN TRANSITO', 'null', 'null', 'null', 'null', 'null', 'CANCELADO', 'null', NULL, 'null', '2018-08-08 00:00:00', 25),
+(17, 'SALEM I', 'dfdff', '2018-08-08 00:00:00', '2018-08-08 21:26:36', 'null', 'null', 'EN TRANSITO', 'null', 'null', 'null', 'null', 'null', 'CANCELADO', 'null', NULL, 'null', '2018-08-08 21:26:36', 25),
+(18, 'SALEM II', 'ooooooooooooo', '2018-08-08 00:00:00', '2018-08-08 00:00:00', 'null', 'null', 'RECIBIDO', 'null', 'null', 'null', 'null', 'null', 'CANCELADO', 'null', NULL, 'null', '2018-08-08 00:00:00', 25),
+(19, 'OFICINA', 'oficinaaaaaaaaaaaaaa', '2018-08-09 00:00:00', '2018-08-09 23:31:44', 'null', 'null', 'EN TRANSITO', 'null', 'null', 'null', 'null', 'null', 'NO CANCELADO', 'null', NULL, 'null', '2018-08-09 23:31:44', 31);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `envios_status`
+--
+
+CREATE TABLE IF NOT EXISTS `envios_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(500) DEFAULT NULL,
+  `tipo` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `envios_status`
+--
+
+INSERT INTO `envios_status` (`id`, `descripcion`, `tipo`) VALUES
+(1, 'EN TRANSITO', 'envio'),
+(2, 'RECIBIDO', 'envio'),
+(3, 'CANCELADO', 'pago'),
+(4, 'NO CANCELADO', 'pago'),
+(5, 'RECIBIDA', 'entrega'),
+(6, 'NO RECIBIDA', 'entrega');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `equipo_tipo`
+--
+
+CREATE TABLE IF NOT EXISTS `equipo_tipo` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `equipo_tipo`
+--
+
+INSERT INTO `equipo_tipo` (`Id`, `Descripcion`) VALUES
+(1, 'ASCENSOR PRIVADO'),
+(2, 'ASCENSOR DE SERVICIO'),
+(3, 'MONTA CARRO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `equipos`
+--
+
+CREATE TABLE IF NOT EXISTS `equipos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(45) DEFAULT NULL,
+  `Marca` varchar(45) DEFAULT NULL,
+  `Modelo` varchar(45) DEFAULT NULL,
+  `Referencia` varchar(45) DEFAULT NULL,
+  `DimensionesCabina` varchar(45) DEFAULT NULL,
+  `DimensionesHueco` varchar(45) DEFAULT NULL,
+  `CargaNominal` varchar(45) DEFAULT NULL,
+  `Velocidad` varchar(45) DEFAULT NULL,
+  `Recorrido` varchar(45) DEFAULT NULL,
+  `Paradas` varchar(45) DEFAULT NULL,
+  `Accesos` varchar(45) DEFAULT NULL,
+  `VoltajeDeRed` varchar(45) DEFAULT NULL,
+  `PotenciaDeMaquina` varchar(45) DEFAULT NULL,
+  `TipoDeManiobra` varchar(45) DEFAULT NULL,
+  `NumeroDeGuayas` varchar(45) DEFAULT NULL,
+  `Fotografia` varchar(1000) DEFAULT NULL,
+  `Plano` varchar(1000) DEFAULT NULL,
+  `CantidadPersonas` int(200) DEFAULT NULL,
+  `obra_id` int(11) DEFAULT NULL,
+  `FechaGarantia` datetime DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=71 ;
+
+--
+-- Volcado de datos para la tabla `equipos`
+--
+
+INSERT INTO `equipos` (`Id`, `Nombre`, `Marca`, `Modelo`, `Referencia`, `DimensionesCabina`, `DimensionesHueco`, `CargaNominal`, `Velocidad`, `Recorrido`, `Paradas`, `Accesos`, `VoltajeDeRed`, `PotenciaDeMaquina`, `TipoDeManiobra`, `NumeroDeGuayas`, `Fotografia`, `Plano`, `CantidadPersonas`, `obra_id`, `FechaGarantia`) VALUES
+(1, 'ASCENSOR PRIVADO', 'public', 'X', '12121', '12', '32', 'X', '50', 'X', 'X', 'X', 'X', 'X', 'X', 'X', '~/Uploads/Factura-1278.pdf', '~/Uploads/hosting.pdf', 20, 1, NULL),
+(2, 'ASCENSOR DE SERVICIO', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', NULL, 1, NULL),
+(3, 'MONTA CARRO', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', NULL, 1, NULL),
+(4, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL),
+(5, 'ASCENSOR DE SERVICIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL),
+(6, 'MONTA CARRO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL),
+(7, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL),
+(8, 'ASCENSOR DE SERVICIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL),
+(9, 'MONTA CARRO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL),
+(10, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL),
+(11, 'ASCENSOR DE SERVICIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL),
+(12, 'MONTA CARRO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL),
+(13, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, NULL),
+(14, 'ASCENSOR DE SERVICIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, NULL),
+(15, 'MONTA CARRO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, NULL),
+(16, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, NULL),
+(17, 'ASCENSOR DE SERVICIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, NULL),
+(18, 'MONTA CARRO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, NULL),
+(19, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 8, NULL),
+(20, 'ASCENSOR DE SERVICIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 8, NULL),
+(21, 'MONTA CARRO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 8, NULL),
+(22, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 9, NULL),
+(23, 'ASCENSOR DE SERVICIO', 'orona', '444', '1', 'v', 'x', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(24, 'MONTA CARRO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 9, NULL),
+(25, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, NULL),
+(26, 'ASCENSOR DE SERVICIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, NULL),
+(27, 'MONTA CARRO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, NULL),
+(28, 'CASA BLANCA PRUEBA', 'public', 'feef', '345454', '56', '54', 'gth', '5', '7', '8', 'fg6', '45', '667', 'ffrf', '56', '', '', NULL, 1, NULL),
+(29, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 11, NULL),
+(30, 'ASCENSOR DE SERVICIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 11, NULL),
+(31, 'MONTA CARRO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 11, NULL),
+(32, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 12, NULL),
+(33, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, NULL),
+(34, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 14, NULL),
+(35, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 15, NULL),
+(36, 'ASCENSOR PRIVADO', 'public', 'feef', '345454', '56', '54', 'gth', '5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 16, NULL),
+(37, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 17, NULL),
+(38, 'PUERTA', 'public', 'feef', '345454', '56', '54', 'gth', '5', '89', '8', 'fg6', '45', '667', 'erre', '65', '', '', 2, 16, NULL),
+(39, 'PUERTA', 'public', 'feef', '345454', '56', '54', 'gth', '5', '89', '8', 'fg6', '45', '667', 'erre', '65', '', '', 2, 16, NULL),
+(40, 'PYERTA 3', 'public', 'feef', '345454', '56', '54', 'gth', '5', '7', '8', 'fg6', '45', '667', 'erre', '65', '', '', 2, 16, NULL),
+(41, 'ASCENSOR PRIVADO', 'public', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 18, NULL),
+(42, 'TORNILLOS', 'public', 'feef', '345454', '56', '54', 'gth', '5', '7', '8', 'fg6', '45', '667', 'erre', '65', '', '', 2, 18, NULL),
+(43, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 19, NULL),
+(44, 'ASCENSOR PRIVADO', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '', '', 6, 20, NULL),
+(45, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 21, NULL),
+(46, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 22, NULL),
+(47, 'MONTA CARGA', 'orona', '444', '1', 'v', 'x', 'X', '1 METRO POR SEGUNDO', 'x', '5', 'XX', '220 V', 'X', 'INELCA', '5', '', '', 6, 0, NULL),
+(48, 'MONTA CARGA', 'orona', '444', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 21, NULL),
+(49, 'CARLOS ', 'orona', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 22, NULL),
+(50, 'ASCENSOR PRIVADO', 'orona', '444', 'XY2562222', '12', 'ANCHO: 1.30 MTS FONDO 1.50 MTS', '50', '1 METRO POR SEGUNDO', '12', '5', '1', '220 V', '14', 'INELCA', '7', '', '', 6, 0, NULL),
+(51, 'ASCENSOR PRIVADO', 'orona', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(52, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(53, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(54, 'ASCENSOR PRIVADO', 'orona', '444', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(55, 'MONTA CARGA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(56, 'MONTA CARGA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(57, 'ASCENSOR PRIVADO', 'orona', '444', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(58, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 24, NULL),
+(61, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(60, 'ASCENSOR PRIVADO - I', 'RALOE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(62, 'ASCENSOR PRIVADO', 'orona', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(64, 'ASCENSOR PRIVADO - I', 'RALOE', 'OCEAN', NULL, 'ANCHO: 1.10 MTS - FONDO: 1.40 MTS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0, NULL),
+(65, 'ASCENSOR PRIVADO - I', 'RALOE', 'OCEAN', NULL, 'ANCHO: 1.10 MTS    FONDO: 1.40 MTS', NULL, '630 KG', NULL, NULL, '5 PARADAS - 7 PUERTAS', 'DOBLE ACCESO ', NULL, NULL, 'EDEL', NULL, '', '', 6, 25, NULL),
+(66, 'ASCENSOR DE SERVICIO - II', 'RALOE m', 'OCEAN', NULL, 'ANCHO: 1.10 MTS - FONDO: 1.40 MTS', NULL, '630 KG', NULL, NULL, '5 PARADAS - 5 PUERTAS', 'ACCESO SIMPLE', NULL, NULL, NULL, NULL, '', '', 6, 25, '2018-08-19 00:00:00'),
+(67, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 28, NULL),
+(68, 'ASCENSOR PRIVADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 29, NULL),
+(70, 'ASCENSOR RESIDENCIAL ', 'orona', 'X10', 'FXYV0002CMB77701', 'ANCHO ', NULL, '450KG', NULL, NULL, '3', 'SIMPLE', NULL, NULL, NULL, NULL, '', '', 0, 30, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estatuscitas`
+--
+
+CREATE TABLE IF NOT EXISTS `estatuscitas` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Codigo` varchar(10) NOT NULL,
+  `Nombre` varchar(20) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `estatuscitas`
+--
+
+INSERT INTO `estatuscitas` (`Id`, `Codigo`, `Nombre`) VALUES
+(1, '01', 'No Show'),
+(2, '02', 'Entrega a destiempo'),
+(3, '03', 'Falta de mercancía');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `etiquetas`
+--
+
+CREATE TABLE IF NOT EXISTS `etiquetas` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Archivo` varchar(1000) NOT NULL,
+  `Fecha` datetime NOT NULL,
+  `NumeroOrden` varchar(20) NOT NULL,
+  `ProveedorId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `fk_etiquetas_proveedores_idx` (`ProveedorId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `events`
+--
+
+CREATE TABLE IF NOT EXISTS `events` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Subject` varchar(100) NOT NULL,
+  `Description` varchar(200) NOT NULL,
+  `Start` datetime NOT NULL,
+  `End` datetime DEFAULT NULL,
+  `ThemeColor` varchar(10) DEFAULT NULL,
+  `IsFullDay` bit(64) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `events`
+--
+
+INSERT INTO `events` (`Id`, `Subject`, `Description`, `Start`, `End`, `ThemeColor`, `IsFullDay`) VALUES
+(1, 'Reunión', 'Reunión con bidyut adak', '2018-08-04 00:00:00', NULL, 'red', b'0011001100110100001101010011100000110111001101100011010000110101'),
+(2, 'Instalación de ascensor ', 'Cliente Google', '2018-08-08 00:00:00', NULL, 'green', b'0011001100110101001100110011000000111000001100100011001000110001'),
+(4, 'fallas 7888', 'GFHHTRH', '2018-08-02 00:00:00', NULL, 'blue', b'0011001100110100001101010011100000110111001101100011010000110101');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturas`
+--
+
+CREATE TABLE IF NOT EXISTS `facturas` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `proveedor_id` int(11) NOT NULL,
+  `Uuid` varchar(100) NOT NULL,
+  `Serie` varchar(1000) NOT NULL,
+  `Folio` varchar(1000) NOT NULL,
+  `Fecha` datetime NOT NULL,
+  `Total` decimal(18,2) NOT NULL,
+  `XmlRuta` varchar(1000) NOT NULL,
+  `PdfRuta` varchar(1000) NOT NULL,
+  `Estatus` varchar(1) NOT NULL,
+  `Comentario` varchar(5000) DEFAULT NULL,
+  `NumeroGenerado` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Uuid_UNIQUE` (`Uuid`),
+  KEY `fk_facturas_proveedores_idx` (`proveedor_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fallas`
+--
+
+CREATE TABLE IF NOT EXISTS `fallas` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `FechaFalla` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `Obra` varchar(45) DEFAULT NULL,
+  `Equipo` varchar(45) DEFAULT NULL,
+  `Tipo` varchar(45) DEFAULT NULL,
+  `Componente` varchar(45) DEFAULT NULL,
+  `Personal` varchar(45) DEFAULT NULL,
+  `StatusFalla` varchar(45) DEFAULT NULL,
+  `FechaSolucion` datetime DEFAULT '0000-00-00 00:00:00',
+  `NumeroReporte` varchar(45) DEFAULT NULL,
+  `Descripcion` varchar(200) DEFAULT NULL,
+  `Condicion` varchar(45) DEFAULT NULL,
+  `AccionesTomadas` varchar(1500) DEFAULT NULL,
+  `AccionesRecomendadas` varchar(1500) DEFAULT NULL,
+  `Duracion` varchar(45) DEFAULT NULL,
+  `PersonaReporte` varchar(45) DEFAULT NULL,
+  `GerenciaResponsable` varchar(45) DEFAULT NULL,
+  `obra_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+
+--
+-- Volcado de datos para la tabla `fallas`
+--
+
+INSERT INTO `fallas` (`Id`, `FechaFalla`, `Obra`, `Equipo`, `Tipo`, `Componente`, `Personal`, `StatusFalla`, `FechaSolucion`, `NumeroReporte`, `Descripcion`, `Condicion`, `AccionesTomadas`, `AccionesRecomendadas`, `Duracion`, `PersonaReporte`, `GerenciaResponsable`, `obra_id`) VALUES
+(25, '2018-07-04 00:07:00', 'EF RAFAEL', 'null', 'Electrónica', 'OPERADOR DE PUERTA', 'ANDRÉS MANDUJANO', 'FALLA SOLUCIONADA', '2018-07-29 10:21:33', 'null', 'prueba', 'OBRA', 'prueba', 'null', 'null', 'GESTION Y PROYECTOS', 'GESTION Y PROYECTOS', 23),
+(24, '2018-07-13 00:07:00', 'LAS ACACIAS', 'ASCENSOR PRIVADO', 'Electrónica', 'TABLERO DE CONTROL', 'ANDRÉS MANDUJANO', 'FALLA SOLUCIONADA', '2018-07-27 10:07:58', 'null', 'DAÑADO', 'OBRA', 'null', 'null', 'null', 'MANIOBRAS ELECTRICAS', 'MANIOBRAS ELECTRICAS', 22),
+(26, '2018-07-25 00:07:00', 'SALEM II', 'ASCENSOR PRIVADO', 'Electrónica', 'OPERADOR DE PUERTA', 'ANDRÉS MANDUJANO', 'FALLA SOLUCIONADA', '2018-08-02 04:08:30', 'null', 'EL ANÁLISIS DEL TÉCNICO REFIERE QUE EL OPERADOR DE PUERTA SE ENCUENTRA PRESENTANDO FALLA.', 'OBRA', 'SE ESTA HACIENDO TODOS LO ANÁLISIS EN CONJUNTO DE MANIOBRAS ELECTRÓNICAS.', 'null', 'null', 'MANIOBRAS ELECTRICAS', 'MANIOBRAS ELECTRICAS', 28),
+(37, '2018-08-18 00:00:00', 'SALEM I', 'ASCENSOR PRIVADO', 'Electrónica', 'MECANISMOS DE PUERTAS', 'ggr', 'POR ATENDER', '2018-08-18 00:00:00', NULL, NULL, 'OBRA', NULL, NULL, NULL, NULL, NULL, 25),
+(32, '2018-08-12 01:08:32', 'SALEM I', 'MONTA CARRO', 'Electrónica', 'MECANISMOS DE PUERTAS', 'null', 'EN ESPERA DE COMPONENTE', '2018-08-11 01:08:12', NULL, NULL, 'OBRA', NULL, 'null', NULL, NULL, NULL, 25),
+(33, '2018-08-07 13:08:16', 'SALEM I', 'ASCENSOR PRIVADO - I', 'Electrónica', 'MECANISMOS DE PUERTAS', 'null', 'POR ATENDER', '2018-08-07 00:00:00', 'null', 'null', 'OBRA', 'null', 'null', 'null', 'null', 'null', 25),
+(34, '2018-08-12 08:08:33', 'SALEM I', 'ASCENSOR PRIVADO - I', 'Electrónica', 'MECANISMOS DE PUERTAS', 'null', 'POR ATENDER', '2018-08-08 00:00:00', 'null', 'null', 'OBRA', 'null', 'null', 'null', 'null', 'null', 25),
+(35, '2018-08-12 11:08:05', 'SALEM I', 'ASCENSOR PRIVADO - I', 'Electrónica', 'MECANISMOS DE PUERTAS', 'null', 'POR ATENDER', '2018-08-08 00:00:00', 'null', 'null', 'OBRA', 'null', 'null', 'null', 'null', 'null', 25),
+(36, '2018-08-07 13:08:45', 'SALEM I', 'ASCENSOR DE SERVICIO - II', 'Electrónica', 'KIT DE POZO', 'null', 'POR ATENDER', '2018-08-01 00:00:00', 'null', 'null', 'OBRA', 'null', 'null', 'null', 'null', 'null', 25),
+(38, '2018-08-15 00:00:00', 'SALEM I', 'ASCENSOR PRIVADO - I', 'Electrónica', 'OPERADOR DE PUERTA', NULL, 'POR ATENDER', NULL, NULL, NULL, 'OBRA', NULL, NULL, NULL, NULL, NULL, 25),
+(39, '2018-08-18 00:00:00', 'SALEM I', 'ASCENSOR PRIVADO - I', 'Electrónica', 'MECANISMOS DE PUERTAS', NULL, 'POR ATENDER', NULL, NULL, NULL, 'OBRA', NULL, NULL, NULL, NULL, NULL, 25);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fallas_status`
+--
+
+CREATE TABLE IF NOT EXISTS `fallas_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `fallas_status`
+--
+
+INSERT INTO `fallas_status` (`id`, `descripcion`) VALUES
+(1, 'POR ATENDER'),
+(2, 'EN CORRECCION'),
+(3, 'FALLA SOLUCIONADA'),
+(4, 'EN ESPERA DE COMPONENTE'),
+(5, 'EN ESPERA DE REPUESTO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fallas_tipo`
+--
+
+CREATE TABLE IF NOT EXISTS `fallas_tipo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `fallas_tipo`
+--
+
+INSERT INTO `fallas_tipo` (`id`, `descripcion`) VALUES
+(1, 'Electrónica'),
+(2, 'Mecánica');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fallascorreos`
+--
+
+CREATE TABLE IF NOT EXISTS `fallascorreos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(1000) DEFAULT NULL,
+  `fallas_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gerenciaresponsable`
+--
+
+CREATE TABLE IF NOT EXISTS `gerenciaresponsable` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `gerenciaresponsable`
+--
+
+INSERT INTO `gerenciaresponsable` (`id`, `descripcion`) VALUES
+(1, 'MANIOBRAS ELECTRÓNICAS'),
+(2, 'GESTIÓN Y PROYECTOS'),
+(3, 'D.A.P');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `herramientas`
+--
+
+CREATE TABLE IF NOT EXISTS `herramientas` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(500) DEFAULT NULL,
+  `Cantidad` int(11) DEFAULT NULL,
+  `FechaSalida` datetime DEFAULT NULL,
+  `Propiedad` varchar(45) DEFAULT NULL,
+  `FechaCulminacion` datetime DEFAULT NULL,
+  `CantidadDeposito` varchar(45) DEFAULT NULL,
+  `FechaEntrada` datetime DEFAULT NULL,
+  `SupervisorObra` varchar(500) DEFAULT NULL,
+  `TecnicoResponsable` varchar(500) DEFAULT NULL,
+  `Observaciones` varchar(5000) DEFAULT NULL,
+  `Archivo` varchar(1000) DEFAULT NULL,
+  `previo_id` int(11) DEFAULT NULL,
+  `obra_id` int(11) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=54 ;
+
+--
+-- Volcado de datos para la tabla `herramientas`
+--
+
+INSERT INTO `herramientas` (`Id`, `Descripcion`, `Cantidad`, `FechaSalida`, `Propiedad`, `FechaCulminacion`, `CantidadDeposito`, `FechaEntrada`, `SupervisorObra`, `TecnicoResponsable`, `Observaciones`, `Archivo`, `previo_id`, `obra_id`) VALUES
+(1, 'clavo', 45, '2018-04-03 00:00:00', 'jefes', '2018-04-06 00:00:00', '40', '2018-04-20 00:00:00', 'jose', 'pedro', 'ninguna', NULL, 1, 0),
+(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, 15),
+(5, 'Puerta', 23, '2018-07-20 00:00:00', 'null', '2018-07-05 00:00:00', 'null', '2018-07-04 00:00:00', 'null', 'null', 'null', NULL, 4, 16),
+(6, 'Puerta', 76, '2018-07-20 00:00:00', 'null', '2018-07-20 00:00:00', 'null', '2018-07-27 00:00:00', 'null', 'null', 'null', NULL, 4, 16),
+(7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 17),
+(8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, 16),
+(9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 18),
+(12, ' erg', 23, '2018-07-22 00:00:00', 'sdsdd', '2018-07-26 00:00:00', '988', '2018-07-19 00:00:00', 'fgg', 'wewe', 'weewe', NULL, 8, 18),
+(11, 'Puerta', 3, '2018-07-22 00:00:00', 'sdsdd', '2018-07-28 00:00:00', '988', '2018-07-22 21:28:04', 'null', 'null', 'null', NULL, 8, 18),
+(13, 'Puerta', 23, '2018-07-22 21:30:47', 'null', '2018-07-22 21:30:47', 'null', '2018-07-22 21:30:47', 'null', 'null', 'null', NULL, 6, 16),
+(14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 9, 19),
+(15, 'null', 23, '2018-07-26 21:09:32', 'null', '2018-07-26 21:09:32', 'null', '2018-07-26 21:09:32', 'null', 'null', 'null', '~/Uploads/slogan.png', 4, 0),
+(16, 'MARTILLO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '~/Uploads/DI - CABINA - LOFT C.jpg', 10, 0),
+(17, 'rafael', 1, '2018-07-04 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '~/Uploads/DS - CABINA - LOFT C.jpg', 11, 0),
+(18, 'RIELES', 0, '2018-07-05 00:00:00', 'null', '2018-07-27 12:30:03', 'null', '2018-07-27 12:30:03', 'null', 'null', 'null', '', 11, 0),
+(19, 'RIELES', 2, '2018-06-26 00:00:00', 'climb', '2018-07-27 00:00:00', 'null', '2018-07-27 12:31:51', 'null', 'null', 'null', '', 10, 0),
+(22, 'RIELES', 1, '2018-07-27 00:00:00', 'RAFAEL', '2018-07-27 21:58:10', 'null', '2018-07-27 21:58:10', 'null', 'null', 'null', '', 12, 22),
+(21, 'RIELES', 1, '2018-07-27 00:00:00', 'RAFAEL', '2018-07-27 21:57:49', '1', '2018-07-27 21:57:49', 'null', 'null', 'null', '', 12, 22),
+(23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 22),
+(26, 'MARTILLO', 1, '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', 'null', 'null', '', 14, 21),
+(25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 15, 22),
+(27, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 16, 23),
+(28, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 17, 23),
+(29, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 18, 23),
+(30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 19, 23),
+(33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 21, 23),
+(32, 'MARTILLO', 1, '2018-07-04 00:00:00', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', 'null', 'null', '', 20, 23),
+(34, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 22, 23),
+(35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 23, 23),
+(36, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 24, 24),
+(52, ' erg', 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(51, 'HERRAMIENTA 006 - DICIEMBRE 2018', 85, '2018-08-09 00:00:00', NULL, NULL, NULL, '2018-08-01 00:00:00', NULL, NULL, 'thtrh', NULL, NULL, 25),
+(39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 27, 26),
+(40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 28, 27),
+(44, 'MARTILLO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', 32, 25),
+(45, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 33, 28),
+(46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 34, 29),
+(47, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 35, 30),
+(48, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 36, 30),
+(49, 'null', 2, '2018-08-08 00:00:00', 'null', '2018-08-08 23:11:24', 'null', '2018-08-08 23:11:24', 'null', 'null', 'null', '~/Uploads/1.png', 32, 25),
+(50, 'Puerta', 0, '2018-08-08 23:14:18', 'null', '2018-08-08 23:14:18', 'null', '2018-08-08 23:14:18', 'null', 'null', 'null', '~/Uploads/11.png', 32, 25),
+(53, 'Puerta', 23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horariorieles`
+--
+
+CREATE TABLE IF NOT EXISTS `horariorieles` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Fecha` date NOT NULL,
+  `Disponibilidad` tinyint(1) NOT NULL DEFAULT '1',
+  `HorarioId` int(11) NOT NULL,
+  `AlmacenRielId` int(11) NOT NULL,
+  `CitaId` int(11) DEFAULT NULL,
+  `ComentarioBloqueo` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `fk_horariorieles_horarios` (`HorarioId`),
+  KEY `fk_horariorieles_rieles` (`AlmacenRielId`),
+  KEY `fk_horariorieles_citas` (`CitaId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1345 ;
+
+--
+-- Volcado de datos para la tabla `horariorieles`
+--
+
+INSERT INTO `horariorieles` (`Id`, `Fecha`, `Disponibilidad`, `HorarioId`, `AlmacenRielId`, `CitaId`, `ComentarioBloqueo`) VALUES
+(1177, '2017-06-16', 1, 1, 1, NULL, NULL),
+(1178, '2017-06-16', 1, 2, 1, NULL, NULL),
+(1179, '2017-06-16', 0, 3, 1, 57, NULL),
+(1180, '2017-06-16', 1, 4, 1, NULL, NULL),
+(1181, '2017-06-16', 1, 5, 1, NULL, NULL),
+(1182, '2017-06-16', 1, 6, 1, NULL, NULL),
+(1183, '2017-06-16', 1, 7, 1, NULL, NULL),
+(1184, '2017-06-16', 1, 8, 1, NULL, NULL),
+(1185, '2017-06-16', 1, 9, 1, NULL, NULL),
+(1186, '2017-06-16', 1, 10, 1, NULL, NULL),
+(1187, '2017-06-16', 1, 11, 1, NULL, NULL),
+(1188, '2017-06-16', 1, 12, 1, NULL, NULL),
+(1189, '2017-06-16', 1, 13, 1, NULL, NULL),
+(1190, '2017-06-16', 1, 14, 1, NULL, NULL),
+(1191, '2017-06-16', 1, 15, 1, NULL, NULL),
+(1192, '2017-06-16', 1, 16, 1, NULL, NULL),
+(1193, '2017-06-16', 1, 17, 1, NULL, NULL),
+(1194, '2017-06-16', 1, 18, 1, NULL, NULL),
+(1195, '2017-06-16', 1, 19, 1, NULL, NULL),
+(1196, '2017-06-16', 1, 20, 1, NULL, NULL),
+(1197, '2017-06-16', 1, 21, 1, NULL, NULL),
+(1198, '2017-06-16', 1, 22, 1, NULL, NULL),
+(1199, '2017-06-16', 1, 23, 1, NULL, NULL),
+(1200, '2017-06-16', 1, 24, 1, NULL, NULL),
+(1201, '2017-06-16', 1, 25, 1, NULL, NULL),
+(1202, '2017-06-16', 1, 26, 1, NULL, NULL),
+(1203, '2017-06-16', 1, 27, 1, NULL, NULL),
+(1204, '2017-06-16', 1, 28, 1, NULL, NULL),
+(1205, '2017-06-16', 1, 1, 2, NULL, NULL),
+(1206, '2017-06-16', 0, 2, 2, 57, NULL),
+(1207, '2017-06-16', 0, 3, 2, 57, NULL),
+(1208, '2017-06-16', 1, 4, 2, NULL, NULL),
+(1209, '2017-06-16', 1, 5, 2, NULL, NULL),
+(1210, '2017-06-16', 1, 6, 2, NULL, NULL),
+(1211, '2017-06-16', 1, 7, 2, NULL, NULL),
+(1212, '2017-06-16', 1, 8, 2, NULL, NULL),
+(1213, '2017-06-16', 1, 9, 2, NULL, NULL),
+(1214, '2017-06-16', 1, 10, 2, NULL, NULL),
+(1215, '2017-06-16', 1, 11, 2, NULL, NULL),
+(1216, '2017-06-16', 1, 12, 2, NULL, NULL),
+(1217, '2017-06-16', 1, 13, 2, NULL, NULL),
+(1218, '2017-06-16', 1, 14, 2, NULL, NULL),
+(1219, '2017-06-16', 1, 15, 2, NULL, NULL),
+(1220, '2017-06-16', 1, 16, 2, NULL, NULL),
+(1221, '2017-06-16', 1, 17, 2, NULL, NULL),
+(1222, '2017-06-16', 1, 18, 2, NULL, NULL),
+(1223, '2017-06-16', 1, 19, 2, NULL, NULL),
+(1224, '2017-06-16', 1, 20, 2, NULL, NULL),
+(1225, '2017-06-16', 1, 21, 2, NULL, NULL),
+(1226, '2017-06-16', 1, 22, 2, NULL, NULL),
+(1227, '2017-06-16', 1, 23, 2, NULL, NULL),
+(1228, '2017-06-16', 1, 24, 2, NULL, NULL),
+(1229, '2017-06-16', 1, 25, 2, NULL, NULL),
+(1230, '2017-06-16', 1, 26, 2, NULL, NULL),
+(1231, '2017-06-16', 1, 27, 2, NULL, NULL),
+(1232, '2017-06-16', 1, 28, 2, NULL, NULL),
+(1233, '2017-06-16', 1, 1, 3, NULL, NULL),
+(1234, '2017-06-16', 1, 2, 3, NULL, NULL),
+(1235, '2017-06-16', 1, 3, 3, NULL, NULL),
+(1236, '2017-06-16', 1, 4, 3, NULL, NULL),
+(1237, '2017-06-16', 1, 5, 3, NULL, NULL),
+(1238, '2017-06-16', 1, 6, 3, NULL, NULL),
+(1239, '2017-06-16', 1, 7, 3, NULL, NULL),
+(1240, '2017-06-16', 1, 8, 3, NULL, NULL),
+(1241, '2017-06-16', 1, 9, 3, NULL, NULL),
+(1242, '2017-06-16', 1, 10, 3, NULL, NULL),
+(1243, '2017-06-16', 1, 11, 3, NULL, NULL),
+(1244, '2017-06-16', 1, 12, 3, NULL, NULL),
+(1245, '2017-06-16', 1, 13, 3, NULL, NULL),
+(1246, '2017-06-16', 1, 14, 3, NULL, NULL),
+(1247, '2017-06-16', 1, 15, 3, NULL, NULL),
+(1248, '2017-06-16', 1, 16, 3, NULL, NULL),
+(1249, '2017-06-16', 1, 17, 3, NULL, NULL),
+(1250, '2017-06-16', 1, 18, 3, NULL, NULL),
+(1251, '2017-06-16', 1, 19, 3, NULL, NULL),
+(1252, '2017-06-16', 1, 20, 3, NULL, NULL),
+(1253, '2017-06-16', 1, 21, 3, NULL, NULL),
+(1254, '2017-06-16', 1, 22, 3, NULL, NULL),
+(1255, '2017-06-16', 1, 23, 3, NULL, NULL),
+(1256, '2017-06-16', 1, 24, 3, NULL, NULL),
+(1257, '2017-06-16', 1, 25, 3, NULL, NULL),
+(1258, '2017-06-16', 1, 26, 3, NULL, NULL),
+(1259, '2017-06-16', 1, 27, 3, NULL, NULL),
+(1260, '2017-06-16', 1, 28, 3, NULL, NULL),
+(1261, '2017-06-16', 1, 1, 4, NULL, NULL),
+(1262, '2017-06-16', 1, 2, 4, NULL, NULL),
+(1263, '2017-06-16', 1, 3, 4, NULL, NULL),
+(1264, '2017-06-16', 1, 4, 4, NULL, NULL),
+(1265, '2017-06-16', 1, 5, 4, NULL, NULL),
+(1266, '2017-06-16', 1, 6, 4, NULL, NULL),
+(1267, '2017-06-16', 1, 7, 4, NULL, NULL),
+(1268, '2017-06-16', 1, 8, 4, NULL, NULL),
+(1269, '2017-06-16', 1, 9, 4, NULL, NULL),
+(1270, '2017-06-16', 1, 10, 4, NULL, NULL),
+(1271, '2017-06-16', 1, 11, 4, NULL, NULL),
+(1272, '2017-06-16', 1, 12, 4, NULL, NULL),
+(1273, '2017-06-16', 1, 13, 4, NULL, NULL),
+(1274, '2017-06-16', 1, 14, 4, NULL, NULL),
+(1275, '2017-06-16', 1, 15, 4, NULL, NULL),
+(1276, '2017-06-16', 1, 16, 4, NULL, NULL),
+(1277, '2017-06-16', 1, 17, 4, NULL, NULL),
+(1278, '2017-06-16', 1, 18, 4, NULL, NULL),
+(1279, '2017-06-16', 1, 19, 4, NULL, NULL),
+(1280, '2017-06-16', 1, 20, 4, NULL, NULL),
+(1281, '2017-06-16', 1, 21, 4, NULL, NULL),
+(1282, '2017-06-16', 1, 22, 4, NULL, NULL),
+(1283, '2017-06-16', 1, 23, 4, NULL, NULL),
+(1284, '2017-06-16', 1, 24, 4, NULL, NULL),
+(1285, '2017-06-16', 1, 25, 4, NULL, NULL),
+(1286, '2017-06-16', 1, 26, 4, NULL, NULL),
+(1287, '2017-06-16', 1, 27, 4, NULL, NULL),
+(1288, '2017-06-16', 1, 28, 4, NULL, NULL),
+(1289, '2017-06-16', 1, 1, 5, NULL, NULL),
+(1290, '2017-06-16', 1, 2, 5, NULL, NULL),
+(1291, '2017-06-16', 1, 3, 5, NULL, NULL),
+(1292, '2017-06-16', 1, 4, 5, NULL, NULL),
+(1293, '2017-06-16', 1, 5, 5, NULL, NULL),
+(1294, '2017-06-16', 1, 6, 5, NULL, NULL),
+(1295, '2017-06-16', 1, 7, 5, NULL, NULL),
+(1296, '2017-06-16', 1, 8, 5, NULL, NULL),
+(1297, '2017-06-16', 1, 9, 5, NULL, NULL),
+(1298, '2017-06-16', 1, 10, 5, NULL, NULL),
+(1299, '2017-06-16', 1, 11, 5, NULL, NULL),
+(1300, '2017-06-16', 1, 12, 5, NULL, NULL),
+(1301, '2017-06-16', 1, 13, 5, NULL, NULL),
+(1302, '2017-06-16', 1, 14, 5, NULL, NULL),
+(1303, '2017-06-16', 1, 15, 5, NULL, NULL),
+(1304, '2017-06-16', 1, 16, 5, NULL, NULL),
+(1305, '2017-06-16', 1, 17, 5, NULL, NULL),
+(1306, '2017-06-16', 1, 18, 5, NULL, NULL),
+(1307, '2017-06-16', 1, 19, 5, NULL, NULL),
+(1308, '2017-06-16', 1, 20, 5, NULL, NULL),
+(1309, '2017-06-16', 1, 21, 5, NULL, NULL),
+(1310, '2017-06-16', 1, 22, 5, NULL, NULL),
+(1311, '2017-06-16', 1, 23, 5, NULL, NULL),
+(1312, '2017-06-16', 1, 24, 5, NULL, NULL),
+(1313, '2017-06-16', 1, 25, 5, NULL, NULL),
+(1314, '2017-06-16', 1, 26, 5, NULL, NULL),
+(1315, '2017-06-16', 1, 27, 5, NULL, NULL),
+(1316, '2017-06-16', 1, 28, 5, NULL, NULL),
+(1317, '2017-06-16', 0, 1, 6, 57, NULL),
+(1318, '2017-06-16', 1, 2, 6, NULL, NULL),
+(1319, '2017-06-16', 1, 3, 6, NULL, NULL),
+(1320, '2017-06-16', 1, 4, 6, NULL, NULL),
+(1321, '2017-06-16', 1, 5, 6, NULL, NULL),
+(1322, '2017-06-16', 1, 6, 6, NULL, NULL),
+(1323, '2017-06-16', 1, 7, 6, NULL, NULL),
+(1324, '2017-06-16', 1, 8, 6, NULL, NULL),
+(1325, '2017-06-16', 1, 9, 6, NULL, NULL),
+(1326, '2017-06-16', 1, 10, 6, NULL, NULL),
+(1327, '2017-06-16', 1, 11, 6, NULL, NULL),
+(1328, '2017-06-16', 1, 12, 6, NULL, NULL),
+(1329, '2017-06-16', 1, 13, 6, NULL, NULL),
+(1330, '2017-06-16', 1, 14, 6, NULL, NULL),
+(1331, '2017-06-16', 1, 15, 6, NULL, NULL),
+(1332, '2017-06-16', 1, 16, 6, NULL, NULL),
+(1333, '2017-06-16', 1, 17, 6, NULL, NULL),
+(1334, '2017-06-16', 1, 18, 6, NULL, NULL),
+(1335, '2017-06-16', 1, 19, 6, NULL, NULL),
+(1336, '2017-06-16', 1, 20, 6, NULL, NULL),
+(1337, '2017-06-16', 1, 21, 6, NULL, NULL),
+(1338, '2017-06-16', 1, 22, 6, NULL, NULL),
+(1339, '2017-06-16', 1, 23, 6, NULL, NULL),
+(1340, '2017-06-16', 1, 24, 6, NULL, NULL),
+(1341, '2017-06-16', 1, 25, 6, NULL, NULL),
+(1342, '2017-06-16', 1, 26, 6, NULL, NULL),
+(1343, '2017-06-16', 1, 27, 6, NULL, NULL),
+(1344, '2017-06-16', 1, 28, 6, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horarios`
+--
+
+CREATE TABLE IF NOT EXISTS `horarios` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `HoraDesde` varchar(20) NOT NULL,
+  `HoraHasta` varchar(20) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+
+--
+-- Volcado de datos para la tabla `horarios`
+--
+
+INSERT INTO `horarios` (`Id`, `HoraDesde`, `HoraHasta`) VALUES
+(1, '7:00 am', '7:30 am'),
+(2, '7:30 am', '8:00 am'),
+(3, '8:00 am', '8:30 am'),
+(4, '8:30 am', '9:00 am'),
+(5, '9:00 am', '9:30 am'),
+(6, '9:30 am', '10:00 am'),
+(7, '10:00 am', '10:30 am'),
+(8, '10:30 am', '11:00 am'),
+(9, '11:00 am', '11:30 am'),
+(10, '11:30 am', '12:00 pm'),
+(11, '12:00 pm', '12:30 pm'),
+(12, '12:30 pm', '1:00 pm'),
+(13, '1:00 pm', '1:30 pm'),
+(14, '1:30 pm', '2:00 pm'),
+(15, '2:00 pm', '2:30 pm'),
+(16, '2:30 pm', '3:00 pm'),
+(17, '3:00 pm', '3:30 pm'),
+(18, '3:30 pm', '4:00 pm'),
+(19, '4:00 pm', '4:30 pm'),
+(20, '4:30 pm', '5:00 pm'),
+(21, '5:00 pm', '5:30 pm'),
+(22, '5:30 pm', '6:00 pm'),
+(23, '6:00 pm', '6:30 pm'),
+(24, '6:30 pm', '7:00 pm'),
+(25, '7:00 pm', '7:30 pm'),
+(26, '7:30 pm', '8:00 pm'),
+(27, '8:00 pm', '8:30 pm'),
+(28, '8:30 pm', '9:00 pm');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `impuls_logs`
+--
+
+CREATE TABLE IF NOT EXISTS `impuls_logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `log` varchar(255) DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=841 ;
+
+--
+-- Volcado de datos para la tabla `impuls_logs`
+--
+
+INSERT INTO `impuls_logs` (`id`, `log`, `fecha`) VALUES
+(71, 'DELETED cuentasmensajes Cuenta:54', '2017-04-04 03:06:18'),
+(72, 'DELETED perfilesroles Cuenta:54', '2017-04-04 03:06:18'),
+(73, 'DELETED cuentasmensajes Cuenta:55', '2017-04-05 06:15:10'),
+(74, 'DELETED perfilesroles Cuenta:55', '2017-04-05 06:15:10'),
+(75, 'DELETED cuentasmensajes Cuenta:55', '2017-04-05 06:16:33'),
+(76, 'DELETED perfilesroles Cuenta:55', '2017-04-05 06:16:33'),
+(77, 'DELETED cuentasmensajes Cuenta:58', '2017-04-13 16:03:19'),
+(78, 'DELETED perfilesroles Cuenta:58', '2017-04-13 16:03:19'),
+(79, 'DELETED cuentasmensajes Cuenta:59', '2017-04-13 16:05:18'),
+(80, 'DELETED perfilesroles Cuenta:59', '2017-04-13 16:05:18'),
+(81, 'DELETED cuentasmensajes Cuenta:60', '2017-04-13 16:05:59'),
+(82, 'DELETED perfilesroles Cuenta:60', '2017-04-13 16:05:59'),
+(83, 'DELETED cuentasmensajes Cuenta:61', '2017-04-13 16:12:11'),
+(84, 'DELETED perfilesroles Cuenta:61', '2017-04-13 16:12:11'),
+(85, 'DELETED cuentasxpagar Cuenta:61', '2017-04-13 16:12:11'),
+(86, 'DELETED ordencompradetalle Cuenta:61', '2017-04-13 16:12:11'),
+(87, 'DELETED ordencompra Cuenta:61', '2017-04-13 16:12:11'),
+(88, 'DELETED proveedores Cuenta:61', '2017-04-13 16:12:11'),
+(89, 'UPDATED AspNetUsers Cuenta:61', '2017-04-13 16:12:11'),
+(90, 'DELETED AspNetUserRoles Cuenta:61', '2017-04-13 16:12:11'),
+(91, 'UPDATED cuentas Cuenta:61', '2017-04-13 16:12:11'),
+(92, 'DELETED perfiles Cuenta:61', '2017-04-13 16:12:11'),
+(93, 'DELETED cuentas Cuenta:61', '2017-04-13 16:12:11'),
+(94, 'DELETED cuentasmensajes Cuenta:53', '2017-04-13 16:16:30'),
+(95, 'DELETED perfilesroles Cuenta:53', '2017-04-13 16:16:30'),
+(96, 'DELETED cuentasxpagar Cuenta:53', '2017-04-13 16:16:30'),
+(97, 'DELETED ordencompradetalle Cuenta:53', '2017-04-13 16:16:30'),
+(98, 'DELETED ordencompra Cuenta:53', '2017-04-13 16:16:30'),
+(99, 'DELETED proveedores Cuenta:53', '2017-04-13 16:16:30'),
+(100, 'UPDATED AspNetUsers Cuenta:53', '2017-04-13 16:16:30'),
+(101, 'DELETED AspNetUserRoles Cuenta:53', '2017-04-13 16:16:30'),
+(102, 'UPDATED cuentas Cuenta:53', '2017-04-13 16:16:30'),
+(103, 'DELETED AspNetUserRoles UserId: 85798f4c-8701-4170-8b63-149e9a50dde7, Cuenta: 53', '2017-04-13 16:16:30'),
+(104, 'DELETED cuentasusuarios Cuenta:53', '2017-04-13 16:16:30'),
+(105, 'DELETED AspNetUsers Cuenta:85798f4c-8701-4170-8b63-149e9a50dde7', '2017-04-13 16:16:30'),
+(106, 'DELETED perfiles Cuenta:53', '2017-04-13 16:16:30'),
+(107, 'DELETED cuentas Cuenta:53', '2017-04-13 16:16:30'),
+(108, 'DELETED cuentasmensajes Cuenta:56', '2017-04-13 16:16:39'),
+(109, 'DELETED perfilesroles Cuenta:56', '2017-04-13 16:16:39'),
+(110, 'DELETED cuentasxpagar Cuenta:56', '2017-04-13 16:16:39'),
+(111, 'DELETED ordencompradetalle Cuenta:56', '2017-04-13 16:16:39'),
+(112, 'DELETED ordencompra Cuenta:56', '2017-04-13 16:16:39'),
+(113, 'DELETED proveedores Cuenta:56', '2017-04-13 16:16:39'),
+(114, 'UPDATED AspNetUsers Cuenta:56', '2017-04-13 16:16:39'),
+(115, 'DELETED AspNetUserRoles Cuenta:56', '2017-04-13 16:16:39'),
+(116, 'UPDATED cuentas Cuenta:56', '2017-04-13 16:16:39'),
+(117, 'DELETED AspNetUserRoles UserId: 3c5150a0-1985-4790-9b6a-3a405d8c4c44, Cuenta: 56', '2017-04-13 16:16:39'),
+(118, 'DELETED cuentasusuarios Cuenta:56', '2017-04-13 16:16:39'),
+(119, 'DELETED AspNetUsers Cuenta:3c5150a0-1985-4790-9b6a-3a405d8c4c44', '2017-04-13 16:16:39'),
+(120, 'DELETED AspNetUserRoles UserId: 6f05c658-5296-4e39-9773-af04882419cb, Cuenta: 56', '2017-04-13 16:16:39'),
+(121, 'DELETED cuentasusuarios Cuenta:56', '2017-04-13 16:16:39'),
+(122, 'DELETED AspNetUsers Cuenta:6f05c658-5296-4e39-9773-af04882419cb', '2017-04-13 16:16:39'),
+(123, 'DELETED perfiles Cuenta:56', '2017-04-13 16:16:39'),
+(124, 'DELETED cuentas Cuenta:56', '2017-04-13 16:16:39'),
+(125, 'DELETED cuentasmensajes Cuenta:55', '2017-04-13 16:17:05'),
+(126, 'DELETED perfilesroles Cuenta:55', '2017-04-13 16:17:05'),
+(127, 'DELETED cuentasxpagar Cuenta:55', '2017-04-13 16:17:05'),
+(128, 'DELETED ordencompradetalle Cuenta:55', '2017-04-13 16:17:05'),
+(129, 'DELETED ordencompra Cuenta:55', '2017-04-13 16:17:05'),
+(130, 'DELETED proveedores Cuenta:55', '2017-04-13 16:17:05'),
+(131, 'UPDATED AspNetUsers Cuenta:55', '2017-04-13 16:17:05'),
+(132, 'DELETED AspNetUserRoles Cuenta:55', '2017-04-13 16:17:05'),
+(133, 'UPDATED cuentas Cuenta:55', '2017-04-13 16:17:05'),
+(134, 'DELETED AspNetUserRoles UserId: 62c2695e-4685-4dff-b1a3-0a7dd2ee6662, Cuenta: 55', '2017-04-13 16:17:05'),
+(135, 'DELETED cuentasusuarios Cuenta:55', '2017-04-13 16:17:05'),
+(136, 'DELETED AspNetUsers Cuenta:62c2695e-4685-4dff-b1a3-0a7dd2ee6662', '2017-04-13 16:17:05'),
+(137, 'DELETED perfiles Cuenta:55', '2017-04-13 16:17:05'),
+(138, 'DELETED cuentas Cuenta:55', '2017-04-13 16:17:05'),
+(139, 'DELETED cuentasmensajes Cuenta:57', '2017-04-13 16:17:16'),
+(140, 'DELETED perfilesroles Cuenta:57', '2017-04-13 16:17:16'),
+(141, 'DELETED cuentasxpagar Cuenta:57', '2017-04-13 16:17:16'),
+(142, 'DELETED ordencompradetalle Cuenta:57', '2017-04-13 16:17:16'),
+(143, 'DELETED ordencompra Cuenta:57', '2017-04-13 16:17:16'),
+(144, 'DELETED proveedores Cuenta:57', '2017-04-13 16:17:16'),
+(145, 'UPDATED AspNetUsers Cuenta:57', '2017-04-13 16:17:16'),
+(146, 'DELETED AspNetUserRoles Cuenta:57', '2017-04-13 16:17:16'),
+(147, 'UPDATED cuentas Cuenta:57', '2017-04-13 16:17:16'),
+(148, 'DELETED AspNetUserRoles UserId: 7edf63bf-ba21-4849-814c-41c9d81784de, Cuenta: 57', '2017-04-13 16:17:16'),
+(149, 'DELETED cuentasusuarios Cuenta:57', '2017-04-13 16:17:16'),
+(150, 'DELETED AspNetUsers Cuenta:7edf63bf-ba21-4849-814c-41c9d81784de', '2017-04-13 16:17:16'),
+(151, 'DELETED perfiles Cuenta:57', '2017-04-13 16:17:16'),
+(152, 'DELETED cuentas Cuenta:57', '2017-04-13 16:17:16'),
+(153, 'DELETED cuentasmensajes Cuenta:59', '2017-04-13 16:17:44'),
+(154, 'DELETED perfilesroles Cuenta:59', '2017-04-13 16:17:44'),
+(155, 'DELETED cuentasxpagar Cuenta:59', '2017-04-13 16:17:44'),
+(156, 'DELETED ordencompradetalle Cuenta:59', '2017-04-13 16:17:44'),
+(157, 'DELETED ordencompra Cuenta:59', '2017-04-13 16:17:44'),
+(158, 'DELETED proveedores Cuenta:59', '2017-04-13 16:17:44'),
+(159, 'UPDATED AspNetUsers Cuenta:59', '2017-04-13 16:17:44'),
+(160, 'DELETED AspNetUserRoles Cuenta:59', '2017-04-13 16:17:44'),
+(161, 'UPDATED cuentas Cuenta:59', '2017-04-13 16:17:44'),
+(162, 'DELETED perfiles Cuenta:59', '2017-04-13 16:17:44'),
+(163, 'DELETED cuentas Cuenta:59', '2017-04-13 16:17:44'),
+(164, 'DELETED cuentasmensajes Cuenta:51', '2017-04-13 16:17:58'),
+(165, 'DELETED perfilesroles Cuenta:51', '2017-04-13 16:17:58'),
+(166, 'DELETED cuentasxpagar Cuenta:51', '2017-04-13 16:17:58'),
+(167, 'DELETED ordencompradetalle Cuenta:51', '2017-04-13 16:17:58'),
+(168, 'DELETED ordencompra Cuenta:51', '2017-04-13 16:17:58'),
+(169, 'DELETED proveedores Cuenta:51', '2017-04-13 16:17:58'),
+(170, 'UPDATED AspNetUsers Cuenta:51', '2017-04-13 16:17:58'),
+(171, 'DELETED AspNetUserRoles Cuenta:51', '2017-04-13 16:17:58'),
+(172, 'UPDATED cuentas Cuenta:51', '2017-04-13 16:17:58'),
+(173, 'DELETED AspNetUserRoles UserId: 65fff6f0-589c-4680-9ff9-06b57724eaf9, Cuenta: 51', '2017-04-13 16:17:58'),
+(174, 'DELETED cuentasusuarios Cuenta:51', '2017-04-13 16:17:58'),
+(175, 'DELETED AspNetUsers Cuenta:65fff6f0-589c-4680-9ff9-06b57724eaf9', '2017-04-13 16:17:58'),
+(176, 'DELETED perfiles Cuenta:51', '2017-04-13 16:17:58'),
+(177, 'DELETED cuentas Cuenta:51', '2017-04-13 16:17:58'),
+(178, 'DELETED cuentasmensajes Cuenta:57', '2017-04-13 16:18:24'),
+(179, 'DELETED perfilesroles Cuenta:57', '2017-04-13 16:18:24'),
+(180, 'DELETED cuentasxpagar Cuenta:57', '2017-04-13 16:18:24'),
+(181, 'DELETED ordencompradetalle Cuenta:57', '2017-04-13 16:18:24'),
+(182, 'DELETED ordencompra Cuenta:57', '2017-04-13 16:18:24'),
+(183, 'DELETED proveedores Cuenta:57', '2017-04-13 16:18:24'),
+(184, 'UPDATED AspNetUsers Cuenta:57', '2017-04-13 16:18:24'),
+(185, 'DELETED AspNetUserRoles Cuenta:57', '2017-04-13 16:18:24'),
+(186, 'UPDATED cuentas Cuenta:57', '2017-04-13 16:18:24'),
+(187, 'DELETED perfiles Cuenta:57', '2017-04-13 16:18:24'),
+(188, 'DELETED cuentas Cuenta:57', '2017-04-13 16:18:24'),
+(189, 'DELETED cuentasmensajes Cuenta:57', '2017-04-13 16:18:36'),
+(190, 'DELETED perfilesroles Cuenta:57', '2017-04-13 16:18:36'),
+(191, 'DELETED cuentasxpagar Cuenta:57', '2017-04-13 16:18:36'),
+(192, 'DELETED ordencompradetalle Cuenta:57', '2017-04-13 16:18:36'),
+(193, 'DELETED ordencompra Cuenta:57', '2017-04-13 16:18:36'),
+(194, 'DELETED proveedores Cuenta:57', '2017-04-13 16:18:36'),
+(195, 'UPDATED AspNetUsers Cuenta:57', '2017-04-13 16:18:36'),
+(196, 'DELETED AspNetUserRoles Cuenta:57', '2017-04-13 16:18:36'),
+(197, 'UPDATED cuentas Cuenta:57', '2017-04-13 16:18:36'),
+(198, 'DELETED perfiles Cuenta:57', '2017-04-13 16:18:36'),
+(199, 'DELETED cuentas Cuenta:57', '2017-04-13 16:18:36'),
+(200, 'DELETED cuentasmensajes Cuenta:54', '2017-04-13 16:18:40'),
+(201, 'DELETED perfilesroles Cuenta:54', '2017-04-13 16:18:40'),
+(202, 'DELETED cuentasxpagar Cuenta:54', '2017-04-13 16:18:40'),
+(203, 'DELETED ordencompradetalle Cuenta:54', '2017-04-13 16:18:40'),
+(204, 'DELETED ordencompra Cuenta:54', '2017-04-13 16:18:40'),
+(205, 'DELETED proveedores Cuenta:54', '2017-04-13 16:18:40'),
+(206, 'UPDATED AspNetUsers Cuenta:54', '2017-04-13 16:18:40'),
+(207, 'DELETED AspNetUserRoles Cuenta:54', '2017-04-13 16:18:40'),
+(208, 'UPDATED cuentas Cuenta:54', '2017-04-13 16:18:40'),
+(209, 'DELETED perfiles Cuenta:54', '2017-04-13 16:18:40'),
+(210, 'DELETED cuentas Cuenta:54', '2017-04-13 16:18:40'),
+(211, 'DELETED cuentasmensajes Cuenta:58', '2017-04-13 16:18:53'),
+(212, 'DELETED perfilesroles Cuenta:58', '2017-04-13 16:18:53'),
+(213, 'DELETED cuentasxpagar Cuenta:58', '2017-04-13 16:18:53'),
+(214, 'DELETED ordencompradetalle Cuenta:58', '2017-04-13 16:18:53'),
+(215, 'DELETED ordencompra Cuenta:58', '2017-04-13 16:18:53'),
+(216, 'DELETED proveedores Cuenta:58', '2017-04-13 16:18:53'),
+(217, 'UPDATED AspNetUsers Cuenta:58', '2017-04-13 16:18:53'),
+(218, 'DELETED AspNetUserRoles Cuenta:58', '2017-04-13 16:18:53'),
+(219, 'UPDATED cuentas Cuenta:58', '2017-04-13 16:18:53'),
+(220, 'DELETED perfiles Cuenta:58', '2017-04-13 16:18:53'),
+(221, 'DELETED cuentas Cuenta:58', '2017-04-13 16:18:53'),
+(222, 'DELETED cuentasmensajes Cuenta:60', '2017-04-13 16:18:58'),
+(223, 'DELETED perfilesroles Cuenta:60', '2017-04-13 16:18:58'),
+(224, 'DELETED cuentasxpagar Cuenta:60', '2017-04-13 16:18:58'),
+(225, 'DELETED ordencompradetalle Cuenta:60', '2017-04-13 16:18:58'),
+(226, 'DELETED ordencompra Cuenta:60', '2017-04-13 16:18:58'),
+(227, 'DELETED proveedores Cuenta:60', '2017-04-13 16:18:58'),
+(228, 'UPDATED AspNetUsers Cuenta:60', '2017-04-13 16:18:58'),
+(229, 'DELETED AspNetUserRoles Cuenta:60', '2017-04-13 16:18:58'),
+(230, 'UPDATED cuentas Cuenta:60', '2017-04-13 16:18:58'),
+(231, 'DELETED perfiles Cuenta:60', '2017-04-13 16:18:58'),
+(232, 'DELETED cuentas Cuenta:60', '2017-04-13 16:18:58'),
+(233, 'DELETED cuentasmensajes Cuenta:62', '2017-04-13 16:19:06'),
+(234, 'DELETED perfilesroles Cuenta:62', '2017-04-13 16:19:06'),
+(235, 'DELETED cuentasxpagar Cuenta:62', '2017-04-13 16:19:06'),
+(236, 'DELETED ordencompradetalle Cuenta:62', '2017-04-13 16:19:06'),
+(237, 'DELETED ordencompra Cuenta:62', '2017-04-13 16:19:06'),
+(238, 'DELETED proveedores Cuenta:62', '2017-04-13 16:19:06'),
+(239, 'UPDATED AspNetUsers Cuenta:62', '2017-04-13 16:19:06'),
+(240, 'DELETED AspNetUserRoles Cuenta:62', '2017-04-13 16:19:06'),
+(241, 'UPDATED cuentas Cuenta:62', '2017-04-13 16:19:06'),
+(242, 'DELETED AspNetUserRoles UserId: 77479b4e-a926-4786-8b15-ebcbf9021032, Cuenta: 62', '2017-04-13 16:19:07'),
+(243, 'DELETED cuentasusuarios Cuenta:62', '2017-04-13 16:19:07'),
+(244, 'DELETED AspNetUsers Cuenta:77479b4e-a926-4786-8b15-ebcbf9021032', '2017-04-13 16:19:07'),
+(245, 'DELETED perfiles Cuenta:62', '2017-04-13 16:19:07'),
+(246, 'DELETED cuentas Cuenta:62', '2017-04-13 16:19:07'),
+(247, 'DELETED cuentasmensajes Cuenta:52', '2017-04-13 16:19:35'),
+(248, 'DELETED perfilesroles Cuenta:52', '2017-04-13 16:19:35'),
+(249, 'DELETED cuentasxpagar Cuenta:52', '2017-04-13 16:19:35'),
+(250, 'DELETED ordencompradetalle Cuenta:52', '2017-04-13 16:19:35'),
+(251, 'DELETED ordencompra Cuenta:52', '2017-04-13 16:19:35'),
+(252, 'DELETED proveedores Cuenta:52', '2017-04-13 16:19:35'),
+(253, 'UPDATED AspNetUsers Cuenta:52', '2017-04-13 16:19:35'),
+(254, 'DELETED AspNetUserRoles Cuenta:52', '2017-04-13 16:19:35'),
+(255, 'UPDATED cuentas Cuenta:52', '2017-04-13 16:19:35'),
+(256, 'DELETED AspNetUserRoles UserId: de4c2980-2263-441e-9f9c-e8a680d8e548, Cuenta: 52', '2017-04-13 16:19:35'),
+(257, 'DELETED cuentasusuarios Cuenta:52', '2017-04-13 16:19:35'),
+(258, 'DELETED AspNetUsers Cuenta:de4c2980-2263-441e-9f9c-e8a680d8e548', '2017-04-13 16:19:35'),
+(259, 'DELETED perfiles Cuenta:52', '2017-04-13 16:19:35'),
+(260, 'DELETED cuentas Cuenta:52', '2017-04-13 16:19:35'),
+(261, 'DELETED cuentasmensajes Cuenta:63', '2017-04-13 16:22:26'),
+(262, 'DELETED perfilesroles Cuenta:63', '2017-04-13 16:22:26'),
+(263, 'DELETED cuentasxpagar Cuenta:63', '2017-04-13 16:22:26'),
+(264, 'DELETED ordencompradetalle Cuenta:63', '2017-04-13 16:22:26'),
+(265, 'DELETED ordencompra Cuenta:63', '2017-04-13 16:22:26'),
+(266, 'DELETED proveedores Cuenta:63', '2017-04-13 16:22:26'),
+(267, 'UPDATED AspNetUsers Cuenta:63', '2017-04-13 16:22:26'),
+(268, 'DELETED AspNetUserRoles Cuenta:63', '2017-04-13 16:22:26'),
+(269, 'UPDATED cuentas Cuenta:63', '2017-04-13 16:22:26'),
+(270, 'DELETED AspNetUserRoles UserId: cacf55ae-d6b3-452f-b32f-ecf1263be58e, Cuenta: 63', '2017-04-13 16:22:26'),
+(271, 'DELETED cuentasusuarios Cuenta:63', '2017-04-13 16:22:26'),
+(272, 'DELETED AspNetUsers Cuenta:cacf55ae-d6b3-452f-b32f-ecf1263be58e', '2017-04-13 16:22:26'),
+(273, 'DELETED perfiles Cuenta:63', '2017-04-13 16:22:26'),
+(274, 'DELETED cuentas Cuenta:63', '2017-04-13 16:22:26'),
+(275, 'DELETED cuentasmensajes Cuenta:64', '2017-04-13 16:24:21'),
+(276, 'DELETED perfilesroles Cuenta:64', '2017-04-13 16:24:21'),
+(277, 'DELETED cuentasxpagar Cuenta:64', '2017-04-13 16:24:21'),
+(278, 'DELETED ordencompradetalle Cuenta:64', '2017-04-13 16:24:21'),
+(279, 'DELETED ordencompra Cuenta:64', '2017-04-13 16:24:21'),
+(280, 'DELETED proveedores Cuenta:64', '2017-04-13 16:24:21'),
+(281, 'UPDATED AspNetUsers Cuenta:64', '2017-04-13 16:24:21'),
+(282, 'DELETED AspNetUserRoles Cuenta:64', '2017-04-13 16:24:21'),
+(283, 'UPDATED cuentas Cuenta:64', '2017-04-13 16:24:21'),
+(284, 'DELETED AspNetUserRoles UserId: 8eb52c06-bc24-41d5-8f5c-28dd7ebc884e, Cuenta: 64', '2017-04-13 16:24:21'),
+(285, 'DELETED cuentasusuarios Cuenta:64', '2017-04-13 16:24:21'),
+(286, 'DELETED AspNetUsers Cuenta:8eb52c06-bc24-41d5-8f5c-28dd7ebc884e', '2017-04-13 16:24:21'),
+(287, 'DELETED perfiles Cuenta:64', '2017-04-13 16:24:21'),
+(288, 'DELETED cuentas Cuenta:64', '2017-04-13 16:24:21'),
+(289, 'DELETED cuentasmensajes Cuenta:65', '2017-04-13 16:27:40'),
+(290, 'DELETED perfilesroles Cuenta:65', '2017-04-13 16:27:40'),
+(291, 'DELETED cuentasxpagar Cuenta:65', '2017-04-13 16:27:40'),
+(292, 'DELETED ordencompradetalle Cuenta:65', '2017-04-13 16:27:40'),
+(293, 'DELETED ordencompra Cuenta:65', '2017-04-13 16:27:40'),
+(294, 'DELETED proveedores Cuenta:65', '2017-04-13 16:27:40'),
+(295, 'UPDATED AspNetUsers Cuenta:65', '2017-04-13 16:27:40'),
+(296, 'DELETED AspNetUserRoles Cuenta:65', '2017-04-13 16:27:40'),
+(297, 'UPDATED cuentas Cuenta:65', '2017-04-13 16:27:40'),
+(298, 'DELETED AspNetUserRoles UserId: cfe398b5-4d8c-4726-b457-93637a47c5d4, Cuenta: 65', '2017-04-13 16:27:40'),
+(299, 'DELETED cuentasusuarios Cuenta:65', '2017-04-13 16:27:40'),
+(300, 'DELETED AspNetUsers Cuenta:cfe398b5-4d8c-4726-b457-93637a47c5d4', '2017-04-13 16:27:40'),
+(301, 'DELETED perfiles Cuenta:65', '2017-04-13 16:27:40'),
+(302, 'DELETED cuentas Cuenta:65', '2017-04-13 16:27:40'),
+(303, 'DELETED cuentasmensajes Cuenta:66', '2017-04-13 16:29:27'),
+(304, 'DELETED perfilesroles Cuenta:66', '2017-04-13 16:29:27'),
+(305, 'DELETED cuentasxpagar Cuenta:66', '2017-04-13 16:29:27'),
+(306, 'DELETED ordencompradetalle Cuenta:66', '2017-04-13 16:29:27'),
+(307, 'DELETED ordencompra Cuenta:66', '2017-04-13 16:29:27'),
+(308, 'DELETED proveedores Cuenta:66', '2017-04-13 16:29:27'),
+(309, 'UPDATED AspNetUsers Cuenta:66', '2017-04-13 16:29:27'),
+(310, 'DELETED AspNetUserRoles Cuenta:66', '2017-04-13 16:29:27'),
+(311, 'UPDATED cuentas Cuenta:66', '2017-04-13 16:29:27'),
+(312, 'DELETED AspNetUserRoles UserId: d34c1562-d59a-4052-b599-890624f71594, Cuenta: 66', '2017-04-13 16:29:27'),
+(313, 'DELETED cuentasusuarios Cuenta:66', '2017-04-13 16:29:27'),
+(314, 'DELETED AspNetUsers Cuenta:d34c1562-d59a-4052-b599-890624f71594', '2017-04-13 16:29:27'),
+(315, 'DELETED perfiles Cuenta:66', '2017-04-13 16:29:27'),
+(316, 'DELETED cuentas Cuenta:66', '2017-04-13 16:29:27'),
+(317, 'DELETED cuentasmensajes Cuenta:67', '2017-04-13 16:40:02'),
+(318, 'DELETED perfilesroles Cuenta:67', '2017-04-13 16:40:02'),
+(319, 'DELETED cuentasxpagar Cuenta:67', '2017-04-13 16:40:02'),
+(320, 'DELETED ordencompradetalle Cuenta:67', '2017-04-13 16:40:02'),
+(321, 'DELETED ordencompra Cuenta:67', '2017-04-13 16:40:02'),
+(322, 'DELETED proveedores Cuenta:67', '2017-04-13 16:40:02'),
+(323, 'UPDATED AspNetUsers Cuenta:67', '2017-04-13 16:40:02'),
+(324, 'DELETED AspNetUserRoles Cuenta:67', '2017-04-13 16:40:02'),
+(325, 'UPDATED cuentas Cuenta:67', '2017-04-13 16:40:02'),
+(326, 'DELETED AspNetUserRoles UserId: 5360ba13-9bbb-4d54-a1b0-6f0cfaf340f5, Cuenta: 67', '2017-04-13 16:40:02'),
+(327, 'DELETED cuentasusuarios Cuenta:67', '2017-04-13 16:40:02'),
+(328, 'DELETED AspNetUsers Cuenta:5360ba13-9bbb-4d54-a1b0-6f0cfaf340f5', '2017-04-13 16:40:02'),
+(329, 'DELETED perfiles Cuenta:67', '2017-04-13 16:40:02'),
+(330, 'DELETED cuentas Cuenta:67', '2017-04-13 16:40:02'),
+(331, 'DELETED cuentasmensajes Cuenta:68', '2017-04-18 09:27:25'),
+(332, 'DELETED perfilesroles Cuenta:68', '2017-04-18 09:27:25'),
+(333, 'DELETED cuentasxpagar Cuenta:68', '2017-04-18 09:27:25'),
+(334, 'DELETED ordencompradetalle Cuenta:68', '2017-04-18 09:27:25'),
+(335, 'DELETED ordencompra Cuenta:68', '2017-04-18 09:27:25'),
+(336, 'DELETED proveedores Cuenta:68', '2017-04-18 09:27:25'),
+(337, 'UPDATED AspNetUsers Cuenta:68', '2017-04-18 09:27:25'),
+(338, 'DELETED AspNetUserRoles Cuenta:68', '2017-04-18 09:27:25'),
+(339, 'UPDATED cuentas Cuenta:68', '2017-04-18 09:27:25'),
+(340, 'DELETED AspNetUserRoles UserId: 316e86b2-d8e6-4f56-8ce1-4a7910b0846d, Cuenta: 68', '2017-04-18 09:27:25'),
+(341, 'DELETED cuentasusuarios Cuenta:68', '2017-04-18 09:27:25'),
+(342, 'DELETED AspNetUsers Cuenta:316e86b2-d8e6-4f56-8ce1-4a7910b0846d', '2017-04-18 09:27:25'),
+(343, 'DELETED perfiles Cuenta:68', '2017-04-18 09:27:25'),
+(344, 'DELETED cuentas Cuenta:68', '2017-04-18 09:27:25'),
+(345, 'DELETED cuentasmensajes Cuenta:69', '2017-04-18 09:35:27'),
+(346, 'DELETED perfilesroles Cuenta:69', '2017-04-18 09:35:27'),
+(347, 'DELETED cuentasxpagar Cuenta:69', '2017-04-18 09:35:27'),
+(348, 'DELETED ordencompradetalle Cuenta:69', '2017-04-18 09:35:27'),
+(349, 'DELETED ordencompra Cuenta:69', '2017-04-18 09:35:27'),
+(350, 'DELETED proveedores Cuenta:69', '2017-04-18 09:35:27'),
+(351, 'UPDATED AspNetUsers Cuenta:69', '2017-04-18 09:35:27'),
+(352, 'DELETED AspNetUserRoles Cuenta:69', '2017-04-18 09:35:27'),
+(353, 'UPDATED cuentas Cuenta:69', '2017-04-18 09:35:27'),
+(354, 'DELETED AspNetUserRoles UserId: ca06667d-47f3-4431-b1ee-f1b4cbe0ea9c, Cuenta: 69', '2017-04-18 09:35:27'),
+(355, 'DELETED cuentasusuarios Cuenta:69', '2017-04-18 09:35:27'),
+(356, 'DELETED AspNetUsers Cuenta:ca06667d-47f3-4431-b1ee-f1b4cbe0ea9c', '2017-04-18 09:35:27'),
+(357, 'DELETED perfiles Cuenta:69', '2017-04-18 09:35:27'),
+(358, 'DELETED cuentas Cuenta:69', '2017-04-18 09:35:27'),
+(359, 'DELETED cuentasmensajes Cuenta:70', '2017-04-18 09:36:58'),
+(360, 'DELETED perfilesroles Cuenta:70', '2017-04-18 09:36:58'),
+(361, 'DELETED cuentasxpagar Cuenta:70', '2017-04-18 09:36:58'),
+(362, 'DELETED ordencompradetalle Cuenta:70', '2017-04-18 09:36:58'),
+(363, 'DELETED ordencompra Cuenta:70', '2017-04-18 09:36:58'),
+(364, 'DELETED proveedores Cuenta:70', '2017-04-18 09:36:58'),
+(365, 'UPDATED AspNetUsers Cuenta:70', '2017-04-18 09:36:58'),
+(366, 'DELETED AspNetUserRoles Cuenta:70', '2017-04-18 09:36:58'),
+(367, 'UPDATED cuentas Cuenta:70', '2017-04-18 09:36:58'),
+(368, 'DELETED AspNetUserRoles UserId: 752528a3-7d56-452e-99cc-f251bbb04e22, Cuenta: 70', '2017-04-18 09:36:58'),
+(369, 'DELETED cuentasusuarios Cuenta:70', '2017-04-18 09:36:58'),
+(370, 'DELETED AspNetUsers Cuenta:752528a3-7d56-452e-99cc-f251bbb04e22', '2017-04-18 09:36:58'),
+(371, 'DELETED perfiles Cuenta:70', '2017-04-18 09:36:58'),
+(372, 'DELETED cuentas Cuenta:70', '2017-04-18 09:36:58'),
+(373, 'DELETED cuentasmensajes Cuenta:71', '2017-04-18 09:42:18'),
+(374, 'DELETED perfilesroles Cuenta:71', '2017-04-18 09:42:18'),
+(375, 'DELETED cuentasxpagar Cuenta:71', '2017-04-18 09:42:18'),
+(376, 'DELETED ordencompradetalle Cuenta:71', '2017-04-18 09:42:18'),
+(377, 'DELETED ordencompra Cuenta:71', '2017-04-18 09:42:18'),
+(378, 'DELETED proveedores Cuenta:71', '2017-04-18 09:42:18'),
+(379, 'UPDATED AspNetUsers Cuenta:71', '2017-04-18 09:42:18'),
+(380, 'DELETED AspNetUserRoles Cuenta:71', '2017-04-18 09:42:18'),
+(381, 'UPDATED cuentas Cuenta:71', '2017-04-18 09:42:18'),
+(382, 'DELETED AspNetUserRoles UserId: c03d79e5-ec2e-4a8c-943e-ade91a66f130, Cuenta: 71', '2017-04-18 09:42:18'),
+(383, 'DELETED cuentasusuarios Cuenta:71', '2017-04-18 09:42:18'),
+(384, 'DELETED AspNetUsers Cuenta:c03d79e5-ec2e-4a8c-943e-ade91a66f130', '2017-04-18 09:42:18'),
+(385, 'DELETED perfiles Cuenta:71', '2017-04-18 09:42:18'),
+(386, 'DELETED cuentas Cuenta:71', '2017-04-18 09:42:18'),
+(387, 'DELETED cuentasmensajes Cuenta:73', '2017-04-18 10:16:56'),
+(388, 'DELETED perfilesroles Cuenta:73', '2017-04-18 10:16:56'),
+(389, 'DELETED cuentasxpagar Cuenta:73', '2017-04-18 10:16:56'),
+(390, 'DELETED ordencompradetalle Cuenta:73', '2017-04-18 10:16:56'),
+(391, 'DELETED ordencompra Cuenta:73', '2017-04-18 10:16:56'),
+(392, 'DELETED proveedores Cuenta:73', '2017-04-18 10:16:56'),
+(393, 'UPDATED AspNetUsers Cuenta:73', '2017-04-18 10:16:56'),
+(394, 'DELETED AspNetUserRoles Cuenta:73', '2017-04-18 10:16:56'),
+(395, 'UPDATED cuentas Cuenta:73', '2017-04-18 10:16:56'),
+(396, 'DELETED AspNetUserRoles UserId: d368acbc-123d-4466-a33c-73612416e60a, Cuenta: 73', '2017-04-18 10:16:56'),
+(397, 'DELETED cuentasusuarios Cuenta:73', '2017-04-18 10:16:56'),
+(398, 'DELETED AspNetUsers Cuenta:d368acbc-123d-4466-a33c-73612416e60a', '2017-04-18 10:16:56'),
+(399, 'DELETED perfiles Cuenta:73', '2017-04-18 10:16:56'),
+(400, 'DELETED cuentas Cuenta:73', '2017-04-18 10:16:56'),
+(401, 'DELETED cuentasmensajes Cuenta:72', '2017-04-18 10:17:03'),
+(402, 'DELETED perfilesroles Cuenta:72', '2017-04-18 10:17:03'),
+(403, 'DELETED cuentasxpagar Cuenta:72', '2017-04-18 10:17:03'),
+(404, 'DELETED ordencompradetalle Cuenta:72', '2017-04-18 10:17:03'),
+(405, 'DELETED ordencompra Cuenta:72', '2017-04-18 10:17:03'),
+(406, 'DELETED proveedores Cuenta:72', '2017-04-18 10:17:03'),
+(407, 'UPDATED AspNetUsers Cuenta:72', '2017-04-18 10:17:03'),
+(408, 'DELETED AspNetUserRoles Cuenta:72', '2017-04-18 10:17:03'),
+(409, 'UPDATED cuentas Cuenta:72', '2017-04-18 10:17:03'),
+(410, 'DELETED AspNetUserRoles UserId: cbd47011-6080-4c0b-96ff-826a6094df0c, Cuenta: 72', '2017-04-18 10:17:03'),
+(411, 'DELETED cuentasusuarios Cuenta:72', '2017-04-18 10:17:03'),
+(412, 'DELETED AspNetUsers Cuenta:cbd47011-6080-4c0b-96ff-826a6094df0c', '2017-04-18 10:17:03'),
+(413, 'DELETED perfiles Cuenta:72', '2017-04-18 10:17:03'),
+(414, 'DELETED cuentas Cuenta:72', '2017-04-18 10:17:03'),
+(415, 'DELETED cuentasmensajes Cuenta:77', '2017-04-24 06:18:57'),
+(416, 'DELETED perfilesroles Cuenta:77', '2017-04-24 06:18:57'),
+(417, 'DELETED cuentasxpagar Cuenta:77', '2017-04-24 06:18:57'),
+(418, 'DELETED ordencompradetalle Cuenta:77', '2017-04-24 06:18:57'),
+(419, 'DELETED ordencompra Cuenta:77', '2017-04-24 06:18:57'),
+(420, 'DELETED proveedores Cuenta:77', '2017-04-24 06:18:57'),
+(421, 'UPDATED AspNetUsers Cuenta:77', '2017-04-24 06:18:57'),
+(422, 'DELETED AspNetUserRoles Cuenta:77', '2017-04-24 06:18:57'),
+(423, 'UPDATED cuentas Cuenta:77', '2017-04-24 06:18:57'),
+(424, 'DELETED AspNetUserRoles UserId: 500e2ead-ebbe-425e-9a5d-c4f989186201, Cuenta: 77', '2017-04-24 06:18:57'),
+(425, 'DELETED cuentasusuarios Cuenta:77', '2017-04-24 06:18:57'),
+(426, 'DELETED AspNetUsers Cuenta:500e2ead-ebbe-425e-9a5d-c4f989186201', '2017-04-24 06:18:57'),
+(427, 'DELETED perfiles Cuenta:77', '2017-04-24 06:18:57'),
+(428, 'DELETED cuentas Cuenta:77', '2017-04-24 06:18:57'),
+(429, 'DELETED cuentasmensajes Cuenta:79', '2017-05-05 00:48:52'),
+(430, 'DELETED perfilesroles Cuenta:79', '2017-05-05 00:48:52'),
+(431, 'DELETED cuentasxpagar Cuenta:79', '2017-05-05 00:48:52'),
+(432, 'DELETED ordencompradetalle Cuenta:79', '2017-05-05 00:48:52'),
+(433, 'DELETED ordencompra Cuenta:79', '2017-05-05 00:48:52'),
+(434, 'DELETED proveedores Cuenta:79', '2017-05-05 00:48:52'),
+(435, 'UPDATED AspNetUsers Cuenta:79', '2017-05-05 00:48:52'),
+(436, 'DELETED AspNetUserRoles Cuenta:79', '2017-05-05 00:48:52'),
+(437, 'UPDATED cuentas Cuenta:79', '2017-05-05 00:48:52'),
+(438, 'DELETED AspNetUserRoles UserId: c21638a6-2942-4d77-8854-39c33851f485, Cuenta: 79', '2017-05-05 00:48:52'),
+(439, 'DELETED cuentasusuarios Cuenta:79', '2017-05-05 00:48:52'),
+(440, 'DELETED AspNetUsers Cuenta:c21638a6-2942-4d77-8854-39c33851f485', '2017-05-05 00:48:52'),
+(441, 'DELETED perfiles Cuenta:79', '2017-05-05 00:48:52'),
+(442, 'DELETED cuentas Cuenta:79', '2017-05-05 00:48:52'),
+(443, 'DELETED cuentasmensajes Cuenta:76', '2017-05-05 00:49:02'),
+(444, 'DELETED perfilesroles Cuenta:76', '2017-05-05 00:49:02'),
+(445, 'DELETED cuentasxpagar Cuenta:76', '2017-05-05 00:49:02'),
+(446, 'DELETED ordencompradetalle Cuenta:76', '2017-05-05 00:49:02'),
+(447, 'DELETED ordencompra Cuenta:76', '2017-05-05 00:49:02'),
+(448, 'DELETED cuentasmensajes Cuenta:76', '2017-05-05 06:35:15'),
+(449, 'DELETED perfilesroles Cuenta:76', '2017-05-05 06:35:15'),
+(450, 'DELETED cuentasxpagar Cuenta:76', '2017-05-05 06:35:15'),
+(451, 'DELETED ordencompradetalle Cuenta:76', '2017-05-05 06:35:15'),
+(452, 'DELETED ordencompra Cuenta:76', '2017-05-05 06:35:15'),
+(453, 'DELETED cuentasmensajes Cuenta:50', '2017-05-05 08:36:09'),
+(454, 'DELETED perfilesroles Cuenta:50', '2017-05-05 08:36:09'),
+(455, 'DELETED cuentasxpagar Cuenta:50', '2017-05-05 08:36:09'),
+(456, 'DELETED ordencompradetalle Cuenta:50', '2017-05-05 08:36:09'),
+(457, 'DELETED ordencompra Cuenta:50', '2017-05-05 08:36:09'),
+(458, 'DELETED proveedores Cuenta:50', '2017-05-05 08:36:09'),
+(459, 'UPDATED AspNetUsers Cuenta:50', '2017-05-05 08:36:09'),
+(460, 'DELETED AspNetUserRoles Cuenta:50', '2017-05-05 08:36:09'),
+(461, 'UPDATED cuentas Cuenta:50', '2017-05-05 08:36:09'),
+(462, 'DELETED AspNetUserRoles UserId: 228695ad-aa89-46c6-ba02-5c9afb1ee547, Cuenta: 50', '2017-05-05 08:36:09'),
+(463, 'DELETED cuentasusuarios Cuenta:50', '2017-05-05 08:36:09'),
+(464, 'DELETED AspNetUsers Cuenta:228695ad-aa89-46c6-ba02-5c9afb1ee547', '2017-05-05 08:36:09'),
+(465, 'DELETED AspNetUserRoles UserId: db76f6e1-5aef-4cd7-a5d6-f9307a0bfe8f, Cuenta: 50', '2017-05-05 08:36:09'),
+(466, 'DELETED cuentasusuarios Cuenta:50', '2017-05-05 08:36:09'),
+(467, 'DELETED AspNetUsers Cuenta:db76f6e1-5aef-4cd7-a5d6-f9307a0bfe8f', '2017-05-05 08:36:09'),
+(468, 'DELETED AspNetUserRoles UserId: e910402d-6112-4396-b435-c2e5f631f69e, Cuenta: 50', '2017-05-05 08:36:09'),
+(469, 'DELETED cuentasusuarios Cuenta:50', '2017-05-05 08:36:09'),
+(470, 'DELETED AspNetUsers Cuenta:e910402d-6112-4396-b435-c2e5f631f69e', '2017-05-05 08:36:09'),
+(471, 'DELETED perfiles Cuenta:50', '2017-05-05 08:36:09'),
+(472, 'DELETED cuentas Cuenta:50', '2017-05-05 08:36:09'),
+(473, 'DELETED cuentasmensajes Cuenta:74', '2017-05-05 08:41:16'),
+(474, 'DELETED perfilesroles Cuenta:74', '2017-05-05 08:41:16'),
+(475, 'DELETED cuentasxpagar Cuenta:74', '2017-05-05 08:41:16'),
+(476, 'DELETED ordencompradetalle Cuenta:74', '2017-05-05 08:41:16'),
+(477, 'DELETED ordencompra Cuenta:74', '2017-05-05 08:41:16'),
+(478, 'DELETED proveedores Cuenta:74', '2017-05-05 08:41:16'),
+(479, 'UPDATED AspNetUsers Cuenta:74', '2017-05-05 08:41:16'),
+(480, 'DELETED AspNetUserRoles Cuenta:74', '2017-05-05 08:41:16'),
+(481, 'UPDATED cuentas Cuenta:74', '2017-05-05 08:41:16'),
+(482, 'DELETED AspNetUserRoles UserId: 15e814e8-0967-46e1-9a9d-fdfb7a1f2d4b, Cuenta: 74', '2017-05-05 08:41:16'),
+(483, 'DELETED cuentasusuarios Cuenta:74', '2017-05-05 08:41:16'),
+(484, 'DELETED AspNetUsers Cuenta:15e814e8-0967-46e1-9a9d-fdfb7a1f2d4b', '2017-05-05 08:41:16'),
+(485, 'DELETED perfiles Cuenta:74', '2017-05-05 08:41:16'),
+(486, 'DELETED cuentas Cuenta:74', '2017-05-05 08:41:16'),
+(487, 'DELETED cuentasmensajes Cuenta:78', '2017-05-05 08:41:30'),
+(488, 'DELETED perfilesroles Cuenta:78', '2017-05-05 08:41:30'),
+(489, 'DELETED cuentasxpagar Cuenta:78', '2017-05-05 08:41:30'),
+(490, 'DELETED ordencompradetalle Cuenta:78', '2017-05-05 08:41:30'),
+(491, 'DELETED ordencompra Cuenta:78', '2017-05-05 08:41:30'),
+(492, 'DELETED proveedores Cuenta:78', '2017-05-05 08:41:30'),
+(493, 'UPDATED AspNetUsers Cuenta:78', '2017-05-05 08:41:30'),
+(494, 'DELETED AspNetUserRoles Cuenta:78', '2017-05-05 08:41:30'),
+(495, 'UPDATED cuentas Cuenta:78', '2017-05-05 08:41:30'),
+(496, 'DELETED AspNetUserRoles UserId: 0d923e61-e927-4ab9-9af4-98235c5de4df, Cuenta: 78', '2017-05-05 08:41:30'),
+(497, 'DELETED cuentasusuarios Cuenta:78', '2017-05-05 08:41:30'),
+(498, 'DELETED AspNetUsers Cuenta:0d923e61-e927-4ab9-9af4-98235c5de4df', '2017-05-05 08:41:30'),
+(499, 'DELETED perfiles Cuenta:78', '2017-05-05 08:41:30'),
+(500, 'DELETED cuentas Cuenta:78', '2017-05-05 08:41:30'),
+(501, 'DELETED cuentasmensajes Cuenta:81', '2017-05-05 08:41:39'),
+(502, 'DELETED perfilesroles Cuenta:81', '2017-05-05 08:41:39'),
+(503, 'DELETED cuentasxpagar Cuenta:81', '2017-05-05 08:41:39'),
+(504, 'DELETED ordencompradetalle Cuenta:81', '2017-05-05 08:41:39'),
+(505, 'DELETED ordencompra Cuenta:81', '2017-05-05 08:41:39'),
+(506, 'DELETED proveedores Cuenta:81', '2017-05-05 08:41:39'),
+(507, 'UPDATED AspNetUsers Cuenta:81', '2017-05-05 08:41:39'),
+(508, 'DELETED AspNetUserRoles Cuenta:81', '2017-05-05 08:41:39'),
+(509, 'UPDATED cuentas Cuenta:81', '2017-05-05 08:41:39'),
+(510, 'DELETED AspNetUserRoles UserId: 65cbce6f-549a-4f3f-b28a-ee4333743e8a, Cuenta: 81', '2017-05-05 08:41:39'),
+(511, 'DELETED cuentasusuarios Cuenta:81', '2017-05-05 08:41:39'),
+(512, 'DELETED AspNetUsers Cuenta:65cbce6f-549a-4f3f-b28a-ee4333743e8a', '2017-05-05 08:41:39'),
+(513, 'DELETED AspNetUserRoles UserId: ed3aec40-bdbb-49ae-8e61-83373a1c91fd, Cuenta: 81', '2017-05-05 08:41:39'),
+(514, 'DELETED cuentasusuarios Cuenta:81', '2017-05-05 08:41:39'),
+(515, 'DELETED AspNetUsers Cuenta:ed3aec40-bdbb-49ae-8e61-83373a1c91fd', '2017-05-05 08:41:39'),
+(516, 'DELETED perfiles Cuenta:81', '2017-05-05 08:41:39'),
+(517, 'DELETED cuentas Cuenta:81', '2017-05-05 08:41:39'),
+(518, 'DELETED cuentasmensajes Cuenta:75', '2017-05-05 08:41:47'),
+(519, 'DELETED perfilesroles Cuenta:75', '2017-05-05 08:41:47'),
+(520, 'DELETED cuentasxpagar Cuenta:75', '2017-05-05 08:41:47'),
+(521, 'DELETED ordencompradetalle Cuenta:75', '2017-05-05 08:41:47'),
+(522, 'DELETED ordencompra Cuenta:75', '2017-05-05 08:41:47'),
+(523, 'DELETED proveedores Cuenta:75', '2017-05-05 08:41:47'),
+(524, 'UPDATED AspNetUsers Cuenta:75', '2017-05-05 08:41:47'),
+(525, 'DELETED AspNetUserRoles Cuenta:75', '2017-05-05 08:41:47'),
+(526, 'UPDATED cuentas Cuenta:75', '2017-05-05 08:41:47'),
+(527, 'DELETED AspNetUserRoles UserId: ef3affbe-94bc-4c02-9b34-cba84fefde86, Cuenta: 75', '2017-05-05 08:41:47'),
+(528, 'DELETED cuentasusuarios Cuenta:75', '2017-05-05 08:41:47'),
+(529, 'DELETED AspNetUsers Cuenta:ef3affbe-94bc-4c02-9b34-cba84fefde86', '2017-05-05 08:41:47'),
+(530, 'DELETED perfiles Cuenta:75', '2017-05-05 08:41:47'),
+(531, 'DELETED cuentas Cuenta:75', '2017-05-05 08:41:47'),
+(532, 'DELETED cuentasmensajes Cuenta:80', '2017-05-05 08:41:55'),
+(533, 'DELETED perfilesroles Cuenta:80', '2017-05-05 08:41:55'),
+(534, 'DELETED cuentasxpagar Cuenta:80', '2017-05-05 08:41:55'),
+(535, 'DELETED ordencompradetalle Cuenta:80', '2017-05-05 08:41:55'),
+(536, 'DELETED ordencompra Cuenta:80', '2017-05-05 08:41:55'),
+(537, 'DELETED proveedores Cuenta:80', '2017-05-05 08:41:55'),
+(538, 'UPDATED AspNetUsers Cuenta:80', '2017-05-05 08:41:55'),
+(539, 'DELETED AspNetUserRoles Cuenta:80', '2017-05-05 08:41:55'),
+(540, 'UPDATED cuentas Cuenta:80', '2017-05-05 08:41:55'),
+(541, 'DELETED AspNetUserRoles UserId: 079eba1d-8664-412a-9a49-7c03c3dad0ee, Cuenta: 80', '2017-05-05 08:41:55'),
+(542, 'DELETED cuentasusuarios Cuenta:80', '2017-05-05 08:41:55'),
+(543, 'DELETED AspNetUsers Cuenta:079eba1d-8664-412a-9a49-7c03c3dad0ee', '2017-05-05 08:41:55'),
+(544, 'DELETED AspNetUserRoles UserId: 0e149dc9-c80d-4030-beff-c2eb9aa38999, Cuenta: 80', '2017-05-05 08:41:55'),
+(545, 'DELETED cuentasusuarios Cuenta:80', '2017-05-05 08:41:55'),
+(546, 'DELETED AspNetUsers Cuenta:0e149dc9-c80d-4030-beff-c2eb9aa38999', '2017-05-05 08:41:55'),
+(547, 'DELETED perfiles Cuenta:80', '2017-05-05 08:41:55'),
+(548, 'DELETED cuentas Cuenta:80', '2017-05-05 08:41:55'),
+(549, 'DELETED cuentasmensajes Cuenta:76', '2017-05-05 08:43:56'),
+(550, 'DELETED perfilesroles Cuenta:76', '2017-05-05 08:43:56'),
+(551, 'DELETED cuentasxpagar Cuenta:76', '2017-05-05 08:43:56'),
+(552, 'DELETED ordencompradetalle Cuenta:76', '2017-05-05 08:43:56'),
+(553, 'DELETED ordencompra Cuenta:76', '2017-05-05 08:43:56'),
+(554, 'DELETED proveedores Cuenta:76', '2017-05-05 08:43:56'),
+(555, 'UPDATED AspNetUsers Cuenta:76', '2017-05-05 08:43:56'),
+(556, 'DELETED AspNetUserRoles Cuenta:76', '2017-05-05 08:43:56'),
+(557, 'UPDATED cuentas Cuenta:76', '2017-05-05 08:43:56'),
+(558, 'DELETED AspNetUserRoles UserId: 098e5c8c-948b-439f-9d31-7e536d0c04c5, Cuenta: 76', '2017-05-05 08:43:56'),
+(559, 'DELETED cuentasusuarios Cuenta:76', '2017-05-05 08:43:56'),
+(560, 'DELETED AspNetUsers Cuenta:098e5c8c-948b-439f-9d31-7e536d0c04c5', '2017-05-05 08:43:56'),
+(561, 'DELETED perfiles Cuenta:76', '2017-05-05 08:43:56'),
+(562, 'DELETED cuentas Cuenta:76', '2017-05-05 08:43:56'),
+(563, 'DELETED cuentasmensajes Cuenta:83', '2017-05-05 08:44:52'),
+(564, 'DELETED perfilesroles Cuenta:83', '2017-05-05 08:44:52'),
+(565, 'DELETED cuentasxpagar Cuenta:83', '2017-05-05 08:44:52'),
+(566, 'DELETED ordencompradetalle Cuenta:83', '2017-05-05 08:44:52'),
+(567, 'DELETED ordencompra Cuenta:83', '2017-05-05 08:44:52'),
+(568, 'DELETED proveedores Cuenta:83', '2017-05-05 08:44:52'),
+(569, 'UPDATED AspNetUsers Cuenta:83', '2017-05-05 08:44:52'),
+(570, 'DELETED AspNetUserRoles Cuenta:83', '2017-05-05 08:44:52'),
+(571, 'UPDATED cuentas Cuenta:83', '2017-05-05 08:44:52'),
+(572, 'DELETED perfiles Cuenta:83', '2017-05-05 08:44:52'),
+(573, 'DELETED cuentas Cuenta:83', '2017-05-05 08:44:52'),
+(574, 'DELETED cuentasmensajes Cuenta:88', '2017-05-07 07:35:25'),
+(575, 'DELETED perfilesroles Cuenta:88', '2017-05-07 07:35:25'),
+(576, 'DELETED cuentasxpagar Cuenta:88', '2017-05-07 07:35:25'),
+(577, 'DELETED ordencompradetalle Cuenta:88', '2017-05-07 07:35:25'),
+(578, 'DELETED ordencompra Cuenta:88', '2017-05-07 07:35:25'),
+(579, 'DELETED proveedores Cuenta:88', '2017-05-07 07:35:25'),
+(580, 'UPDATED AspNetUsers Cuenta:88', '2017-05-07 07:35:25'),
+(581, 'DELETED AspNetUserRoles Cuenta:88', '2017-05-07 07:35:25'),
+(582, 'UPDATED cuentas Cuenta:88', '2017-05-07 07:35:25'),
+(583, 'DELETED perfiles Cuenta:88', '2017-05-07 07:35:25'),
+(584, 'DELETED cuentas Cuenta:88', '2017-05-07 07:35:25'),
+(585, 'DELETED cuentasmensajes Cuenta:91', '2017-05-08 04:35:14'),
+(586, 'DELETED perfilesroles Cuenta:91', '2017-05-08 04:35:14'),
+(587, 'DELETED cuentasxpagar Cuenta:91', '2017-05-08 04:35:14'),
+(588, 'DELETED ordencompradetalle Cuenta:91', '2017-05-08 04:35:14'),
+(589, 'DELETED ordencompra Cuenta:91', '2017-05-08 04:35:14'),
+(590, 'DELETED proveedores Cuenta:91', '2017-05-08 04:35:14'),
+(591, 'UPDATED AspNetUsers Cuenta:91', '2017-05-08 04:35:14'),
+(592, 'DELETED AspNetUserRoles Cuenta:91', '2017-05-08 04:35:14'),
+(593, 'UPDATED cuentas Cuenta:91', '2017-05-08 04:35:14'),
+(594, 'DELETED perfiles Cuenta:91', '2017-05-08 04:35:14'),
+(595, 'DELETED cuentas Cuenta:91', '2017-05-08 04:35:14'),
+(596, 'DELETED cuentasmensajes Cuenta:84', '2017-05-08 05:24:48'),
+(597, 'DELETED perfilesroles Cuenta:84', '2017-05-08 05:24:48'),
+(598, 'DELETED cuentasxpagar Cuenta:84', '2017-05-08 05:24:48'),
+(599, 'DELETED ordencompradetalle Cuenta:84', '2017-05-08 05:24:48'),
+(600, 'DELETED ordencompra Cuenta:84', '2017-05-08 05:24:48'),
+(601, 'DELETED proveedores Cuenta:84', '2017-05-08 05:24:48'),
+(602, 'UPDATED AspNetUsers Cuenta:84', '2017-05-08 05:24:48'),
+(603, 'DELETED AspNetUserRoles Cuenta:84', '2017-05-08 05:24:48'),
+(604, 'UPDATED cuentas Cuenta:84', '2017-05-08 05:24:48'),
+(605, 'DELETED AspNetUserRoles UserId: 710b8463-21ee-4052-8c90-76aee7fbdc5e, Cuenta: 84', '2017-05-08 05:24:48'),
+(606, 'DELETED cuentasusuarios Cuenta:84', '2017-05-08 05:24:48'),
+(607, 'DELETED AspNetUsers Cuenta:710b8463-21ee-4052-8c90-76aee7fbdc5e', '2017-05-08 05:24:48'),
+(608, 'DELETED perfiles Cuenta:84', '2017-05-08 05:24:48'),
+(609, 'DELETED cuentas Cuenta:84', '2017-05-08 05:24:48'),
+(610, 'DELETED cuentasmensajes Cuenta:85', '2017-05-08 05:30:50'),
+(611, 'DELETED perfilesroles Cuenta:85', '2017-05-08 05:30:50'),
+(612, 'DELETED cuentasxpagar Cuenta:85', '2017-05-08 05:30:50'),
+(613, 'DELETED ordencompradetalle Cuenta:85', '2017-05-08 05:30:50'),
+(614, 'DELETED ordencompra Cuenta:85', '2017-05-08 05:30:50'),
+(615, 'DELETED proveedores Cuenta:85', '2017-05-08 05:30:50'),
+(616, 'UPDATED AspNetUsers Cuenta:85', '2017-05-08 05:30:50'),
+(617, 'DELETED AspNetUserRoles Cuenta:85', '2017-05-08 05:30:50'),
+(618, 'UPDATED cuentas Cuenta:85', '2017-05-08 05:30:50'),
+(619, 'DELETED AspNetUserRoles UserId: 4e9ba49d-8e72-481b-989e-a54ea33fff78, Cuenta: 85', '2017-05-08 05:30:50'),
+(620, 'DELETED cuentasusuarios Cuenta:85', '2017-05-08 05:30:50'),
+(621, 'DELETED AspNetUsers Cuenta:4e9ba49d-8e72-481b-989e-a54ea33fff78', '2017-05-08 05:30:50'),
+(622, 'DELETED AspNetUserRoles UserId: 5ad6c38e-9d86-4317-ad15-f5d7fa2eaf22, Cuenta: 85', '2017-05-08 05:30:50'),
+(623, 'DELETED cuentasusuarios Cuenta:85', '2017-05-08 05:30:50'),
+(624, 'DELETED AspNetUsers Cuenta:5ad6c38e-9d86-4317-ad15-f5d7fa2eaf22', '2017-05-08 05:30:50'),
+(625, 'DELETED AspNetUserRoles UserId: a652a1cb-8f83-41eb-877f-bb73ba30cda6, Cuenta: 85', '2017-05-08 05:30:50'),
+(626, 'DELETED cuentasusuarios Cuenta:85', '2017-05-08 05:30:50'),
+(627, 'DELETED AspNetUsers Cuenta:a652a1cb-8f83-41eb-877f-bb73ba30cda6', '2017-05-08 05:30:50'),
+(628, 'DELETED perfiles Cuenta:85', '2017-05-08 05:30:50'),
+(629, 'DELETED cuentas Cuenta:85', '2017-05-08 05:30:50'),
+(630, 'DELETED cuentasmensajes Cuenta:90', '2017-05-08 05:31:20'),
+(631, 'DELETED perfilesroles Cuenta:90', '2017-05-08 05:31:20'),
+(632, 'DELETED cuentasxpagar Cuenta:90', '2017-05-08 05:31:20'),
+(633, 'DELETED ordencompradetalle Cuenta:90', '2017-05-08 05:31:20'),
+(634, 'DELETED ordencompra Cuenta:90', '2017-05-08 05:31:20'),
+(635, 'DELETED proveedores Cuenta:90', '2017-05-08 05:31:20'),
+(636, 'UPDATED AspNetUsers Cuenta:90', '2017-05-08 05:31:20'),
+(637, 'DELETED AspNetUserRoles Cuenta:90', '2017-05-08 05:31:20'),
+(638, 'UPDATED cuentas Cuenta:90', '2017-05-08 05:31:20'),
+(639, 'DELETED AspNetUserRoles UserId: 4df8a7d5-7021-47ef-8a8e-6aa6f1f458ba, Cuenta: 90', '2017-05-08 05:31:20'),
+(640, 'DELETED cuentasusuarios Cuenta:90', '2017-05-08 05:31:20'),
+(641, 'DELETED AspNetUsers Cuenta:4df8a7d5-7021-47ef-8a8e-6aa6f1f458ba', '2017-05-08 05:31:20'),
+(642, 'DELETED AspNetUserRoles UserId: 73822d3c-c212-478c-aaba-d5753d699a10, Cuenta: 90', '2017-05-08 05:31:20'),
+(643, 'DELETED cuentasusuarios Cuenta:90', '2017-05-08 05:31:20'),
+(644, 'DELETED AspNetUsers Cuenta:73822d3c-c212-478c-aaba-d5753d699a10', '2017-05-08 05:31:20'),
+(645, 'DELETED AspNetUserRoles UserId: 7754b048-e083-48ea-b7bd-2f219b12958c, Cuenta: 90', '2017-05-08 05:31:20'),
+(646, 'DELETED cuentasusuarios Cuenta:90', '2017-05-08 05:31:20'),
+(647, 'DELETED AspNetUsers Cuenta:7754b048-e083-48ea-b7bd-2f219b12958c', '2017-05-08 05:31:20'),
+(648, 'DELETED AspNetUserRoles UserId: d690c916-e575-4029-b579-d0fde7f0a9f0, Cuenta: 90', '2017-05-08 05:31:20'),
+(649, 'DELETED cuentasusuarios Cuenta:90', '2017-05-08 05:31:20'),
+(650, 'DELETED AspNetUsers Cuenta:d690c916-e575-4029-b579-d0fde7f0a9f0', '2017-05-08 05:31:20'),
+(651, 'DELETED perfiles Cuenta:90', '2017-05-08 05:31:20'),
+(652, 'DELETED cuentas Cuenta:90', '2017-05-08 05:31:20'),
+(653, 'DELETED cuentasmensajes Cuenta:92', '2017-05-08 05:33:23'),
+(654, 'DELETED perfilesroles Cuenta:92', '2017-05-08 05:33:23'),
+(655, 'DELETED cuentasxpagar Cuenta:92', '2017-05-08 05:33:23'),
+(656, 'DELETED ordencompradetalle Cuenta:92', '2017-05-08 05:33:23'),
+(657, 'DELETED ordencompra Cuenta:92', '2017-05-08 05:33:23'),
+(658, 'DELETED proveedores Cuenta:92', '2017-05-08 05:33:23'),
+(659, 'UPDATED AspNetUsers Cuenta:92', '2017-05-08 05:33:23'),
+(660, 'DELETED AspNetUserRoles Cuenta:92', '2017-05-08 05:33:23'),
+(661, 'UPDATED cuentas Cuenta:92', '2017-05-08 05:33:23'),
+(662, 'DELETED AspNetUserRoles UserId: 8fcce43b-ce39-4f5d-9300-6f677b45a705, Cuenta: 92', '2017-05-08 05:33:23'),
+(663, 'DELETED cuentasusuarios Cuenta:92', '2017-05-08 05:33:23'),
+(664, 'DELETED AspNetUsers Cuenta:8fcce43b-ce39-4f5d-9300-6f677b45a705', '2017-05-08 05:33:23'),
+(665, 'DELETED perfiles Cuenta:92', '2017-05-08 05:33:23'),
+(666, 'DELETED cuentas Cuenta:92', '2017-05-08 05:33:23'),
+(667, 'DELETED cuentasmensajes Cuenta:93', '2017-05-08 05:45:17'),
+(668, 'DELETED perfilesroles Cuenta:93', '2017-05-08 05:45:17'),
+(669, 'DELETED cuentasxpagar Cuenta:93', '2017-05-08 05:45:17'),
+(670, 'DELETED ordencompradetalle Cuenta:93', '2017-05-08 05:45:17'),
+(671, 'DELETED ordencompra Cuenta:93', '2017-05-08 05:45:17'),
+(672, 'DELETED proveedores Cuenta:93', '2017-05-08 05:45:17'),
+(673, 'UPDATED AspNetUsers Cuenta:93', '2017-05-08 05:45:17'),
+(674, 'DELETED AspNetUserRoles Cuenta:93', '2017-05-08 05:45:17'),
+(675, 'UPDATED cuentas Cuenta:93', '2017-05-08 05:45:17'),
+(676, 'DELETED AspNetUserRoles UserId: a6703e9f-2fc7-40c8-b6ed-cf95d91e262e, Cuenta: 93', '2017-05-08 05:45:17'),
+(677, 'DELETED cuentasusuarios Cuenta:93', '2017-05-08 05:45:17'),
+(678, 'DELETED AspNetUsers Cuenta:a6703e9f-2fc7-40c8-b6ed-cf95d91e262e', '2017-05-08 05:45:17'),
+(679, 'DELETED perfiles Cuenta:93', '2017-05-08 05:45:17'),
+(680, 'DELETED cuentas Cuenta:93', '2017-05-08 05:45:17'),
+(681, 'DELETED cuentasmensajes Cuenta:86', '2017-05-10 03:55:34'),
+(682, 'DELETED perfilesroles Cuenta:86', '2017-05-10 03:55:34'),
+(683, 'DELETED cuentasxpagar Cuenta:86', '2017-05-10 03:55:34'),
+(684, 'DELETED ordencompradetalle Cuenta:86', '2017-05-10 03:55:34'),
+(685, 'DELETED ordencompra Cuenta:86', '2017-05-10 03:55:34'),
+(686, 'DELETED proveedores Cuenta:86', '2017-05-10 03:55:34'),
+(687, 'UPDATED AspNetUsers Cuenta:86', '2017-05-10 03:55:34'),
+(688, 'DELETED AspNetUserRoles Cuenta:86', '2017-05-10 03:55:34'),
+(689, 'UPDATED cuentas Cuenta:86', '2017-05-10 03:55:34'),
+(690, 'DELETED AspNetUserRoles UserId: 45cfc304-d7bb-4f85-9425-224438f566c8, Cuenta: 86', '2017-05-10 03:55:34'),
+(691, 'DELETED cuentasusuarios Cuenta:86', '2017-05-10 03:55:34'),
+(692, 'DELETED AspNetUsers Cuenta:45cfc304-d7bb-4f85-9425-224438f566c8', '2017-05-10 03:55:34'),
+(693, 'DELETED perfiles Cuenta:86', '2017-05-10 03:55:34'),
+(694, 'DELETED cuentas Cuenta:86', '2017-05-10 03:55:34'),
+(695, 'DELETED cuentasmensajes Cuenta:82', '2017-05-10 04:24:50'),
+(696, 'DELETED perfilesroles Cuenta:82', '2017-05-10 04:24:50'),
+(697, 'DELETED cuentasxpagar Cuenta:82', '2017-05-10 04:24:50'),
+(698, 'DELETED ordencompradetalle Cuenta:82', '2017-05-10 04:24:50'),
+(699, 'DELETED ordencompra Cuenta:82', '2017-05-10 04:24:50'),
+(700, 'DELETED proveedores Cuenta:82', '2017-05-10 04:24:50'),
+(701, 'UPDATED AspNetUsers Cuenta:82', '2017-05-10 04:24:50'),
+(702, 'DELETED AspNetUserRoles Cuenta:82', '2017-05-10 04:24:50'),
+(703, 'UPDATED cuentas Cuenta:82', '2017-05-10 04:24:50'),
+(704, 'DELETED AspNetUserRoles UserId: 1740f98b-2ecb-4aba-8416-9b9821b2a69f, Cuenta: 82', '2017-05-10 04:24:50'),
+(705, 'DELETED cuentasusuarios Cuenta:82', '2017-05-10 04:24:50'),
+(706, 'DELETED AspNetUsers Cuenta:1740f98b-2ecb-4aba-8416-9b9821b2a69f', '2017-05-10 04:24:50'),
+(707, 'DELETED AspNetUserRoles UserId: 1e4782b3-c664-40e2-89fb-3c176640bd65, Cuenta: 82', '2017-05-10 04:24:50'),
+(708, 'DELETED cuentasusuarios Cuenta:82', '2017-05-10 04:24:50'),
+(709, 'DELETED AspNetUsers Cuenta:1e4782b3-c664-40e2-89fb-3c176640bd65', '2017-05-10 04:24:50'),
+(710, 'DELETED AspNetUserRoles UserId: 2c90fd78-7e8f-4c36-8468-e157f82129d6, Cuenta: 82', '2017-05-10 04:24:50'),
+(711, 'DELETED cuentasusuarios Cuenta:82', '2017-05-10 04:24:50'),
+(712, 'DELETED AspNetUsers Cuenta:2c90fd78-7e8f-4c36-8468-e157f82129d6', '2017-05-10 04:24:50'),
+(713, 'DELETED AspNetUserRoles UserId: 593d20c6-16e5-420d-a338-cd0fdb351f46, Cuenta: 82', '2017-05-10 04:24:50'),
+(714, 'DELETED cuentasusuarios Cuenta:82', '2017-05-10 04:24:50'),
+(715, 'DELETED AspNetUsers Cuenta:593d20c6-16e5-420d-a338-cd0fdb351f46', '2017-05-10 04:24:50'),
+(716, 'DELETED AspNetUserRoles UserId: 65f65820-f608-423c-9bb3-73c2c794d57e, Cuenta: 82', '2017-05-10 04:24:50'),
+(717, 'DELETED cuentasusuarios Cuenta:82', '2017-05-10 04:24:50'),
+(718, 'DELETED AspNetUsers Cuenta:65f65820-f608-423c-9bb3-73c2c794d57e', '2017-05-10 04:24:50'),
+(719, 'DELETED perfiles Cuenta:82', '2017-05-10 04:24:50'),
+(720, 'DELETED cuentas Cuenta:82', '2017-05-10 04:24:50'),
+(721, 'DELETED cuentasmensajes Cuenta:89', '2017-05-10 23:06:38'),
+(722, 'DELETED perfilesroles Cuenta:89', '2017-05-10 23:06:38'),
+(723, 'DELETED cuentasxpagar Cuenta:89', '2017-05-10 23:06:38'),
+(724, 'DELETED ordencompradetalle Cuenta:89', '2017-05-10 23:06:38'),
+(725, 'DELETED ordencompra Cuenta:89', '2017-05-10 23:06:38'),
+(726, 'DELETED proveedores Cuenta:89', '2017-05-10 23:06:38'),
+(727, 'UPDATED AspNetUsers Cuenta:89', '2017-05-10 23:06:38'),
+(728, 'DELETED AspNetUserRoles Cuenta:89', '2017-05-10 23:06:38'),
+(729, 'UPDATED cuentas Cuenta:89', '2017-05-10 23:06:38'),
+(730, 'DELETED AspNetUserRoles UserId: 07ae9b4f-9520-47c3-aa19-eb0f82d87299, Cuenta: 89', '2017-05-10 23:06:38'),
+(731, 'DELETED cuentasusuarios Cuenta:89', '2017-05-10 23:06:38'),
+(732, 'DELETED AspNetUsers Cuenta:07ae9b4f-9520-47c3-aa19-eb0f82d87299', '2017-05-10 23:06:38'),
+(733, 'DELETED AspNetUserRoles UserId: 38957adb-6387-466c-883a-0b26df517728, Cuenta: 89', '2017-05-10 23:06:38'),
+(734, 'DELETED cuentasusuarios Cuenta:89', '2017-05-10 23:06:38'),
+(735, 'DELETED AspNetUsers Cuenta:38957adb-6387-466c-883a-0b26df517728', '2017-05-10 23:06:38'),
+(736, 'DELETED AspNetUserRoles UserId: 48108e65-eedf-4927-a1d5-12108f9e1973, Cuenta: 89', '2017-05-10 23:06:38'),
+(737, 'DELETED cuentasusuarios Cuenta:89', '2017-05-10 23:06:38'),
+(738, 'DELETED AspNetUsers Cuenta:48108e65-eedf-4927-a1d5-12108f9e1973', '2017-05-10 23:06:38'),
+(739, 'DELETED AspNetUserRoles UserId: aa57098a-d122-4ad2-853b-2ff3069b67ca, Cuenta: 89', '2017-05-10 23:06:38'),
+(740, 'DELETED cuentasusuarios Cuenta:89', '2017-05-10 23:06:38'),
+(741, 'DELETED AspNetUsers Cuenta:aa57098a-d122-4ad2-853b-2ff3069b67ca', '2017-05-10 23:06:38'),
+(742, 'DELETED AspNetUserRoles UserId: e7c87d40-0079-4ba1-9374-8f8a18c7ceb0, Cuenta: 89', '2017-05-10 23:06:38'),
+(743, 'DELETED cuentasusuarios Cuenta:89', '2017-05-10 23:06:38'),
+(744, 'DELETED AspNetUsers Cuenta:e7c87d40-0079-4ba1-9374-8f8a18c7ceb0', '2017-05-10 23:06:38'),
+(745, 'DELETED perfiles Cuenta:89', '2017-05-10 23:06:38'),
+(746, 'DELETED cuentas Cuenta:89', '2017-05-10 23:06:38'),
+(747, 'DELETED cuentasmensajes Cuenta:87', '2017-06-04 23:05:53'),
+(748, 'DELETED cuentasmensajes Cuenta:87', '2017-06-04 23:13:09'),
+(749, 'DELETED perfilesroles Cuenta:87', '2017-06-04 23:13:09'),
+(750, 'DELETED cuentasxpagar Cuenta:87', '2017-06-04 23:13:09'),
+(751, 'DELETED ordencompradetalle Cuenta:87', '2017-06-04 23:13:09'),
+(752, 'DELETED ordencompra Cuenta:87', '2017-06-04 23:13:09'),
+(753, 'DELETED proveedores Cuenta:87', '2017-06-04 23:13:09'),
+(754, 'UPDATED AspNetUsers Cuenta:87', '2017-06-04 23:13:09'),
+(755, 'DELETED AspNetUserRoles Cuenta:87', '2017-06-04 23:13:09'),
+(756, 'UPDATED cuentas Cuenta:87', '2017-06-04 23:13:09'),
+(757, 'DELETED AspNetUserRoles UserId: 32fb5a80-b167-42a8-99eb-262f2cf7f09d, Cuenta: 87', '2017-06-04 23:13:09'),
+(758, 'DELETED cuentasusuarios Cuenta:87', '2017-06-04 23:13:09'),
+(759, 'DELETED AspNetUsers Cuenta:32fb5a80-b167-42a8-99eb-262f2cf7f09d', '2017-06-04 23:13:09'),
+(760, 'DELETED AspNetUserRoles UserId: 9143bc9e-87bd-4077-afa2-8ecb13e39cb4, Cuenta: 87', '2017-06-04 23:13:09'),
+(761, 'DELETED cuentasusuarios Cuenta:87', '2017-06-04 23:13:09'),
+(762, 'DELETED AspNetUsers Cuenta:9143bc9e-87bd-4077-afa2-8ecb13e39cb4', '2017-06-04 23:13:09'),
+(763, 'DELETED AspNetUserRoles UserId: dbdf0989-86aa-416e-ae14-d4855c66beee, Cuenta: 87', '2017-06-04 23:13:09'),
+(764, 'DELETED cuentasusuarios Cuenta:87', '2017-06-04 23:13:09'),
+(765, 'DELETED AspNetUsers Cuenta:dbdf0989-86aa-416e-ae14-d4855c66beee', '2017-06-04 23:13:09'),
+(766, 'DELETED AspNetUserRoles UserId: ff0cb5b9-b409-4973-8f4f-2c4a828f18dc, Cuenta: 87', '2017-06-04 23:13:09'),
+(767, 'DELETED cuentasusuarios Cuenta:87', '2017-06-04 23:13:09'),
+(768, 'DELETED AspNetUsers Cuenta:ff0cb5b9-b409-4973-8f4f-2c4a828f18dc', '2017-06-04 23:13:09'),
+(769, 'DELETED perfiles Cuenta:87', '2017-06-04 23:13:09'),
+(770, 'DELETED cuentas Cuenta:87', '2017-06-04 23:13:09'),
+(771, 'DELETED cuentasmensajes Cuenta:97', '2017-06-04 23:13:21'),
+(772, 'DELETED perfilesroles Cuenta:97', '2017-06-04 23:13:21'),
+(773, 'DELETED cuentasxpagar Cuenta:97', '2017-06-04 23:13:21'),
+(774, 'DELETED ordencompradetalle Cuenta:97', '2017-06-04 23:13:21'),
+(775, 'DELETED ordencompra Cuenta:97', '2017-06-04 23:13:21'),
+(776, 'DELETED proveedores Cuenta:97', '2017-06-04 23:13:21'),
+(777, 'UPDATED AspNetUsers Cuenta:97', '2017-06-04 23:13:21'),
+(778, 'DELETED AspNetUserRoles Cuenta:97', '2017-06-04 23:13:21'),
+(779, 'UPDATED cuentas Cuenta:97', '2017-06-04 23:13:21'),
+(780, 'DELETED AspNetUserRoles UserId: 97e49995-d5cb-4628-a550-5dc9ea528ffa, Cuenta: 97', '2017-06-04 23:13:21'),
+(781, 'DELETED cuentasusuarios Cuenta:97', '2017-06-04 23:13:21'),
+(782, 'DELETED AspNetUsers Cuenta:97e49995-d5cb-4628-a550-5dc9ea528ffa', '2017-06-04 23:13:21'),
+(783, 'DELETED perfiles Cuenta:97', '2017-06-04 23:13:21'),
+(784, 'DELETED cuentas Cuenta:97', '2017-06-04 23:13:21'),
+(785, 'DELETED cuentasmensajes Cuenta:95', '2017-06-04 23:13:33'),
+(786, 'DELETED perfilesroles Cuenta:95', '2017-06-04 23:13:33'),
+(787, 'DELETED cuentasxpagar Cuenta:95', '2017-06-04 23:13:33'),
+(788, 'DELETED ordencompradetalle Cuenta:95', '2017-06-04 23:13:33'),
+(789, 'DELETED ordencompra Cuenta:95', '2017-06-04 23:13:33'),
+(790, 'DELETED proveedores Cuenta:95', '2017-06-04 23:13:33'),
+(791, 'UPDATED AspNetUsers Cuenta:95', '2017-06-04 23:13:33'),
+(792, 'DELETED AspNetUserRoles Cuenta:95', '2017-06-04 23:13:33'),
+(793, 'UPDATED cuentas Cuenta:95', '2017-06-04 23:13:33'),
+(794, 'DELETED AspNetUserRoles UserId: 8df5e51b-9858-421b-b0b6-9571dd6042a0, Cuenta: 95', '2017-06-04 23:13:33'),
+(795, 'DELETED cuentasusuarios Cuenta:95', '2017-06-04 23:13:33');
+INSERT INTO `impuls_logs` (`id`, `log`, `fecha`) VALUES
+(796, 'DELETED AspNetUsers Cuenta:8df5e51b-9858-421b-b0b6-9571dd6042a0', '2017-06-04 23:13:33'),
+(797, 'DELETED perfiles Cuenta:95', '2017-06-04 23:13:33'),
+(798, 'DELETED cuentas Cuenta:95', '2017-06-04 23:13:33'),
+(799, 'DELETED cuentasmensajes Cuenta:94', '2017-06-04 23:15:53'),
+(800, 'DELETED perfilesroles Cuenta:94', '2017-06-04 23:15:53'),
+(801, 'DELETED cuentasxpagar Cuenta:94', '2017-06-04 23:15:53'),
+(802, 'DELETED ordencompradetalle Cuenta:94', '2017-06-04 23:15:53'),
+(803, 'DELETED ordencompra Cuenta:94', '2017-06-04 23:15:53'),
+(804, 'DELETED proveedores Cuenta:94', '2017-06-04 23:15:53'),
+(805, 'UPDATED AspNetUsers Cuenta:94', '2017-06-04 23:15:53'),
+(806, 'DELETED AspNetUserRoles Cuenta:94', '2017-06-04 23:15:53'),
+(807, 'UPDATED cuentas Cuenta:94', '2017-06-04 23:15:53'),
+(808, 'DELETED AspNetUserRoles UserId: 68edc70f-ac87-48c4-bf06-573a606de4d2, Cuenta: 94', '2017-06-04 23:15:53'),
+(809, 'DELETED cuentasusuarios Cuenta:94', '2017-06-04 23:15:53'),
+(810, 'DELETED AspNetUsers Cuenta:68edc70f-ac87-48c4-bf06-573a606de4d2', '2017-06-04 23:15:53'),
+(811, 'DELETED perfiles Cuenta:94', '2017-06-04 23:15:53'),
+(812, 'DELETED cuentas Cuenta:94', '2017-06-04 23:15:53'),
+(813, 'DELETED cuentasmensajes Cuenta:96', '2017-06-04 23:20:13'),
+(814, 'DELETED perfilesroles Cuenta:96', '2017-06-04 23:20:13'),
+(815, 'DELETED cuentasxpagar Cuenta:96', '2017-06-04 23:20:13'),
+(816, 'DELETED ordencompradetalle Cuenta:96', '2017-06-04 23:20:13'),
+(817, 'DELETED ordencompra Cuenta:96', '2017-06-04 23:20:13'),
+(818, 'DELETED proveedores Cuenta:96', '2017-06-04 23:20:13'),
+(819, 'UPDATED AspNetUsers Cuenta:96', '2017-06-04 23:20:13'),
+(820, 'DELETED AspNetUserRoles Cuenta:96', '2017-06-04 23:20:13'),
+(821, 'UPDATED cuentas Cuenta:96', '2017-06-04 23:20:13'),
+(822, 'DELETED AspNetUserRoles UserId: 761f898e-8b78-42ce-9002-545ec6daa426, Cuenta: 96', '2017-06-04 23:20:13'),
+(823, 'DELETED cuentasusuarios Cuenta:96', '2017-06-04 23:20:13'),
+(824, 'DELETED AspNetUsers Cuenta:761f898e-8b78-42ce-9002-545ec6daa426', '2017-06-04 23:20:13'),
+(825, 'DELETED perfiles Cuenta:96', '2017-06-04 23:20:13'),
+(826, 'DELETED cuentas Cuenta:96', '2017-06-04 23:20:13'),
+(827, 'DELETED cuentasmensajes Cuenta:98', '2017-06-04 23:21:09'),
+(828, 'DELETED perfilesroles Cuenta:98', '2017-06-04 23:21:09'),
+(829, 'DELETED cuentasxpagar Cuenta:98', '2017-06-04 23:21:09'),
+(830, 'DELETED ordencompradetalle Cuenta:98', '2017-06-04 23:21:09'),
+(831, 'DELETED ordencompra Cuenta:98', '2017-06-04 23:21:09'),
+(832, 'DELETED proveedores Cuenta:98', '2017-06-04 23:21:09'),
+(833, 'UPDATED AspNetUsers Cuenta:98', '2017-06-04 23:21:09'),
+(834, 'DELETED AspNetUserRoles Cuenta:98', '2017-06-04 23:21:09'),
+(835, 'UPDATED cuentas Cuenta:98', '2017-06-04 23:21:09'),
+(836, 'DELETED AspNetUserRoles UserId: 8d64d031-7af8-43ab-aa3a-e37a0a40659d, Cuenta: 98', '2017-06-04 23:21:09'),
+(837, 'DELETED cuentasusuarios Cuenta:98', '2017-06-04 23:21:09'),
+(838, 'DELETED AspNetUsers Cuenta:8d64d031-7af8-43ab-aa3a-e37a0a40659d', '2017-06-04 23:21:09'),
+(839, 'DELETED perfiles Cuenta:98', '2017-06-04 23:21:09'),
+(840, 'DELETED cuentas Cuenta:98', '2017-06-04 23:21:09');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `informes`
+--
+
+CREATE TABLE IF NOT EXISTS `informes` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Url` varchar(1500) DEFAULT NULL,
+  `Nombre` varchar(45) DEFAULT NULL,
+  `Fecha` datetime DEFAULT NULL,
+  `IdVenta` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+
+--
+-- Volcado de datos para la tabla `informes`
+--
+
+INSERT INTO `informes` (`Id`, `Url`, `Nombre`, `Fecha`, `IdVenta`) VALUES
+(1, '~/Uploads/Factura-1279.pdf', 'INFORME 003 - ENTREGA DE LLAVES TRIANGULARES', '2018-01-24 00:00:00', 3),
+(2, '~/Uploads/windows_10_curious_blue_wallpaper_768p_by_david_93x-d84bp53.png', 'INFORME 002 -  LLAVES TRIANGULARES', '2018-06-13 00:00:00', 3),
+(3, NULL, NULL, NULL, 35),
+(4, NULL, NULL, NULL, 39),
+(5, NULL, NULL, NULL, 43),
+(6, NULL, NULL, NULL, 47),
+(12, 'null', 'infome', '2018-07-25 00:00:00', 55),
+(8, '~/Uploads/thumb-082-rainbow-six-siege-8.jpg', 'mm', '2018-07-23 00:00:00', 51),
+(9, '~/Uploads/Cuestionario Sobre APP.docx', 'CASA  888', '2018-06-28 00:00:00', 51),
+(10, '~/Uploads/38795090-rainbow-six-siege-wallpapers.jpg', 'ninguna  5', '2018-06-27 00:00:00', 51),
+(11, '~/Uploads/thumb-082-rainbow-six-siege-8.jpg', 'hola  99', '2018-06-27 00:00:00', 51),
+(13, 'null', 'null', '2018-07-27 00:00:00', 59),
+(14, 'null', 'null', '2018-07-27 12:19:32', 63),
+(15, '', 'ASCENSOR PRIVADO', '2018-07-11 00:00:00', 59),
+(16, 'null', 'null', '2018-07-27 00:00:00', 67),
+(17, '~/Uploads/CARTA DE PRESENTACIÓN.doc', 'CARLOS ', '2018-07-26 00:00:00', 67),
+(18, '~/Uploads/PROTOCOLO DE OBSERVACIÓN.doc', 'PRUEBA DE INICIO', '2018-07-30 00:00:00', 71),
+(19, '~/Uploads/FICHA DE CONTACTO.pptx', 'PUESTA EN MARCHA', '2018-07-30 00:00:00', 71),
+(20, 'null', 'null', '2018-07-29 13:15:45', 75),
+(27, '', 'hola', '2018-08-09 00:00:00', 79),
+(22, 'null', 'null', '2018-07-29 18:15:24', 83),
+(23, 'null', 'null', '2018-07-29 18:59:26', 87),
+(24, 'null', 'null', '2018-07-29 21:09:20', 91),
+(25, 'null', 'null', '2018-08-02 16:03:12', 95),
+(26, 'null', 'null', '2018-08-02 16:17:39', 99),
+(28, '', 'hola 4', '2018-08-09 00:00:00', 79);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `kitdap`
+--
+
+CREATE TABLE IF NOT EXISTS `kitdap` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(45) DEFAULT NULL,
+  `Url` varchar(1000) DEFAULT NULL,
+  `IdPrevio` int(11) DEFAULT NULL,
+  `obra_id` int(11) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+
+--
+-- Volcado de datos para la tabla `kitdap`
+--
+
+INSERT INTO `kitdap` (`Id`, `Nombre`, `Url`, `IdPrevio`, `obra_id`) VALUES
+(5, 'CASA BLANCA PRUEBA', '~/Uploads/_CLIMB puntos faltantes.docx', 4, 16),
+(6, 'CASA BLANCA PRUEBA', '~/Uploads/_CLIMB puntos faltantes.docx', 4, 16),
+(7, 'CASA BLANCA PRUEBA', '~/Uploads/_CLIMB puntos faltantes.docx', 4, 16),
+(8, 'INFORME 002 -  LLAVES TRIANGULARES', '~/Uploads/hostingssi.png', 4, 16),
+(12, 'hola', '~/Uploads/thumb-082-rainbow-six-siege-8.jpg', 7, 0),
+(13, 'CARLOS ', '~/Uploads/DI - CABINA - LOFT C.jpg', 10, 0),
+(15, 'CARLOS ', '~/Uploads/INSTRUCTIVO DE LIMPIEZA.doc', 20, 0),
+(17, 'hola ', '~/Uploads/dap (1).sql', 32, 12),
+(18, 'hola', 'null', 32, 0),
+(19, 'ninguna', 'null', 32, 0),
+(20, 'ok', 'null', 32, 0),
+(21, 'hola', 'null', 32, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mantenimientocorrectivo`
+--
+
+CREATE TABLE IF NOT EXISTS `mantenimientocorrectivo` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Tipo` varchar(45) DEFAULT NULL,
+  `Descripcion` varchar(500) DEFAULT NULL,
+  `PersonaJuridica` varchar(45) DEFAULT NULL,
+  `FechaVisita` datetime DEFAULT NULL,
+  `FechaPublicacion` datetime DEFAULT NULL,
+  `NombreDocumento` varchar(45) DEFAULT NULL,
+  `Tecnico` varchar(45) DEFAULT NULL,
+  `EquiposAtendidos` varchar(45) DEFAULT NULL,
+  `StatusMantenimiento` varchar(45) DEFAULT NULL,
+  `Archivo` varchar(1500) DEFAULT NULL,
+  `Evaluacion` varchar(1500) DEFAULT NULL,
+  `HoraLlegada` varchar(45) DEFAULT NULL,
+  `HoraSalida` varchar(45) DEFAULT NULL,
+  `IdVenta` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+
+--
+-- Volcado de datos para la tabla `mantenimientocorrectivo`
+--
+
+INSERT INTO `mantenimientocorrectivo` (`Id`, `Tipo`, `Descripcion`, `PersonaJuridica`, `FechaVisita`, `FechaPublicacion`, `NombreDocumento`, `Tecnico`, `EquiposAtendidos`, `StatusMantenimiento`, `Archivo`, `Evaluacion`, `HoraLlegada`, `HoraSalida`, `IdVenta`) VALUES
+(1, 'ASCENSOR DE SERVICIO', 'MANTENIMIENTO 005 - NOVIEMBRE 2018', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '~/Uploads/003.pdf', '~/Uploads/003.pdf', NULL, NULL, 2),
+(2, '3', 'MANTENIMIENTO 004 - NOVIEMBRE 2017', 'evdv', '2018-06-14 00:00:00', '2018-06-14 00:00:00', '3243425', 'dsfsf', 'sf', 'sf', '~/Uploads/Microsoft-Windows-10-Android-Wallpapers.jpeg', '~/Uploads/night-mountain-wallpaper-high-resolution-For-Desktop-Wallpaper.jpg', '10:58', NULL, 2),
+(3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 34),
+(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 38),
+(5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 42),
+(6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 46),
+(7, 'ASCENSOR PRIVADO', 'null', 'CASA BLANCA C.A', NULL, NULL, 'null', 'null', 'null', 'NO ATENDIDO', 'null', 'null', 'null', NULL, 50),
+(8, 'ASCENSOR PRIVADO', 'null', 'CASA BLANCA C.A', '2018-06-29 00:00:00', '2018-07-22 00:00:00', 'null', 'null', 'null', '2', 'null', 'null', 'null', 'null', 0),
+(9, 'TORNILLOS', 'null', 'CASA BLANCA C.A', '2018-07-20 00:00:00', '2018-07-22 00:00:00', 'null', 'null', 'null', 'Culminado', 'null', 'null', 'null', 'null', 50),
+(10, 'ASCENSOR PRIVADO', 'null', 'gerg', '2018-06-28 00:00:00', '2018-07-10 00:00:00', 'null', 'null', 'null', 'NO ATENDIDO', 'null', 'null', 'null', NULL, 54),
+(11, 'ASCENSOR PRIVADO', 'null', 'CONSTRUCTORA EVENS', '2018-06-27 00:00:00', '2018-07-04 00:00:00', 'null', 'null', 'null', 'No culminado', '~/Uploads/DS - CABINA - LOFT C.jpg', 'null', 'null', NULL, 58),
+(12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 62),
+(13, 'ASCENSOR PRIVADO', 'null', 'RAFAEL', '2018-07-05 00:00:00', '2018-07-11 00:00:00', 'MANTENIMIENTO PREVENTIVO - JULIO', 'null', 'null', 'Culminado', 'null', 'null', 'null', 'null', 58),
+(14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 66),
+(15, 'ASCENSOR PRIVADO', 'pru', 'RAFAEL', '2018-07-03 00:00:00', '2018-07-27 00:00:00', 'MANTENIMIENTO PREVENTIVO - JULIO', 'rafae', '1', 'No culminado', '~/Uploads/CARTA DE PRESENTACIÓN.doc', '~/Uploads/PROGRAMACIÓN DE MANTENIMIENTOS AÑO 2018.doc', 'null', NULL, 70),
+(16, 'ASCENSOR PRIVADO', 'HOLA', 'CONSTRUCTORA EVENS', '2018-07-27 00:00:00', '2018-07-22 00:00:00', 'MANTENIMIENTO PREVENTIVO - JULIO', 'DIKSON ROSALES ', '1', 'Culminado', '~/Uploads/PROTOCOLO DE OBSERVACIÓN.doc', '~/Uploads/FICHA DE CONTACTO.pptx', 'null', 'null', 70),
+(17, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 74),
+(19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 82),
+(20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 86),
+(21, 'ASCENSOR PRIVADO', NULL, 'CASA BLANCA C.A', NULL, NULL, NULL, NULL, NULL, 'No culminado', '~/Uploads/j.pdf', '~/Uploads/LOGO.jpg', '14:12 PM', '02:12 AM', 21),
+(22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 94),
+(23, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 98),
+(28, 'ASCENSOR PRIVADO - I', NULL, 'CASA BLANCA C.A', '2018-08-11 00:00:00', '2018-08-02 00:00:00', NULL, NULL, NULL, 'No culminado', '~/Uploads/j.pdf', '~/Uploads/LOGO.jpg', '01:01 AM', '13:02 PM', 28),
+(27, 'ASCENSOR PRIVADO - I', NULL, 'CASA BLANCA C.A', '2018-08-09 00:00:00', '2018-08-01 00:00:00', NULL, NULL, NULL, 'No culminado', '~/Uploads/1.png', '~/Uploads/3.png', NULL, NULL, 27),
+(26, 'ASCENSOR PRIVADO - I', 'null', 'CASA BLANCA C.A', '2018-08-09 00:00:00', '2018-07-22 00:00:00', 'null', 'null', 'null', 'No culminado', 'null', 'null', 'null', 'null', 80),
+(29, 'ASCENSOR PRIVADO - I', NULL, 'CASA BLANCA C.A', NULL, NULL, NULL, NULL, NULL, 'No culminado', '~/Uploads/j.pdf', '~/Uploads/LOGO.jpg', '14:17 PM', '14:17 PM', 78);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mantenimientopreventivo`
+--
+
+CREATE TABLE IF NOT EXISTS `mantenimientopreventivo` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Tipo` varchar(45) DEFAULT NULL,
+  `Descripcion` varchar(500) DEFAULT NULL,
+  `PersonaJuridica` varchar(45) DEFAULT NULL,
+  `FechaVisita` datetime DEFAULT NULL,
+  `FechaPublicacion` datetime DEFAULT NULL,
+  `NombreDocumento` varchar(45) DEFAULT NULL,
+  `Tecnico` varchar(45) DEFAULT NULL,
+  `EquiposAtendidos` varchar(45) DEFAULT NULL,
+  `StatusMantenimiento` varchar(45) DEFAULT NULL,
+  `Archivo` varchar(1500) DEFAULT NULL,
+  `Evaluacion` varchar(1500) DEFAULT NULL,
+  `HoraLlegada` varchar(45) DEFAULT NULL,
+  `HoraSalida` varchar(45) DEFAULT NULL,
+  `IdVenta` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+
+--
+-- Volcado de datos para la tabla `mantenimientopreventivo`
+--
+
+INSERT INTO `mantenimientopreventivo` (`Id`, `Tipo`, `Descripcion`, `PersonaJuridica`, `FechaVisita`, `FechaPublicacion`, `NombreDocumento`, `Tecnico`, `EquiposAtendidos`, `StatusMantenimiento`, `Archivo`, `Evaluacion`, `HoraLlegada`, `HoraSalida`, `IdVenta`) VALUES
+(1, 'ASCENSOR PRIVADO', 'MANTENIMIENTO 005 - NOVIEMBRE 2018', 'rf', '2018-06-13 00:00:00', '2018-06-05 00:00:00', 'MANTENIMIENTO 005 - NOVIEMBRE 2018', 'hola', 'sfg', 'ggrggr', '~/Uploads/003.pdf', '~/Uploads/003.pdf', '09:04', '17:00', 1),
+(3, 'MONTA CARRO', 'MANTENIMIENTO 006 - DICIEMBRE 2018', 'frgrg', '2018-06-13 00:00:00', '2018-06-14 00:00:00', 'MANTENIMIENTO 006 - DICIEMBRE 2018', 'dfgdfg', 'dg', 'dg', '~/Uploads/localhost.sql', '~/Uploads/install.php', '17:54', '05:06', 1),
+(4, 'ASCENSOR DE SERVICIO', 'MANTENIMIENTO 007 - ENERO 2018', 'efewf', '2018-06-13 00:00:00', '2018-06-21 00:00:00', 'MANTENIMIENTO 007 - ENERO 2018', 'fgddf', 'seffe', 'fes', '~/Uploads/k.txt', '', '00:59', '23:58', 1),
+(5, 'ASCENSOR PRIVADO', 'MANTENIMIENTO 008 - FEBRERO 2018', 'gerg', '2018-06-13 00:00:00', '2018-06-14 00:00:00', 'MANTENIMIENTO 008 - FEBRERO 2018', 'ADADF', 'AAWD', 'AD', '~/Uploads/118362.jpg', '~/Uploads/arboles.jpg', '11:58', '22:58', 1),
+(6, 'ASCENSOR PRIVADO', 'fgefgreg', 'vgver', '2018-06-13 00:00:00', '2018-06-14 00:00:00', '4665', 'greg', 'rgerg', 'rgeg', '~/Uploads/Free-Wallpaper-Water-download-high-definiton-wallpapers-windows-10-backgrounds-amazing-download-wallpapers-hi-res-cool-colours-artwork-1920x1080.jpg', '~/Uploads/118362.jpg', '23:58', '23:59', 1),
+(7, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 33),
+(8, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 37),
+(9, 'ASCENSOR PRIVADO', 'null', 'null', '2018-07-25 00:00:00', NULL, 'null', 'null', 'null', 'NO ATENDIDO', 'null', 'null', 'null', 'null', 41),
+(10, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 45),
+(11, 'ASCENSOR PRIVADO', 'null', 'CASA BLANCA C.A', NULL, NULL, 'null', 'null', 'null', 'NO ATENDIDO', 'null', 'null', 'null', 'null', 49),
+(12, 'ASCENSOR PRIVADO', 'sdsd', 'CASA BLANCA C.A', '2018-07-22 00:00:00', '2018-07-22 00:00:00', 'deed', 'dsd', NULL, '2', '', '', NULL, NULL, 49),
+(13, 'TORNILLOS', 'null', 'CASA BLANCA C.A', '2018-07-22 00:00:00', '2018-07-05 00:00:00', 'sddwddw', 'fgddf', NULL, 'No culminado', '~/Uploads/thumb-082-rainbow-six-siege-8.jpg', '~/Uploads/38795090-rainbow-six-siege-wallpapers.jpg', NULL, NULL, 49),
+(14, 'TORNILLOS', 'werer', 'CASA BLANCA C.A', '2018-07-23 00:00:00', '2018-07-05 00:00:00', 'jkj', 'sdsds', 'jkj', 'NO CULMINADO', 'NULL', 'NULL', NULL, NULL, 49),
+(15, 'ASCENSOR PRIVADO', 'null', 'CASA BLANCA C.A', '2018-07-22 00:00:00', '2018-07-22 00:00:00', 'null', 'null', 'null', 'NO ATENDIDO', 'null', 'null', 'null', 'null', 49),
+(16, 'ASCENSOR PRIVADO', 'null', 'CASA BLANCA C.A', '2018-07-28 00:00:00', '2018-07-31 00:00:00', 'null', 'null', 'null', 'NO ATENDIDO', 'null', 'null', 'null', 'null', 49),
+(17, 'ASCENSOR PRIVADO', 'null', 'CASA BLANCA C.A', NULL, NULL, 'null', 'null', 'null', 'NO ATENDIDO', 'null', 'null', 'null', 'null', 53),
+(18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 57),
+(19, 'ASCENSOR PRIVADO', 'MARTILLO', 'CONSTRUCTORA EVENS', '2018-07-05 00:00:00', '2018-07-04 00:00:00', 'MANTENIMIENTO PREVENTIVO - JULIO', 'rafae', '1', 'No culminado', 'null', 'null', '01:01', 'null', 57),
+(20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 61),
+(21, 'ASCENSOR PRIVADO', 'null', 'CONSTRUCTORA HP', '2018-07-11 00:00:00', '2018-07-11 00:00:00', 'null', 'null', 'null', 'No culminado', 'null', 'null', 'null', 'null', 57),
+(22, 'CARLOS ', 'null', 'null', NULL, NULL, 'null', 'null', 'null', 'No culminado', 'null', 'null', 'null', 'null', 65),
+(23, 'ASCENSOR PRIVADO', 'MANTENIMIENTO SIN NOVEDAD', 'RAFAEL', '2018-07-13 00:00:00', '2018-07-27 00:00:00', 'MANTENIMIENTO PREVENTIVO - JULIO', 'DIKSON ROSALES ', '2', 'Culminado', '~/Uploads/B - P1 - LOFT C.jpg', '~/Uploads/B- P1 - LOFT C.jpg', '05:00', '06:00', 69),
+(24, 'ASCENSOR PRIVADO', 'MARTILLO', 'CONSTRUCTORA EVENS', '2018-07-02 00:00:00', '2018-07-11 00:00:00', 'MANTENIMIENTO PREVENTIVO - ENERO', 'DIKSON ROSALES ', '1', 'No culminado', '~/Uploads/CARTA DE PRESENTACIÓN.doc', '~/Uploads/PROTOCOLO DE OBSERVACIÓN.doc', '07:00', '11:00', 69),
+(25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 73),
+(34, 'ASCENSOR PRIVADO - I', 'null', 'CASA BLANCA C.A', '2018-08-09 00:00:00', '2018-07-11 00:00:00', 'null', 'nul', 'null', 'No culminado', 'null', 'null', 'null', 'null', 34),
+(35, 'ASCENSOR PRIVADO - I', NULL, 'CASA BLANCA C.A', '2018-08-09 00:00:00', NULL, NULL, NULL, NULL, 'No culminado', '~/Uploads/j.pdf', '~/Uploads/PayPal.php', '14:06 PM', '02:06 AM', 35),
+(27, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 81),
+(28, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 85),
+(29, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 89),
+(36, 'ASCENSOR PRIVADO - I', NULL, 'gerg', NULL, NULL, NULL, NULL, NULL, 'No culminado', '~/Uploads/Contrato_General_Alain_Cardenas.docx', '~/Uploads/Formato_de_propuesta.dotx', '02:04 AM', '14:04 PM', 77),
+(32, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 93),
+(33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 97);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mensajes`
+--
+
+CREATE TABLE IF NOT EXISTS `mensajes` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Titulo` varchar(100) NOT NULL,
+  `Contenido` varchar(5000) DEFAULT NULL,
+  `Archivo` varchar(100) DEFAULT NULL,
+  `FechaPublicacion` datetime NOT NULL,
+  `FechaCaducidad` datetime NOT NULL,
+  `EnviadoA` enum('TODOS','SERVICIO','MERCADERIA') DEFAULT NULL,
+  `Borrado` tinyint(1) NOT NULL DEFAULT '0',
+  `FechaTx` datetime DEFAULT NULL,
+  `UsuarioIdTx` varchar(128) DEFAULT NULL,
+  `OperacionTx` enum('CREATE','UPDATE','DELETE') DEFAULT 'CREATE',
+  PRIMARY KEY (`Id`),
+  KEY `fk_mensajes_usuario` (`UsuarioIdTx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `niveleseervicio`
+--
+
+CREATE TABLE IF NOT EXISTS `niveleseervicio` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ProveedorId` int(11) NOT NULL,
+  `Fecha` datetime NOT NULL,
+  `UltimoMes` decimal(18,2) NOT NULL,
+  `TemporadaActual` decimal(18,2) NOT NULL,
+  `AcumuladoAnual` decimal(18,2) NOT NULL,
+  `PedidoAtrasado` decimal(18,2) NOT NULL,
+  `PedidoEnTiempo` decimal(18,2) NOT NULL,
+  `PedidoTotal` decimal(18,2) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `fk_nivelservicio_proveedor_idx` (`ProveedorId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `obras`
+--
+
+CREATE TABLE IF NOT EXISTS `obras` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(45) DEFAULT NULL,
+  `PersonaJuridica` varchar(45) DEFAULT NULL,
+  `DireccionFacturacion` varchar(3000) DEFAULT NULL,
+  `DireccionOficina` varchar(3000) DEFAULT NULL,
+  `DireccionObra` varchar(3000) DEFAULT NULL,
+  `TelefonoOficina` varchar(45) DEFAULT NULL,
+  `Contacto` varchar(45) DEFAULT NULL,
+  `Contacto2` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT NULL,
+  `Email2` varchar(45) DEFAULT NULL,
+  `foto` varchar(5000) DEFAULT NULL,
+  `mapa` varchar(5000) DEFAULT NULL,
+  `oficina` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+--
+-- Volcado de datos para la tabla `obras`
+--
+
+INSERT INTO `obras` (`Id`, `Nombre`, `PersonaJuridica`, `DireccionFacturacion`, `DireccionOficina`, `DireccionObra`, `TelefonoOficina`, `Contacto`, `Contacto2`, `Email`, `Email2`, `foto`, `mapa`, `oficina`) VALUES
+(25, 'SALEM I', 'CONSTRUCTORA HP', 'URBANIZACIÓN SAN ROMÁN. EDIFICICIO TAMANACO PISO 10. OFICINA 10 C - 10 D. CARACAS', 'URBANIZACIÓN SAN ROMÁN. EDIFICICIO TAMANACO PISO 10. OFICINA 10 C - 10 D. CARACAS', 'AVENIDA 34. SECTOR LOS NARANJOS. CALLE CRISTOBAL ROJAS. EDIFICIO SALEM I. URBANIZACIÓN LAS MERCEDES. CARACAS. MIRANDA. ZP 1010', NULL, NULL, NULL, NULL, NULL, '', '', NULL),
+(28, 'SALEM II', 'CONSTRUCTORA HP', 'URBANIZACIÓN SAN ROMÁN. EDIFICICIO TAMANACO PISO 10. OFICINA 10 C - 10 D. CARACAS', 'URBANIZACIÓN SAN ROMÁN. EDIFICICIO TAMANACO PISO 10. OFICINA 10 C - 10 D. CARACAS', 'AVENIDA 34. SECTOR LOS NARANJOS. CALLE CRISTOBAL ROJAS. EDIFICIO SALEM I. URBANIZACIÓN LAS MERCEDES. CARACAS. MIRANDA. ZP 1010', NULL, NULL, NULL, NULL, NULL, '', '', NULL),
+(29, 'CERRO VERDE', 'IMERCON C.A', 'AVENIDA DIEGO CISNEROS CENTRO EMPRESARIAL OFICENTRO PB LOS RUICES CARACAS.', 'AVENIDA DIEGO CISNEROS CENTRO EMPRESARIAL OFICENTRO PB LOS RUICES CARACAS.', 'CERRO  VERDE', NULL, NULL, NULL, NULL, NULL, '', '', NULL),
+(30, 'QUINTA MÉRIDA ', 'ACI ESTRATEGICA C.A', 'AVENIDA FRANCISCO DE MIRANDA CON LIBERTADOR MULTICENTRO EMPRESARIAL DEL ESTE EDIFICIO LIBERTADOR NÚCLEO A PISO 18 OFICINA 182 A URBANIZACIÓN CHACAO CARACAS ZP 1060', 'AVENIDA FRANCISCO DE MIRANDA CON LIBERTADOR MULTICENTRO EMPRESARIAL DEL ESTE EDIFICIO LIBERTADOR NÚCLEO A PISO 18 OFICINA 182 A URBANIZACIÓN CHACAO CARACAS ZP 1060', 'LOS CHAGUARAMOS. CARACAS ', NULL, NULL, NULL, NULL, NULL, '', '', NULL),
+(31, 'OFICINA', '', '', '', '', NULL, NULL, NULL, NULL, NULL, '', '', 'SI');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `obras_contactos`
+--
+
+CREATE TABLE IF NOT EXISTS `obras_contactos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(500) DEFAULT NULL,
+  `email` varchar(500) DEFAULT NULL,
+  `telefono` varchar(500) DEFAULT NULL,
+  `obra_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+--
+-- Volcado de datos para la tabla `obras_contactos`
+--
+
+INSERT INTO `obras_contactos` (`id`, `nombre`, `email`, `telefono`, `obra_id`) VALUES
+(1, 'hjhfdfhdf', 'lkd@gmil.com', '57775', 0),
+(2, '5555555555', 'jose@gmail.com', '04145621545', 0),
+(4, 'hjhfdfhdf', 'lkd@gmil.com', '57775', 1),
+(5, '33333', 'sdd@gmail.com', '56765688', 1),
+(6, 'luis', 'sdd@gmail.com', '7478282', 16),
+(7, 'saasd', 'sdd@gmail.com', '7478282', 16),
+(8, 'saasd', 'luis@gmail.com', '54363', 16),
+(9, 'luis', 'luis@gmail.com', '7478282', 16),
+(10, 'saasd', 'sdd@gmail.com', '7478282', 16),
+(11, 'luis', 'sdd@gmail.com', '7478282', 16),
+(12, '33333', 'sdd@gmail.com', '7478282', 16),
+(13, 'luis', 'sdd@gmail.com', '7478282', 16),
+(14, 'RAFAEL VIVENZIO', 'CTOLEDOMALAVE@GMAIL.COM', '04142193151', 20),
+(15, 'RAFAEL VIVENZIO', 'CTOLEDOMALAVE@GMAIL.COM', '04142193151', 22),
+(16, 'RUTH RIVAS', 'BETZA@HOTMAIL.COM', '0416 802 9719 / 0212 693 9493', 22),
+(18, 'RAFAEL VIVENZIO', 'CTOLEDOMALAVE@GMAIL.COM', '04142193151', 23),
+(19, 'RUTH RIVAS', 'arquitectosantaella@gmail.com', '04142589696', 23),
+(20, 'GABRIELA BETANCOURT', 'constructora.hp@hotmail.com', '0412 295 4583', 25),
+(21, 'GABRIELA BETANCOURT', 'constructora.hp@hotmail.com', '0412 295 4583', 28),
+(22, 'DIEGO ARRIETA', 'diegoarrieta8888@hotmail.com', '04143282306', 30);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `obrasdato`
+--
+
+CREATE TABLE IF NOT EXISTS `obrasdato` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `primercontacto` varchar(500) NOT NULL,
+  `contactotelefonicoobra` varchar(500) NOT NULL,
+  `correoelectronicoobra` varchar(500) NOT NULL,
+  `cargoobra` varchar(500) NOT NULL,
+  `nombreconstructora` varchar(500) NOT NULL,
+  `contactotelefonicoempresa` varchar(500) NOT NULL,
+  `correoelectronicoempresa` varchar(500) NOT NULL,
+  `cargoempresa` varchar(500) NOT NULL,
+  `ubicacionobra` varchar(500) NOT NULL,
+  `tipoobra` varchar(500) NOT NULL,
+  `numeroequipos` varchar(500) NOT NULL,
+  `tipoequipo` varchar(500) NOT NULL,
+  `vendidasclimb` varchar(500) NOT NULL,
+  `vendidasotros` varchar(500) NOT NULL,
+  `novendidas` varchar(500) NOT NULL,
+  `paralizadas` varchar(500) NOT NULL,
+  `direccionoficina` varchar(500) NOT NULL,
+  `Descripcion` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `obrasdato`
+--
+
+INSERT INTO `obrasdato` (`Id`, `primercontacto`, `contactotelefonicoobra`, `correoelectronicoobra`, `cargoobra`, `nombreconstructora`, `contactotelefonicoempresa`, `correoelectronicoempresa`, `cargoempresa`, `ubicacionobra`, `tipoobra`, `numeroequipos`, `tipoequipo`, `vendidasclimb`, `vendidasotros`, `novendidas`, `paralizadas`, `direccionoficina`, `Descripcion`) VALUES
+(1, 'SDS', '7899', 'VVV@GMAIL.COM', 'CGC', 'FFE', '546', 'SDV', 'HY', 'Y', 'YY', '545', 'GH', '43', '45', '5', '3', 'YYHTHY', ''),
+(4, 'null', 'null', 'null', 'null', 'ooooooooooooo', '4356', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', ''),
+(3, 'null', 'null', 'null', 'null', 'FFE', '34534534', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `obrasgestion`
+--
+
+CREATE TABLE IF NOT EXISTS `obrasgestion` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `primercontacto` varchar(500) NOT NULL,
+  `contactotelefonicoobra` varchar(500) NOT NULL,
+  `correoelectronicoobra` varchar(500) NOT NULL,
+  `cargoobra` varchar(500) NOT NULL,
+  `nombreconstructora` varchar(500) NOT NULL,
+  `contactotelefonicoempresa` varchar(500) NOT NULL,
+  `correoelectronicoempresa` varchar(500) NOT NULL,
+  `cargoempresa` varchar(500) NOT NULL,
+  `ubicacionobra` varchar(500) NOT NULL,
+  `tipoobra` varchar(500) NOT NULL,
+  `numeroequipos` varchar(500) NOT NULL,
+  `tipoequipo` varchar(500) NOT NULL,
+  `vendidasclimb` varchar(500) NOT NULL,
+  `vendidasotros` varchar(500) NOT NULL,
+  `novendidas` varchar(500) NOT NULL,
+  `paralizadas` varchar(500) NOT NULL,
+  `direccionoficina` varchar(500) NOT NULL,
+  `Descripcion` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `obrasgestion`
+--
+
+INSERT INTO `obrasgestion` (`Id`, `primercontacto`, `contactotelefonicoobra`, `correoelectronicoobra`, `cargoobra`, `nombreconstructora`, `contactotelefonicoempresa`, `correoelectronicoempresa`, `cargoempresa`, `ubicacionobra`, `tipoobra`, `numeroequipos`, `tipoequipo`, `vendidasclimb`, `vendidasotros`, `novendidas`, `paralizadas`, `direccionoficina`, `Descripcion`) VALUES
+(1, 'SDS', '7899', 'VVV@GMAIL.COM', 'CGC', 'FFE', '546', 'SDV', 'HY', 'Y', 'YY', '545', 'GH', '43', '45', '5', '3', 'YYHTHY', ''),
+(2, 'SDS', '7850', 'fgg6@gmail.com', 'null', 'null', 'null', 'null', 'null', 'jhliuluuil', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ordencompra`
+--
+
+CREATE TABLE IF NOT EXISTS `ordencompra` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `NumeroDocumento` varchar(20) DEFAULT NULL,
+  `Sociedad` varchar(10) DEFAULT NULL,
+  `TipoDocumento` varchar(5) DEFAULT NULL,
+  `ClaseDocumento` varchar(5) DEFAULT NULL,
+  `IndicadorControl` varchar(20) DEFAULT NULL,
+  `IndicadorBorrado` varchar(20) DEFAULT NULL,
+  `EstatusDocumento` varchar(20) DEFAULT NULL,
+  `FechaCreacionSap` varchar(10) DEFAULT NULL,
+  `IntervaloPosicion` int(11) DEFAULT NULL,
+  `UltimoNumeroPos` int(11) DEFAULT NULL,
+  `NumeroProveedor` varchar(20) DEFAULT NULL,
+  `ClavePago` varchar(10) DEFAULT NULL,
+  `OrganizacionCompra` varchar(10) DEFAULT NULL,
+  `GrupoCompra` varchar(10) DEFAULT NULL,
+  `Moneda` varchar(5) DEFAULT NULL,
+  `TipoCambio` int(11) DEFAULT NULL,
+  `IndTipoCambio` varchar(20) DEFAULT NULL,
+  `FechaDocCompra` varchar(10) DEFAULT NULL,
+  `FechaCargaPortal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ProveedorId` int(11) DEFAULT NULL,
+  `FechaVisualizado` datetime DEFAULT NULL,
+  `CitaId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `ProveedorId` (`ProveedorId`),
+  KEY `NumeroProveedor` (`NumeroProveedor`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ordencompradetalle`
+--
+
+CREATE TABLE IF NOT EXISTS `ordencompradetalle` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `NumeroDocumento` varchar(10) DEFAULT NULL,
+  `Ebelp` varchar(5) DEFAULT NULL,
+  `DescripcionMaterial` varchar(40) DEFAULT NULL,
+  `NumeroMaterial` varchar(18) DEFAULT NULL,
+  `Centro` varchar(12) DEFAULT NULL,
+  `Almacen` varchar(4) DEFAULT NULL,
+  `GrupoArticulos` varchar(9) DEFAULT NULL,
+  `CantidadPedido` varchar(13) DEFAULT NULL,
+  `UnidadMedidaPedido` varchar(4) DEFAULT NULL,
+  `UnidadMedidaPrecio` varchar(5) DEFAULT NULL,
+  `ConversionUmpruMP` int(11) DEFAULT NULL,
+  `ConversionUmUmBase` int(11) DEFAULT NULL,
+  `DenominadorUmUmBase` int(11) DEFAULT NULL,
+  `PrecioNeto` decimal(11,2) DEFAULT NULL,
+  `CantidadBase` int(11) DEFAULT NULL,
+  `ValorNeto` decimal(13,2) DEFAULT NULL,
+  `ValorBruto` decimal(13,2) DEFAULT NULL,
+  `CantidadUnidadMedida` decimal(13,3) DEFAULT NULL,
+  `SapOrdenCompraId` int(11) DEFAULT NULL,
+  `FechaCargaPortal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CantidadComprometida` decimal(18,3) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `NumeroDocumento` (`NumeroDocumento`),
+  KEY `SapOrdenCompraId` (`SapOrdenCompraId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagos`
+--
+
+CREATE TABLE IF NOT EXISTS `pagos` (
+  `id` int(10) NOT NULL,
+  `RFC` varchar(200) NOT NULL,
+  `RazonSocial` varchar(200) NOT NULL,
+  `NumeroCompensacion` varchar(200) NOT NULL,
+  `Referencia` varchar(45) NOT NULL,
+  `FechaDePago` varchar(200) NOT NULL,
+  `FechaBase` varchar(45) NOT NULL,
+  `Importe` varchar(200) NOT NULL,
+  `ML` varchar(5) NOT NULL,
+  `TipoMovimiento` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `perfiles`
+--
+
+CREATE TABLE IF NOT EXISTS `perfiles` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(30) DEFAULT NULL,
+  `Tipo` enum('DAP','PROVEEDOR') NOT NULL,
+  `CuentaId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `fk_cuenta` (`CuentaId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=139 ;
+
+--
+-- Volcado de datos para la tabla `perfiles`
+--
+
+INSERT INTO `perfiles` (`Id`, `Nombre`, `Tipo`, `CuentaId`) VALUES
+(129, 'MAESTRO-ADMINISTRADOR', 'DAP', NULL),
+(130, 'MAESTRO-MERCADERIA', 'PROVEEDOR', NULL),
+(131, 'Consultar Perfiles', 'PROVEEDOR', 99),
+(133, 'MAESTRO-SERVICIO', 'PROVEEDOR', NULL),
+(134, 'CONSULTOR', 'DAP', NULL),
+(135, 'CREADOR', 'DAP', NULL),
+(136, 'EDITOR', 'DAP', NULL),
+(137, 'ELIMINADOR', 'DAP', NULL),
+(138, 'OPERADOR', 'DAP', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `perfilesroles`
+--
+
+CREATE TABLE IF NOT EXISTS `perfilesroles` (
+  `PerfilId` int(11) NOT NULL,
+  `RoleId` varchar(128) NOT NULL,
+  PRIMARY KEY (`PerfilId`,`RoleId`),
+  KEY `fk_role` (`RoleId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `perfilesroles`
+--
+
+INSERT INTO `perfilesroles` (`PerfilId`, `RoleId`) VALUES
+(130, 'MAESTRO-MERCADERIA'),
+(129, 'MAESTRO-NAZAN'),
+(133, 'MAESTRO-SERVICIO'),
+(131, 'MERCADERIA-ADMINISTRARPERFILES-LISTAR'),
+(129, 'NAZAN-ADMINISTRARCALENDARIO-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARCALENDARIO-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARCALENDARIO-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARCALENDARIO-CREAR'),
+(135, 'NAZAN-ADMINISTRARCALENDARIO-CREAR'),
+(138, 'NAZAN-ADMINISTRARCALENDARIO-CREAR'),
+(129, 'NAZAN-ADMINISTRARCALENDARIO-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARCALENDARIO-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARCALENDARIO-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARCALENDARIO-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARCALENDARIO-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARCALENDARIO-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CREAR'),
+(135, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CREAR'),
+(138, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-CREAR'),
+(129, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARCOMPONENTESELECTRONICOS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CREAR'),
+(135, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CREAR'),
+(138, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CREAR'),
+(129, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARCOMPONENTESMECANICOS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARENVIOS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARENVIOS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARENVIOS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARENVIOS-CREAR'),
+(135, 'NAZAN-ADMINISTRARENVIOS-CREAR'),
+(138, 'NAZAN-ADMINISTRARENVIOS-CREAR'),
+(129, 'NAZAN-ADMINISTRARENVIOS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARENVIOS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARENVIOS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARENVIOS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARENVIOS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARENVIOS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRAREQUIPOS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRAREQUIPOS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRAREQUIPOS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRAREQUIPOS-CREAR'),
+(135, 'NAZAN-ADMINISTRAREQUIPOS-CREAR'),
+(138, 'NAZAN-ADMINISTRAREQUIPOS-CREAR'),
+(129, 'NAZAN-ADMINISTRAREQUIPOS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRAREQUIPOS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRAREQUIPOS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRAREQUIPOS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRAREQUIPOS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRAREQUIPOS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARFALLAS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARFALLAS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARFALLAS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARFALLAS-CREAR'),
+(135, 'NAZAN-ADMINISTRARFALLAS-CREAR'),
+(138, 'NAZAN-ADMINISTRARFALLAS-CREAR'),
+(129, 'NAZAN-ADMINISTRARFALLAS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARFALLAS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARFALLAS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARFALLAS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARFALLAS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARFALLAS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARGESTIONOBRAS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARGESTIONOBRAS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARGESTIONOBRAS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARGESTIONOBRAS-CREAR'),
+(135, 'NAZAN-ADMINISTRARGESTIONOBRAS-CREAR'),
+(138, 'NAZAN-ADMINISTRARGESTIONOBRAS-CREAR'),
+(129, 'NAZAN-ADMINISTRARGESTIONOBRAS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARGESTIONOBRAS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARGESTIONOBRAS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARGESTIONOBRAS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARGESTIONOBRAS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARGESTIONOBRAS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARHERRAMIENTAS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARHERRAMIENTAS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARHERRAMIENTAS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARHERRAMIENTAS-CREAR'),
+(135, 'NAZAN-ADMINISTRARHERRAMIENTAS-CREAR'),
+(138, 'NAZAN-ADMINISTRARHERRAMIENTAS-CREAR'),
+(129, 'NAZAN-ADMINISTRARHERRAMIENTAS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARHERRAMIENTAS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARHERRAMIENTAS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARHERRAMIENTAS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARHERRAMIENTAS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARHERRAMIENTAS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARINFORMES-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARINFORMES-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARINFORMES-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARINFORMES-CREAR'),
+(135, 'NAZAN-ADMINISTRARINFORMES-CREAR'),
+(138, 'NAZAN-ADMINISTRARINFORMES-CREAR'),
+(129, 'NAZAN-ADMINISTRARINFORMES-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARINFORMES-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARINFORMES-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARINFORMES-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARINFORMES-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARINFORMES-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARKITDAPS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARKITDAPS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARKITDAPS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARKITDAPS-CREAR'),
+(135, 'NAZAN-ADMINISTRARKITDAPS-CREAR'),
+(138, 'NAZAN-ADMINISTRARKITDAPS-CREAR'),
+(129, 'NAZAN-ADMINISTRARKITDAPS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARKITDAPS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARKITDAPS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARKITDAPS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARKITDAPS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARKITDAPS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CREAR'),
+(135, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CREAR'),
+(138, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-CREAR'),
+(129, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARMANTENIMIENTOSCORRECTIVOS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CREAR'),
+(135, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CREAR'),
+(138, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-CREAR'),
+(129, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARMANTENIMIENTOSPREVENTIVOS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRAROBRAS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRAROBRAS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRAROBRAS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRAROBRAS-CREAR'),
+(135, 'NAZAN-ADMINISTRAROBRAS-CREAR'),
+(138, 'NAZAN-ADMINISTRAROBRAS-CREAR'),
+(129, 'NAZAN-ADMINISTRAROBRAS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRAROBRAS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRAROBRAS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRAROBRAS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRAROBRAS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARPERFILESNAZAN-LISTAR'),
+(138, 'NAZAN-ADMINISTRARPERFILESNAZAN-LISTAR'),
+(129, 'NAZAN-ADMINISTRARPERFILESNAZAN-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARPERFILESNAZAN-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARPREVIOS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARPREVIOS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARPREVIOS-CREAR'),
+(135, 'NAZAN-ADMINISTRARPREVIOS-CREAR'),
+(138, 'NAZAN-ADMINISTRARPREVIOS-CREAR'),
+(129, 'NAZAN-ADMINISTRARPREVIOS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARPREVIOS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARPREVIOS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARPREVIOS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARPREVIOS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARPREVIOS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARPROTOCOLOS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARPROTOCOLOS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARPROTOCOLOS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARPROTOCOLOS-CREAR'),
+(135, 'NAZAN-ADMINISTRARPROTOCOLOS-CREAR'),
+(138, 'NAZAN-ADMINISTRARPROTOCOLOS-CREAR'),
+(129, 'NAZAN-ADMINISTRARPROTOCOLOS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARPROTOCOLOS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARPROTOCOLOS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARPROTOCOLOS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARPROTOCOLOS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARPROTOCOLOS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARREQUERIMIENTOS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARREQUERIMIENTOS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARREQUERIMIENTOS-CREAR'),
+(135, 'NAZAN-ADMINISTRARREQUERIMIENTOS-CREAR'),
+(138, 'NAZAN-ADMINISTRARREQUERIMIENTOS-CREAR'),
+(129, 'NAZAN-ADMINISTRARREQUERIMIENTOS-ELIMINAR    '),
+(137, 'NAZAN-ADMINISTRARREQUERIMIENTOS-ELIMINAR    '),
+(138, 'NAZAN-ADMINISTRARREQUERIMIENTOS-ELIMINAR    '),
+(129, 'NAZAN-ADMINISTRARREQUERIMIENTOS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARREQUERIMIENTOS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARREQUERIMIENTOS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARSUGERENCIAS-CONSULTAR'),
+(134, 'NAZAN-ADMINISTRARSUGERENCIAS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARSUGERENCIAS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARSUGERENCIAS-CREAR'),
+(135, 'NAZAN-ADMINISTRARSUGERENCIAS-CREAR'),
+(138, 'NAZAN-ADMINISTRARSUGERENCIAS-CREAR'),
+(129, 'NAZAN-ADMINISTRARSUGERENCIAS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARSUGERENCIAS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARSUGERENCIAS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARSUGERENCIAS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARSUGERENCIAS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARSUGERENCIAS-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARUSUARIOS-LISTAR'),
+(129, 'NAZAN-ADMINISTRARUSUARIOSNAZAN-LISTAR'),
+(129, 'NAZAN-ADMINISTRARUSUARIOSNAZAN-MODIFICAR'),
+(129, 'NAZAN-ADMINISTRARVENTAS-CONSULTAR'),
+(138, 'NAZAN-ADMINISTRARVENTAS-CONSULTAR'),
+(129, 'NAZAN-ADMINISTRARVENTAS-CREAR'),
+(135, 'NAZAN-ADMINISTRARVENTAS-CREAR'),
+(138, 'NAZAN-ADMINISTRARVENTAS-CREAR'),
+(129, 'NAZAN-ADMINISTRARVENTAS-ELIMINAR'),
+(137, 'NAZAN-ADMINISTRARVENTAS-ELIMINAR'),
+(138, 'NAZAN-ADMINISTRARVENTAS-ELIMINAR'),
+(129, 'NAZAN-ADMINISTRARVENTAS-MODIFICAR'),
+(136, 'NAZAN-ADMINISTRARVENTAS-MODIFICAR'),
+(138, 'NAZAN-ADMINISTRARVENTAS-MODIFICAR'),
+(129, 'NAZAN-CONFIGSYS');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `previos`
+--
+
+CREATE TABLE IF NOT EXISTS `previos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `FechaFirmaContrato` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaFirmaContratoFotografia` varchar(1000) DEFAULT NULL,
+  `FechaPagoInicialFabrica` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaPagoInicialFabricaFotografia` varchar(1000) DEFAULT NULL,
+  `FechaPagoInicialEquipo` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaPagoInicialEquipoFotografia` varchar(1000) DEFAULT NULL,
+  `FechaConstruccion` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaConstruccionFotografia` varchar(1000) DEFAULT NULL,
+  `FechaSalidaFabrica` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaSalidaFabricaFotografia` varchar(1000) DEFAULT NULL,
+  `FechaSalidaBuque` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaSalidaBuqueFotografia` varchar(1000) DEFAULT NULL,
+  `FechaLlegadaBuque` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaLlegadaBuqueFotografia` varchar(1000) DEFAULT NULL,
+  `FechaPeriodoNacionalizacion` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaPeriodoNacionalizacionFotografia` varchar(1000) DEFAULT NULL,
+  `FechaSalidaPuertoObra` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaSalidaPuertoObraFotografia` varchar(1000) DEFAULT NULL,
+  `FechaDescargaResguardo` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ActivacionProtocoloGarantiaFabrica` varchar(45) NOT NULL DEFAULT 'NO',
+  `FechaInicioMontaje` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaInicioMontajeFotografia` varchar(1000) DEFAULT NULL,
+  `FechaEntregaSoso` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaEntregaSosoFotografia` varchar(1000) DEFAULT NULL,
+  `FechaCulminacionMontaje` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaConfiguracion` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaConfiguracionFotografia` varchar(1000) DEFAULT NULL,
+  `FechaPeriodoPrueba` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FechaPeriodoPruebaFotografia` varchar(1000) DEFAULT NULL,
+  `FechaInspeccion` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `TecnicoInstalador` varchar(45) DEFAULT NULL,
+  `InformeEntregaFinal` varchar(1000) DEFAULT NULL,
+  `FechaDescargaResguardoFotografia` varchar(1000) DEFAULT NULL,
+  `FechaCulminacionMontajeFotografia` varchar(1000) DEFAULT NULL,
+  `FechaInspeccionFotografia` varchar(1000) DEFAULT NULL,
+  `FechaInspeccionVideo` varchar(1000) DEFAULT NULL,
+  `equipo_id` int(11) DEFAULT NULL,
+  `CartaPresentacion` datetime DEFAULT '0000-00-00 00:00:00',
+  `FechaIngresoProduccion` datetime DEFAULT '0000-00-00 00:00:00',
+  `EstatusConstruccion` datetime DEFAULT '0000-00-00 00:00:00',
+  `IngresoDepartamentoIngMan` datetime DEFAULT '0000-00-00 00:00:00',
+  `SolicitudPagoInicialFabrica` datetime DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+
+--
+-- Volcado de datos para la tabla `previos`
+--
+
+INSERT INTO `previos` (`Id`, `FechaFirmaContrato`, `FechaFirmaContratoFotografia`, `FechaPagoInicialFabrica`, `FechaPagoInicialFabricaFotografia`, `FechaPagoInicialEquipo`, `FechaPagoInicialEquipoFotografia`, `FechaConstruccion`, `FechaConstruccionFotografia`, `FechaSalidaFabrica`, `FechaSalidaFabricaFotografia`, `FechaSalidaBuque`, `FechaSalidaBuqueFotografia`, `FechaLlegadaBuque`, `FechaLlegadaBuqueFotografia`, `FechaPeriodoNacionalizacion`, `FechaPeriodoNacionalizacionFotografia`, `FechaSalidaPuertoObra`, `FechaSalidaPuertoObraFotografia`, `FechaDescargaResguardo`, `ActivacionProtocoloGarantiaFabrica`, `FechaInicioMontaje`, `FechaInicioMontajeFotografia`, `FechaEntregaSoso`, `FechaEntregaSosoFotografia`, `FechaCulminacionMontaje`, `FechaConfiguracion`, `FechaConfiguracionFotografia`, `FechaPeriodoPrueba`, `FechaPeriodoPruebaFotografia`, `FechaInspeccion`, `TecnicoInstalador`, `InformeEntregaFinal`, `FechaDescargaResguardoFotografia`, `FechaCulminacionMontajeFotografia`, `FechaInspeccionFotografia`, `FechaInspeccionVideo`, `equipo_id`, `CartaPresentacion`, `FechaIngresoProduccion`, `EstatusConstruccion`, `IngresoDepartamentoIngMan`, `SolicitudPagoInicialFabrica`) VALUES
+(1, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', '254787', '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', NULL, '2018-04-03 00:00:00', 'jose', '~/Uploads/rif.pdf', '~/Uploads/Factura-1278.pdf', '~/Uploads/pagodominio.pdf', '~/Uploads/rif.pdf', '~/Uploads/rif.pdf', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', NULL, '2018-07-17 00:00:00', NULL, '2018-07-17 00:00:00', NULL, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', 'NO', '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, 33, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, '2018-07-17 09:03:12', NULL, '2018-07-17 09:03:12', NULL, '2018-07-17 09:03:12', NULL, '2018-07-17 09:03:12', NULL, '2018-07-17 09:03:12', NULL, '2018-07-17 09:03:12', NULL, '2018-07-17 09:03:12', NULL, '2018-07-17 09:03:13', NULL, '2018-07-17 09:03:13', NULL, '2018-07-17 09:03:13', 'no', '2018-07-17 09:03:13', NULL, '2018-07-17 09:03:13', NULL, '2018-07-17 09:03:13', '2018-07-17 09:03:13', NULL, '2018-07-17 09:03:13', NULL, '2018-07-17 09:03:13', NULL, NULL, NULL, NULL, NULL, NULL, 35, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, '2018-07-17 00:00:00', '~/Uploads/_CLIMB puntos faltantes.docx', '2018-07-17 00:00:00', '~/Uploads/hostingssi.png', '2018-07-17 00:00:00', 'null', '2018-07-17 00:00:00', 'null', '2018-07-17 00:00:00', 'null', '2018-07-17 00:00:00', 'null', '2018-07-17 00:00:00', 'null', '2018-07-17 00:00:00', 'null', '2018-07-17 00:00:00', NULL, '2018-07-17 00:00:00', 'no', '2018-07-17 20:05:45', 'null', '2018-07-17 00:00:00', 'null', '2018-07-17 00:00:00', '2018-07-17 00:00:00', 'null', '2018-07-17 00:00:00', 'null', '2018-07-17 00:00:00', 'null', 'null', 'null', 'null', 'null', 'null', 36, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', 'no', '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, '2018-07-20 15:47:31', NULL, NULL, NULL, NULL, NULL, NULL, 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', 'no', '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, '2018-07-22 20:20:59', NULL, NULL, NULL, NULL, NULL, NULL, 40, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', 'no', '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, '2018-07-22 20:34:48', NULL, NULL, NULL, NULL, NULL, NULL, 41, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', 'no', '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, '2018-07-22 20:36:01', NULL, NULL, NULL, NULL, NULL, NULL, 42, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', 'no', '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, '2018-07-23 14:36:35', NULL, NULL, NULL, NULL, NULL, NULL, 43, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, '2018-07-20 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', NULL, '2018-07-27 00:00:00', 'no', '2018-07-27 11:29:54', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', 'null', 'null', 'null', 'null', 'null', 44, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', 'no', '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, '2018-07-27 12:19:32', NULL, NULL, NULL, NULL, NULL, NULL, 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, '2018-07-27 00:00:00', '~/Uploads/PROTOCOLO DE OBSERVACIÓN.doc', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', NULL, '2018-07-27 00:00:00', 'no', '2018-07-27 21:55:31', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', '2018-07-27 00:00:00', 'null', 'null', 'null', 'null', 'null', 'null', 46, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', 'no', '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, '2018-07-27 22:24:42', NULL, NULL, NULL, NULL, NULL, NULL, 47, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', 'no', '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, '2018-07-29 00:09:11', NULL, NULL, NULL, NULL, NULL, NULL, 48, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', 'no', '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, '2018-07-29 00:10:00', NULL, NULL, NULL, NULL, NULL, NULL, 49, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', 'no', '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, '2018-07-29 09:53:37', NULL, NULL, NULL, NULL, NULL, NULL, 50, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', 'no', '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, '2018-07-29 10:08:54', NULL, NULL, NULL, NULL, NULL, NULL, 51, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', 'no', '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, '2018-07-29 10:10:04', NULL, NULL, NULL, NULL, NULL, NULL, 52, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', 'no', '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, '2018-07-29 10:10:46', NULL, NULL, NULL, NULL, NULL, NULL, 53, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, '2018-07-29 00:00:00', '~/Uploads/CARTA DE PRESENTACIÓN.doc', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', NULL, '2018-07-29 00:00:00', 'no', '2018-07-29 10:11:50', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', '2018-07-29 00:00:00', 'null', 'null', 'null', 'null', 'null', 'null', 54, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', 'no', '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, '2018-07-29 10:32:17', NULL, NULL, NULL, NULL, NULL, NULL, 55, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', 'no', '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, '2018-07-29 10:32:41', NULL, NULL, NULL, NULL, NULL, NULL, 56, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', 'no', '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, '2018-07-29 10:34:04', NULL, NULL, NULL, NULL, NULL, NULL, 57, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', 'no', '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, '2018-07-29 13:15:45', NULL, NULL, NULL, NULL, NULL, NULL, 58, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', 'no', '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, '2018-07-29 14:45:17', NULL, NULL, NULL, NULL, NULL, NULL, 59, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', 'no', '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, '2018-07-29 14:55:04', NULL, NULL, NULL, NULL, NULL, NULL, 60, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', 'no', '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, '2018-07-29 18:15:24', NULL, NULL, NULL, NULL, NULL, NULL, 61, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', 'no', '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, '2018-07-29 18:59:26', NULL, NULL, NULL, NULL, NULL, NULL, 62, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', 'no', '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, '2018-07-29 19:46:14', NULL, NULL, NULL, NULL, NULL, NULL, 63, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', 'no', '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, '2018-07-29 19:48:17', NULL, NULL, NULL, NULL, NULL, NULL, 64, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', 'no', '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, '2018-07-29 20:37:03', NULL, NULL, NULL, NULL, NULL, NULL, 65, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, '2018-08-02 00:00:00', '02/08/2018', '2018-08-09 00:00:00', '09/08/2018', '2018-07-29 00:00:00', '29/07/2018', '2018-07-29 00:00:00', '29/07/2018', '2018-07-29 00:00:00', '29/07/2018', '2018-07-29 00:00:00', '29/07/2018', '2018-07-29 00:00:00', '29/07/2018', '2018-07-29 00:00:00', '29/07/2018', '2018-07-29 00:00:00', NULL, '2018-07-29 00:00:00', 'no', '2018-07-29 00:00:00', NULL, '2018-07-29 00:00:00', '29/07/2018', '2018-07-29 00:00:00', '2018-07-29 00:00:00', '29/07/2018', '2018-07-29 00:00:00', '29/07/2018', '2018-07-29 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, 66, '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00'),
+(33, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', 'no', '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, '2018-07-29 21:09:20', NULL, NULL, NULL, NULL, NULL, NULL, 67, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', 'no', '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, '2018-08-02 16:03:12', NULL, NULL, NULL, NULL, NULL, NULL, 68, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(35, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', 'no', '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, '2018-08-02 16:17:39', NULL, NULL, NULL, NULL, NULL, NULL, 69, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(36, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', 'no', '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, '2018-08-02 16:25:54', NULL, NULL, NULL, NULL, NULL, NULL, 70, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `protocolos`
+--
+
+CREATE TABLE IF NOT EXISTS `protocolos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(45) DEFAULT NULL,
+  `Url` varchar(1000) DEFAULT NULL,
+  `IdPrevio` int(11) DEFAULT NULL,
+  `obra_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+
+--
+-- Volcado de datos para la tabla `protocolos`
+--
+
+INSERT INTO `protocolos` (`Id`, `Nombre`, `Url`, `IdPrevio`, `obra_id`) VALUES
+(1, 'PROTOCOLOS DE DESCARGA', '~/Uploads/Factura-1279.pdf', 1, 1),
+(3, 'hola 3', 'null', 4, 16),
+(7, 'li8l', '~/Uploads/hostingssi.png', 4, 16),
+(5, 'CASA BLANCA PRUEBA', '~/Uploads/_CLIMB puntos faltantes.docx', 4, 16),
+(6, 'li8l', 'null', 4, 16),
+(8, 'ddddd', '~/Uploads/hostingssi.png', 4, 16),
+(9, 'cccccccccc', 'null', 4, 16),
+(10, NULL, NULL, 5, 17),
+(11, NULL, NULL, 6, 16),
+(12, NULL, NULL, 7, 18),
+(13, NULL, NULL, 8, 18),
+(14, NULL, NULL, 9, 19),
+(15, 'aff', '~/Uploads/B- P1 - LOFT C.jpg', 10, 0),
+(17, NULL, NULL, 11, 21),
+(18, NULL, NULL, 12, 22),
+(19, NULL, NULL, 13, 22),
+(20, NULL, NULL, 14, 21),
+(21, NULL, NULL, 15, 22),
+(22, NULL, NULL, 16, 23),
+(23, NULL, NULL, 17, 23),
+(24, NULL, NULL, 18, 23),
+(25, NULL, NULL, 19, 23),
+(26, 'PRUEBA DE INICIO', '~/Uploads/CARTA DE PRESENTACIÓN.doc', 20, 0),
+(29, NULL, NULL, 21, 23),
+(30, NULL, NULL, 22, 23),
+(31, NULL, NULL, 23, 23),
+(32, NULL, NULL, 24, 24),
+(33, NULL, NULL, 25, 25),
+(34, NULL, NULL, 26, 25),
+(35, NULL, NULL, 27, 26),
+(36, NULL, NULL, 28, 27),
+(37, NULL, NULL, 29, 25),
+(38, NULL, NULL, 30, 25),
+(39, NULL, NULL, 31, 25),
+(40, 'salem', 'null.jpg', 32, 25),
+(41, NULL, NULL, 33, 28),
+(42, NULL, NULL, 34, 29),
+(43, NULL, NULL, 35, 30),
+(44, NULL, NULL, 36, 30);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores`
+--
+
+CREATE TABLE IF NOT EXISTS `proveedores` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `NumeroProveedor` varchar(10) DEFAULT NULL,
+  `ClavePais` varchar(3) DEFAULT NULL,
+  `Nombre1` varchar(35) DEFAULT NULL,
+  `Nombre2` varchar(35) DEFAULT NULL,
+  `Nombre3` varchar(35) DEFAULT NULL,
+  `Nombre4` varchar(35) DEFAULT NULL,
+  `Poblacion` varchar(35) DEFAULT NULL,
+  `Distrito` varchar(35) DEFAULT NULL,
+  `Apartado` varchar(10) DEFAULT NULL,
+  `CodigoApartado` varchar(10) DEFAULT NULL,
+  `CodigoPostal` varchar(10) DEFAULT NULL,
+  `Region` varchar(3) DEFAULT NULL,
+  `Calle` varchar(35) DEFAULT NULL,
+  `Direccion` varchar(10) DEFAULT NULL,
+  `Sociedad` varchar(4) DEFAULT NULL,
+  `OrganizacionCompra` varchar(4) DEFAULT NULL,
+  `ClaveMoned` varchar(10) DEFAULT NULL,
+  `VendedorResponsable` varchar(35) DEFAULT NULL,
+  `NumeroTelefono` varchar(16) DEFAULT NULL,
+  `CondicionPago` varchar(4) DEFAULT NULL,
+  `IncoTerminos1` varchar(3) DEFAULT NULL,
+  `IncoTerminos2` varchar(28) DEFAULT NULL,
+  `GrupoCompras` varchar(3) DEFAULT NULL,
+  `DenominacionGrupo` varchar(18) DEFAULT NULL,
+  `TelefonoGrupoCompra` varchar(12) DEFAULT NULL,
+  `TelefonoPrefijo` varchar(30) DEFAULT NULL,
+  `TelefonoExtension` varchar(10) DEFAULT NULL,
+  `Correo` varchar(241) DEFAULT NULL,
+  `CuentaId` int(11) NOT NULL,
+  `FechaCargaPortal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UsuarioIdTx` varchar(128) DEFAULT NULL,
+  `OperacionTx` enum('CREATE','UPDATE','DELETE') NOT NULL DEFAULT 'CREATE',
+  `Rfc` varchar(100) DEFAULT NULL,
+  `Borrado` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`),
+  KEY `NumeroProveedor` (`NumeroProveedor`),
+  KEY `CuentaId` (`CuentaId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=73 ;
+
+--
+-- Volcado de datos para la tabla `proveedores`
+--
+
+INSERT INTO `proveedores` (`Id`, `NumeroProveedor`, `ClavePais`, `Nombre1`, `Nombre2`, `Nombre3`, `Nombre4`, `Poblacion`, `Distrito`, `Apartado`, `CodigoApartado`, `CodigoPostal`, `Region`, `Calle`, `Direccion`, `Sociedad`, `OrganizacionCompra`, `ClaveMoned`, `VendedorResponsable`, `NumeroTelefono`, `CondicionPago`, `IncoTerminos1`, `IncoTerminos2`, `GrupoCompras`, `DenominacionGrupo`, `TelefonoGrupoCompra`, `TelefonoPrefijo`, `TelefonoExtension`, `Correo`, `CuentaId`, `FechaCargaPortal`, `UsuarioIdTx`, `OperacionTx`, `Rfc`, `Borrado`) VALUES
+(69, '0000000006', 'MX', 'DISTRIBUIDORA FLEXI SA DE CV', '', '', '', 'LEON', '', '', '', '37510', 'GTO', 'BLVD.FRANCISCO VILLA SUR 201', '0000022685', '1000', 'OC01', 'MXN', '', '4777102500', 'Z030', '', '', 'C03', 'Fabian Perez', '', '', '', 'fperez@impuls.com.mx', 99, '0000-00-00 00:00:00', NULL, 'CREATE', 'DFL8009138B9', 0),
+(70, '0000500000', 'MX', 'BONETERA MONTERREY SA DE CV', '', '', '', 'MONTERREY', '', '', '', '64710', 'NL', 'PROLONG.V.CARRANZA 601 SUR', '0000024823', '1001', 'OC01', 'MXN', '', '', 'Z060', '', '', 'C03', 'Fabian Perez', '', '', '', 'fperez@impuls.com.mx', 99, '0000-00-00 00:00:00', NULL, 'CREATE', 'BMO860526KX2', 0),
+(71, '0000001296', 'MX', 'DISTRIBUIDORA GRUPAR SA DE CV', '', '', '', 'LEON', '', '', '', '37545', 'GTO', 'KAPPA 305', '0000024073', '1000', 'OC01', 'MXN', '', '4771676261', 'Z030', '', '', 'C03', 'Fabian Perez', '', '', '', 'fperez@impuls.com.mx', 99, '0000-00-00 00:00:00', NULL, 'CREATE', 'DGR080616BE4', 0),
+(72, '0000001667', 'MX', 'CALZADO CENTOMO SA DE CV', '', '', '', 'LEON', '', '', '', '37266', 'GTO', 'ESPAÑITA 106', '0000333439', '1001', 'OC01', 'MXN', 'JOSE CARLOS VAZQUEZ HERNANDEZ', '(477) 100 63 10', 'Z030', '', '', 'C36', 'Mary Carmen Verón', '', '', '', 'mveron@impuls.com.mx', 99, '0000-00-00 00:00:00', NULL, 'CREATE', 'CCE150312B88', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `requerimientos`
+--
+
+CREATE TABLE IF NOT EXISTS `requerimientos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Obra` varchar(45) DEFAULT NULL,
+  `Tipo` varchar(45) DEFAULT NULL,
+  `FechaSolicitud` datetime DEFAULT NULL,
+  `GerenciaResponsable` varchar(45) DEFAULT NULL,
+  `Tecnicos` varchar(45) DEFAULT NULL,
+  `StatusRequerimiento` varchar(45) DEFAULT NULL,
+  `FechaCumplimientoSolicitud` datetime DEFAULT NULL,
+  `Descripcion` varchar(500) DEFAULT NULL,
+  `AccionesEjecutadas` varchar(1500) DEFAULT NULL,
+  `obra_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+
+--
+-- Volcado de datos para la tabla `requerimientos`
+--
+
+INSERT INTO `requerimientos` (`Id`, `Obra`, `Tipo`, `FechaSolicitud`, `GerenciaResponsable`, `Tecnicos`, `StatusRequerimiento`, `FechaCumplimientoSolicitud`, `Descripcion`, `AccionesEjecutadas`, `obra_id`) VALUES
+(9, 'EF RAFAEL', 'ASCENSOR DE SERVICIO', '2018-07-12 00:00:00', 'MANIOBRAS ELECTRÓNICAS', 'null', 'REQUERIMIENTO EJECUTADO', '2018-07-29 00:00:00', 'null', 'null', 23),
+(6, 'SALEM I', 'ASCENSOR DE SERVICIO', '2018-07-06 00:00:00', 'MANIOBRAS ELECTRÓNICAS', 'null', 'REQUERIMIENTO EJECUTADO', '2018-07-27 00:00:00', 'UUUUUUUUUUUU', 'null', 25),
+(10, 'SALEM I', 'ASCENSOR', '2018-08-08 00:00:00', 'MANIOBRAS ELECTRÓNICAS', 'null', 'null', '2018-08-08 00:00:00', 'null', 'null', 25),
+(11, 'SALEM I', 'tipo', '2018-08-09 00:00:00', 'MANIOBRAS ELECTRÓNICAS', 'pablo', 'EN TRANSITO', '2018-08-09 00:00:00', 'null', 'acciones', 25),
+(12, 'SALEM I', 'yyyy', '2018-08-09 00:00:00', 'MANIOBRAS ELECTRÓNICAS', 'luis', 'EN EJECUCION', '2018-08-09 00:00:00', 'rrr', 'r', 25),
+(13, 'SALEM I', 'tipo', '2018-08-09 00:00:00', 'GESTIÓN Y PROYECTOS', 'null', 'POR ATENDER', '2018-08-09 00:00:00', 'null', 'null', 25),
+(14, 'CERRO VERDE', 'tipo', '2018-08-09 00:00:00', 'D.A.P', 'pablo', 'EN EJECUCION', '2018-08-09 00:00:00', 'null', 'probando', 29),
+(15, 'SALEM I', 'tipo', '2018-08-09 10:31:55', 'MANIOBRAS ELECTRÓNICAS', 'null', 'EN EJECUCION', '2018-08-09 10:31:55', 'null', 'ejecutadas', 25),
+(16, 'SALEM I', 'tipo', '2018-08-09 10:32:57', 'MANIOBRAS ELECTRÓNICAS', 'null', 'null', '2018-08-09 10:32:57', 'null', 'ojkojj', 25),
+(17, 'SALEM I', 'tipo', '2018-08-09 00:00:00', 'D.A.P', NULL, 'EN TRANSITO', '2018-08-01 00:00:00', NULL, NULL, 25),
+(18, 'SALEM I', 'tipo', '2018-08-01 00:00:00', 'D.A.P', NULL, 'EN TRANSITO', '2018-08-09 00:00:00', NULL, NULL, 25),
+(19, 'SALEM I', 'tipo', '2018-08-25 00:00:00', 'D.A.P', NULL, 'POR ATENDER', NULL, NULL, NULL, 25),
+(20, 'SALEM I', 'tipo', '2018-08-19 00:00:00', 'MANIOBRAS ELECTRÓNICAS', NULL, 'POR ATENDER', NULL, NULL, NULL, 25);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `requerimientos_status`
+--
+
+CREATE TABLE IF NOT EXISTS `requerimientos_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `requerimientos_status`
+--
+
+INSERT INTO `requerimientos_status` (`id`, `descripcion`) VALUES
+(1, 'REQUERIMIENTO EJECUTADO'),
+(2, 'EN EJECUCION'),
+(3, 'POR ATENDER'),
+(4, 'EN TRANSITO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `requerimientos_tipo`
+--
+
+CREATE TABLE IF NOT EXISTS `requerimientos_tipo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `requerimientos_tipo`
+--
+
+INSERT INTO `requerimientos_tipo` (`id`, `descripcion`) VALUES
+(1, 'REPUESTO'),
+(2, 'PROGRAMACION DE HUELLAS'),
+(3, 'REMODELACION'),
+(4, 'INDUCCION');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `requerimientoscorreos`
+--
+
+CREATE TABLE IF NOT EXISTS `requerimientoscorreos` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(1500) DEFAULT NULL,
+  `IdRequerimientos` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rieles`
+--
+
+CREATE TABLE IF NOT EXISTS `rieles` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Codigo` varchar(10) NOT NULL,
+  `Riel` varchar(10) NOT NULL,
+  `AndenId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `fk_rieles_anden` (`AndenId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `rieles`
+--
+
+INSERT INTO `rieles` (`Id`, `Codigo`, `Riel`, `AndenId`) VALUES
+(1, '00011', '1', 1),
+(2, '00012', '2', 1),
+(3, '00021', '1', 2),
+(4, '00022', '2', 2),
+(5, '00031', '1', 3),
+(6, '00032', '2', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `scalealmacen`
+--
+
+CREATE TABLE IF NOT EXISTS `scalealmacen` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Sap` varchar(500) NOT NULL,
+  `Scale` varchar(500) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `scalealmacen`
+--
+
+INSERT INTO `scalealmacen` (`Id`, `Sap`, `Scale`) VALUES
+(1, 'CD01', 'LEON 01'),
+(2, 'CD04', 'LEON 02'),
+(3, 'CD05', 'LEON 03'),
+(4, 'CD06', 'CD06'),
+(5, 'Cross Dock', 'CD06');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sugerencias`
+--
+
+CREATE TABLE IF NOT EXISTS `sugerencias` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(450) DEFAULT NULL,
+  `Caracteristica` varchar(500) DEFAULT NULL,
+  `Numero` varchar(45) DEFAULT NULL,
+  `Fecha` datetime DEFAULT NULL,
+  `AccionesTomadas` varchar(1500) DEFAULT NULL,
+  `AccionesRecomendadas` varchar(1500) DEFAULT NULL,
+  `GerenciaResponsable` varchar(1500) DEFAULT NULL,
+  `IdVenta` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+--
+-- Volcado de datos para la tabla `sugerencias`
+--
+
+INSERT INTO `sugerencias` (`Id`, `Descripcion`, `Caracteristica`, `Numero`, `Fecha`, `AccionesTomadas`, `AccionesRecomendadas`, `GerenciaResponsable`, `IdVenta`) VALUES
+(1, 'SUGERENCIA 002 - PERSONAL TÉCNICO INGRESAR DEBIDAMENTE IDENTIFICADO NOVIEMBRE 2017', NULL, NULL, NULL, NULL, NULL, NULL, 4),
+(2, 'SUGERENCIA 002 - PERSONAL TÉCNICO INGRESAR DEBIDAMENTE IDENTIFICADO NOVIEMBRE 2018', NULL, '32545', '2018-06-13 00:00:00', 'fewf', 'wefwf', 'wefewf', 4),
+(3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 36),
+(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 40),
+(5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 44),
+(6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 48),
+(7, 'null', NULL, NULL, '2018-06-27 00:00:00', 'ddd', NULL, NULL, 52),
+(8, 'Puerta', NULL, NULL, '2018-06-28 00:00:00', NULL, NULL, NULL, 52),
+(9, 'null', NULL, NULL, '2018-06-27 00:00:00', 'fewfwef', 'ef', NULL, 56),
+(10, 'RECLAMO', 'null', 'null', '2018-07-27 00:00:00', 'IDA MAS TEMPRANO', 'IDA MAS TEMPRANO', 'CLIM', 60),
+(11, 'null', 'null', 'null', '2018-07-27 12:19:32', 'null', 'null', 'null', 64),
+(12, 'null', 'null', 'null', '2018-07-27 21:55:31', 'null', 'null', 'null', 68),
+(13, 'null', 'null', 'null', '2018-07-29 09:53:37', 'null', 'null', 'null', 72),
+(14, 'MEJOR VESTIMENTA', NULL, NULL, '2018-07-10 00:00:00', 'MEJORA ROPA', 'MEJORAR REOPA', 'MANIOBRAS ELECTRICAS', 60),
+(15, 'null', 'null', 'null', '2018-07-29 13:15:45', 'null', 'null', 'null', 76),
+(22, 'Puerta', NULL, NULL, '2018-08-09 00:00:00', NULL, NULL, 'tyj', 80),
+(17, 'null', 'null', 'null', '2018-07-29 18:15:24', 'null', 'null', 'null', 84),
+(18, 'null', 'null', 'null', '2018-07-29 18:59:26', 'null', 'null', 'null', 88),
+(19, 'null', 'null', 'null', '2018-07-29 21:09:20', 'null', 'null', 'null', 92),
+(20, 'null', 'null', 'null', '2018-08-02 16:03:12', 'null', 'null', 'null', 96),
+(21, 'null', 'null', 'null', '2018-08-02 16:17:39', 'null', 'null', 'null', 100);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipocuentas`
+--
+
+CREATE TABLE IF NOT EXISTS `tipocuentas` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Codigo` varchar(5) NOT NULL,
+  `Nombre` varchar(50) NOT NULL,
+  `Descripcion` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `unq_tipocuentas_codigo` (`Codigo`),
+  UNIQUE KEY `unq_tipocuentas_nombre` (`Nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipousuario`
+--
+
+CREATE TABLE IF NOT EXISTS `tipousuario` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Codigo` varchar(5) DEFAULT NULL,
+  `Nombre` varchar(30) DEFAULT NULL,
+  `Descripcion` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `unq_tipousuario_codigo` (`Codigo`),
+  UNIQUE KEY `unq_tipousuario_nombre` (`Nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE IF NOT EXISTS `ventas` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(400) DEFAULT NULL,
+  `IdObra` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`Id`, `Descripcion`, `IdObra`) VALUES
+(1, 'MANTENIMIENTOS PREVENTIVOS', 1),
+(2, 'MANTENIMIENTOS CORRECTIVOS', 1),
+(3, 'INFORMES GENERALES', 1),
+(4, 'REPORTES DE SUGERENCIAS', 1),
+(5, 'MANTENIMIENTOS PREVENTIVOS', 4),
+(6, 'MANTENIMIENTOS CORRECTIVOS', 4),
+(7, 'INFORMES GENERALES', 4),
+(8, 'REPORTES DE SUGERENCIAS', 4),
+(9, 'MANTENIMIENTOS PREVENTIVOS', 5),
+(10, 'MANTENIMIENTOS CORRECTIVOS', 5),
+(11, 'INFORMES GENERALES', 5),
+(12, 'REPORTES DE SUGERENCIAS', 5),
+(13, 'MANTENIMIENTOS PREVENTIVOS', 6),
+(14, 'MANTENIMIENTOS CORRECTIVOS', 6),
+(15, 'INFORMES GENERALES', 6),
+(16, 'REPORTES DE SUGERENCIAS', 6),
+(17, 'MANTENIMIENTOS PREVENTIVOS', 7),
+(18, 'MANTENIMIENTOS CORRECTIVOS', 7),
+(19, 'INFORMES GENERALES', 7),
+(20, 'REPORTES DE SUGERENCIAS', 7),
+(21, 'MANTENIMIENTOS PREVENTIVOS', 8),
+(22, 'MANTENIMIENTOS CORRECTIVOS', 8),
+(23, 'INFORMES GENERALES', 8),
+(24, 'REPORTES DE SUGERENCIAS', 8),
+(25, 'MANTENIMIENTOS PREVENTIVOS', 9),
+(26, 'MANTENIMIENTOS CORRECTIVOS', 9),
+(27, 'INFORMES GENERALES', 9),
+(28, 'REPORTES DE SUGERENCIAS', 9),
+(29, 'MANTENIMIENTOS PREVENTIVOS', 10),
+(30, 'MANTENIMIENTOS CORRECTIVOS', 10),
+(31, 'INFORMES GENERALES', 10),
+(32, 'REPORTES DE SUGERENCIAS', 10),
+(33, 'MANTENIMIENTOS PREVENTIVOS', 11),
+(34, 'MANTENIMIENTOS CORRECTIVOS', 11),
+(35, 'INFORMES GENERALES', 11),
+(36, 'REPORTES DE SUGERENCIAS', 11),
+(37, 'MANTENIMIENTOS PREVENTIVOS', 15),
+(38, 'MANTENIMIENTOS CORRECTIVOS', 15),
+(39, 'INFORMES GENERALES', 15),
+(40, 'REPORTES DE SUGERENCIAS', 15),
+(41, 'MANTENIMIENTOS PREVENTIVOS', 16),
+(42, 'MANTENIMIENTOS CORRECTIVOS', 16),
+(43, 'INFORMES GENERALES', 16),
+(44, 'REPORTES DE SUGERENCIAS', 16),
+(45, 'MANTENIMIENTOS PREVENTIVOS', 17),
+(46, 'MANTENIMIENTOS CORRECTIVOS', 17),
+(47, 'INFORMES GENERALES', 17),
+(48, 'REPORTES DE SUGERENCIAS', 17),
+(49, 'MANTENIMIENTOS PREVENTIVOS', 18),
+(50, 'MANTENIMIENTOS CORRECTIVOS', 18),
+(51, 'INFORMES GENERALES', 18),
+(52, 'REPORTES DE SUGERENCIAS', 18),
+(53, 'MANTENIMIENTOS PREVENTIVOS', 19),
+(54, 'MANTENIMIENTOS CORRECTIVOS', 19),
+(55, 'INFORMES GENERALES', 19),
+(56, 'REPORTES DE SUGERENCIAS', 19),
+(57, 'MANTENIMIENTOS PREVENTIVOS', 20),
+(58, 'MANTENIMIENTOS CORRECTIVOS', 20),
+(59, 'INFORMES GENERALES', 20),
+(60, 'REPORTES DE SUGERENCIAS', 20),
+(61, 'MANTENIMIENTOS PREVENTIVOS', 21),
+(62, 'MANTENIMIENTOS CORRECTIVOS', 21),
+(63, 'INFORMES GENERALES', 21),
+(64, 'REPORTES DE SUGERENCIAS', 21),
+(65, 'MANTENIMIENTOS PREVENTIVOS', 22),
+(66, 'MANTENIMIENTOS CORRECTIVOS', 22),
+(67, 'INFORMES GENERALES', 22),
+(68, 'REPORTES DE SUGERENCIAS', 22),
+(69, 'MANTENIMIENTOS PREVENTIVOS', 23),
+(70, 'MANTENIMIENTOS CORRECTIVOS', 23),
+(71, 'INFORMES GENERALES', 23),
+(72, 'REPORTES DE SUGERENCIAS', 23),
+(73, 'MANTENIMIENTOS PREVENTIVOS', 24),
+(74, 'MANTENIMIENTOS CORRECTIVOS', 24),
+(75, 'INFORMES GENERALES', 24),
+(76, 'REPORTES DE SUGERENCIAS', 24),
+(77, 'MANTENIMIENTOS PREVENTIVOS', 25),
+(78, 'MANTENIMIENTOS CORRECTIVOS', 25),
+(79, 'INFORMES GENERALES', 25),
+(80, 'REPORTES DE SUGERENCIAS', 25),
+(81, 'MANTENIMIENTOS PREVENTIVOS', 26),
+(82, 'MANTENIMIENTOS CORRECTIVOS', 26),
+(83, 'INFORMES GENERALES', 26),
+(84, 'REPORTES DE SUGERENCIAS', 26),
+(85, 'MANTENIMIENTOS PREVENTIVOS', 27),
+(86, 'MANTENIMIENTOS CORRECTIVOS', 27),
+(87, 'INFORMES GENERALES', 27),
+(88, 'REPORTES DE SUGERENCIAS', 27),
+(89, 'MANTENIMIENTOS PREVENTIVOS', 28),
+(90, 'MANTENIMIENTOS CORRECTIVOS', 28),
+(91, 'INFORMES GENERALES', 28),
+(92, 'REPORTES DE SUGERENCIAS', 28),
+(93, 'MANTENIMIENTOS PREVENTIVOS', 29),
+(94, 'MANTENIMIENTOS CORRECTIVOS', 29),
+(95, 'INFORMES GENERALES', 29),
+(96, 'REPORTES DE SUGERENCIAS', 29),
+(97, 'MANTENIMIENTOS PREVENTIVOS', 30),
+(98, 'MANTENIMIENTOS CORRECTIVOS', 30),
+(99, 'INFORMES GENERALES', 30),
+(100, 'REPORTES DE SUGERENCIAS', 30);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
