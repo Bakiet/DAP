@@ -162,7 +162,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Plano = equipo.Plano,
                 obra_id = equipo.obra_id,
                 CantidadPersonas = Convert.ToString(equipo.CantidadPersonas),
-                obra = "Obra"
+                obra = "Obra",
+                FechaGarantia = equipo.FechaGarantia.ToString()
             };
 
             return PartialView(equipoModel);
@@ -218,7 +219,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Plano = equipo.Plano,
                 obra_id = equipo.obra_id,
                 CantidadPersonas = Convert.ToString(equipo.CantidadPersonas),
-                obra = "Obra"
+                obra = "Obra",
+                FechaGarantia = equipo.FechaGarantia.ToString()
             };
 
             return View(equipoModel);
@@ -272,7 +274,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Plano = equipo.Plano,
                 obra_id = equipo.obra_id,
                 CantidadPersonas = Convert.ToString(equipo.CantidadPersonas),
-                obra = "Obra"
+                obra = "Obra",
+                FechaGarantia = equipo.FechaGarantia.ToString()
             };
 
             return View(equipoModel);
@@ -309,22 +312,24 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             try
             {
-               /* HttpPostedFileBase filefotografia = Request.Files["Pdf-Fotografia"];
+                /* HttpPostedFileBase filefotografia = Request.Files["Pdf-Fotografia"];
 
-                if (filefotografia != null && filefotografia.ContentLength > 0)
-                {
-                    fotografia = CargarPdf(filefotografia);
-                }
-                else { fotografia = equipo.Fotografia; }
+                 if (filefotografia != null && filefotografia.ContentLength > 0)
+                 {
+                     fotografia = CargarPdf(filefotografia);
+                 }
+                 else { fotografia = equipo.Fotografia; }
 
-                HttpPostedFileBase fileplano = Request.Files["Pdf-Plano"];
+                 HttpPostedFileBase fileplano = Request.Files["Pdf-Plano"];
 
-                if (fileplano != null && fileplano.ContentLength > 0)
-                {
-                    plano = CargarPdf(fileplano);
-                }
-                else { plano = equipo.Plano; }
-                 */
+                 if (fileplano != null && fileplano.ContentLength > 0)
+                 {
+                     plano = CargarPdf(fileplano);
+                 }
+                 else { plano = equipo.Plano; }
+                  */
+                DateTime? fechagarantia = null;
+                if(model.FechaGarantia != null) { 
                 _equiposManager.Actualizar(Convert.ToInt32(TempData["obra_equipo_id"]),
                       id,
                       model.Nombre,
@@ -344,8 +349,30 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.NumeroDeGuayas,
                       model.CantidadPersonas,
                       fotografia.Trim(),
-                      plano.Trim());
-
+                      plano.Trim(),DateTime.Parse(model.FechaGarantia));
+                }else
+                {
+                    _equiposManager.Actualizar(Convert.ToInt32(TempData["obra_equipo_id"]),
+                     id,
+                     model.Nombre,
+                     model.Marca,
+                     model.Modelo,
+                     model.Referencia,
+                     model.DimensionesCabina,
+                     model.DimensionesHueco,
+                     model.CargaNominal,
+                     model.Velocidad,
+                     model.Recorrido,
+                     model.Paradas,
+                     model.Accesos,
+                     model.VoltajeDeRed,
+                     model.PotenciaDeMaquina,
+                     model.TipoDeManiobra,
+                     model.NumeroDeGuayas,
+                     model.CantidadPersonas,
+                     fotografia.Trim(),
+                     plano.Trim(), fechagarantia);
+                }
                 HttpPostedFileBase file;
 
                 for (int i = 0; i < Request.Files.Count; i++)
@@ -424,7 +451,10 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                     plano = CargarPdf(fileplano);
                 }
                 else { plano = ""; }*/
-                equipos equipo =_equiposManager.Crear(
+                equipos equipo = new equipos();
+                DateTime? fechagarantia = null;
+                if(model.FechaGarantia != null) { 
+                equipo =_equiposManager.Crear(
                         Convert.ToInt32(TempData["obra_equipo_id"]),
                       model.Nombre,
                       model.Marca,
@@ -443,8 +473,31 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.NumeroDeGuayas,
                       model.CantidadPersonas,
                       fotografia.Trim(),
-                      plano.Trim());
-
+                      plano.Trim(), DateTime.Parse(model.FechaGarantia));
+                }
+                else
+                {
+                    equipo = _equiposManager.Crear(
+                        Convert.ToInt32(TempData["obra_equipo_id"]),
+                      model.Nombre,
+                      model.Marca,
+                      model.Modelo,
+                      model.Referencia,
+                      model.DimensionesCabina,
+                      model.DimensionesHueco,
+                      model.CargaNominal,
+                      model.Velocidad,
+                      model.Recorrido,
+                      model.Paradas,
+                      model.Accesos,
+                      model.VoltajeDeRed,
+                      model.PotenciaDeMaquina,
+                      model.TipoDeManiobra,
+                      model.NumeroDeGuayas,
+                      model.CantidadPersonas,
+                      fotografia.Trim(),
+                      plano.Trim(), fechagarantia);
+                }
                 HttpPostedFileBase file;
 
                 for (int i = 0; i < Request.Files.Count; i++)

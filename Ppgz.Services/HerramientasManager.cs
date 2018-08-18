@@ -27,18 +27,18 @@ namespace Ppgz.Services
 	   
 		public List<herramientas> GetHerramientas(int obraId)
 		{
-			return _db.herramientas.Where(s => s.obra_id == obraId).ToList();
+			return _db.herramientas.Where(s => s.obra_id == obraId && s.FechaEntrada == null).ToList();
 
 		}
 
-        public List<herramientas> GetHistorico(int previoId)
+        public List<herramientas> GetHistorico(int obraId)
         {
-            return _db.herramientas.Where(f => f.previo_id == previoId && f.FechaEntrada != null).ToList();
+            return _db.herramientas.Where(f => f.obra_id == obraId && f.FechaEntrada != null).ToList();
 
         }
 
-        public herramientas Actualizar(int obra_id,int id, string Descripcion = null, string Cantidad = null, string FechaSalida = null,
-			string Propiedad = null, string FechaCulminacion = null, string CantidadDeposito = null, string FechaEntrada = null, string SupervisorObra = null
+        public herramientas Actualizar(int obra_id,int id, string Descripcion = null, string Cantidad = null, DateTime? FechaSalida = null,
+			string Propiedad = null, DateTime? FechaCulminacion = null, string CantidadDeposito = null, DateTime? FechaEntrada = null, string SupervisorObra = null
 			, string TecnicoResponsable = null, string Observaciones = null)
 		{
 
@@ -49,59 +49,36 @@ namespace Ppgz.Services
 			   // throw new BusinessException(CommonMensajesResource.ERROR_Usuario_Id);
 				
 			}
-			if (Descripcion != null)
-			{
+			
 
 				herramienta.Descripcion = Descripcion;
-			}
-			if (Cantidad != null)
-			{
+			
 
 				herramienta.Cantidad = int.Parse(Cantidad);
-			}
-			if (FechaSalida != null)
-			{
+			
 
-				herramienta.FechaSalida = DateTime.Parse(FechaSalida);
-			}
-			if (Propiedad != null)
-			{
+				herramienta.FechaSalida = FechaSalida;
+			
 
 				herramienta.Propiedad = Propiedad;
-			}
-			if (FechaCulminacion != null)
-			{
+			
 
-				herramienta.FechaCulminacion = DateTime.Parse(FechaCulminacion);
-			}
-			if (CantidadDeposito != null)
-			{
+				herramienta.FechaCulminacion = FechaCulminacion;
+			
 
 				herramienta.CantidadDeposito = CantidadDeposito;
-			}
-			if (FechaEntrada != null)
-			{
+			
 
-				herramienta.FechaEntrada = DateTime.Parse(FechaEntrada);
-			}
-
-			if (SupervisorObra != null)
-			{
+				herramienta.FechaEntrada =FechaEntrada;
+			
 
 				herramienta.SupervisorObra = SupervisorObra;
-			}
-
-
-			if (TecnicoResponsable != null)
-			{
+			
 
 				herramienta.TecnicoResponsable = TecnicoResponsable;
-			}
-			if (Observaciones != null)
-			{
-
+			
 				herramienta.Observaciones = Observaciones;
-			}
+			
             
 
             herramienta.obra_id = obra_id;
@@ -112,8 +89,8 @@ namespace Ppgz.Services
 		}
 
 
-		public herramientas Crear(int previo_id, int obra_id,string Descripcion = null, string Cantidad = null, string FechaSalida = null,
-			string Propiedad = null, string FechaCulminacion = null, string CantidadDeposito = null, string FechaEntrada = null, string SupervisorObra = null
+		public herramientas Crear(int obra_id,string Descripcion = null, string Cantidad = null, DateTime? FechaSalida = null,
+			string Propiedad = null, DateTime? FechaCulminacion = null, string CantidadDeposito = null, DateTime? FechaEntrada = null, string SupervisorObra = null
 			, string TecnicoResponsable = null, string Observaciones = null)
 		{
 		   
@@ -126,14 +103,14 @@ namespace Ppgz.Services
 			{
                 var herramienta = new herramientas()
                 {
-                    previo_id = previo_id,
+                   
                     Descripcion = Descripcion,
                     Cantidad = int.Parse(Cantidad),
-                    FechaSalida = DateTime.Parse(FechaSalida),
+                    FechaSalida = FechaSalida,
                     Propiedad = Propiedad,
-                    FechaCulminacion = DateTime.Parse(FechaCulminacion),
+                    FechaCulminacion = FechaCulminacion,
                     CantidadDeposito = CantidadDeposito,
-                    FechaEntrada = DateTime.Parse(FechaEntrada),
+                    FechaEntrada = FechaEntrada,
                     SupervisorObra = SupervisorObra,
                     TecnicoResponsable = TecnicoResponsable,
                     Observaciones = Observaciones,

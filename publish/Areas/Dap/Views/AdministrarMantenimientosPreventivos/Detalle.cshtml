@@ -125,14 +125,14 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.HoraLlegada, new { @class = "col-sm-3 control-label" })
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(m => m.HoraLlegada, new { @class = "form-control", @type = "time", @readonly = true })
+                        @Html.TextBoxFor(m => m.HoraLlegada, new { @class = "form-control hora" })
                         @Html.ValidationMessageFor(m => m.HoraLlegada)
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.HoraSalida, new { @class = "col-sm-3 control-label" })
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(m => m.HoraSalida, new { @class = "form-control", @type = "time", @readonly = true })
+                        @Html.TextBoxFor(m => m.HoraSalida, new { @class = "form-control hora" })
                         @Html.ValidationMessageFor(m => m.HoraSalida)
                     </div>
                 </div>
@@ -166,6 +166,13 @@
                 locale: 'es',
 
                 format: 'DD/MM/YYYY',
+                showClose: true,
+                sideBySide: true
+            });
+            $('.hora').datetimepicker({
+                locale: 'es',
+
+                format: 'HH:mm A',
                 showClose: true,
                 sideBySide: true
             });

@@ -26,7 +26,7 @@ namespace Ppgz.Services
             return ob;
         }
 
-        public List<equipos> FindEquiposPorObra(int id)
+        public List<equipos> FindEquiposPorObra(int? id)
 		{
 			obras ob = new obras();
             fallas fa = new fallas();
@@ -116,7 +116,7 @@ namespace Ppgz.Services
 
         }
 
-        public fallas Actualizar(int id, DateTime? fechafalla, DateTime? fechaSolucion, string obra = null, string equipo = null,
+        public fallas Actualizar(int id, DateTime fechafalla, DateTime? fechaSolucion, string obra = null, string equipo = null,
 			string tipo = null, string componente = null, string personal = null, string statusFalla = null, string numeroReporte = null, string descripcion = null, string condicion = null, string accionesTomadas = null, string accionesRecomendadas = null, string duracion = null
 			, string personaReporte = null, string gerenciaResponsable = null)
 		{
@@ -128,129 +128,58 @@ namespace Ppgz.Services
 			   // throw new BusinessException(CommonMensajesResource.ERROR_Usuario_Id);
 				
 			}
-			if (fechafalla != null)
-			{
+			
 				// ValidarNombreApellido(nombre);
 				fallas.FechaFalla = fechafalla;
-			}
-			if (obra != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.Obra = obra;
-			}
-			if (equipo != null)
-			{
+			
 				// ValidarEmail(email);
 				fallas.Equipo = equipo;
-			}
-			if (tipo != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.Tipo = tipo;
-			}
-			if (componente != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.Componente = componente;
-			}
-			if (personal != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.Personal = personal;
-			}
-			if (statusFalla != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.StatusFalla = statusFalla;
-			}
-			if (fechaSolucion != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.FechaSolucion = fechaSolucion;
-			}
-			if (numeroReporte != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.NumeroReporte = numeroReporte;
-			}
-			if (descripcion != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.Descripcion = descripcion;
-			}
-			if (condicion != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.Condicion = condicion;
-			}
-			if (accionesTomadas != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.AccionesTomadas = accionesTomadas;
-			}
-			if (duracion != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.Duracion = duracion;
-			}
-			if (personaReporte != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.PersonaReporte = personaReporte;
-			}
-			if (gerenciaResponsable != null)
-			{
+			
 				//  ValidarNombreApellido(apellido);
 				fallas.GerenciaResponsable = gerenciaResponsable;
-			}
 			
-			
-
-			if (fechafalla != null)
 				fallas.FechaFalla = fechafalla;
 
-			if (obra != null)
+			
 				fallas.Obra = obra;
 
-			if (equipo != null)
-				fallas.Equipo = equipo;
-
-			if (tipo != null)
-				fallas.Tipo = tipo;
-
-			if (componente != null)
-				fallas.Componente = componente;
-
-			if (personal != null)
-				fallas.Personal = personal;
-
-			if (statusFalla != null)
-				fallas.StatusFalla = statusFalla;
-
-			if (fechaSolucion != null)
-				fallas.FechaSolucion = fechaSolucion;
-
-			if (numeroReporte != null)
-				fallas.NumeroReporte = numeroReporte;
-
-			if (descripcion != null)
-				fallas.Descripcion = descripcion;
-
-			if (condicion != null)
-				fallas.Condicion = condicion;
-
-			if (accionesTomadas != null)
-				fallas.AccionesTomadas = accionesTomadas;
-
-			if (duracion != null)
-				fallas.Duracion = duracion;
-
-			if (personaReporte != null)
-				fallas.PersonaReporte = personaReporte;
-
-			if (gerenciaResponsable != null)
-				fallas.PersonaReporte = gerenciaResponsable;
-
+			
 
 			_db.Entry(fallas).State = EntityState.Modified;
 			_db.SaveChanges();
@@ -259,7 +188,7 @@ namespace Ppgz.Services
 		}
 
 
-		public fallas Crear(int obraid, DateTime? fechafalla, DateTime? fechaSolucion, string obra = null, string equipo = null,
+		public fallas Crear(int obraid, DateTime fechafalla, DateTime? fechaSolucion, string obra = null, string equipo = null,
 			string tipo = null, string componente = null, string personal = null, string statusFalla = null, string numeroReporte = null, string descripcion = null, string condicion = null, string accionesTomadas = null, string accionesRecomendadas = null, string duracion = null
 			, string personaReporte = null, string gerenciaResponsable = null)
 		{
@@ -329,6 +258,7 @@ namespace Ppgz.Services
          //   {
          //       gerenciaResponsable = "null";
          //   }
+         
 			try
 			{
 				var falla = new fallas()

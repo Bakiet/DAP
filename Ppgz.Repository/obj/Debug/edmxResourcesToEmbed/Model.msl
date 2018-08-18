@@ -291,6 +291,7 @@
     <EntitySetMapping Name="equipos">
       <EntityTypeMapping TypeName="Modeldap.equipos">
         <MappingFragment StoreEntitySet="equipos">
+          <ScalarProperty Name="FechaGarantia" ColumnName="FechaGarantia" />
           <ScalarProperty Name="CantidadPersonas" ColumnName="CantidadPersonas" />
           <ScalarProperty Name="obra_id" ColumnName="obra_id" />
           <ScalarProperty Name="Id" ColumnName="Id" />

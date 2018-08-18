@@ -15,7 +15,7 @@ namespace Ppgz.Repository
     public partial class fallas
     {
         public int Id { get; set; }
-        public Nullable<System.DateTime> FechaFalla { get; set; }
+        public System.DateTime FechaFalla { get; set; }
         public string Obra { get; set; }
         public string Equipo { get; set; }
         public string Tipo { get; set; }

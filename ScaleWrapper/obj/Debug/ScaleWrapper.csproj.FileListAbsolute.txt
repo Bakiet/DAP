@@ -78,3 +78,13 @@ C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\bin\Debug\EntityF
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\obj\Debug\ScaleWrapper.csprojResolveAssemblyReference.cache
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\obj\Debug\ScaleWrapper.dll
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\ScaleWrapper\obj\Debug\ScaleWrapper.pdb
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\bin\Debug\ScaleWrapper.dll
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\bin\Debug\ScaleWrapper.pdb
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\obj\Debug\ScaleWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\obj\Debug\ScaleWrapper.dll
+C:\Users\Juan\Documents\GitHub\DAP\ScaleWrapper\obj\Debug\ScaleWrapper.pdb

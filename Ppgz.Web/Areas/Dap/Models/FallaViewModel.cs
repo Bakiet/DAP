@@ -10,7 +10,7 @@ namespace Ppgz.Web.Areas.Dap.Models
 
        
         [Display(Name = "Fecha de la falla")]
-        public DateTime? FechaFalla { get; set; }
+        public string FechaFalla { get; set; }
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Obra")]
@@ -44,7 +44,7 @@ namespace Ppgz.Web.Areas.Dap.Models
 
       
         [Display(Name = "Fecha de Soluciòn")]
-        public DateTime? FechaSolucion { get; set; }
+        public string FechaSolucion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Nùmero de Reporte")]

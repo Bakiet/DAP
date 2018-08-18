@@ -37,7 +37,7 @@
             <div class="form-group">
                 @Html.LabelFor(f => f.FechaFalla, new { @class = "col-sm-3 control-label" })
                 <div class="col-sm-4">
-                    @Html.TextBoxFor(f => f.FechaFalla, new { @class = "form-control fecha-hora", @type = "datetime" , @required = false })
+                    @Html.TextBoxFor(f => f.FechaFalla, new { @class = "form-control fecha-hora" , @required = false })
                     @*@Html.ValidationMessageFor(f => f.FechaFalla)*@
                 </div>
             </div>
@@ -70,7 +70,7 @@
             <div class="form-group">
                 @Html.LabelFor(f => f.FechaSolucion, new { @class = "col-sm-3 control-label" })
                 <div class="col-sm-4">
-                    @Html.TextBoxFor(f => f.FechaSolucion, new { @class = "form-control  fecha-hora", @type = "datetime"})
+                    @Html.TextBoxFor(f => f.FechaSolucion, new { @class = "form-control  fecha-hora"})
                     @*@Html.ValidationMessageFor(f => f.FechaSolucion)*@
                 </div>
             </div>
@@ -213,7 +213,7 @@
             $('.fecha-hora').datetimepicker({
                 locale: 'es',
 
-                format: 'DD/MM/YYYY HH:MM:ss',
+                format: 'DD/MM/YYYY',
 
                 showClose: true,
                 sideBySide: true

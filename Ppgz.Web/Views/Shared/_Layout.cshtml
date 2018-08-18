@@ -58,6 +58,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.print.css" media="print" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.6/combined/css/gijgo.min.css" />
+   
 </head>
 <body>
 
@@ -81,15 +82,15 @@
                                 {
                                     if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == item.Split('|')[1].ToString())
                                     {
-                                        <li class=""><a class="" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                        <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
                                     }
                                     else
                                     {
-                                        <li class=""><a class="" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                        <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
                                     }
                                 }
                             }
-                            <li role="separator" class=""></li>
+                            <li role="separator" class="text-uppercase"></li>
                             <li class=""><a class="" href="@Url.Action("CambiarPassword","Account", new { Area = ""})"><i class="fa fa-key" aria-hidden="true"></i> Cambiar contraseña</a></li>
                         </ul>
                     </li>
@@ -161,10 +162,13 @@
                 <div class="container-fluid">
 
                     <div class="navbar-header">
+                        @if (!Request.Url.AbsoluteUri.Contains("Account/Login"))
+                        {
                         <button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
                             <i class="glyphicon glyphicon-align-left"></i>
-                            <span>Menu</span>
+                                <span>Menu</span>
                         </button>
+                        }
                     </div>
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -203,9 +207,10 @@
                         @TempData["FlashEdit"]
                     </div>
                 }
-
+                @if (!Request.Url.AbsoluteUri.Contains("Account/Login"))
+                {
                 <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript: volver();">Volver</button>
-                
+                }
                  <hr />
 
                 </div>
@@ -214,7 +219,7 @@
             </div>
             <footer class="footer">
                 <a href="http://www.ascensoresclimb.com/" class="article text-uppercase"><p>&copy; @DateTime.Now.Year - www.ascensoresclimb.com</p> </a> 
-                <a style="float:left;" href="https://jdsistemas.net.ve" class="article text-uppercase">Realizado por JD Sistemas </a>
+                @*<a style="float:left;" href="https://jdsistemas.net.ve" class="article text-uppercase">Realizado por JD Sistemas </a>*@
             </footer>
         </div>
     </div>
@@ -331,6 +336,7 @@
         @Scripts.Render("~/assets/vendor/bootstrap-confirmation.min.js")
         @Scripts.Render("~/assets/vendor/moment/moment-with-locales.min.js")
         @Scripts.Render("~/assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js")
+
         @Scripts.Render("~/assets/vendor/jquery.blockUI.js")
 
         @Scripts.Render("~/assets/js/bootbox.js")

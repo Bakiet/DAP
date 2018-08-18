@@ -7,7 +7,7 @@
 
 <h2 class="form-signin-heading">Herramientas en la obra</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de herramientas en la obra</i></p>*@
-
+<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarHerramientas", new { @id = TempData["idobra"] })'">Histórico</button>
 <div class="clearfix">
     <a href="@Url.Action("Crear", "AdministrarHerramientas")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Herramientas en la obra</a>
 </div>
@@ -77,19 +77,19 @@
                         <td class="text-center vert-align">@herramienta.Descripcion</td>
                         <td class="text-center vert-align">@herramienta.Cantidad</td>
                         @if(herramienta.FechaSalida != null){
-                        <td class="text-center vert-align">@herramienta.FechaSalida.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center vert-align">@herramienta.FechaSalida</td>
                             }else{
                         <td class="text-center vert-align"></td>
                             }
                         <td class="text-center vert-align">@herramienta.Propiedad</td>
                         @if(herramienta.FechaCulminacion != null){
-                        <td class="text-center vert-align">@herramienta.FechaCulminacion.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center vert-align">@herramienta.FechaCulminacion</td>
                         }else{
                         <td class="text-center vert-align"></td>
                         }
                         <td class="text-center vert-align">@herramienta.CantidadDeposito</td>
                         @if(herramienta.FechaEntrada != null){
-                        <td class="text-center vert-align">@herramienta.FechaEntrada.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center vert-align">@herramienta.FechaEntrada</td>
                         }else{
                         <td class="text-center vert-align"></td>
                         }

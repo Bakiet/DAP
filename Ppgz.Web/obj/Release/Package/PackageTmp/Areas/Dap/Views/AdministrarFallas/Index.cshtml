@@ -1,4 +1,5 @@
 ﻿@using Ppgz.Repository
+@using System.Globalization;
 @model Ppgz.Web.Areas.Dap.Models.FallaViewModel
 @{
     ViewBag.Title = "Index";
@@ -68,10 +69,24 @@ else
                         
                         <td class="text-center vert-align h4">@falla.Obra</td>
                         <td class="text-center vert-align">@falla.Equipo</td>
-                        <td class="text-center vert-align">@falla.FechaFalla</td>
+                        @if (falla.FechaFalla != null) { 
+                        <td class="text-center vert-align">@falla.FechaFalla.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
                         <td class="text-center vert-align">@falla.Componente</td>
                         <td class="text-center vert-align">@falla.StatusFalla</td>
-                        <td class="text-center vert-align">@falla.FechaSolucion</td>
+                        @if (falla.FechaSolucion != null)
+                        {
+                            <td class="text-center vert-align">@falla.FechaSolucion.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                       
                         <td class="text-center vert-align">@falla.Personal</td>
                       
                         <td class="text-center">
@@ -303,9 +318,23 @@ else
                                                        
                                                         
                                                         <td class="text-center vert-align">@falla.Equipo</td>
-                                                        <td class="text-center vert-align">@falla.FechaFalla</td>
+                                                        @if (falla.FechaFalla != null)
+                                                        {
+                                                            <td class="text-center vert-align">@falla.FechaFalla.ToString("dd/MM/yyyy")</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td class="text-center vert-align"></td>
+                                                        }
                                                         <td class="text-center vert-align">@falla.Componente</td>
-                                                        <td class="text-center vert-align">@falla.FechaSolucion</td>
+                                                        @if (falla.FechaSolucion != null)
+                                                        {
+                                                            <td class="text-center vert-align">@falla.FechaSolucion.ToString("dd/MM/yyyy")</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td class="text-center vert-align"></td>
+                                                        }
                                                         <td class="text-center vert-align">@falla.StatusFalla</td>
                                                        
                                                         <td class="text-center vert-align">@falla.Personal</td>

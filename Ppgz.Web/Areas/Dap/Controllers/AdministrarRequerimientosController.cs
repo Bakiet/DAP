@@ -202,11 +202,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Obra = requerimiento.Obra,
                 Tipo = requerimiento.Tipo,
-                FechaSolicitud = requerimiento.FechaSolicitud,
+                FechaSolicitud = requerimiento.FechaSolicitud.ToString("dd/MM/YYYY"),
                 //GerenciaResponsable = requerimiento.GerenciaResponsable,
                 Tecnicos = requerimiento.Tecnicos,
                 StatusRequerimientos = requerimiento.StatusRequerimiento,
-                FechaCumplimientoSolicitud = requerimiento.FechaCumplimientoSolicitud,
+                FechaCumplimientoSolicitud = requerimiento.FechaCumplimientoSolicitud.ToString(),
                 Descripcion = requerimiento.Descripcion,
                 AccionesEjecutadas = requerimiento.AccionesEjecutadas,
                 obra_id = requerimiento.obra_id,
@@ -254,11 +254,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Obra = requerimiento.Obra,
                 Tipo = requerimiento.Tipo,
-                FechaSolicitud = requerimiento.FechaSolicitud,
+                FechaSolicitud = requerimiento.FechaSolicitud.ToString("dd/MM/YYYY"),
                 //GerenciaResponsable = requerimiento.GerenciaResponsable,
                 Tecnicos = requerimiento.Tecnicos,
                 StatusRequerimientos = requerimiento.StatusRequerimiento,
-                FechaCumplimientoSolicitud = requerimiento.FechaCumplimientoSolicitud,
+                FechaCumplimientoSolicitud = requerimiento.FechaCumplimientoSolicitud.ToString(),
                 Descripcion = requerimiento.Descripcion,
                 AccionesEjecutadas = requerimiento.AccionesEjecutadas,
                 obra_id = requerimiento.obra_id,
@@ -299,11 +299,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Obra = requerimiento.Obra,
                 Tipo = requerimiento.Tipo,
-                FechaSolicitud = requerimiento.FechaSolicitud,
+                FechaSolicitud = requerimiento.FechaSolicitud.ToString("dd/MM/YYYY"),
                 GerenciaResponsable = requerimiento.GerenciaResponsable,
                 Tecnicos = requerimiento.Tecnicos,
                 StatusRequerimientos = requerimiento.StatusRequerimiento,
-                FechaCumplimientoSolicitud = requerimiento.FechaCumplimientoSolicitud,
+                FechaCumplimientoSolicitud = requerimiento.FechaCumplimientoSolicitud.ToString(),
                 Descripcion = requerimiento.Descripcion,
                 AccionesEjecutadas = requerimiento.AccionesEjecutadas,
                 obra_id = requerimiento.obra_id,
@@ -342,18 +342,41 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             try
             {
-                _requerimientosManager.Actualizar(Convert.ToInt32(TempData["obra_id"]),
+                DateTime? fechacumplimientoSolicitud = null;
+                if (model.FechaCumplimientoSolicitud != null)
+                {
+                    _requerimientosManager.Actualizar(DateTime.Parse(model.FechaSolicitud),
+                        DateTime.Parse(model.FechaCumplimientoSolicitud),
+                    Convert.ToInt32(TempData["obra_id"]),
                       id,
                       requerimiento.Obra,
                       model.Tipo,
-                      model.FechaSolicitud,
+
                       model.GerenciaResponsable,
                       model.Tecnicos,
                       model.StatusRequerimientos,
-                      model.FechaCumplimientoSolicitud,
+
                       model.Descripcion,
                       model.AccionesEjecutadas
                       );
+                }else
+                {
+                    _requerimientosManager.Actualizar(DateTime.Parse(model.FechaSolicitud),
+                       fechacumplimientoSolicitud,
+                    Convert.ToInt32(TempData["obra_id"]),
+                      id,
+                      requerimiento.Obra,
+                      model.Tipo,
+
+                      model.GerenciaResponsable,
+                      model.Tecnicos,
+                      model.StatusRequerimientos,
+
+                      model.Descripcion,
+                      model.AccionesEjecutadas
+                      );
+                }
+                    
 
                 HttpPostedFileBase file;
 
@@ -373,8 +396,18 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 }
 
                 TempData["FlashSuccess"] = MensajesResource.INFO_Requerimientos_ActualizadoCorrectamente;
-              //  return RedirectToAction("Editar", "AdministrarRequerimientos", id);
-                return RedirectToAction("Editar", "AdministrarRequerimientos", new { @Id = id });
+                //  return RedirectToAction("Editar", "AdministrarRequerimientos", id);
+                if (obra != null)
+                {
+                    return RedirectToAction("Fallas", "AdministrarFallas", new { @id = TempData["obra_id"] });
+                }
+                else
+                {
+                    return RedirectToAction("Index", "AdministrarRequerimientos");
+                }
+               
+               
+                
             }
             catch (BusinessException businessEx)
             {
@@ -421,35 +454,83 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             // if (!ModelState.IsValid) return View(model);
 
             requerimientos re = new requerimientos();
-
-            try
+            DateTime? fechacumplimientoSolicitud = null;
+            if (model.FechaCumplimientoSolicitud != null)
             {
-                if(TempData["obra"] != null) { 
-                     re = _requerimientosManager.Crear(Convert.ToInt32(TempData["obra"]),
-                          obra.Nombre,
-                          model.Tipo,
-                          model.FechaSolicitud,
-                          model.GerenciaResponsable,
-                          model.Tecnicos,
-                          model.StatusRequerimientos,
-                          model.FechaCumplimientoSolicitud,
-                          model.Descripcion,
-                          model.AccionesEjecutadas
-                    );
-                }else
+                if (TempData["obra"] != null)
                 {
-                     re = _requerimientosManager.Crear(obranombre.Id,
-                          model.Obra,
-                          model.Tipo,
-                          model.FechaSolicitud,
-                          model.GerenciaResponsable,
-                          model.Tecnicos,
-                          model.StatusRequerimientos,
-                          model.FechaCumplimientoSolicitud,
-                          model.Descripcion,
-                          model.AccionesEjecutadas
-                    );
+                    re = _requerimientosManager.Crear(DateTime.Parse(model.FechaSolicitud),
+                        DateTime.Parse(model.FechaCumplimientoSolicitud),
+                        Convert.ToInt32(TempData["obra"]),
+                         obra.Nombre,
+                         model.Tipo,
+
+
+                         model.GerenciaResponsable,
+                         model.Tecnicos,
+                         model.StatusRequerimientos,
+
+
+                         model.Descripcion,
+                         model.AccionesEjecutadas
+                   );
                 }
+                else
+                {
+                    re = _requerimientosManager.Crear(DateTime.Parse(model.FechaSolicitud),
+                        DateTime.Parse(model.FechaCumplimientoSolicitud),
+                        obranombre.Id,
+                         model.Obra,
+                         model.Tipo,
+
+                         model.GerenciaResponsable,
+                         model.Tecnicos,
+                         model.StatusRequerimientos,
+
+                         model.Descripcion,
+                         model.AccionesEjecutadas
+                   );
+                }
+            }else
+            {
+                if (TempData["obra"] != null)
+                {
+                    re = _requerimientosManager.Crear(DateTime.Parse(model.FechaSolicitud),
+                        fechacumplimientoSolicitud,
+                        Convert.ToInt32(TempData["obra"]),
+                         obra.Nombre,
+                         model.Tipo,
+
+
+                         model.GerenciaResponsable,
+                         model.Tecnicos,
+                         model.StatusRequerimientos,
+
+
+                         model.Descripcion,
+                         model.AccionesEjecutadas
+                   );
+                }
+                else
+                {
+                    re = _requerimientosManager.Crear(DateTime.Parse(model.FechaSolicitud),
+                       fechacumplimientoSolicitud,
+                        obranombre.Id,
+                         model.Obra,
+                         model.Tipo,
+
+                         model.GerenciaResponsable,
+                         model.Tecnicos,
+                         model.StatusRequerimientos,
+
+                         model.Descripcion,
+                         model.AccionesEjecutadas
+                   );
+                }
+            }
+                try
+            {
+                
                 HttpPostedFileBase file;
 
                 for (int i = 0; i < Request.Files.Count; i++)

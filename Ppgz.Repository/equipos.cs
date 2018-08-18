@@ -34,5 +34,6 @@ namespace Ppgz.Repository
         public string Plano { get; set; }
         public int obra_id { get; set; }
         public Nullable<int> CantidadPersonas { get; set; }
+        public Nullable<System.DateTime> FechaGarantia { get; set; }
     }
 }

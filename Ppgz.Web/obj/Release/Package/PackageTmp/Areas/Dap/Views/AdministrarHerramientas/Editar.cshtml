@@ -106,7 +106,7 @@
                             
                             <p>
                                 <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" href="@Url.Content(Archivos.url)" target="_blank">@nombrearchivo</a>
-                                <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarHerramientas", new { @archivo = Archivos.url, @tipo = "herramientas", @caracteristica = "archivo", @id = TempData["previo"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarHerramientas", new { @archivo = Archivos.url, @tipo = "herramientas", @caracteristica = "archivo", @id = TempData["OBRA_ID"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
                             </p>
                         
                        

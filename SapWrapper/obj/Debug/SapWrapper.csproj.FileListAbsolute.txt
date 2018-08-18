@@ -102,3 +102,16 @@ C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Debug\EntityFra
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\obj\Debug\SapWrapper.dll
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\obj\Debug\SapWrapper.pdb
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\SapWrapper.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\SapWrapper.pdb
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\EntityFramework.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\Ppgz.Repository.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\SAPConnectionManager.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\MySql.Data.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\sapnco.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\sapnco_utils.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Debug\EntityFramework.xml
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\obj\Debug\SapWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\obj\Debug\SapWrapper.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\obj\Debug\SapWrapper.pdb

@@ -270,8 +270,47 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
                     file = Request.Files[i];
                     var d = Request.Files.AllKeys[i].ToString();
-
-
+                    
+                    if (d == "Pdf-fechainspeccion" && file.FileName != "")
+                    {
+                        Url = CargarPdf(file);
+                        _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "fechainspeccion");
+                    }
+                    if (d == "Pdf-CartaPresentacionFotografia" && file.FileName != "")
+                    {
+                        Url = CargarPdf(file);
+                        _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "CartaPresentacionFotografia");
+                    }
+                    if (d == "Pdf-FechaIngresoProduccionFotografia" && file.FileName != "")
+                    {
+                        Url = CargarPdf(file);
+                        _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "FechaIngresoProduccionFotografia");
+                    }
+                    if (d == "Pdf-EstatusConstruccionFotografia" && file.FileName != "")
+                    {
+                        Url = CargarPdf(file);
+                        _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "EstatusConstruccionFotografia");
+                    }
+                    if (d == "Pdf-IngresoDepartamentoIngManFotografia" && file.FileName != "")
+                    {
+                        Url = CargarPdf(file);
+                        _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "IngresoDepartamentoIngManFotografia");
+                    }
+                    if (d == "Pdf-SolicitudPagoInicialFabricaFotografia" && file.FileName != "")
+                    {
+                        Url = CargarPdf(file);
+                        _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "SolicitudPagoInicialFabricaFotografia");
+                    }
+                    if (d == "Pdf-FechaSalidaFabricaFotografia" && file.FileName != "")
+                    {
+                        Url = CargarPdf(file);
+                        _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "FechaSalidaFabricaFotografia");
+                    }
+                    if (d == "Pdf-FechaSalidaBuqueFotografia" && file.FileName != "")
+                    {
+                        Url = CargarPdf(file);
+                        _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "FechaSalidaBuqueFotografia");
+                    }
                     if (d == "Pdf-FechaDescargaResguardoFotografia" && file.FileName != "")
                     {
                         Url = CargarPdf(file);
@@ -297,11 +336,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                         Url = CargarPdf(file);
                         _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "FechaConstruccionFotografia");
                     }
-                    if (d == "Pdf-FechaSalidaBuqueFotografia" && file.FileName != "")
-                    {
-                        Url = CargarPdf(file);
-                        _obrasManager.AgregarArchivos(previo.Id, Url, "previos", "FechaSalidaBuqueFotografia");
-                    }
+                   
                     if (d == "Pdf-FechaLlegadaBuqueFotografia" && file.FileName != "")
                     {
                         Url = CargarPdf(file);

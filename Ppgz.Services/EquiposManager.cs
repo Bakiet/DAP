@@ -74,7 +74,7 @@ namespace Ppgz.Services
         public equipos Actualizar(int obraid,int id, string nombre = null, string marca = null, string modelo = null,
 			string referencia = null, string dimensionescabina = null, string dimensioneshueco = null, string carganominal = null, string velocidad = null
 			, string recorrido = null, string paradas = null, string accesos = null, string voltajedered = null, string potenciademaquina = null, string tipodemaniobra = null
-			, string numerodeguayas = null, string cantidadpersonas = null, string fotografia = null, string plano = null)
+			, string numerodeguayas = null, string cantidadpersonas = null, string fotografia = null, string plano = null, DateTime? FechaGarantia = null)
 		{
 
 			var equipos = _db.equipos.Find(id);
@@ -84,86 +84,67 @@ namespace Ppgz.Services
 			   // throw new BusinessException(CommonMensajesResource.ERROR_Usuario_Id);
 				
 			}
-			if (nombre != null)
-			{
+			
 				
 				equipos.Nombre = nombre;
-			}
-			if (marca != null)
-			{
+		
+			
 				
 				equipos.Marca = marca;
-			}
-			if (modelo != null)
-			{
+		
 				
 				equipos.Modelo = modelo;
-			}
-			if (referencia != null)
-			{
+			
 			
 				equipos.Referencia = referencia;
-			}
-			if (dimensionescabina != null)
-			{
+			
 				
 				equipos.DimensionesCabina = dimensionescabina;
-			}
-			if (dimensioneshueco != null)
-			{
+			
+			
 				
 				equipos.DimensionesHueco = dimensioneshueco;
-			}
-			if (carganominal != null)
-			{
+			
+			
 				
 				equipos.CargaNominal = carganominal;
-			}
-			if (velocidad != null)
-			{
+			
+			
 				
 				equipos.Velocidad = velocidad;
-			}
-			if (recorrido != null)
-			{
+			
 				
 				equipos.Recorrido = recorrido;
-			}
-			if (paradas != null)
-			{
+			
 			
 				equipos.Paradas = paradas;
-			}
-			if (accesos != null)
-			{
+			
 				
 				equipos.Accesos = accesos;
-			}
-			if (voltajedered != null)
-			{
+			
+			
 				
 				equipos.VoltajeDeRed = voltajedered;
-			}
-			if (potenciademaquina != null)
-			{
+			
+			
 			
 				equipos.PotenciaDeMaquina = potenciademaquina;
-			}
-			if (tipodemaniobra != null)
-			{
+			
+		
 			
 				equipos.TipoDeManiobra = tipodemaniobra;
-			}
-			if (numerodeguayas != null)
-			{
+			
+			
 				equipos.NumeroDeGuayas = numerodeguayas;
-			}
+			
 
-			if (fotografia != null)
+			
 				equipos.Fotografia = fotografia;
 
-			if (plano != null)
+		
 				equipos.Plano = plano;
+
+            equipos.FechaGarantia = FechaGarantia;
 
             equipos.CantidadPersonas = Convert.ToInt32(cantidadpersonas);
 
@@ -180,7 +161,7 @@ namespace Ppgz.Services
 		public equipos Crear(int obraid,string nombre = null, string marca = null, string modelo = null,
 			string referencia = null, string dimensionescabina = null, string dimensioneshueco = null, string carganominal = null, string velocidad = null
 			, string recorrido = null, string paradas = null, string accesos = null, string voltajedered = null, string potenciademaquina = null, string tipodemaniobra = null
-			, string numerodeguayas = null, string cantidadpersonas = null, string fotografia = null, string plano = null)
+			, string numerodeguayas = null, string cantidadpersonas = null, string fotografia = null, string plano = null, DateTime? FechaGarantia = null)
 		{
 		   
 
@@ -208,7 +189,8 @@ namespace Ppgz.Services
                     CantidadPersonas = Convert.ToInt32(cantidadpersonas),
 					Fotografia = fotografia,
 					Plano = plano,
-                    obra_id = obraid
+                    obra_id = obraid,
+                    FechaGarantia = FechaGarantia
 				};
 
                 var equipoid = _db.equipos.Add(equipo);

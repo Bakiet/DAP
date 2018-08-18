@@ -12,7 +12,8 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string Tipo { get; set; }
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha de Solicitud")]
-        public DateTime? FechaSolicitud { get; set; }
+        //[DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:DD/MM/YYYY}", ApplyFormatInEditMode = true)]
+        public string FechaSolicitud { get; set; }
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Gerencia Responsable")]
         public string GerenciaResponsable { get; set; }
@@ -24,7 +25,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string StatusRequerimientos { get; set; }
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha de Cumplimiento de Solicitud")]
-        public DateTime? FechaCumplimientoSolicitud { get; set; }
+        public string FechaCumplimientoSolicitud { get; set; }
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Descripción")]
         public string Descripcion { get; set; }

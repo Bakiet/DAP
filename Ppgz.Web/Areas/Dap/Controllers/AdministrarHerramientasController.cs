@@ -74,9 +74,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             TempData["previo_id"] = id;
             TempData["previo"] = id;
             TempData.Keep();
-            var equipo = _equiposManager.Find(previo.equipo_id);
+            //var equipo = _equiposManager.Find(previo.equipo_id);
 
-            ViewBag.obra = _obrasManager.Find(equipo.obra_id);
+            ViewBag.obra = _obrasManager.Find(id);
 
             ViewBag.Herramientas = _herramientasManager.GetHistorico(id);
             return View("Index");
@@ -87,7 +87,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
            // var previo = _previosManager.FindPorEquipo(equipo.Id);
 
             ViewBag.obra = _obrasManager.Find(id);
-
+            TempData["idobra"] = id;
+            TempData.Keep();
             ViewBag.Herramientas = _herramientasManager.GetHerramientas(id);
             return View("Index");
         }
@@ -119,16 +120,16 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var previoid = TempData["previo_id"];
             TempData["previo"] = previoid;
             TempData.Keep();
-            var previo = _previosManager.Find(Convert.ToInt32(previoid));
+            //var previo = _previosManager.Find(Convert.ToInt32(previoid));
 
-            var equipo = _equiposManager.Find(previo.equipo_id);
+           // var equipo = _equiposManager.Find(previo.equipo_id);
 
-            var obra = _obrasManager.Find(equipo.obra_id);
-
+            var obra = _obrasManager.Find(Convert.ToInt32(TempData["idobra"]));
+            TempData.Keep();
             //model.obra_id = Convert.ToInt32(TempData["OBRA_ID"]);
 
-            TempData["OBRA_ID"] = equipo.obra_id;
-            TempData.Keep();
+           // TempData["OBRA_ID"] = equipo.obra_id;
+           // TempData.Keep();
             /*
             ViewBag.Obras =
              new SelectList(_obrasManager.FindAll(), "id", "nombre");
@@ -143,12 +144,13 @@ namespace Ppgz.Web.Areas.Dap.Controllers
         public ActionResult Editar(int id)
         {
             var herramienta = _herramientasManager.Find(id);
-
+            TempData["HERRAMIENTA_ID"] = id;
+            TempData.Keep();
             var obra = _obrasManager.Find(herramienta.obra_id);
             ViewBag.Obras =
              new SelectList(_obrasManager.FindObras(obra.Id), "id", "nombre", obra.Id);
 
-            ViewBag.Archivos = _obrasManager.FindArchivos(id,"herramientas","archivo");
+            ViewBag.Archivos = _obrasManager.FindArchivos(id,"archivo", "herramientas");
 
             TempData["OBRA_ID"] = obra.Id;
             TempData.Keep();
@@ -163,11 +165,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Descripcion = herramienta.Descripcion,
                 Cantidad = herramienta.Cantidad.ToString(),
-                FechaSalida = herramienta.FechaSalida.ToString(),
+                FechaSalida = herramienta.FechaSalida,
                 Propiedad = herramienta.Propiedad,
-                FechaCulminacion = herramienta.FechaCulminacion.ToString(),
+                FechaCulminacion = herramienta.FechaCulminacion,
                 CantidadDeposito = herramienta.CantidadDeposito,
-                FechaEntrada = herramienta.FechaEntrada.ToString(),
+                FechaEntrada = herramienta.FechaEntrada,
                 SupervisorObra = herramienta.SupervisorObra,
                 TecnicoResponsable = herramienta.TecnicoResponsable,
                 Observaciones = herramienta.Observaciones,
@@ -203,11 +205,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Descripcion = herramienta.Descripcion,
                 Cantidad = herramienta.Cantidad.ToString(),
-                FechaSalida = herramienta.FechaSalida.ToString(),
+                FechaSalida = herramienta.FechaSalida,
                 Propiedad = herramienta.Propiedad,
-                FechaCulminacion = herramienta.FechaCulminacion.ToString(),
+                FechaCulminacion = herramienta.FechaCulminacion,
                 CantidadDeposito = herramienta.CantidadDeposito,
-                FechaEntrada = herramienta.FechaEntrada.ToString(),
+                FechaEntrada = herramienta.FechaEntrada,
                 SupervisorObra = herramienta.SupervisorObra,
                 TecnicoResponsable = herramienta.TecnicoResponsable,
                 Observaciones = herramienta.Observaciones,
@@ -282,7 +284,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 }
                 TempData.Keep();
                  TempData["FlashSuccess"] = MensajesResource.INFO_Herramientas_ActualizadoCorrectamente;
-                return RedirectToAction("Herramientas", "AdministrarHerramientas", new { @id = TempData["previo_id"] });
+                return RedirectToAction("HerramientasDesdeObra", "AdministrarHerramientas", new { @id = TempData["OBRA_ID"] });
             }
             catch (BusinessException businessEx)
             {
@@ -320,10 +322,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 HttpPostedFileBase pdf = Request.Files["Pdf"];
 
-               
-
-                model.obra_id = Convert.ToInt32(TempData["OBRA_ID"]);
-
+                ViewBag.Obras =
+             new SelectList(_obrasManager.FindObras(Convert.ToInt32(TempData["idobra"])), "id", "nombre", TempData["idobra"]);
+                TempData.Keep();
+                model.obra_id = Convert.ToInt32(TempData["idobra"]);
+                TempData.Keep();
                 //if (model.Descripcion == null)
                 //{
                 //    model.Descripcion = "null";
@@ -366,7 +369,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 //}
                 herramientas herramienta = new herramientas();
 
-                herramienta =  _herramientasManager.Crear(Convert.ToInt32(TempData["previo"]), Convert.ToInt32(TempData["OBRA_ID"]),
+                herramienta =  _herramientasManager.Crear(Convert.ToInt32(TempData["idobra"]),
                       model.Descripcion,
                       model.Cantidad,
                       model.FechaSalida,
@@ -397,7 +400,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
                 TempData.Keep();
                 TempData["FlashSuccess"] = MensajesResource.INFO_Herramientas_CreadoCorrectamente;
-                return RedirectToAction("Herramientas", "AdministrarHerramientas", new { @id = TempData["previo"] });
+                return RedirectToAction("HerramientasDesdeObra", "AdministrarHerramientas", new { @id = TempData["idobra"] });
             }
             catch (BusinessException businessEx)
             {
@@ -426,12 +429,12 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 _herramientasManager.Eliminar(id);
                 TempData["FlashSuccess"] = MensajesResource.INFO_Herramientas_EliminadoCorrectamente;
-                return RedirectToAction("Herramientas", "AdministrarHerramientas", new { @id = TempData["previo"] });
+                return RedirectToAction("HerramientasDesdeObra", "AdministrarHerramientas", new { @id = TempData["idobra"] });
             }
             catch (BusinessException businessEx)
             {
                 TempData["FlashError"] = businessEx.Message;
-                return RedirectToAction("Index");
+                return RedirectToAction("HerramientasDesdeObra", "AdministrarHerramientas", new { @id = TempData["idobra"] });
 
             }
             catch (Exception e)
@@ -445,7 +448,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 CommonManager.WriteAppLog(log, TipoMensaje.Error);
 
                 TempData["FlashError"] = MensajesResource.ERROR_General;
-                return RedirectToAction("Index");
+                return RedirectToAction("HerramientasDesdeObra", "AdministrarHerramientas", new { @id = TempData["idobra"] });
             }
 
         }
@@ -456,12 +459,12 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 _obrasManager.EliminarArchivo(archivo, tipo, caracteristica);
                 TempData["FlashSuccess"] = MensajesResource.INFO_Obras_ActualizadoCorrectamente;
-                return RedirectToAction("Herramientas", "AdministrarHerramientas", new { @id = TempData["previo"] });
+                return RedirectToAction("Editar", "AdministrarHerramientas", new { @id = TempData["HERRAMIENTA_ID"] });
             }
             catch (BusinessException businessEx)
             {
                 TempData["FlashError"] = businessEx.Message;
-                return RedirectToAction("Herramientas", "AdministrarHerramientas", new { @id = TempData["previo"] });
+                return RedirectToAction("Editar", "AdministrarHerramientas", new { @id = TempData["HERRAMIENTA_ID"] });
 
             }
             catch (Exception e)
@@ -475,7 +478,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 CommonManager.WriteAppLog(log, TipoMensaje.Error);
 
                 TempData["FlashError"] = MensajesResource.ERROR_General;
-                return RedirectToAction("Herramientas", "AdministrarHerramientas", new { @id = TempData["previo"] });
+                return RedirectToAction("Editar", "AdministrarHerramientas", new { @id = TempData["HERRAMIENTA_ID"] });
             }
 
         }

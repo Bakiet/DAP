@@ -17,7 +17,7 @@ namespace Ppgz.Repository
         public int Id { get; set; }
         public string Obra { get; set; }
         public string Tipo { get; set; }
-        public Nullable<System.DateTime> FechaSolicitud { get; set; }
+        public System.DateTime FechaSolicitud { get; set; }
         public string GerenciaResponsable { get; set; }
         public string Tecnicos { get; set; }
         public string StatusRequerimiento { get; set; }

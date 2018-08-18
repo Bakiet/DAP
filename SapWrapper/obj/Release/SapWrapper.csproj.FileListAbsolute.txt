@@ -50,3 +50,16 @@ C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\bin\Release\EntityF
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\obj\Release\SapWrapper.csprojResolveAssemblyReference.cache
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\obj\Release\SapWrapper.dll
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SapWrapper\obj\Release\SapWrapper.pdb
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\SapWrapper.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\SapWrapper.pdb
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\EntityFramework.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\Ppgz.Repository.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\SAPConnectionManager.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\MySql.Data.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\sapnco.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\sapnco_utils.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\Ppgz.Repository.pdb
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\bin\Release\EntityFramework.xml
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\obj\Release\SapWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\obj\Release\SapWrapper.dll
+C:\Users\Juan\Documents\GitHub\DAP\SapWrapper\obj\Release\SapWrapper.pdb

@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using System;
 namespace Ppgz.Web.Areas.Dap.Models
 {
     public class HerramientaViewModel
@@ -15,7 +15,7 @@ namespace Ppgz.Web.Areas.Dap.Models
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha de Salida")]
-        public string FechaSalida { get; set; }
+        public DateTime? FechaSalida { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Propiedad")]
@@ -23,7 +23,7 @@ namespace Ppgz.Web.Areas.Dap.Models
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha de Culminacion")]
-        public string FechaCulminacion { get; set; }
+        public DateTime? FechaCulminacion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Cantidad Deposito")]
@@ -31,7 +31,7 @@ namespace Ppgz.Web.Areas.Dap.Models
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha Entrada")]
-        public string FechaEntrada { get; set; }
+        public DateTime? FechaEntrada { get; set; }
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Supervisor de Obra")]

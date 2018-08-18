@@ -139,6 +139,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    @Html.LabelFor(o => o.FechaGarantia, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(o => o.FechaGarantia, new { @class = "form-control fecha-hora"})
+                        @Html.ValidationMessageFor(o => o.FechaGarantia)
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Fotografias</label>
                     <div class="col-sm-4">
                         <div>

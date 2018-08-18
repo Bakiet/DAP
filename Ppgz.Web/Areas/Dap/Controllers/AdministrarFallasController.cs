@@ -198,14 +198,14 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var fallaModel = new FallaViewModel()
             {
                 id = id,
-                FechaFalla = falla.FechaFalla,
+                FechaFalla = falla.FechaFalla.ToString("dd/MM/YYYY"),
                 //Obra = falla.Obra.ToList().,
                 Equipo = falla.Equipo,
                 Tipo = falla.Tipo,
                 Componente = falla.Componente,
                 Personal = falla.Personal,
                 StatusFalla = falla.StatusFalla,
-                FechaSolucion = falla.FechaSolucion,
+                FechaSolucion = falla.FechaSolucion.ToString(),
                 NumeroReporte = falla.NumeroReporte,
                 Descripcion = falla.Descripcion,
                 //Condicion = falla.Condicion,
@@ -234,41 +234,46 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             ViewBag.Obras =
                new SelectList(_fallasManager.FindObras(), "nombre", "nombre", falla.Obra);
 
-            var fallaequiposobra = _fallasManager.FindEquiposPorObra(id);
+            var fallaequiposobra = _fallasManager.FindEquiposPorObra(falla.obra_id);
 
             ViewBag.ArchivosCorreo = _obrasManager.FindCorreosFallas(id);
 
 
-            if (fallaequiposobra != null)
-            {
+          //  if (fallaequiposobra.Count > 0)
+         //   {
                 ViewBag.Equipos =
                    new SelectList(fallaequiposobra, "nombre", "nombre", falla.Equipo);
-            }
-            else
-            {
+          //  }
+           // else
+          //  {
                 ViewBag.Equipos =
-               new SelectList(_fallasManager.FindEquipos(), "nombre", "nombre");
-            }
+               new SelectList(_fallasManager.FindEquiposTipo(), "Descripcion", "Descripcion", falla.Equipo);
+           // }
 
-            ViewBag.TipoFallas =
+            // ViewBag.TipoFallas =
+            //   new SelectList(_fallasManager.FindTipoFallas(), "descripcion", "descripcion", falla.Tipo);
+
+
+            
+                ViewBag.TipoFallas =
                new SelectList(_fallasManager.FindTipoFallas(), "descripcion", "descripcion", falla.Tipo);
 
-
-            if (falla.Tipo == "Electrónica")
-            {
-                ViewBag.Componentes =
-                new SelectList(_fallasManager.FindComponentesElectronicos(), "descripcion", "descripcion", falla.Componente);
-            }
-            if (falla.Tipo == "Mecánica")
-            {
-                ViewBag.Componentes =
-                new SelectList(_fallasManager.FindComponentesMecanicos(), "descripcion", "descripcion", falla.Componente);
-            }
-            else
-            {
-                ViewBag.Componentes =
-                new SelectList(_fallasManager.FindComponentes(), "descripcion", "descripcion", falla.Componente);
-            }
+                if (falla.Tipo == "Electrónica")
+                {
+                    ViewBag.Componentes =
+                    new SelectList(_fallasManager.FindComponentesElectronicos(), "descripcion", "descripcion", falla.Componente);
+                }
+                if (falla.Tipo == "Mecánica")
+                {
+                    ViewBag.Componentes =
+                    new SelectList(_fallasManager.FindComponentesMecanicos(), "descripcion", "descripcion", falla.Componente);
+                }
+                else
+                {
+                    ViewBag.Componentes =
+                    new SelectList(_fallasManager.FindComponentes(), "descripcion", "descripcion", falla.Componente);
+                }
+           
             /*
 
              ViewBag.Componentes =
@@ -289,14 +294,14 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var fallaModel = new FallaViewModel()
             {
                 id = id,
-                FechaFalla = falla.FechaFalla,
+                FechaFalla = falla.FechaFalla.ToString("dd/MM/YYYY"),
                 //Obra = falla.Obra.ToList().,
                 Equipo = falla.Equipo,
                 Tipo = falla.Tipo,
                 Componente = falla.Componente,
                 Personal = falla.Personal,
                 StatusFalla = falla.StatusFalla,
-                FechaSolucion = falla.FechaSolucion,
+                FechaSolucion = falla.FechaSolucion.ToString(),
                 NumeroReporte = falla.NumeroReporte,
                 Descripcion = falla.Descripcion,
                 Condicion = falla.Condicion,
@@ -379,14 +384,14 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var fallaModel = new FallaViewModel()
             {
                 id = id,
-                FechaFalla = falla.FechaFalla,
+                FechaFalla = falla.FechaFalla.ToString("dd/MM/YYYY"),
                 //Obra = falla.Obra.ToList().,
                 Equipo = falla.Equipo,
                 Tipo = falla.Tipo,
                 Componente = falla.Componente,
                 Personal = falla.Personal,
                 StatusFalla = falla.StatusFalla,
-                FechaSolucion = falla.FechaSolucion,
+                FechaSolucion = falla.FechaSolucion.ToString(),
                 NumeroReporte = falla.NumeroReporte,
                 Descripcion = falla.Descripcion,
                 Condicion = falla.Condicion,
@@ -460,26 +465,103 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             
             try
             {
-                _fallasManager.Actualizar(
-                      id,
-                      model.FechaFalla,
-                      model.FechaSolucion,
-                      model.Obra,
-                      model.Equipo,
-                      model.Tipo,
-                      model.Componente,
-                      model.Personal,
-                      model.StatusFalla,
-                      model.NumeroReporte,
-                      model.Descripcion,
-                      model.Condicion,
-                      model.AccionesTomadas,
-                      model.AccionesRecomendadas,
-                      model.Duracion,
-                      model.PersonaReporte,
-                      model.GerenciaResponsable
-                      );
+                DateTime? fallasolucion = null;
 
+                if (model.FechaSolucion == null)
+                {
+                    if (falla.Obra == null)
+                    {
+                        _fallasManager.Actualizar(
+                              id,
+                               DateTime.Parse(model.FechaFalla),
+                               fallasolucion,
+                              model.Obra,
+                              model.Equipo,
+                              model.Tipo,
+                              model.Componente,
+                              model.Personal,
+                              model.StatusFalla,
+                              model.NumeroReporte,
+                              model.Descripcion,
+                              model.Condicion,
+                              model.AccionesTomadas,
+                              model.AccionesRecomendadas,
+                              model.Duracion,
+                              model.PersonaReporte,
+                              model.GerenciaResponsable
+                              );
+                    }
+                    else
+                    {
+                        _fallasManager.Actualizar(
+                         id,
+                          DateTime.Parse(model.FechaFalla),
+                          fallasolucion,
+                         falla.Obra,
+                         model.Equipo,
+                         model.Tipo,
+                         model.Componente,
+                         model.Personal,
+                         model.StatusFalla,
+                         model.NumeroReporte,
+                         model.Descripcion,
+                         model.Condicion,
+                         model.AccionesTomadas,
+                         model.AccionesRecomendadas,
+                         model.Duracion,
+                         model.PersonaReporte,
+                         model.GerenciaResponsable
+                         );
+                    }
+                }
+                else
+                {
+                    if (falla.Obra == null)
+                    {
+                        _fallasManager.Actualizar(
+                              id,
+                               DateTime.Parse(model.FechaFalla),
+                                  DateTime.Parse(model.FechaSolucion),
+                              model.Obra,
+                              model.Equipo,
+                              model.Tipo,
+                              model.Componente,
+                              model.Personal,
+                              model.StatusFalla,
+                              model.NumeroReporte,
+                              model.Descripcion,
+                              model.Condicion,
+                              model.AccionesTomadas,
+                              model.AccionesRecomendadas,
+                              model.Duracion,
+                              model.PersonaReporte,
+                              model.GerenciaResponsable
+                              );
+                    }
+                    else
+                    {
+                        _fallasManager.Actualizar(
+                         id,
+                          DateTime.Parse(model.FechaFalla),
+                              DateTime.Parse(model.FechaSolucion),
+                         falla.Obra,
+                         model.Equipo,
+                         model.Tipo,
+                         model.Componente,
+                         model.Personal,
+                         model.StatusFalla,
+                         model.NumeroReporte,
+                         model.Descripcion,
+                         model.Condicion,
+                         model.AccionesTomadas,
+                         model.AccionesRecomendadas,
+                         model.Duracion,
+                         model.PersonaReporte,
+                         model.GerenciaResponsable
+                         );
+                    }
+                }
+                  
                 HttpPostedFileBase file;
 
                 for (int i = 0; i < Request.Files.Count; i++)
@@ -498,7 +580,17 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 }
 
                 TempData["FlashSuccess"] = MensajesResource.INFO_Fallas_ActualizadoCorrectamente;
-                return RedirectToAction("Editar", "AdministrarFallas", new { @Id = id } );
+               // return RedirectToAction("Editar", "AdministrarFallas", new { @Id = id } );
+
+                if (obra != null)
+                {
+                    return RedirectToAction("Fallas", "AdministrarFallas", new { @id = obra.Id });
+                }
+                else
+                {
+                    return RedirectToAction("Index", "AdministrarFallas");
+                }
+
             }
             catch (BusinessException businessEx)
             {
@@ -530,6 +622,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
            var db = new EntitiesDap();
            
                 TempData["OBRA_ID"] = id;
+            TempData.Keep();
                var obra = _obrasManager.Find(id);
 
                 ViewBag.Obras =
@@ -723,32 +816,58 @@ namespace Ppgz.Web.Areas.Dap.Controllers
               model.StatusList = new SelectList(db.fallas_status, "id", "descripcion");*/
 
             //  if (!ModelState.IsValid) return View(model);
+           
+           
 
-            fallas falla = new fallas();
 
-            
             try
             {
+                DateTime? fallasolucion = null;
+                fallas falla = new fallas();
+                if (model.FechaSolucion == null)
+                {
+                    falla = _fallasManager.Crear(Convert.ToInt32(TempData["obraidactual"]),
+                         DateTime.Parse(model.FechaFalla),
+                        fallasolucion,
+                        obranombre.Nombre,
+                        model.Equipo,
+                        model.Tipo,
+                        model.Componente,
+                        model.Personal,
+                        model.StatusFalla,
+                        model.NumeroReporte,
+                        model.Descripcion,
+                        model.Condicion,
+                        model.AccionesTomadas,
+                        model.AccionesRecomendadas,
+                        model.Duracion,
+                        model.PersonaReporte,
+                        model.GerenciaResponsable);
+                }
+                else
+                {
+                    falla = _fallasManager.Crear(Convert.ToInt32(TempData["obraidactual"]),
+                         DateTime.Parse(model.FechaFalla),
+                          DateTime.Parse(model.FechaSolucion),
+                        obranombre.Nombre,
+                        model.Equipo,
+                        model.Tipo,
+                        model.Componente,
+                        model.Personal,
+                        model.StatusFalla,
+                        model.NumeroReporte,
+                        model.Descripcion,
+                        model.Condicion,
+                        model.AccionesTomadas,
+                        model.AccionesRecomendadas,
+                        model.Duracion,
+                        model.PersonaReporte,
+                        model.GerenciaResponsable);
+                }
                 //if (TempData["OBRA_ID"] != null)
                 //{
-                falla = _fallasManager.Crear(Convert.ToInt32(TempData["obraidactual"]),
-                    model.FechaFalla,
-                    model.FechaSolucion,
-                    obranombre.Nombre,
-                    model.Equipo,
-                    model.Tipo,
-                    model.Componente,
-                    model.Personal,
-                    model.StatusFalla,
-                    model.NumeroReporte,
-                    model.Descripcion,
-                    model.Condicion,
-                    model.AccionesTomadas,
-                    model.AccionesRecomendadas,
-                    model.Duracion,
-                    model.PersonaReporte,
-                    model.GerenciaResponsable);
-               
+
+
 
                 HttpPostedFileBase file;
 
@@ -848,13 +967,17 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             //  if (!ModelState.IsValid) return View(model);
             fallas falla = new fallas();
+
+
             try
             {
-                //if (TempData["OBRA_ID"] != null)
-                //{
+                DateTime? fallasolucion = null;
+               
+                if (model.FechaSolucion == null)
+                {
                     falla = _fallasManager.Crear(Convert.ToInt32(TempData["OBRA_ID"]),
-                        model.FechaFalla,
-                        model.FechaSolucion,
+                         DateTime.Parse(model.FechaFalla),
+                        fallasolucion,
                         obranombre.Nombre,
                         model.Equipo,
                         model.Tipo,
@@ -869,28 +992,27 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                         model.Duracion,
                         model.PersonaReporte,
                         model.GerenciaResponsable);
-               // }
-                //else
-                //{
-                //    falla = _fallasManager.Crear(obra_id.Id,
-                //        model.FechaFalla,
-                //        model.Obra,
-                //        model.Equipo,
-                //        model.Tipo,
-                //        model.Componente,
-                //        model.Personal,
-                //        model.StatusFalla,
-                //        model.FechaSolucion,
-                //        model.NumeroReporte,
-                //        model.Descripcion,
-                //        model.Condicion,
-                //        model.AccionesTomadas,
-                //        model.AccionesRecomendadas,
-                //        model.Duracion,
-                //        model.PersonaReporte,
-                //        model.GerenciaResponsable);
-                //}
-                
+                }
+                else
+                {
+                    falla = _fallasManager.Crear(Convert.ToInt32(TempData["OBRA_ID"]),
+                         DateTime.Parse(model.FechaFalla),
+                          DateTime.Parse(model.FechaSolucion),
+                        obranombre.Nombre,
+                        model.Equipo,
+                        model.Tipo,
+                        model.Componente,
+                        model.Personal,
+                        model.StatusFalla,
+                        model.NumeroReporte,
+                        model.Descripcion,
+                        model.Condicion,
+                        model.AccionesTomadas,
+                        model.AccionesRecomendadas,
+                        model.Duracion,
+                        model.PersonaReporte,
+                        model.GerenciaResponsable);
+                }
 
                 HttpPostedFileBase file;
 

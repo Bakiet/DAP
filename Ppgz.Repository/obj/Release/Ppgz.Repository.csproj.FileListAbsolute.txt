@@ -43,3 +43,14 @@ C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\bin\Release\En
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\obj\Release\Ppgz.Repository.csprojResolveAssemblyReference.cache
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\obj\Release\Ppgz.Repository.dll
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\Ppgz.Repository\obj\Release\Ppgz.Repository.pdb
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Release\Ppgz.Repository.dll.config
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Release\Ppgz.Repository.dll
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Release\Ppgz.Repository.pdb
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Release\EntityFramework.dll
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Release\MySql.Data.dll
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Release\EntityFramework.xml
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\obj\Release\Ppgz.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\obj\Release\Ppgz.Repository.dll
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\obj\Release\Ppgz.Repository.pdb

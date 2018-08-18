@@ -73,8 +73,8 @@ namespace Ppgz.Services
         }
 
 	
-		public void Actualizar(int? obraid, int id, string obra = null, string tipo = null, DateTime? fechasolicitud = null,
-			string gerenciaresponsable = null, string tecnicos = null, string statusrequerimiento = null, DateTime? fechacumplimientosolicitud = null, string descripcion = null
+		public void Actualizar(DateTime fechasolicitud, DateTime? fechacumplimientosolicitud, int? obraid, int id, string obra = null, string tipo = null, 
+			string gerenciaresponsable = null, string tecnicos = null, string statusrequerimiento = null, string descripcion = null
 			, string accionesejecutadas = null)
 		{
 
@@ -127,8 +127,8 @@ namespace Ppgz.Services
 
 	
 
-		public requerimientos Crear(int? obraid, string obra = null, string tipo = null, DateTime? fechasolicitud = null,
-			string gerenciaresponsable = null, string tecnicos = null, string statusrequerimiento = null, DateTime? fechacumplimientosolicitud = null, string descripcion = null
+		public requerimientos Crear(DateTime fechasolicitud, DateTime? fechacumplimientosolicitud, int? obraid, string obra = null, string tipo = null, 
+			string gerenciaresponsable = null, string tecnicos = null, string statusrequerimiento = null,  string descripcion = null
 			, string accionesejecutadas = null)
 		{
 		   

@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using System;
 namespace Ppgz.Web.Areas.Dap.Models
 {
     public class EquipoViewModel
@@ -77,7 +77,8 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string CantidadPersonas { get; set; }
 
 
-
+        [Display(Name = "Fecha Garantía")]
+        public string FechaGarantia { get; set; }
         // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Plano")]
         public string Plano { get; set; }

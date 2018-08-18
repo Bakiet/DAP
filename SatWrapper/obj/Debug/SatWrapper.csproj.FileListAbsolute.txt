@@ -40,3 +40,9 @@ C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\bin\Debug\Ppgz.Fact
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.dll
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.pdb
 C:\Users\Juan\Desktop\CLIENTES\Climb\PROYECTO\DAP\SatWrapper\obj\Debug\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Documents\GitHub\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll.config
+C:\Users\Juan\Documents\GitHub\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Documents\GitHub\DAP\SatWrapper\bin\Debug\Ppgz.Facturas.pdb
+C:\Users\Juan\Documents\GitHub\DAP\SatWrapper\obj\Debug\SatWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Documents\GitHub\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.dll
+C:\Users\Juan\Documents\GitHub\DAP\SatWrapper\obj\Debug\Ppgz.Facturas.pdb

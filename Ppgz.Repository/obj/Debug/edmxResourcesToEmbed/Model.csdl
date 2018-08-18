@@ -329,6 +329,7 @@
     <Property Name="Plano" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="obra_id" Type="Int32" Nullable="false" />
     <Property Name="CantidadPersonas" Type="Int32" />
+    <Property Name="FechaGarantia" Type="DateTime" />
   </EntityType>
   <EntityType Name="estatuscitas">
     <Key>
