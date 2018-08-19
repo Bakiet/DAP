@@ -165,11 +165,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Descripcion = herramienta.Descripcion,
                 Cantidad = herramienta.Cantidad.ToString(),
-                FechaSalida = herramienta.FechaSalida,
+                FechaSalida = herramienta.FechaSalida.ToString(),
                 Propiedad = herramienta.Propiedad,
-                FechaCulminacion = herramienta.FechaCulminacion,
+                FechaCulminacion = herramienta.FechaCulminacion.ToString(),
                 CantidadDeposito = herramienta.CantidadDeposito,
-                FechaEntrada = herramienta.FechaEntrada,
+                FechaEntrada = herramienta.FechaEntrada.ToString(),
                 SupervisorObra = herramienta.SupervisorObra,
                 TecnicoResponsable = herramienta.TecnicoResponsable,
                 Observaciones = herramienta.Observaciones,
@@ -205,11 +205,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Descripcion = herramienta.Descripcion,
                 Cantidad = herramienta.Cantidad.ToString(),
-                FechaSalida = herramienta.FechaSalida,
+                FechaSalida = herramienta.FechaSalida.ToString(),
                 Propiedad = herramienta.Propiedad,
-                FechaCulminacion = herramienta.FechaCulminacion,
+                FechaCulminacion = herramienta.FechaCulminacion.ToString(),
                 CantidadDeposito = herramienta.CantidadDeposito,
-                FechaEntrada = herramienta.FechaEntrada,
+                FechaEntrada = herramienta.FechaEntrada.ToString(),
                 SupervisorObra = herramienta.SupervisorObra,
                 TecnicoResponsable = herramienta.TecnicoResponsable,
                 Observaciones = herramienta.Observaciones,
@@ -233,9 +233,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             ViewBag.Obras =
              new SelectList(_obrasManager.FindObras(obra.Id), "id", "nombre", obra.Id);
-           /* ViewBag.Obras =
-           new SelectList(_obrasManager.FindObras(obra.Id), "id", "nombre", obra.Id);
-            */
+
+            ViewBag.Archivos = _obrasManager.FindArchivos(id, "archivo", "herramientas");
+            /* ViewBag.Obras =
+            new SelectList(_obrasManager.FindObras(obra.Id), "id", "nombre", obra.Id);
+             */
             if (herramienta == null)
             {
                 //TempData["FlashError"] = MensajesResource.ERROR_MensajesInstitucionales_IdIncorrecto;
@@ -252,20 +254,129 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 }
                 else { pdfUrl = herramienta.Archivo; }
 
-                
+                //if(model.FechaSalida == null)
+                //{
+                //    model.FechaSalida = "01/01/0001";
+                //}
+                //if(model.FechaCulminacion == null)
+                //{
+                //    model.FechaCulminacion = "01/01/0001";
+                //}
+                //if(model.FechaEntrada == null)
+                //{
+                //    model.FechaEntrada = "01/01/0001";
+                //}
+                if(model.Cantidad == null)
+                {
+                    model.Cantidad = "0";
+                }
+                DateTime? fechasalida = null;
+                DateTime? fechaentrada = null;
+                DateTime? fechaculminacion = null;
+                if (model.FechaCulminacion != null && model.FechaEntrada != null && model.FechaSalida != null) { 
                 _herramientasManager.Actualizar(Convert.ToInt32(TempData["OBRA_ID"]),
                       id,
                       model.Descripcion,
                       model.Cantidad,
-                      model.FechaSalida,
+                      DateTime.Parse(model.FechaSalida),
                       model.Propiedad,
-                      model.FechaCulminacion,
+                      DateTime.Parse(model.FechaCulminacion),
                       model.CantidadDeposito,
-                      model.FechaEntrada,
+                      DateTime.Parse(model.FechaEntrada),
                       model.SupervisorObra,
                       model.TecnicoResponsable,
                       model.Observaciones);
-
+                }
+                if (model.FechaCulminacion != null && model.FechaEntrada != null && model.FechaSalida == null)
+                {
+                    _herramientasManager.Actualizar(Convert.ToInt32(TempData["OBRA_ID"]),
+                      id,
+                      model.Descripcion,
+                      model.Cantidad,
+                      fechasalida,
+                      model.Propiedad,
+                      DateTime.Parse(model.FechaCulminacion),
+                      model.CantidadDeposito,
+                      DateTime.Parse(model.FechaEntrada),
+                      model.SupervisorObra,
+                      model.TecnicoResponsable,
+                      model.Observaciones);
+                }
+                if (model.FechaCulminacion != null && model.FechaSalida != null && fechaentrada == null)
+                {
+                    _herramientasManager.Actualizar(Convert.ToInt32(TempData["OBRA_ID"]),
+                      id,
+                      model.Descripcion,
+                      model.Cantidad,
+                      DateTime.Parse(model.FechaSalida),
+                      model.Propiedad,
+                      DateTime.Parse(model.FechaCulminacion),
+                      model.CantidadDeposito,
+                      fechaentrada,
+                      model.SupervisorObra,
+                      model.TecnicoResponsable,
+                      model.Observaciones);
+                }
+                if (model.FechaEntrada != null && model.FechaSalida != null && model.FechaCulminacion == null)
+                {
+                    _herramientasManager.Actualizar(Convert.ToInt32(TempData["OBRA_ID"]),
+                      id,
+                      model.Descripcion,
+                      model.Cantidad,
+                      DateTime.Parse(model.FechaSalida),
+                      model.Propiedad,
+                      fechaculminacion,
+                      model.CantidadDeposito,
+                      DateTime.Parse(model.FechaEntrada),
+                      model.SupervisorObra,
+                      model.TecnicoResponsable,
+                      model.Observaciones);
+                }
+                if (model.FechaEntrada != null && model.FechaSalida == null && model.FechaCulminacion == null)
+                {
+                    _herramientasManager.Actualizar(Convert.ToInt32(TempData["OBRA_ID"]),
+                      id,
+                      model.Descripcion,
+                      model.Cantidad,
+                      fechasalida,
+                      model.Propiedad,
+                      fechaculminacion,
+                      model.CantidadDeposito,
+                      DateTime.Parse(model.FechaEntrada),
+                      model.SupervisorObra,
+                      model.TecnicoResponsable,
+                      model.Observaciones);
+                }
+                if (model.FechaEntrada == null && model.FechaSalida != null && model.FechaCulminacion == null)
+                {
+                    _herramientasManager.Actualizar(Convert.ToInt32(TempData["OBRA_ID"]),
+                      id,
+                      model.Descripcion,
+                      model.Cantidad,
+                      DateTime.Parse(model.FechaSalida),
+                      model.Propiedad,
+                      fechaculminacion,
+                      model.CantidadDeposito,
+                      fechaentrada,
+                      model.SupervisorObra,
+                      model.TecnicoResponsable,
+                      model.Observaciones);
+                }
+                if (model.FechaEntrada == null && model.FechaSalida == null && model.FechaCulminacion != null)
+                {
+                    _herramientasManager.Actualizar(Convert.ToInt32(TempData["OBRA_ID"]),
+                      id,
+                      model.Descripcion,
+                      model.Cantidad,
+                      fechasalida,
+                      model.Propiedad,
+                      DateTime.Parse(model.FechaCulminacion),
+                      model.CantidadDeposito,
+                      fechaentrada,
+                      model.SupervisorObra,
+                      model.TecnicoResponsable,
+                      model.Observaciones);
+                }
                 HttpPostedFileBase file;
 
                 for (int i = 0; i < Request.Files.Count; i++)
@@ -327,60 +438,38 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 TempData.Keep();
                 model.obra_id = Convert.ToInt32(TempData["idobra"]);
                 TempData.Keep();
-                //if (model.Descripcion == null)
-                //{
-                //    model.Descripcion = "null";
-                //}
-                //if (model.Cantidad == null)
-                //{
-                //    model.Cantidad = "null";
-                //}
+                
+                herramientas herramienta = new herramientas();
+                
                 //if (model.FechaSalida == null)
                 //{
-                //    model.FechaSalida = DateTime.Now.ToString();
-                //}
-                //if (model.Propiedad == null)
-                //{
-                //    model.Propiedad = "null";
+                //    model.FechaSalida = "01/01/0001";
                 //}
                 //if (model.FechaCulminacion == null)
                 //{
-                //    model.FechaCulminacion = DateTime.Now.ToString();
-                //}
-                //if (model.CantidadDeposito == null)
-                //{
-                //    model.CantidadDeposito = "null";
+                //    model.FechaCulminacion = "01/01/0001";
                 //}
                 //if (model.FechaEntrada == null)
                 //{
-                //    model.FechaEntrada = DateTime.Now.ToString();
+                //    model.FechaEntrada = "01/01/0001";
                 //}
-                //if (model.SupervisorObra == null)
-                //{
-                //    model.SupervisorObra = "null";
-                //}
-                //if (model.TecnicoResponsable == null)
-                //{
-                //    model.TecnicoResponsable = "null";
-                //}
-                //if (model.Observaciones == null)
-                //{
-                //    model.Observaciones = "null";
-                //}
-                herramientas herramienta = new herramientas();
+                if (model.Cantidad == null)
+                {
+                    model.Cantidad = "0";
+                }
 
                 herramienta =  _herramientasManager.Crear(Convert.ToInt32(TempData["idobra"]),
                       model.Descripcion,
                       model.Cantidad,
-                      model.FechaSalida,
+                       DateTime.Parse(model.FechaSalida),
                       model.Propiedad,
-                      model.FechaCulminacion,
+                       DateTime.Parse(model.FechaCulminacion),
                       model.CantidadDeposito,
-                      model.FechaEntrada,
+                       DateTime.Parse(model.FechaEntrada),
                       model.SupervisorObra,
                       model.TecnicoResponsable,
                       model.Observaciones);
-
+              
                 HttpPostedFileBase file;
 
                 for (int i = 0; i < Request.Files.Count; i++)

@@ -77,19 +77,19 @@
                         <td class="text-center vert-align">@herramienta.Descripcion</td>
                         <td class="text-center vert-align">@herramienta.Cantidad</td>
                         @if(herramienta.FechaSalida != null){
-                        <td class="text-center vert-align">@herramienta.FechaSalida</td>
+                        <td class="text-center vert-align">@herramienta.FechaSalida.ToString("dd/MM/yyyy")</td>
                             }else{
                         <td class="text-center vert-align"></td>
                             }
                         <td class="text-center vert-align">@herramienta.Propiedad</td>
                         @if(herramienta.FechaCulminacion != null){
-                        <td class="text-center vert-align">@herramienta.FechaCulminacion</td>
+                        <td class="text-center vert-align">@herramienta.FechaCulminacion.ToString("dd/MM/yyyy")</td>
                         }else{
                         <td class="text-center vert-align"></td>
                         }
                         <td class="text-center vert-align">@herramienta.CantidadDeposito</td>
                         @if(herramienta.FechaEntrada != null){
-                        <td class="text-center vert-align">@herramienta.FechaEntrada</td>
+                        <td class="text-center vert-align">@herramienta.FechaEntrada.ToString("dd/MM/yyyy")</td>
                         }else{
                         <td class="text-center vert-align"></td>
                         }

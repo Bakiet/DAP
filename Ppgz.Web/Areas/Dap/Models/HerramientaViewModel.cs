@@ -15,7 +15,7 @@ namespace Ppgz.Web.Areas.Dap.Models
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha de Salida")]
-        public DateTime? FechaSalida { get; set; }
+        public string FechaSalida { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Propiedad")]
@@ -23,7 +23,7 @@ namespace Ppgz.Web.Areas.Dap.Models
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha de Culminacion")]
-        public DateTime? FechaCulminacion { get; set; }
+        public string FechaCulminacion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Cantidad Deposito")]
@@ -31,7 +31,7 @@ namespace Ppgz.Web.Areas.Dap.Models
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha Entrada")]
-        public DateTime? FechaEntrada { get; set; }
+        public string FechaEntrada { get; set; }
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Supervisor de Obra")]
