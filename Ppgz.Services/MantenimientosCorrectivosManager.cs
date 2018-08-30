@@ -36,7 +36,7 @@ namespace Ppgz.Services
 
         public List<mantenimientocorrectivo> GetMantenimientosCorrectivos(int ventaId)
 		{
-			return _db.mantenimientocorrectivo.Where(s => s.IdVenta == ventaId).ToList();
+			return _db.mantenimientocorrectivo.Where(s => s.IdVenta == ventaId).OrderByDescending(s => s.FechaVisita).ToList();
 
 		}
 

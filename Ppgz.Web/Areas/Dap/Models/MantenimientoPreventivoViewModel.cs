@@ -20,11 +20,11 @@ namespace Ppgz.Web.Areas.Dap.Models
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha de Visita")]
-        public DateTime? FechaVisita { get; set; }
+        public string FechaVisita { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Fecha de Publicación")]
-        public DateTime? FechaPublicacion { get; set; }
+        public string FechaPublicacion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Nombre de Documento")]

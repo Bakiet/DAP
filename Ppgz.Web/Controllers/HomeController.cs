@@ -11,6 +11,7 @@ using Ppgz.Web.Infrastructure;
 using Ppgz.Web.Infrastructure.Dap;
 using Ppgz.Web.Models;
 using System.Threading.Tasks;
+using Ppgz.Services;
 
 namespace Ppgz.Web.Controllers
 {
@@ -18,10 +19,25 @@ namespace Ppgz.Web.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-    
+        private readonly FallasManager _fallasManager = new FallasManager();
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
         [TerminosCondiciones]
         public ActionResult Index()
         {
+            ViewBag.FallasCount = _fallasManager.GetSustituciones();
+            TempData["sustituciones"] = ViewBag.FallasCount.Count;
+            TempData.Keep();
+
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
+
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
+            TempData.Keep();
             return View();
         }
 

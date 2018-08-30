@@ -288,8 +288,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Tipo = mantenimientopreventivo.Tipo,
                 Descripcion = mantenimientopreventivo.Descripcion,
                 PersonaJuridica = mantenimientopreventivo.PersonaJuridica,
-                FechaVisita = mantenimientopreventivo.FechaVisita,
-                FechaPublicacion = mantenimientopreventivo.FechaPublicacion,
+                FechaVisita = mantenimientopreventivo.FechaVisita.ToString(),
+                FechaPublicacion = mantenimientopreventivo.FechaPublicacion.ToString(),
                 NombreDocumento = mantenimientopreventivo.NombreDocumento,
                 Tecnico = mantenimientopreventivo.Tecnico,
                 EquiposAtendidos = mantenimientopreventivo.EquiposAtendidos,
@@ -388,8 +388,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Tipo = mantenimientopreventivo.Tipo,
                 Descripcion = mantenimientopreventivo.Descripcion,
                 PersonaJuridica = mantenimientopreventivo.PersonaJuridica,
-                FechaVisita = mantenimientopreventivo.FechaVisita,
-                FechaPublicacion = mantenimientopreventivo.FechaPublicacion,
+                FechaVisita = mantenimientopreventivo.FechaVisita.ToString(),
+                FechaPublicacion = mantenimientopreventivo.FechaPublicacion.ToString(),
                 NombreDocumento = mantenimientopreventivo.NombreDocumento,
                 Tecnico = mantenimientopreventivo.Tecnico,
                 EquiposAtendidos = mantenimientopreventivo.EquiposAtendidos,
@@ -478,8 +478,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Tipo = mantenimientopreventivo.Tipo,
                 Descripcion = mantenimientopreventivo.Descripcion,
                 PersonaJuridica = mantenimientopreventivo.PersonaJuridica,
-                FechaVisita = mantenimientopreventivo.FechaVisita,
-                FechaPublicacion = mantenimientopreventivo.FechaPublicacion,
+                FechaVisita = mantenimientopreventivo.FechaVisita.ToString(),
+                FechaPublicacion = mantenimientopreventivo.FechaPublicacion.ToString(),
                 NombreDocumento = mantenimientopreventivo.NombreDocumento,
                 Tecnico = mantenimientopreventivo.Tecnico,
                 EquiposAtendidos = mantenimientopreventivo.EquiposAtendidos,
@@ -581,13 +581,16 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 //{
                 //    pdfUrlevaluacion = "null";
                 //}
+                DateTime? fechavisita = null;
+                DateTime? fechapublicacion = null;
+                if(model.FechaVisita != null && model.FechaPublicacion == null) { 
                 _mantenimientospreventivosManager.Actualizar(Convert.ToInt32(TempData["IDVENTA"]),
                       id,
                       model.Tipo,
                       model.Descripcion,
                       model.PersonaJuridica,
-                      model.FechaVisita,
-                      model.FechaPublicacion,
+                      DateTime.Parse(model.FechaVisita),
+                      fechapublicacion,
                       model.NombreDocumento,
                       model.Tecnico,
                       model.EquiposAtendidos,
@@ -596,7 +599,61 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       pdfUrlevaluacion.Trim(),
                       model.HoraLlegada,
                       model.HoraSalida);
-
+                }
+                if (model.FechaVisita == null && model.FechaPublicacion != null)
+                {
+                    _mantenimientospreventivosManager.Actualizar(Convert.ToInt32(TempData["IDVENTA"]),
+                          id,
+                          model.Tipo,
+                          model.Descripcion,
+                          model.PersonaJuridica,
+                          fechavisita,
+                          DateTime.Parse(model.FechaPublicacion),
+                          model.NombreDocumento,
+                          model.Tecnico,
+                          model.EquiposAtendidos,
+                          model.StatusMantenimiento,
+                          pdfUrl.Trim(),
+                          pdfUrlevaluacion.Trim(),
+                          model.HoraLlegada,
+                          model.HoraSalida);
+                }
+                if (model.FechaVisita == null && model.FechaPublicacion == null)
+                {
+                    _mantenimientospreventivosManager.Actualizar(Convert.ToInt32(TempData["IDVENTA"]),
+                          id,
+                          model.Tipo,
+                          model.Descripcion,
+                          model.PersonaJuridica,
+                          fechavisita,
+                          fechapublicacion,
+                          model.NombreDocumento,
+                          model.Tecnico,
+                          model.EquiposAtendidos,
+                          model.StatusMantenimiento,
+                          pdfUrl.Trim(),
+                          pdfUrlevaluacion.Trim(),
+                          model.HoraLlegada,
+                          model.HoraSalida);
+                }
+                if (model.FechaVisita != null && model.FechaPublicacion != null)
+                {
+                    _mantenimientospreventivosManager.Actualizar(Convert.ToInt32(TempData["IDVENTA"]),
+                          id,
+                          model.Tipo,
+                          model.Descripcion,
+                          model.PersonaJuridica,
+                          DateTime.Parse(model.FechaVisita),
+                          DateTime.Parse(model.FechaPublicacion),
+                          model.NombreDocumento,
+                          model.Tecnico,
+                          model.EquiposAtendidos,
+                          model.StatusMantenimiento,
+                          pdfUrl.Trim(),
+                          pdfUrlevaluacion.Trim(),
+                          model.HoraLlegada,
+                          model.HoraSalida);
+                }
                 HttpPostedFileBase file;
 
                 for (int i = 0; i < Request.Files.Count; i++)
@@ -739,20 +796,93 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 }
                 else { pdfUrlevaluacion = ""; }
                 
-                mantenimientopreventivo mp = _mantenimientospreventivosManager.Crear(Convert.ToInt32(TempData["venta"]),
-                       model.Tipo,
-                      model.Descripcion,
-                      model.PersonaJuridica,
-                      model.FechaVisita,
-                      model.FechaPublicacion,
-                      model.NombreDocumento,
-                      model.Tecnico,
-                      model.EquiposAtendidos,
-                      model.StatusMantenimiento,
-                      pdfUrl.Trim(),
-                      pdfUrlevaluacion.Trim(),
-                      model.HoraLlegada,
-                      model.HoraSalida);
+                //mantenimientopreventivo mp = _mantenimientospreventivosManager.Crear(Convert.ToInt32(TempData["venta"]),
+                //       model.Tipo,
+                //      model.Descripcion,
+                //      model.PersonaJuridica,
+                //      model.FechaVisita,
+                //      model.FechaPublicacion,
+                //      model.NombreDocumento,
+                //      model.Tecnico,
+                //      model.EquiposAtendidos,
+                //      model.StatusMantenimiento,
+                //      pdfUrl.Trim(),
+                //      pdfUrlevaluacion.Trim(),
+                //      model.HoraLlegada,
+                //      model.HoraSalida);
+
+
+                DateTime? fechavisita = null;
+                DateTime? fechapublicacion = null;
+                mantenimientopreventivo mp = new mantenimientopreventivo();
+                if (model.FechaVisita != null && model.FechaPublicacion == null)
+                {
+                    mp = _mantenimientospreventivosManager.Crear(Convert.ToInt32(TempData["venta"]),
+                          model.Tipo,
+                          model.Descripcion,
+                          model.PersonaJuridica,
+                          DateTime.Parse(model.FechaVisita),
+                          fechapublicacion,
+                          model.NombreDocumento,
+                          model.Tecnico,
+                          model.EquiposAtendidos,
+                          model.StatusMantenimiento,
+                          pdfUrl.Trim(),
+                          pdfUrlevaluacion.Trim(),
+                          model.HoraLlegada,
+                          model.HoraSalida);
+                }
+                if (model.FechaVisita == null && model.FechaPublicacion != null)
+                {
+                    mp = _mantenimientospreventivosManager.Crear(Convert.ToInt32(TempData["venta"]),
+                          model.Tipo,
+                          model.Descripcion,
+                          model.PersonaJuridica,
+                          fechavisita,
+                          DateTime.Parse(model.FechaPublicacion),
+                          model.NombreDocumento,
+                          model.Tecnico,
+                          model.EquiposAtendidos,
+                          model.StatusMantenimiento,
+                          pdfUrl.Trim(),
+                          pdfUrlevaluacion.Trim(),
+                          model.HoraLlegada,
+                          model.HoraSalida);
+                }
+                if (model.FechaVisita == null && model.FechaPublicacion == null)
+                {
+                    mp = _mantenimientospreventivosManager.Crear(Convert.ToInt32(TempData["venta"]),
+                          model.Tipo,
+                          model.Descripcion,
+                          model.PersonaJuridica,
+                          fechavisita,
+                          fechapublicacion,
+                          model.NombreDocumento,
+                          model.Tecnico,
+                          model.EquiposAtendidos,
+                          model.StatusMantenimiento,
+                          pdfUrl.Trim(),
+                          pdfUrlevaluacion.Trim(),
+                          model.HoraLlegada,
+                          model.HoraSalida);
+                }
+                if (model.FechaVisita != null && model.FechaPublicacion != null)
+                {
+                     mp = _mantenimientospreventivosManager.Crear(Convert.ToInt32(TempData["venta"]),
+                          model.Tipo,
+                          model.Descripcion,
+                          model.PersonaJuridica,
+                          DateTime.Parse(model.FechaVisita),
+                          DateTime.Parse(model.FechaPublicacion),
+                          model.NombreDocumento,
+                          model.Tecnico,
+                          model.EquiposAtendidos,
+                          model.StatusMantenimiento,
+                          pdfUrl.Trim(),
+                          pdfUrlevaluacion.Trim(),
+                          model.HoraLlegada,
+                          model.HoraSalida);
+                }
 
                 TempData.Keep();
 

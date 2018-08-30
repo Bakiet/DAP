@@ -1378,6 +1378,9 @@
     <Content Include="Areas\Dap\Views\AdministrarComponentesElectronicos\Reporte.cshtml" />
     <Content Include="Areas\Dap\Views\AdministrarComponentesElectronicos\ReporteComponentesElectronicos.cshtml" />
     <Content Include="Areas\Dap\Views\AdministrarHerramientas\Detalle.cshtml" />
+    <Content Include="Areas\Dap\Views\AdministrarFallas\Sustituciones.cshtml" />
+    <Content Include="Areas\Dap\Views\AdministrarComponentesElectronicos\Sustituciones.cshtml" />
+    <Content Include="Areas\Dap\Views\AdministrarComponentesMecanicos\Sustituciones.cshtml" />
     <None Include="Properties\PublishProfiles\DAP.pubxml" />
     <None Include="Properties\PublishProfiles\Impuls.pubxml" />
     <None Include="Properties\PublishProfiles\ppgz.pubxml" />

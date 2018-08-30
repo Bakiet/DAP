@@ -30,6 +30,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             ViewBag.Fallas = _fallasManager.GetFallas();
 
+            ViewBag.FallasCount = _fallasManager.GetSustituciones();
+            TempData["sustituciones"] = ViewBag.FallasCount.Count;
+            TempData.Keep();
 
             return View();
         }
@@ -64,6 +67,15 @@ namespace Ppgz.Web.Areas.Dap.Controllers
            ViewBag.Fallas = _fallasManager.GetHistorico(id);
            ViewBag.id = id;
            return View("Index");
+        }
+       
+        public ActionResult Sustituciones()
+        {
+            ViewBag.FallasCount = _fallasManager.GetSustituciones();
+            ViewBag.Fallas = _fallasManager.GetSustituciones();
+            TempData["sustituciones"] = ViewBag.FallasCount.Count;
+            TempData.Keep();
+            return View();
         }
         public ActionResult HistoricoTodos()
         {
@@ -211,7 +223,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 //Condicion = falla.Condicion,
                 AccionesTomadas = falla.AccionesTomadas,
                 AccionesRecomendadas = falla.AccionesRecomendadas,
-                Duracion = falla.Duracion,
+                Duracion = falla.Duracion.ToString(),
                 PersonaReporte = falla.PersonaReporte,
                 GerenciaResponsable = falla.GerenciaResponsable,
                 obraid = falla.obra_id
@@ -307,7 +319,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Condicion = falla.Condicion,
                 AccionesTomadas = falla.AccionesTomadas,
                 AccionesRecomendadas = falla.AccionesRecomendadas,
-                Duracion = falla.Duracion,
+                Duracion = falla.Duracion.ToString(),
                 PersonaReporte = falla.PersonaReporte,
                 GerenciaResponsable = falla.GerenciaResponsable,
                 obraid = falla.obra_id
@@ -384,7 +396,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var fallaModel = new FallaViewModel()
             {
                 id = id,
-                FechaFalla = falla.FechaFalla.ToString("dd/MM/YYYY"),
+                FechaFalla = falla.FechaFalla.ToString("dd/MM/yyyy"),
                 //Obra = falla.Obra.ToList().,
                 Equipo = falla.Equipo,
                 Tipo = falla.Tipo,
@@ -397,7 +409,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Condicion = falla.Condicion,
                 AccionesTomadas = falla.AccionesTomadas,
                 AccionesRecomendadas = falla.AccionesRecomendadas,
-                Duracion = falla.Duracion,
+                Duracion = falla.Duracion.ToString(),
                 PersonaReporte = falla.PersonaReporte,
                 GerenciaResponsable = falla.GerenciaResponsable,
                 obraid = falla.obra_id
@@ -466,6 +478,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             try
             {
                 DateTime? fallasolucion = null;
+                DateTime? duracion = null;
 
                 if (model.FechaSolucion == null)
                 {
@@ -486,7 +499,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                               model.Condicion,
                               model.AccionesTomadas,
                               model.AccionesRecomendadas,
-                              model.Duracion,
+                              duracion,
                               model.PersonaReporte,
                               model.GerenciaResponsable
                               );
@@ -508,7 +521,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                          model.Condicion,
                          model.AccionesTomadas,
                          model.AccionesRecomendadas,
-                         model.Duracion,
+                         duracion,
                          model.PersonaReporte,
                          model.GerenciaResponsable
                          );
@@ -533,7 +546,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                               model.Condicion,
                               model.AccionesTomadas,
                               model.AccionesRecomendadas,
-                              model.Duracion,
+                              duracion,
                               model.PersonaReporte,
                               model.GerenciaResponsable
                               );
@@ -555,7 +568,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                          model.Condicion,
                          model.AccionesTomadas,
                          model.AccionesRecomendadas,
-                         model.Duracion,
+                         duracion,
                          model.PersonaReporte,
                          model.GerenciaResponsable
                          );
@@ -823,6 +836,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             try
             {
                 DateTime? fallasolucion = null;
+                DateTime? duracion = null;
                 fallas falla = new fallas();
                 if (model.FechaSolucion == null)
                 {
@@ -840,7 +854,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                         model.Condicion,
                         model.AccionesTomadas,
                         model.AccionesRecomendadas,
-                        model.Duracion,
+                        duracion,
                         model.PersonaReporte,
                         model.GerenciaResponsable);
                 }
@@ -860,7 +874,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                         model.Condicion,
                         model.AccionesTomadas,
                         model.AccionesRecomendadas,
-                        model.Duracion,
+                        duracion,
                         model.PersonaReporte,
                         model.GerenciaResponsable);
                 }
@@ -926,14 +940,14 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var Url = "";
 
             var obranombre = _obrasManager.Find(Convert.ToInt32(TempData["OBRA_ID"]));
-
+            TempData.Keep();
             ViewBag.Obras =
               new SelectList(_fallasManager.FindObras(), "nombre", "nombre");
 
 
             ViewBag.Equipos =
                new SelectList(_fallasManager.FindEquiposPorObra(Convert.ToInt32(TempData["OBRA_ID"])), "nombre", "nombre");
-
+            TempData.Keep();
             ViewBag.TipoFallas =
                new SelectList(_fallasManager.FindTipoFallas(), "descripcion", "descripcion");
 
@@ -972,7 +986,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             try
             {
                 DateTime? fallasolucion = null;
-               
+                DateTime? duracion = null;
+
                 if (model.FechaSolucion == null)
                 {
                     falla = _fallasManager.Crear(Convert.ToInt32(TempData["OBRA_ID"]),
@@ -989,9 +1004,10 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                         model.Condicion,
                         model.AccionesTomadas,
                         model.AccionesRecomendadas,
-                        model.Duracion,
+                        duracion,
                         model.PersonaReporte,
                         model.GerenciaResponsable);
+                    TempData.Keep();
                 }
                 else
                 {
@@ -1009,9 +1025,10 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                         model.Condicion,
                         model.AccionesTomadas,
                         model.AccionesRecomendadas,
-                        model.Duracion,
+                        duracion,
                         model.PersonaReporte,
                         model.GerenciaResponsable);
+                    TempData.Keep();
                 }
 
                 HttpPostedFileBase file;

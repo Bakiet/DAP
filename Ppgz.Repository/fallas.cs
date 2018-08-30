@@ -28,7 +28,7 @@ namespace Ppgz.Repository
         public string Condicion { get; set; }
         public string AccionesTomadas { get; set; }
         public string AccionesRecomendadas { get; set; }
-        public string Duracion { get; set; }
+        public Nullable<System.DateTime> Duracion { get; set; }
         public string PersonaReporte { get; set; }
         public string GerenciaResponsable { get; set; }
         public Nullable<int> obra_id { get; set; }

@@ -61,6 +61,17 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             ViewBag.obra = _obrasManager.Find(Convert.ToInt32(TempData["obra_id"]));
             //ViewBag.EstatusCita = db.estatuscitas.ToList();
 
+           
+
+            return View();
+        }
+        [Authorize(Roles = "MAESTRO-NAZAN,NAZAN-ADMINISTRARCOMPONENTESMECANICOS-CONSULTAR")]
+        public ActionResult Sustituciones()
+        {
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
             return View();
         }
         public ActionResult Historico(int id)
@@ -178,9 +189,10 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Modelo = componentemecanico.Modelo,
                 Serial = componentemecanico.Serial,
                 FechaFabricado = componentemecanico.FechaFabricado,
-                Duracion = componentemecanico.Duracion,
+                Duracion = componentemecanico.Duracion.ToString(),
                 Sustitucion = componentemecanico.Sustitucion,
                 Fotografia = componentemecanico.Fotografia,
+                FechaAlerta = componentemecanico.FechaAlerta
 
             };
 
@@ -223,10 +235,10 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Modelo = componentemecanico.Modelo,
                 Serial = componentemecanico.Serial,
                 FechaFabricado = componentemecanico.FechaFabricado,
-                Duracion = componentemecanico.Duracion,
+                Duracion = componentemecanico.Duracion.ToString(),
                 Sustitucion = componentemecanico.Sustitucion,
                 Fotografia = componentemecanico.Fotografia,
-
+                FechaAlerta = componentemecanico.FechaAlerta
             };
 
             return PartialView(componentemecanicoModel);
@@ -267,10 +279,10 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Modelo = componentemecanico.Modelo,
                 Serial = componentemecanico.Serial,
                 FechaFabricado = componentemecanico.FechaFabricado,
-                Duracion = componentemecanico.Duracion,
+                Duracion = componentemecanico.Duracion.ToString(),
                 Sustitucion = componentemecanico.Sustitucion,
                 Fotografia = componentemecanico.Fotografia,
-
+                FechaAlerta = componentemecanico.FechaAlerta
             };
 
             return View(componentemecanicoModel);
@@ -332,12 +344,17 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.Modelo,
                       model.Serial,
                       model.FechaFabricado,
-                      model.Duracion,
+                      DateTime.Parse(model.Duracion),
                       model.Sustitucion,
-                      pdfUrl.Trim(), model.FechaSustitucion);
+                      pdfUrl.Trim(), model.FechaSustitucion,model.FechaAlerta);
 
                 // TempData["FlashSuccess"] = MensajesResource.INFO_UsuarioNazan_ActualizadoCorrectamente;
-                return RedirectToAction("ComponentesMecanicos", "AdministrarComponentesMecanicos", new { @id = TempData["equipo_id"] });
+                if(TempData["equipo_id"] != null) { 
+                 return RedirectToAction("ComponentesMecanicos", "AdministrarComponentesMecanicos", new { @id = TempData["equipo_id"] });
+                }else
+                {
+                    return RedirectToAction("Sustituciones", "AdministrarComponentesMecanicos");
+                }
             }
             catch (BusinessException businessEx)
             {
@@ -392,9 +409,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.Modelo,
                       model.Serial,
                       model.FechaFabricado,
-                      model.Duracion,
+                      DateTime.Parse(model.Duracion),
                       model.Sustitucion,
-                      pdfUrl.Trim(), model.FechaSustitucion);
+                      pdfUrl.Trim(), model.FechaSustitucion,model.FechaAlerta);
 
                 TempData.Keep();
                 HttpPostedFileBase file;

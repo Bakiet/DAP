@@ -148,13 +148,14 @@
     <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="FechaFabricado" Type="DateTime" />
-    <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Duracion" Type="DateTime" />
     <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="Fotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="IdEquipos" Type="Int32" />
     <Property Name="Tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="FechaSustitucion" Type="DateTime" />
+    <Property Name="FechaAlerta" Type="DateTime" />
   </EntityType>
   <EntityType Name="componenteselectricos_sustituciones">
     <Key>
@@ -183,13 +184,14 @@
     <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="FechaFabricado" Type="DateTime" />
-    <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Duracion" Type="DateTime" />
     <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="Fotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="IdEquipos" Type="Int32" />
     <Property Name="Tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="FechaSustitucion" Type="DateTime" />
+    <Property Name="FechaAlerta" Type="DateTime" />
   </EntityType>
   <EntityType Name="componentesmecanicos_sustituciones">
     <Key>
@@ -201,7 +203,7 @@
     <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="FechaFabricado" Type="DateTime" />
-    <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Duracion" Type="String" />
     <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="Fotografia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="IdEquipos" Type="Int32" />
@@ -330,6 +332,7 @@
     <Property Name="obra_id" Type="Int32" Nullable="false" />
     <Property Name="CantidadPersonas" Type="Int32" />
     <Property Name="FechaGarantia" Type="DateTime" />
+    <Property Name="FechaVencimiento" Type="DateTime" />
   </EntityType>
   <EntityType Name="estatuscitas">
     <Key>
@@ -387,7 +390,7 @@
     <Property Name="Condicion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="AccionesTomadas" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
     <Property Name="AccionesRecomendadas" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
-    <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Duracion" Type="DateTime" Nullable="true" />
     <Property Name="PersonaReporte" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="GerenciaResponsable" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="obra_id" Type="Int32" />

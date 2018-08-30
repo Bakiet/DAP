@@ -67,8 +67,8 @@ namespace Ppgz.Web.Areas.Dap.Models
         [Display(Name = "Acciones Recomendadas")]
         public string AccionesRecomendadas { get; set; }
 
-       // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Duración")]
+        [Required(ErrorMessage = "El campo es obligatorio.")]
+        [Display(Name = "Fecha de Vencimiento")]
         public string Duracion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]

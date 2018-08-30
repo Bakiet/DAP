@@ -1,0 +1,411 @@
+﻿@using Ppgz.Repository
+@model Ppgz.Web.Areas.Dap.Models.ComponenteElectricoViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+//    var obra = (obras)ViewBag.obra;
+//    var equipo = (equipos)ViewBag.equipo;
+}
+
+<h2 class="form-signin-heading">Componentes electronicos</h2>
+<a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallecomponenteselectronicos-modal" id="" onclick="createModal('@Url.Action("ReporteComponentesElectronicos", "AdministrarComponentesElectronicos" , new {id=ViewBag.id })')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de componentes electronicos</i></p>*@
+<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarComponentesElectronicos", new { @id = ViewBag.id })'">Histórico</button>
+<div class="clearfix">
+    @*<a href="@Url.Action("Crear", "AdministrarComponentesElectronicos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Componentes electronicos</a>*@
+</div>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Componentes Electronicos</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="obras">
+            <thead>
+                <tr>
+                    <th class="text-center">Reporte</th>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">Tipo</th>
+                    <th class="text-center">Caracteristicas</th>
+                    @*<th class="text-center">Descripción</th>*@
+                    <th class="text-center">Marca</th>
+                    <th class="text-center">Modelo</th>
+                    <th class="text-center">Serial</th>
+                    <th class="text-center">Fecha Fabricado</th>
+                    <th class="text-center">Fecha Alerta</th>
+                    <th class="text-center">Fecha Vencimiento</th>
+                    <th class="text-center">Sustitución</th>
+                    @*<th class="text-center">Fotografía</th>*@
+                    <th></th>
+            </thead>
+            <tbody>
+                @foreach (var componenteelectronico in (ViewBag.ComponentesElectricos))
+                {
+                    <tr>
+                        <td class="text-center vert-align">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@componenteelectronico.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarComponentesElectronicos" , new {id=componenteelectronico.Id })')">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            </div>
+                        </td>
+                        @*<td class="text-center vert-align">@componenteelectronico.Id</td>*@
+                        <td class="text-center vert-align">@componenteelectronico.Tipo</td>
+                        <td class="text-center vert-align">@componenteelectronico.Caracteristicas</td>
+                        @*<td class="text-center vert-align">@componenteelectronico.Descripcion</td>*@
+                        <td class="text-center vert-align">@componenteelectronico.Marca</td>
+                        <td class="text-center vert-align">@componenteelectronico.Modelo</td>
+                        <td class="text-center vert-align">@componenteelectronico.Serial</td>
+                        @if (componenteelectronico.FechaAlerta != null)
+                        {
+                            <td class="text-center vert-align">@componenteelectronico.FechaAlerta.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        @if (componenteelectronico.FechaFabricado != null)
+                        {
+                            <td class="text-center vert-align">@componenteelectronico.FechaFabricado.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        @if (componenteelectronico.Duracion != null)
+                        {
+                            <td class="text-center vert-align">@componenteelectronico.Duracion.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        <td class="text-center vert-align">@componenteelectronico.Sustitucion</td>
+
+
+
+                        @*<td class="text-center vert-align">
+                                @if (ViewBag.Fallas != null)
+                                {
+                                    <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarDallas", new { @id = @obra.Id })">
+
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                    </a>
+                                }
+                            </td>
+                            <td class="text-center vert-align">
+                                @if (ViewBag.Envios != null)
+                                {
+                                    <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarEnvios", new { @id = @obra.Id })">
+
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                    </a>
+                                }
+                            </td>
+                            <td class="text-center vert-align">
+                                @if (ViewBag.Requerimientos != null)
+                                {
+                                    <a class="btn btn-warning btn-xs" href="@Url.Action("Index", "AdministrarRequerimientos", new { @id = @obra.Id })">
+
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                    </a>
+                                }
+                            </td>*@
+                        @*<td class="text-center vert-align">
+                                @if (@obra.Foto != null)
+                                {
+                                    <a href="@Url.Content(@obra.Foto)" target="_blank">Ver</a>
+                                }
+                            </td>
+                            <td class="text-center vert-align">
+                                @if (obra.Satelital != null)
+                                {
+                                    <a href="@Url.Content(@obra.Satelital)" target="_blank">Ver</a>
+                                }
+                            </td>*@
+                        <td class="text-center">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarComponentesElectronicos", new { @id = @componenteelectronico.Id })">
+
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                </a>
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarComponentesElectronicos", new { @id = @componenteelectronico.Id })">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarComponentesElectronicos", new { @id = @componenteelectronico.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El componente electronico será eliminado.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" id="modelContent">
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecComponenteElectronico('reportecomponenteelectronico')">
+                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                </a>
+                <div id="reportecomponenteelectronico">
+                    <div class="modal-header">
+                        @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                        </button>
+                        <h4 class="modal-title">Reporte de Envios</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tipo)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Tipo)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Caracteristicas)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Caracteristicas)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Marca)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Marca)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Modelo)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Modelo)
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Serial)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Serial)
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaFabricado)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.FechaFabricado)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.Duracion)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Duracion)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Sustitucion)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.Sustitucion)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+
+                                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaSustitucion)</h4>
+                                </div>
+                                <div class="col-4 col-sm-6" style="float:right;">
+                                    @Html.DisplayFor(o => o.FechaSustitucion)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+                    <script type="text/javascript">
+
+                        function imprSelecComponenteElectronico(muestra) {
+                            var ficha = document.getElementById(muestra);
+                            var ventimp = window.open(' ', 'popimpr');
+                            ventimp.document.write(ficha.innerHTML);
+                            ventimp.document.close();
+                            ventimp.print();
+                            ventimp.close();
+                        }
+                    </script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="detallecomponenteselectronicos-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" id="modelContent" style="width:1000px;">
+                @*<a class="text-uppercase" id="download">Imprimir</a>*@
+                @*<a class="" href="javascript:imprSelec('reporte')">Imprimir</a>*@
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
+                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                </a>
+                <div id="reporte">
+
+                    <div class="modal-header">
+
+                        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                        </button>
+                        <h4 class="modal-title">Reporte de Componente Electronico</h4>
+                    </div>
+
+
+                    <div class="responsive-table">
+                        <div class="container-fluid">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Componentes Electronicos Registrados</div>
+                                <div class="panel-body">
+                                    <table class="table table-striped" id="mensajesmodal">
+                                        <thead>
+                                            <tr>
+                                                @*<th class="text-center">Id</th>*@
+                                                <th class="text-center">Tipo</th>
+                                                <th class="text-center">Caracteristicas</th>
+                                                @*<th class="text-center">Descripción</th>*@
+                                                <th class="text-center">Marca</th>
+                                                <th class="text-center">Modelo</th>
+                                                <th class="text-center">Serial</th>
+                                                <th class="text-center">Fecha Fabricado</th>
+                                                <th class="text-center">Fecha Vencimiento</th>
+                                                @*<th class="text-center">Sustitución</th>*@
+
+
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var componenteelectronico in (ViewBag.ComponentesElectricos))
+                                            {
+                                                <tr>
+                                                    @*<td class="text-center vert-align">@componentemecanico.Id</td>*@
+                                                    <td class="text-center vert-align">@componenteelectronico.Tipo</td>
+                                                    <td class="text-center vert-align">@componenteelectronico.Caracteristicas</td>
+                                                    @*<td class="text-center vert-align">@componentemecanico.Descripcion</td>*@
+                                                    <td class="text-center vert-align">@componenteelectronico.Marca</td>
+                                                    <td class="text-center vert-align">@componenteelectronico.Modelo</td>
+                                                    <td class="text-center vert-align">@componenteelectronico.Serial</td>
+                                                   @if (componenteelectronico.FechaFabricado != null)
+                                                   {
+                                                    <td class="text-center vert-align">@componenteelectronico.FechaFabricado.ToString("dd/MM/yyyy")</td>
+                                                   }
+                                                   else
+                                                   {
+                                                    <td class="text-center vert-align"></td>
+                                                   }
+                                                @if (componenteelectronico.Duracion != null)
+                                                {
+                                                    <td class="text-center vert-align">@componenteelectronico.Duracion.ToString("dd/MM/yyyy")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="text-center vert-align"></td>
+                                                }
+                                                    @*<td class="text-center vert-align">@componenteelectronico.Sustitucion</td>*@
+
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+                    <script type="text/javascript">
+
+                        function imprSelec(muestra) {
+                            var ficha = document.getElementById(muestra);
+                            var ventimp = window.open(' ', 'popimpr');
+                            ventimp.document.write(ficha.innerHTML);
+                            ventimp.document.close();
+                            ventimp.print();
+                            ventimp.close();
+                        }
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@section Scripts {
+
+<script type="text/javascript">
+            function createModal(url) {
+                $('#modelContent').load(url);
+
+            }
+</script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#obras').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+            $('#mensajesmodal').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

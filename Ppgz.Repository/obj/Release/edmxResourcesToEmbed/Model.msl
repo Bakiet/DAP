@@ -126,6 +126,7 @@
     <EntitySetMapping Name="componenteselectricos">
       <EntityTypeMapping TypeName="Modeldap.componenteselectricos">
         <MappingFragment StoreEntitySet="componenteselectricos">
+          <ScalarProperty Name="FechaAlerta" ColumnName="FechaAlerta" />
           <ScalarProperty Name="FechaSustitucion" ColumnName="FechaSustitucion" />
           <ScalarProperty Name="Caracteristicas" ColumnName="Caracteristicas" />
           <ScalarProperty Name="Tipo" ColumnName="Tipo" />
@@ -163,6 +164,7 @@
     <EntitySetMapping Name="componentesmecanicos">
       <EntityTypeMapping TypeName="Modeldap.componentesmecanicos">
         <MappingFragment StoreEntitySet="componentesmecanicos">
+          <ScalarProperty Name="FechaAlerta" ColumnName="FechaAlerta" />
           <ScalarProperty Name="FechaSustitucion" ColumnName="FechaSustitucion" />
           <ScalarProperty Name="Caracteristicas" ColumnName="Caracteristicas" />
           <ScalarProperty Name="Tipo" ColumnName="Tipo" />
@@ -291,6 +293,7 @@
     <EntitySetMapping Name="equipos">
       <EntityTypeMapping TypeName="Modeldap.equipos">
         <MappingFragment StoreEntitySet="equipos">
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
           <ScalarProperty Name="FechaGarantia" ColumnName="FechaGarantia" />
           <ScalarProperty Name="CantidadPersonas" ColumnName="CantidadPersonas" />
           <ScalarProperty Name="obra_id" ColumnName="obra_id" />

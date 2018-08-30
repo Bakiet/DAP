@@ -61,7 +61,13 @@
                                     </a>
                                 </div>
                             </td>   
-                            <td class="text-center vert-align">@mantenimientopreventivo.FechaVisita</td>
+                            @if (mantenimientopreventivo.FechaVisita !=null) { 
+                            <td class="text-center vert-align">@mantenimientopreventivo.FechaVisita.ToString("dd/MM/yyyy")</td>
+                            }
+                            else
+                            {
+                                <td class="text-center vert-align"></td>
+                            }
                             <td class="text-center vert-align">@mantenimientopreventivo.Tipo</td>
                             <td class="text-center vert-align">@mantenimientopreventivo.NombreDocumento</td>
                             <td class="text-center vert-align">@mantenimientopreventivo.StatusMantenimiento</td>
@@ -292,7 +298,13 @@
                                                 <tr>
                                                 
                                                     @*<td class="text-center vert-align">@mantenimientopreventivo.Id</td>*@
-                                                    <td class="text-center vert-align">@mantenimientopreventivo.FechaVisita</td>
+                                                    @if (mantenimientopreventivo.FechaVisita != null) { 
+                                                    <td class="text-center vert-align">@mantenimientopreventivo.FechaVisita.ToString("dd/MM/yyyy")</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="text-center vert-align"></td>
+                                                    }
                                                     <td class="text-center vert-align">@mantenimientopreventivo.Tipo</td>
                                                     <td class="text-center vert-align">@mantenimientopreventivo.NombreDocumento</td>
                                                     <td class="text-center vert-align">@mantenimientopreventivo.StatusMantenimiento</td>
@@ -349,15 +361,14 @@
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
                 },
-                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]],
-                "order": [[1, "desc"]]
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
             });
             $('#mensajesmodal').DataTable({
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
                 },
                 "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]],
-                "order": [[0, "desc"]]
+                "order": [[3, "ASC"]]
             });
         });
 

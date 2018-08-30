@@ -18,6 +18,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
     public class AdministrarObrasController : Controller
     {
         private readonly ObrasManager _obrasManager = new ObrasManager();
+        private readonly FallasManager _fallasManager = new FallasManager();
         /*
         public ActionResult EditarContacto(int id, ObraContactoViewModel model)
         {
@@ -114,6 +115,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             ViewBag.ArchivosMapa = "";
 
+            ViewBag.FallasCount = _fallasManager.GetSustituciones();
+            TempData["sustituciones"] = ViewBag.FallasCount.Count;
+            TempData.Keep();
             //ViewBag.EstatusCita = db.estatuscitas.ToList();
 
             return View();

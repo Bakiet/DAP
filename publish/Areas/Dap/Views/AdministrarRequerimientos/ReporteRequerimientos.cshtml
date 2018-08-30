@@ -15,7 +15,7 @@
         <table class="table table-striped" id="mensajes">
             <thead>
                 <tr>
-                    @*<th class="text-center">Id</th>*@
+                  
                     <th class="text-center">Obra</th>
                     <th class="text-center">Tipo</th>
                     <th class="text-center">Fecha de Solicitud</th>
@@ -23,29 +23,38 @@
                     <th class="text-center">Técnicos</th>
                     <th class="text-center">Estatus de Requerimiento</th>
                     <th class="text-center">Fecha de Cumplimiento de Solicitud</th>
-                    @*<th class="text-center">Descripción</th>*@
+                   
                     <th class="text-center">Acciones Ejecutadas</th>
 
-                    @*<th class="text-center">Reporte de fallas</th>
-                        <th class="text-center">Control de envíos</th>
-                        <th class="text-center">Requerimientos</th>
-                        <th class="text-center">Foto</th>
-                        <th class="text-center">Mapa satelital</th>*@
-                    <th></th>
+                    
             </thead>
             <tbody>
                 @foreach (var requerimiento in (ViewBag.Requerimientos))
                 {
                     <tr>
-                        @*<td class="text-center vert-align">@requerimiento.Id</td>*@
+                      
                         <td class="text-center vert-align h4">@requerimiento.Obra</td>
                         <td class="text-center vert-align">@requerimiento.Tipo</td>
-                        <td class="text-center vert-align">@requerimiento.FechaSolicitud.ToString("dd/MM/yyyy")</td>
+                        @if (requerimiento.FechaSolicitud != null)
+                        {
+                            <td class="text-center vert-align">@requerimiento.FechaSolicitud.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
                         <td class="text-center vert-align">@requerimiento.GerenciaResponsable</td>
                         <td class="text-center vert-align">@requerimiento.Tecnicos</td>
                         <td class="text-center vert-align">@requerimiento.StatusRequerimiento</td>
-                        <td class="text-center vert-align">@requerimiento.FechaCumplimientoSolicitud.ToString("dd/MM/yyyy")</td>
-                        @*<td class="text-center vert-align">@requerimiento.Descripcion</td>*@
+                        @if (requerimiento.FechaCumplimientoSolicitud != null)
+                        {
+                            <td class="text-center vert-align">@requerimiento.FechaCumplimientoSolicitud.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+
                         <td class="text-center vert-align">@requerimiento.AccionesEjecutadas</td>
 
                     </tr>

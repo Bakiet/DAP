@@ -1,0 +1,399 @@
+﻿@using Ppgz.Repository
+@using System.Globalization;
+@model Ppgz.Web.Areas.Dap.Models.FallaViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+<h2 class="form-signin-heading">Reporte de Fallas</h2>
+@*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra los reportes de fallas</i></p>*@
+<a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallefallas-modal" id="" onclick="createModal('@Url.Action("ReporteFallas", "AdministrarFallas" , new {id=ViewBag.id })')">
+    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+</a>
+@if(ViewBag.id != null){
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarFallas", new { @id = ViewBag.id })'">Histórico</button>
+}
+else
+{
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("HistoricoTodos", "AdministrarFallas")'">Histórico</button>
+}
+<div class="clearfix">
+    @if (ViewBag.id != null)
+    {
+
+        <a href="@Url.Action("Crear", "AdministrarFallas" , new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Falla</a>
+   
+    }
+    else
+    {
+        
+    <a href="@Url.Action("CrearPorDefecto", "AdministrarFallas")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Falla</a>
+
+    }
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Fallas Registradas</div>
+    <div class="panel-body">
+        <table class="table table-striped" id="mensajes">
+            <thead>
+                <tr>
+                    <th class="text-center">Reporte</th>
+                    @*<th class="text-center">Id</th>*@
+                    
+                    <th class="text-center">Obra</th>
+                    <th class="text-center">Equipo</th>
+                    <th class="text-center">Fecha Falla</th>
+                    <th class="text-center">Componente</th>
+                    <th class="text-center">Estatus Falla</th>
+                    <th class="text-center">Fecha Solución</th>
+                    <th class="text-center">Fecha Vencimiento</th>
+                    <th></th>
+            </thead>
+            <tbody>
+                @foreach (var falla in (ViewBag.Fallas))
+                {
+                    <tr>
+                     
+                        <td class="text-center vert-align">
+
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@falla.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarFallas" , new {id=falla.Id })')">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                </a>
+                            </div>
+                        </td>        
+                        @*<td class="text-center vert-align">@falla.Id</td>*@
+                        
+                        <td class="text-center vert-align h4">@falla.Obra</td>
+                        <td class="text-center vert-align">@falla.Equipo</td>
+                        @if (falla.FechaFalla != null) { 
+                        <td class="text-center vert-align">@falla.FechaFalla.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        <td class="text-center vert-align">@falla.Componente</td>
+                        <td class="text-center vert-align">@falla.StatusFalla</td>
+                        @if (falla.FechaSolucion != null)
+                        {
+                            <td class="text-center vert-align">@falla.FechaSolucion.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                       
+                        <td class="text-center vert-align">@falla.Duracion.ToString("dd/MM/yyyy")</td>
+                      
+                        <td class="text-center">
+                            <div class="btn-group-vertical">
+                                <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarFallas", new { @id = @falla.Id })">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalles
+                                </a>
+                                <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarFallas", new { @id = @falla.Id })">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarFallas", new { @id = @falla.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="La falla será eliminada.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modelContent">
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecFalla('reportefalla')">
+                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            </a>
+            <div id="reportefalla">
+                <div class="modal-header">
+                    @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                    <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                    </button>
+                    <h4 class="modal-title">Reporte de Fallas</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaFalla)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.FechaFalla)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Obra)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.Obra)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Equipo)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.Equipo)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tipo)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.Tipo)
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Componente)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.Componente)
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Personal)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.Personal)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.StatusFalla)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.StatusFalla)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaSolucion)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.FechaSolucion)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Descripcion)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.Descripcion)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Condicion)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.Condicion)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.AccionesTomadas)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.AccionesTomadas)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.PersonaReporte)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.PersonaReporte)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                                <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.GerenciaResponsable)</h4>
+                            </div>
+                            <div class="col-4 col-sm-6">
+                                @Html.DisplayFor(o => o.GerenciaResponsable)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+                <script type="text/javascript">
+
+                            function imprSelecFalla(muestra) {
+                                var ficha = document.getElementById(muestra);
+                                var ventimp = window.open(' ', 'popimpr');
+                                ventimp.document.write(ficha.innerHTML);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();
+                                
+                            }
+                </script>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="modal fade"  id="detallefallas-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modelContent" style="width:1000px;">
+        
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
+                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            </a>
+            <div id="reporte">
+                
+                <div class="modal-header">
+                    @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+                    <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+                    </button>
+                    <h4 class="modal-title">Reporte de Fallas</h4>
+                </div>
+
+                
+                        <div class="responsive-table">
+                            <div class="container-fluid">
+
+                                <div class="panel panel-default" >
+                                    <div class="panel-heading">Fallas Registradas</div>
+                                    <div class="panel-body">
+                                        <table class="table table-striped" id="mensajesmodal">
+                                            <thead>
+                                                <tr>
+
+                                                    @*<th class="text-center">Id</th>*@
+                                                    <th class="text-center">Obra</th>
+                                                    
+                                                    
+                                                    <th class="text-center">Equipo</th>
+                                                    <th class="text-center">Fecha Falla</th>
+                                                    <th class="text-center">Componente</th>
+                                                    <th class="text-center">Fecha Solución</th>
+                                                    <th class="text-center">Estatus Falla</th>
+                                                    
+                                                    <th class="text-center">Técnico</th>
+
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var falla in (ViewBag.Fallas))
+                                                {
+                                                    <tr>
+                                                        <td class="text-center vert-align h3">@falla.Obra</td>
+                                                        @*<td class="text-center vert-align">@falla.Id</td>*@
+                                                       
+                                                        
+                                                        <td class="text-center vert-align">@falla.Equipo</td>
+                                                        @if (falla.FechaFalla != null)
+                                                        {
+                                                            <td class="text-center vert-align">@falla.FechaFalla.ToString("dd/MM/yyyy")</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td class="text-center vert-align"></td>
+                                                        }
+                                                        <td class="text-center vert-align">@falla.Componente</td>
+                                                        @if (falla.FechaSolucion != null)
+                                                        {
+                                                            <td class="text-center vert-align">@falla.FechaSolucion.ToString("dd/MM/yyyy")</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td class="text-center vert-align"></td>
+                                                        }
+                                                        <td class="text-center vert-align">@falla.StatusFalla</td>
+                                                       
+                                                        <td class="text-center vert-align">@falla.Personal</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+                        <script type="text/javascript">
+                            
+                            function imprSelec(muestra) {
+                                var ficha = document.getElementById(muestra);
+                                var ventimp = window.open(' ', 'popimpr');
+                                ventimp.document.write(ficha.innerHTML);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();
+                            }
+                        </script>
+                        
+                    </div>
+            </div>
+    </div>
+</div>
+
+@section Scripts {
+   
+
+<script type="text/javascript">
+      function createModal(url){
+          $('#modelContent').load(url);
+         
+      }
+</script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+            $('#mensajesmodal').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+</script>
+}

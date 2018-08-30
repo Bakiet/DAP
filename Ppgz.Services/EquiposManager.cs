@@ -74,7 +74,7 @@ namespace Ppgz.Services
         public equipos Actualizar(int obraid,int id, string nombre = null, string marca = null, string modelo = null,
 			string referencia = null, string dimensionescabina = null, string dimensioneshueco = null, string carganominal = null, string velocidad = null
 			, string recorrido = null, string paradas = null, string accesos = null, string voltajedered = null, string potenciademaquina = null, string tipodemaniobra = null
-			, string numerodeguayas = null, string cantidadpersonas = null, string fotografia = null, string plano = null, DateTime? FechaGarantia = null)
+			, string numerodeguayas = null, string cantidadpersonas = null, string fotografia = null, string plano = null, DateTime? FechaGarantia = null, DateTime? FechaVencimiento = null)
 		{
 
 			var equipos = _db.equipos.Find(id);
@@ -145,6 +145,7 @@ namespace Ppgz.Services
 				equipos.Plano = plano;
 
             equipos.FechaGarantia = FechaGarantia;
+            equipos.FechaVencimiento = FechaVencimiento;
 
             equipos.CantidadPersonas = Convert.ToInt32(cantidadpersonas);
 
@@ -161,7 +162,7 @@ namespace Ppgz.Services
 		public equipos Crear(int obraid,string nombre = null, string marca = null, string modelo = null,
 			string referencia = null, string dimensionescabina = null, string dimensioneshueco = null, string carganominal = null, string velocidad = null
 			, string recorrido = null, string paradas = null, string accesos = null, string voltajedered = null, string potenciademaquina = null, string tipodemaniobra = null
-			, string numerodeguayas = null, string cantidadpersonas = null, string fotografia = null, string plano = null, DateTime? FechaGarantia = null)
+			, string numerodeguayas = null, string cantidadpersonas = null, string fotografia = null, string plano = null, DateTime? FechaGarantia = null, DateTime? FechaVencimiento= null)
 		{
 		   
 
@@ -190,8 +191,9 @@ namespace Ppgz.Services
 					Fotografia = fotografia,
 					Plano = plano,
                     obra_id = obraid,
-                    FechaGarantia = FechaGarantia
-				};
+                    FechaGarantia = FechaGarantia,
+                    FechaVencimiento = FechaVencimiento
+                };
 
                 var equipoid = _db.equipos.Add(equipo);
 				_db.SaveChanges();
@@ -240,11 +242,10 @@ namespace Ppgz.Services
                 return equipo;
 
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
-			   
 
-				throw;
+				throw e;
 			}
 
 

@@ -243,7 +243,8 @@ else
         <div class="modal-content" id="modelContent" style="width:1300px;">
             @*<a class="text-uppercase" id="download">Imprimir</a>*@
             @*<a class="" href="javascript:imprSelec('reporte')">Imprimir</a>*@
-            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprime">
+                @*href="javascript:imprSelec('reporte')*@
                 <i class="fa fa-print" aria-hidden="true"></i> Imprimir
             </a>
             <div id="reporte">
@@ -268,7 +269,7 @@ else
                                 <table class="table table-striped" id="mensajesmodal">
                                     <thead>
                                         <tr>
-                                            @*<th class="text-center">Id</th>*@
+                                           
                                             <th class="text-center">Obra</th>
                                             <th class="text-center">Tipo</th>
                                             <th class="text-center">Fecha de Solicitud</th>
@@ -276,17 +277,16 @@ else
                                             <th class="text-center">Técnicos</th>
                                             <th class="text-center">Estatus de Requerimiento</th>
                                             <th class="text-center">Fecha de Cumplimiento de Solicitud</th>
-                                            @*<th class="text-center">Descripción</th>*@
+                                          
                                             <th class="text-center">Acciones Ejecutadas</th>
 
                                           
-                                            <th></th>
                                     </thead>
                                     <tbody>
                                         @foreach (var requerimiento in (ViewBag.Requerimientos))
                                         {
                                             <tr>
-                                                @*<td class="text-center vert-align">@requerimiento.Id</td>*@
+                                                
                                                 <td class="text-center vert-align h4">@requerimiento.Obra</td>
                                                 <td class="text-center vert-align">@requerimiento.Tipo</td>
                                                 @if (requerimiento.FechaSolicitud != null)
@@ -308,7 +308,7 @@ else
                                                 {
                                                     <td class="text-center vert-align"></td>
                                                 }
-                                                @*<td class="text-center vert-align">@requerimiento.Descripcion</td>*@
+                                               
                                                 <td class="text-center vert-align">@requerimiento.AccionesEjecutadas</td>
 
                                             </tr>
@@ -328,7 +328,7 @@ else
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
                 <script type="text/javascript">
-
+                    
                             function imprSelec(muestra) {
                                 var ficha = document.getElementById(muestra);
                                 var ventimp = window.open(' ', 'popimpr');
@@ -356,6 +356,9 @@ else
 
         $(document).ready(function () {
            
+            $("#imprime").click(function () {
+                $("div#reporte").printArea();
+            })
 
             $('#mensajes').DataTable({
                 "language": {

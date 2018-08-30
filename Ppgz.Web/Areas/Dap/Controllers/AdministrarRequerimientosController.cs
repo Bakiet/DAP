@@ -202,7 +202,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Obra = requerimiento.Obra,
                 Tipo = requerimiento.Tipo,
-                FechaSolicitud = requerimiento.FechaSolicitud.ToString("dd/MM/YYYY"),
+                FechaSolicitud = requerimiento.FechaSolicitud.ToString(),
                 //GerenciaResponsable = requerimiento.GerenciaResponsable,
                 Tecnicos = requerimiento.Tecnicos,
                 StatusRequerimientos = requerimiento.StatusRequerimiento,
@@ -254,7 +254,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Obra = requerimiento.Obra,
                 Tipo = requerimiento.Tipo,
-                FechaSolicitud = requerimiento.FechaSolicitud.ToString("dd/MM/YYYY"),
+                FechaSolicitud = requerimiento.FechaSolicitud.ToString(),
                 //GerenciaResponsable = requerimiento.GerenciaResponsable,
                 Tecnicos = requerimiento.Tecnicos,
                 StatusRequerimientos = requerimiento.StatusRequerimiento,
@@ -299,7 +299,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             {
                 Obra = requerimiento.Obra,
                 Tipo = requerimiento.Tipo,
-                FechaSolicitud = requerimiento.FechaSolicitud.ToString("dd/MM/YYYY"),
+                FechaSolicitud = requerimiento.FechaSolicitud.ToString(),
                 GerenciaResponsable = requerimiento.GerenciaResponsable,
                 Tecnicos = requerimiento.Tecnicos,
                 StatusRequerimientos = requerimiento.StatusRequerimiento,

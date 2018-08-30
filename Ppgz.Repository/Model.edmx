@@ -150,9 +150,10 @@
           <Property Name="Modelo" Type="varchar" MaxLength="45" />
           <Property Name="Serial" Type="varchar" MaxLength="45" />
           <Property Name="FechaFabricado" Type="datetime" Precision="0" />
-          <Property Name="Duracion" Type="varchar" MaxLength="45" />
+          <Property Name="Duracion" Type="datetime" Precision="0" />
           <Property Name="Sustitucion" Type="varchar" MaxLength="45" />
           <Property Name="FechaSustitucion" Type="datetime" Precision="0" />
+          <Property Name="FechaAlerta" Type="datetime" Precision="0" />
           <Property Name="Fotografia" Type="varchar" MaxLength="1000" />
           <Property Name="IdEquipos" Type="int" />
         </EntityType>
@@ -192,9 +193,10 @@
           <Property Name="Modelo" Type="varchar" MaxLength="45" />
           <Property Name="Serial" Type="varchar" MaxLength="45" />
           <Property Name="FechaFabricado" Type="datetime" Precision="0" />
-          <Property Name="Duracion" Type="varchar" MaxLength="45" />
+          <Property Name="Duracion" Type="datetime" Precision="0" />
           <Property Name="Sustitucion" Type="varchar" MaxLength="45" />
           <Property Name="FechaSustitucion" Type="datetime" Precision="0" />
+          <Property Name="FechaAlerta" Type="datetime" Precision="0" />
           <Property Name="Fotografia" Type="varchar" MaxLength="1000" />
           <Property Name="IdEquipos" Type="int" />
         </EntityType>
@@ -374,6 +376,7 @@ warning 6002: The table/view 'def.dap.devoluciones' does not have a primary key 
           <Property Name="CantidadPersonas" Type="int" />
           <Property Name="obra_id" Type="int" />
           <Property Name="FechaGarantia" Type="datetime" Precision="0" />
+          <Property Name="FechaVencimiento" Type="datetime" Precision="0" />
         </EntityType>
         <EntityType Name="estatuscitas">
           <Key>
@@ -440,7 +443,7 @@ warning 6002: The table/view 'def.dap.devoluciones' does not have a primary key 
           <Property Name="Condicion" Type="varchar" MaxLength="45" />
           <Property Name="AccionesTomadas" Type="varchar" MaxLength="1500" />
           <Property Name="AccionesRecomendadas" Type="varchar" MaxLength="1500" />
-          <Property Name="Duracion" Type="varchar" MaxLength="45" />
+          <Property Name="Duracion" Type="datetime" Precision="0" />
           <Property Name="PersonaReporte" Type="varchar" MaxLength="45" />
           <Property Name="GerenciaResponsable" Type="varchar" MaxLength="45" />
           <Property Name="obra_id" Type="int" />
@@ -1224,13 +1227,14 @@ FROM `pagos` AS `pagos`</DefiningQuery>
           <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="FechaFabricado" Type="DateTime" />
-          <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Duracion" Type="DateTime" />
           <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Fotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="IdEquipos" Type="Int32" />
           <Property Name="Tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="FechaSustitucion" Type="DateTime" />
+          <Property Name="FechaAlerta" Type="DateTime" />
         </EntityType>
         <EntityType Name="componenteselectricos_sustituciones">
           <Key>
@@ -1259,13 +1263,14 @@ FROM `pagos` AS `pagos`</DefiningQuery>
           <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="FechaFabricado" Type="DateTime" />
-          <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Duracion" Type="DateTime" />
           <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Fotografia" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="IdEquipos" Type="Int32" />
           <Property Name="Tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="FechaSustitucion" Type="DateTime" />
+          <Property Name="FechaAlerta" Type="DateTime" />
         </EntityType>
         <EntityType Name="componentesmecanicos_sustituciones">
           <Key>
@@ -1277,7 +1282,7 @@ FROM `pagos` AS `pagos`</DefiningQuery>
           <Property Name="Modelo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Serial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="FechaFabricado" Type="DateTime" />
-          <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Duracion" Type="String" />
           <Property Name="Sustitucion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Fotografia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="IdEquipos" Type="Int32" />
@@ -1406,6 +1411,7 @@ FROM `pagos` AS `pagos`</DefiningQuery>
           <Property Name="obra_id" Type="Int32" Nullable="false" />
           <Property Name="CantidadPersonas" Type="Int32" />
           <Property Name="FechaGarantia" Type="DateTime" />
+          <Property Name="FechaVencimiento" Type="DateTime" />
         </EntityType>
         <EntityType Name="estatuscitas">
           <Key>
@@ -1463,7 +1469,7 @@ FROM `pagos` AS `pagos`</DefiningQuery>
           <Property Name="Condicion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="AccionesTomadas" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
           <Property Name="AccionesRecomendadas" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
-          <Property Name="Duracion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Duracion" Type="DateTime" Nullable="true" />
           <Property Name="PersonaReporte" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="GerenciaResponsable" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="obra_id" Type="Int32" />
@@ -2747,6 +2753,7 @@ FROM `pagos` AS `pagos`</DefiningQuery>
           <EntitySetMapping Name="componenteselectricos">
             <EntityTypeMapping TypeName="Modeldap.componenteselectricos">
               <MappingFragment StoreEntitySet="componenteselectricos">
+                <ScalarProperty Name="FechaAlerta" ColumnName="FechaAlerta" />
                 <ScalarProperty Name="FechaSustitucion" ColumnName="FechaSustitucion" />
                 <ScalarProperty Name="Caracteristicas" ColumnName="Caracteristicas" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
@@ -2784,6 +2791,7 @@ FROM `pagos` AS `pagos`</DefiningQuery>
           <EntitySetMapping Name="componentesmecanicos">
             <EntityTypeMapping TypeName="Modeldap.componentesmecanicos">
               <MappingFragment StoreEntitySet="componentesmecanicos">
+                <ScalarProperty Name="FechaAlerta" ColumnName="FechaAlerta" />
                 <ScalarProperty Name="FechaSustitucion" ColumnName="FechaSustitucion" />
                 <ScalarProperty Name="Caracteristicas" ColumnName="Caracteristicas" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
@@ -2912,6 +2920,7 @@ FROM `pagos` AS `pagos`</DefiningQuery>
           <EntitySetMapping Name="equipos">
             <EntityTypeMapping TypeName="Modeldap.equipos">
               <MappingFragment StoreEntitySet="equipos">
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
                 <ScalarProperty Name="FechaGarantia" ColumnName="FechaGarantia" />
                 <ScalarProperty Name="CantidadPersonas" ColumnName="CantidadPersonas" />
                 <ScalarProperty Name="obra_id" ColumnName="obra_id" />

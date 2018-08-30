@@ -20,12 +20,13 @@ namespace Ppgz.Repository
         public string Modelo { get; set; }
         public string Serial { get; set; }
         public Nullable<System.DateTime> FechaFabricado { get; set; }
-        public string Duracion { get; set; }
+        public Nullable<System.DateTime> Duracion { get; set; }
         public string Sustitucion { get; set; }
         public string Fotografia { get; set; }
         public Nullable<int> IdEquipos { get; set; }
         public string Tipo { get; set; }
         public string Caracteristicas { get; set; }
         public Nullable<System.DateTime> FechaSustitucion { get; set; }
+        public Nullable<System.DateTime> FechaAlerta { get; set; }
     }
 }

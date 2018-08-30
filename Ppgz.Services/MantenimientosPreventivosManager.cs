@@ -45,9 +45,8 @@ namespace Ppgz.Services
 
         public List<mantenimientopreventivo> GetMantenimientosPreventivos(int ventaId)
 		{
-			return _db.mantenimientopreventivo.Where(s => s.IdVenta == ventaId).ToList();
-
-		}
+			return _db.mantenimientopreventivo.Where(s => s.IdVenta == ventaId).OrderByDescending(s => s.FechaVisita).ToList();
+        }
 
 		public mantenimientopreventivo Actualizar(int idventa, int id , string Tipo = null, string Descripcion = null, string PersonaJuridica = null,
 			DateTime? FechaVisita = null, DateTime? FechaPublicacion = null, string NombreDocumento = null, string Tecnico = null, string EquiposAtendidos = null

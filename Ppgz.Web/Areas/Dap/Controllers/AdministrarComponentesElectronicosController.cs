@@ -67,6 +67,14 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             return View();
         }
+        public ActionResult Sustituciones()
+        {
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
+            TempData.Keep();
+            return View();
+        }
         public ActionResult Historico(int id)
         {
             var equipo = _equiposManager.Find(id);
@@ -167,9 +175,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Modelo = componenteelectrico.Modelo,
                 Serial = componenteelectrico.Serial,
                 FechaFabricado = componenteelectrico.FechaFabricado,
-                Duracion = componenteelectrico.Duracion,
+                Duracion = componenteelectrico.Duracion.ToString(),
                 Sustitucion = componenteelectrico.Sustitucion,
                 Fotografia = componenteelectrico.Fotografia,
+                FechaAlerta = componenteelectrico.FechaAlerta,
+                FechaSustitucion = componenteelectrico.FechaSustitucion
 
             };
 
@@ -208,9 +218,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Modelo = componenteelectrico.Modelo,
                 Serial = componenteelectrico.Serial,
                 FechaFabricado = componenteelectrico.FechaFabricado,
-                Duracion = componenteelectrico.Duracion,
+                Duracion = componenteelectrico.Duracion.ToString(),
                 Sustitucion = componenteelectrico.Sustitucion,
                 Fotografia = componenteelectrico.Fotografia,
+                FechaSustitucion = componenteelectrico.FechaSustitucion,
+                FechaAlerta = componenteelectrico.FechaAlerta
 
             };
 
@@ -248,9 +260,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Modelo = componenteelectrico.Modelo,
                 Serial = componenteelectrico.Serial,
                 FechaFabricado = componenteelectrico.FechaFabricado,
-                Duracion = componenteelectrico.Duracion,
+                Duracion = componenteelectrico.Duracion.ToString(),
                 Sustitucion = componenteelectrico.Sustitucion,
                 Fotografia = componenteelectrico.Fotografia,
+                FechaAlerta = componenteelectrico.FechaAlerta,
+                FechaSustitucion = componenteelectrico.FechaSustitucion
 
             };
 
@@ -297,9 +311,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.Modelo,
                       model.Serial,
                       model.FechaFabricado,
-                      model.Duracion,
+                      DateTime.Parse(model.Duracion),
                       model.Sustitucion,
-                      pdfUrl.Trim(), model.FechaSustitucion);
+                      pdfUrl.Trim(), model.FechaSustitucion,model.FechaAlerta);
 
                 HttpPostedFileBase file;
 
@@ -319,7 +333,16 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 }
                 // TempData["FlashSuccess"] = MensajesResource.INFO_UsuarioNazan_ActualizadoCorrectamente;
                 // return RedirectToAction("Editar", "AdministrarComponentesElectronicos", new { @id = id });
-                return RedirectToAction("ComponentesElectronicos", "AdministrarComponentesElectronicos", new { @id = TempData["equipo_id"] });
+                if (TempData["equipo_id"] != null)
+                {
+                    return RedirectToAction("ComponentesElectronicos", "AdministrarComponentesElectronicos", new { @id = TempData["equipo_id"] });
+                }
+                else
+                {
+                    return RedirectToAction("Sustituciones", "AdministrarComponentesElectronicos");
+                }
+
+               // return RedirectToAction("ComponentesElectronicos", "AdministrarComponentesElectronicos", new { @id = TempData["equipo_id"] });
             }
             catch (BusinessException businessEx)
             {
@@ -376,9 +399,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.Modelo,
                       model.Serial,
                       model.FechaFabricado,
-                      model.Duracion,
+                      DateTime.Parse(model.Duracion),
                       model.Sustitucion,
-                      pdfUrl.Trim(), model.FechaSustitucion);
+                      pdfUrl.Trim(), model.FechaSustitucion,model.FechaAlerta);
 
                 HttpPostedFileBase file;
 

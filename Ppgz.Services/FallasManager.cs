@@ -110,6 +110,12 @@ namespace Ppgz.Services
             return _db.fallas.Where(f => f.obra_id == obraId && f.StatusFalla == "FALLA SOLUCIONADA").ToList();
 
         }
+        public List<fallas> GetSustituciones()
+        {
+            var lastmonth = DateTime.Today.AddMonths(-1);
+            return _db.fallas.Where(f => f.Duracion >= lastmonth).ToList();
+
+        }
         public List<fallas> GetHistoricoAll()
         {
             return _db.fallas.Where(f => f.StatusFalla == "FALLA SOLUCIONADA").ToList();
@@ -117,7 +123,7 @@ namespace Ppgz.Services
         }
 
         public fallas Actualizar(int id, DateTime fechafalla, DateTime? fechaSolucion, string obra = null, string equipo = null,
-			string tipo = null, string componente = null, string personal = null, string statusFalla = null, string numeroReporte = null, string descripcion = null, string condicion = null, string accionesTomadas = null, string accionesRecomendadas = null, string duracion = null
+			string tipo = null, string componente = null, string personal = null, string statusFalla = null, string numeroReporte = null, string descripcion = null, string condicion = null, string accionesTomadas = null, string accionesRecomendadas = null, DateTime? duracion = null
 			, string personaReporte = null, string gerenciaResponsable = null)
 		{
 
@@ -189,7 +195,7 @@ namespace Ppgz.Services
 
 
 		public fallas Crear(int obraid, DateTime fechafalla, DateTime? fechaSolucion, string obra = null, string equipo = null,
-			string tipo = null, string componente = null, string personal = null, string statusFalla = null, string numeroReporte = null, string descripcion = null, string condicion = null, string accionesTomadas = null, string accionesRecomendadas = null, string duracion = null
+			string tipo = null, string componente = null, string personal = null, string statusFalla = null, string numeroReporte = null, string descripcion = null, string condicion = null, string accionesTomadas = null, string accionesRecomendadas = null, DateTime? duracion = null
 			, string personaReporte = null, string gerenciaResponsable = null)
 		{
 		   
@@ -288,11 +294,10 @@ namespace Ppgz.Services
 
                 return falla;
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
-			   
 
-				throw;
+				throw e;
 			}
 
 

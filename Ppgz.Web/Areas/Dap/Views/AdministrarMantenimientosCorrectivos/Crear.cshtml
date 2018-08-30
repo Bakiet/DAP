@@ -37,14 +37,14 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.FechaVisita, new { @class = "col-sm-3 control-label" })
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(m => m.FechaVisita, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.TextBoxFor(m => m.FechaVisita, new { @class = "form-control fecha-hora"})
                         @Html.ValidationMessageFor(m => m.FechaVisita)
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora", @type = "datetime" })
+                        @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha-hora" })
                         @Html.ValidationMessageFor(m => m.FechaPublicacion)
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-7">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarMantenimientosCorrectivos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarMantenimientosCorrectivos", new { @id = TempData["venta_id"] })"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
                     </div>
                 </div>
         }

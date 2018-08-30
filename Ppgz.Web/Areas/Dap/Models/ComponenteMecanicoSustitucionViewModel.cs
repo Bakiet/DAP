@@ -34,7 +34,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string FechaFabricado { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Duración")]
+        [Display(Name = "Fecha Vencimiento")]
         public string Duracion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]

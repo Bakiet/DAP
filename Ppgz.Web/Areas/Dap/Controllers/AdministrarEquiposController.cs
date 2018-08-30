@@ -163,7 +163,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 obra_id = equipo.obra_id,
                 CantidadPersonas = Convert.ToString(equipo.CantidadPersonas),
                 obra = "Obra",
-                FechaGarantia = equipo.FechaGarantia.ToString()
+                FechaGarantia = equipo.FechaGarantia.ToString(),
+                FechaVencimiento = equipo.FechaVencimiento.ToString()
             };
 
             return PartialView(equipoModel);
@@ -220,7 +221,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 obra_id = equipo.obra_id,
                 CantidadPersonas = Convert.ToString(equipo.CantidadPersonas),
                 obra = "Obra",
-                FechaGarantia = equipo.FechaGarantia.ToString()
+                FechaGarantia = equipo.FechaGarantia.ToString(),
+                FechaVencimiento = equipo.FechaVencimiento.ToString()
             };
 
             return View(equipoModel);
@@ -275,7 +277,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 obra_id = equipo.obra_id,
                 CantidadPersonas = Convert.ToString(equipo.CantidadPersonas),
                 obra = "Obra",
-                FechaGarantia = equipo.FechaGarantia.ToString()
+                FechaGarantia = equipo.FechaGarantia.ToString(),
+                FechaVencimiento = equipo.FechaVencimiento.ToString()
             };
 
             return View(equipoModel);
@@ -329,7 +332,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                  else { plano = equipo.Plano; }
                   */
                 DateTime? fechagarantia = null;
-                if(model.FechaGarantia != null) { 
+                DateTime? fechavencimiento = null;
+                if (model.FechaGarantia != null && model.FechaVencimiento == null) { 
                 _equiposManager.Actualizar(Convert.ToInt32(TempData["obra_equipo_id"]),
                       id,
                       model.Nombre,
@@ -349,8 +353,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.NumeroDeGuayas,
                       model.CantidadPersonas,
                       fotografia.Trim(),
-                      plano.Trim(),DateTime.Parse(model.FechaGarantia));
-                }else
+                      plano.Trim(),DateTime.Parse(model.FechaGarantia),fechavencimiento);
+                }if(model.FechaGarantia == null && model.FechaVencimiento != null)
                 {
                     _equiposManager.Actualizar(Convert.ToInt32(TempData["obra_equipo_id"]),
                      id,
@@ -371,7 +375,53 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                      model.NumeroDeGuayas,
                      model.CantidadPersonas,
                      fotografia.Trim(),
-                     plano.Trim(), fechagarantia);
+                     plano.Trim(), fechagarantia, DateTime.Parse(model.FechaVencimiento));
+                }
+                if (model.FechaGarantia != null && model.FechaVencimiento != null)
+                {
+                    _equiposManager.Actualizar(Convert.ToInt32(TempData["obra_equipo_id"]),
+                     id,
+                     model.Nombre,
+                     model.Marca,
+                     model.Modelo,
+                     model.Referencia,
+                     model.DimensionesCabina,
+                     model.DimensionesHueco,
+                     model.CargaNominal,
+                     model.Velocidad,
+                     model.Recorrido,
+                     model.Paradas,
+                     model.Accesos,
+                     model.VoltajeDeRed,
+                     model.PotenciaDeMaquina,
+                     model.TipoDeManiobra,
+                     model.NumeroDeGuayas,
+                     model.CantidadPersonas,
+                     fotografia.Trim(),
+                     plano.Trim(), DateTime.Parse(model.FechaGarantia), DateTime.Parse(model.FechaVencimiento));
+                }
+                if (model.FechaGarantia == null && model.FechaVencimiento == null)
+                {
+                    _equiposManager.Actualizar(Convert.ToInt32(TempData["obra_equipo_id"]),
+                     id,
+                     model.Nombre,
+                     model.Marca,
+                     model.Modelo,
+                     model.Referencia,
+                     model.DimensionesCabina,
+                     model.DimensionesHueco,
+                     model.CargaNominal,
+                     model.Velocidad,
+                     model.Recorrido,
+                     model.Paradas,
+                     model.Accesos,
+                     model.VoltajeDeRed,
+                     model.PotenciaDeMaquina,
+                     model.TipoDeManiobra,
+                     model.NumeroDeGuayas,
+                     model.CantidadPersonas,
+                     fotografia.Trim(),
+                     plano.Trim(), fechagarantia, fechavencimiento);
                 }
                 HttpPostedFileBase file;
 
@@ -453,7 +503,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 else { plano = ""; }*/
                 equipos equipo = new equipos();
                 DateTime? fechagarantia = null;
-                if(model.FechaGarantia != null) { 
+                DateTime? fechavencimiento = null;
+                if (model.FechaGarantia != null && model.FechaVencimiento == null) { 
                 equipo =_equiposManager.Crear(
                         Convert.ToInt32(TempData["obra_equipo_id"]),
                       model.Nombre,
@@ -473,9 +524,10 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.NumeroDeGuayas,
                       model.CantidadPersonas,
                       fotografia.Trim(),
-                      plano.Trim(), DateTime.Parse(model.FechaGarantia));
+                      plano.Trim(), DateTime.Parse(model.FechaGarantia), fechavencimiento);
                 }
-                else
+                TempData.Keep();
+               if(model.FechaGarantia == null && model.FechaVencimiento != null)
                 {
                     equipo = _equiposManager.Crear(
                         Convert.ToInt32(TempData["obra_equipo_id"]),
@@ -496,8 +548,57 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.NumeroDeGuayas,
                       model.CantidadPersonas,
                       fotografia.Trim(),
-                      plano.Trim(), fechagarantia);
+                      plano.Trim(), fechagarantia, DateTime.Parse(model.FechaVencimiento));
                 }
+                TempData.Keep();
+                if (model.FechaGarantia == null && model.FechaVencimiento == null)
+                {
+                    equipo = _equiposManager.Crear(
+                        Convert.ToInt32(TempData["obra_equipo_id"]),
+                      model.Nombre,
+                      model.Marca,
+                      model.Modelo,
+                      model.Referencia,
+                      model.DimensionesCabina,
+                      model.DimensionesHueco,
+                      model.CargaNominal,
+                      model.Velocidad,
+                      model.Recorrido,
+                      model.Paradas,
+                      model.Accesos,
+                      model.VoltajeDeRed,
+                      model.PotenciaDeMaquina,
+                      model.TipoDeManiobra,
+                      model.NumeroDeGuayas,
+                      model.CantidadPersonas,
+                      fotografia.Trim(),
+                      plano.Trim(), fechagarantia, fechavencimiento);
+                }
+                TempData.Keep();
+                if (model.FechaGarantia != null && model.FechaVencimiento != null)
+                {
+                    equipo = _equiposManager.Crear(
+                        Convert.ToInt32(TempData["obra_equipo_id"]),
+                      model.Nombre,
+                      model.Marca,
+                      model.Modelo,
+                      model.Referencia,
+                      model.DimensionesCabina,
+                      model.DimensionesHueco,
+                      model.CargaNominal,
+                      model.Velocidad,
+                      model.Recorrido,
+                      model.Paradas,
+                      model.Accesos,
+                      model.VoltajeDeRed,
+                      model.PotenciaDeMaquina,
+                      model.TipoDeManiobra,
+                      model.NumeroDeGuayas,
+                      model.CantidadPersonas,
+                      fotografia.Trim(),
+                      plano.Trim(), DateTime.Parse(model.FechaGarantia), DateTime.Parse(model.FechaVencimiento));
+                }
+                TempData.Keep();
                 HttpPostedFileBase file;
 
                 for (int i = 0; i < Request.Files.Count; i++)

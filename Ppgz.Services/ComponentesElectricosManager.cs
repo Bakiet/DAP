@@ -17,7 +17,12 @@ namespace Ppgz.Services
             return _db.componenteselectricos.Where(f => f.IdEquipos == Id && f.Sustitucion == "SI").ToList();
 
         }
+        public List<componenteselectricos> GetSustituciones()
+        {
+            var lastmonth = DateTime.Today;
+            return _db.componenteselectricos.Where(f => f.FechaAlerta <= lastmonth).ToList();
 
+        }
         public List<componenteselectronicos_tipos> FindTipos()
         {
             return _db.componenteselectronicos_tipos.ToList();
@@ -42,8 +47,8 @@ namespace Ppgz.Services
 		}
 
 		public componenteselectricos Actualizar(int id, string Tipo = null, string Caracteristicas = null, string Descripcion = null,
-			string Marca = null, string Modelo = null, string Serial = null, DateTime? FechaFabricado = null, string Duracion = null
-			, string Sustitucion = null, string Fotografia = null, DateTime? FechaSustitucion = null)
+			string Marca = null, string Modelo = null, string Serial = null, DateTime? FechaFabricado = null, DateTime? Duracion = null
+			, string Sustitucion = null, string Fotografia = null, DateTime? FechaSustitucion = null, DateTime? FechaAlerta = null)
 		{
 
 			var componenteelectrico = _db.componenteselectricos.Find(id);
@@ -98,8 +103,8 @@ namespace Ppgz.Services
             //{
 
                 componenteelectrico.FechaSustitucion = FechaSustitucion;
-           // }
-
+            // }
+            componenteelectrico.FechaAlerta = FechaAlerta;
 
            // if (Duracion != null)
 			//{
@@ -126,8 +131,8 @@ namespace Ppgz.Services
 
 
 		public componenteselectricos Crear(int equipoid, string Tipo = null, string Caracteristicas = null, string Descripcion = null,
-			string Marca = null, string Modelo = null, string Serial = null, DateTime? FechaFabricado = null, string Duracion = null
-			,string Sustitucion = null, string Fotografia = null, DateTime? FechaSustitucion = null)
+			string Marca = null, string Modelo = null, string Serial = null, DateTime? FechaFabricado = null, DateTime? Duracion = null
+			,string Sustitucion = null, string Fotografia = null, DateTime? FechaSustitucion = null, DateTime? FechaAlerta = null)
 		{
 
             //if (Caracteristicas == null)
@@ -186,7 +191,8 @@ namespace Ppgz.Services
 					Duracion = Duracion,
 					Sustitucion = Sustitucion,
 					Fotografia = Fotografia,
-                    FechaSustitucion = FechaSustitucion
+                    FechaSustitucion = FechaSustitucion,
+                    FechaAlerta = FechaAlerta
 
 				};
 

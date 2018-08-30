@@ -77,8 +77,11 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string CantidadPersonas { get; set; }
 
 
-        [Display(Name = "Fecha Garantía")]
+        [Display(Name = "Fecha Activación de Garantía")]
         public string FechaGarantia { get; set; }
+
+        [Display(Name = "Fecha Vencimiento")]
+        public string FechaVencimiento { get; set; }
         // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Plano")]
         public string Plano { get; set; }

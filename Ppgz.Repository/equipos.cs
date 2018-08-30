@@ -35,5 +35,6 @@ namespace Ppgz.Repository
         public int obra_id { get; set; }
         public Nullable<int> CantidadPersonas { get; set; }
         public Nullable<System.DateTime> FechaGarantia { get; set; }
+        public Nullable<System.DateTime> FechaVencimiento { get; set; }
     }
 }

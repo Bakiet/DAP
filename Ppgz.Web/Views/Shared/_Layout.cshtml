@@ -58,6 +58,10 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.print.css" media="print" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.6/combined/css/gijgo.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/PrintArea.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/PrintArea.min.css" />
+   
    
 </head>
 <body>
@@ -178,9 +182,34 @@
                             @*<img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"/>*@
                         </ul>
                     </div>
+                    @if (!Request.Url.AbsoluteUri.Contains("Account/Login"))
+                    {
+                        if (Request.Url.AbsoluteUri.Contains("Dap"))
+                        {
 
-                   
-                </div>
+                            if (TempData["sustitucioneselectronicas"] != null)
+                            {
+
+                                if (TempData["sustitucioneselectronicas"].ToString() != "0")
+                                {
+                                    <form action="@Url.Action("Sustituciones", "AdministrarComponentesElectronicos")">
+                                        <button style="float:right;font-weight:bold;" type="submit" class="btn btn-info fa fa-exclamation-triangle "> Sustituciones Electronicas <span class="btn btn-danger badge"> @TempData["sustitucioneselectronicas"]</span></button>
+                                    </form>
+                                    
+                                }
+                            }
+                            if (TempData["sustitucionesmecanicas"] != null)
+                            {
+                                if (TempData["sustitucionesmecanicas"].ToString() != "0")
+                                {
+                                    <form action="@Url.Action("Sustituciones", "AdministrarComponentesMecanicos")">
+                                        <button style="float:right;font-weight:bold;" type="submit"  class="btn btn-info fa fa-exclamation-triangle"> Sustituciones Mecanicas <span class="btn btn-danger badge"> @TempData["sustitucionesmecanicas"]</span></button>
+                                    </form>
+                                 }
+                            }
+                          }
+                     }
+</div>
             </nav>
             <div class="container-fluid">
             @Html.Partial("_LoginPartial")
@@ -191,6 +220,7 @@
                     <div class="alert alert-dismissible alert-danger text-uppercase" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         @TempData["FlashError"]
+                        @TempData.Remove("FlashError");
                     </div>
                 }
                 @if (TempData["FlashSuccess"] != null)
@@ -198,13 +228,16 @@
                     <div class="alert alert-dismissible alert-success text-uppercase" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         @TempData["FlashSuccess"]
+                        @TempData.Remove("FlashSuccess");
                     </div>
+                   
                 }
                 @if (TempData["FlashEdit"] != null)
                 {
                     <div class="alert alert-dismissible alert-success text-uppercase" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         @TempData["FlashEdit"]
+                        @TempData.Remove("FlashEdit");
                     </div>
                 }
                 @if (!Request.Url.AbsoluteUri.Contains("Account/Login"))
@@ -357,15 +390,20 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js.map"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js">
 
-     
+
+
 
     @Scripts.Render("~/bundles/Script-calendar")
 
 
 
-   
+
         @RenderSection("scripts", required: false)
 
         @if (Request.IsAuthenticated)
@@ -426,7 +464,7 @@
                 })();
                 </text>
             }
-            </script>
+</script>
     }
     
 

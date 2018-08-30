@@ -52,10 +52,10 @@ namespace Ppgz.Repository
         public string FechaEntregaSosoFotografia { get; set; }
         public string FechaConfiguracionFotografia { get; set; }
         public string FechaPeriodoPruebaFotografia { get; set; }
-        public System.DateTime CartaPresentacion { get; set; }
-        public System.DateTime FechaIngresoProduccion { get; set; }
-        public System.DateTime EstatusConstruccion { get; set; }
-        public System.DateTime IngresoDepartamentoIngMan { get; set; }
-        public System.DateTime SolicitudPagoInicialFabrica { get; set; }
+        public Nullable<System.DateTime> CartaPresentacion { get; set; }
+        public Nullable<System.DateTime> FechaIngresoProduccion { get; set; }
+        public Nullable<System.DateTime> EstatusConstruccion { get; set; }
+        public Nullable<System.DateTime> IngresoDepartamentoIngMan { get; set; }
+        public Nullable<System.DateTime> SolicitudPagoInicialFabrica { get; set; }
     }
 }

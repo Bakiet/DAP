@@ -209,11 +209,11 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 FechaInspeccionFotografia = previo.FechaInspeccionFotografia,
                 FechaInspeccionVideo = previo.FechaInspeccionVideo,
                 previo_id = previo.Id,
-                CartaPresentacion = previo.CartaPresentacion.ToString("dd/MM/yyyy"),
-                FechaIngresoProduccion = previo.FechaIngresoProduccion.ToString("dd/MM/yyyy"),
-                EstatusConstruccion = previo.EstatusConstruccion.ToString("dd/MM/yyyy"),
-                IngresoDepartamentoIngMan = previo.IngresoDepartamentoIngMan.ToString("dd/MM/yyyy"),
-                SolicitudPagoInicialFabrica = previo.SolicitudPagoInicialFabrica.ToString("dd/MM/yyyy")
+                CartaPresentacion = previo.CartaPresentacion.ToString(),
+                FechaIngresoProduccion = previo.FechaIngresoProduccion.ToString(),
+                EstatusConstruccion = previo.EstatusConstruccion.ToString(),
+                IngresoDepartamentoIngMan = previo.IngresoDepartamentoIngMan.ToString(),
+                SolicitudPagoInicialFabrica = previo.SolicitudPagoInicialFabrica.ToString()
 
 
             };

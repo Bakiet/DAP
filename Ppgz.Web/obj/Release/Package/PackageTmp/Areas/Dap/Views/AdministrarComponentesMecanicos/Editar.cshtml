@@ -71,9 +71,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    @Html.LabelFor(c => c.FechaAlerta, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(c => c.FechaAlerta, new { @class = "form-control fecha-hora" })
+                        @Html.ValidationMessageFor(c => c.FechaAlerta)
+                    </div>
+                </div>
+                <div class="form-group">
                     @Html.LabelFor(c => c.Duracion, new { @class = "col-sm-3 control-label" })
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(c => c.Duracion, new { @class = "form-control" })
+                        @Html.TextBoxFor(c => c.Duracion, new { @class = "form-control fecha-hora" })
                         @Html.ValidationMessageFor(c => c.Duracion)
                     </div>
                 </div>
@@ -92,6 +99,7 @@
                         @Html.ValidationMessageFor(c => c.FechaSustitucion)
                     </div>
                 </div>
+               
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Fotográfias</label>
                     <div class="col-sm-4">
