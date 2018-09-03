@@ -481,13 +481,13 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="PersonaJuridica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PersonaJuridica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="FechaVisita" Type="DateTime" />
     <Property Name="FechaPublicacion" Type="DateTime" />
-    <Property Name="NombreDocumento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="Tecnico" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="EquiposAtendidos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="StatusMantenimiento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="NombreDocumento" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Tecnico" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="EquiposAtendidos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="StatusMantenimiento" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Archivo" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
     <Property Name="Evaluacion" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
     <Property Name="HoraLlegada" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
@@ -501,13 +501,13 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="PersonaJuridica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PersonaJuridica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="FechaVisita" Type="DateTime" />
     <Property Name="FechaPublicacion" Type="DateTime" />
-    <Property Name="NombreDocumento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="Tecnico" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="EquiposAtendidos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="StatusMantenimiento" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="NombreDocumento" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Tecnico" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="EquiposAtendidos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="StatusMantenimiento" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Archivo" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
     <Property Name="Evaluacion" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
     <Property Name="HoraLlegada" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />

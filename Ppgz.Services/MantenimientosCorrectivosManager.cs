@@ -222,11 +222,11 @@ namespace Ppgz.Services
                 return mantenimientocorrectivo;
 
             }
-			catch (Exception)
+			catch (Exception e)
 			{
 			   
 
-				throw;
+				throw e;
 			}
 
 
