@@ -5,22 +5,22 @@ namespace Ppgz.Web.Areas.Dap.Models
     public class SugerenciaViewModel
     {
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Descripción")]
+        [Display(Name = "DESCRIPCIÓN")]
         public string Descripcion { get; set; }
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Numero")]
+        [Display(Name = "NUMERO")]
         public string Numero { get; set; }
      //   [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Fecha")]
+        [Display(Name = "FECHA")]
         public string Fecha { get; set; }
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Caracteristica")]
+        [Display(Name = "CARACTERISTICA")]
         public string Caracteristica { get; set; }
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Acciones Tomadas")]
+        [Display(Name = "ACCIONES TOMADAS")]
         public string AccionesTomadas { get; set; }
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Acciones Recomendadas")]
+        [Display(Name = "ACCIONES RECOMENDADAS")]
         public string AccionesRecomendadas { get; set; }
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Gerencia Responsable")]

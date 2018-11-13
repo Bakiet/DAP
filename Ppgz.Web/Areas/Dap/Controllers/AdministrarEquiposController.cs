@@ -23,6 +23,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
         private readonly ObrasManager _obrasManager = new ObrasManager();
 
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
 
         internal string CargarPdf(HttpPostedFileBase file)
         {
@@ -70,9 +72,15 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             ViewBag.componentesmecanicos = db.componentesmecanicos.ToList();
 
             ViewBag.componenteselectronicos = db.componenteselectricos.ToList();
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
 
-           
-
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
+            TempData.Keep();
 
             //ViewBag.EstatusCita = db.estatuscitas.ToList();
 

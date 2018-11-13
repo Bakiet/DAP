@@ -31,6 +31,6 @@ namespace Ppgz.Repository
         public Nullable<System.DateTime> Duracion { get; set; }
         public string PersonaReporte { get; set; }
         public string GerenciaResponsable { get; set; }
-        public Nullable<int> obra_id { get; set; }
+        public int obra_id { get; set; }
     }
 }

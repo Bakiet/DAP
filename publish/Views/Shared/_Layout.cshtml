@@ -84,18 +84,107 @@
                                 List<string> menuF = MenuConfig.GetMenuFuncionalidad(this.User);
                                 foreach (var item in menuF)
                                 {
+
                                     if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == item.Split('|')[1].ToString())
                                     {
-                                        <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Calendario")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;CALENDARIO</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Nuestras Obras")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;NUESTRAS&nbsp;OBRAS</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Reporte de Fallas")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;REPORTE&nbsp;DE&nbsp;FALLAS</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Control de Envios")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;CONTROL&nbsp;DE&nbsp;ENVIOS</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Requerimientos")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;REQUERIMIENTOS</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Herramientas")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;HERRAMIENTAS</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Gestión de Obras")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;GESTIÓN&nbsp;DE&nbsp;OBRAS</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Constructoras")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;CONSTRUCTORAS</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Administración de Perfiles")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;ADM&nbsp;DE&nbsp;PERFILES</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Administración de Usuarios")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;ADM&nbsp;DE&nbsp;USUARIOS</a></li>
+                                        }
+                                        if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Configuración de Sistema")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;CONFIG&nbsp;DE&nbsp;SISTEMA</a></li>
+                                        }
+                                        @*<li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>*@
                                     }
                                     else
                                     {
-                                        <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>
+                                        if (item.Split('|')[1].ToString() == "Calendario")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;CALENDARIO</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Nuestras Obras")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;NUESTRAS&nbsp;OBRAS</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Reporte de Fallas")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;REPORTE&nbsp;DE&nbsp;FALLAS</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Control de Envios")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;CONTROL&nbsp;DE&nbsp;ENVIOS</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Requerimientos")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;REQUERIMIENTOS</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Herramientas")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;HERRAMIENTAS</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Gestión de Obras")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;GESTIÓN&nbsp;DE&nbsp;OBRAS</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Constructoras")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;CONSTRUCTORAS</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Administración de Perfiles")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;ADM&nbsp;DE&nbsp;PERFILES</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Administración de Usuarios")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;ADM&nbsp;DE&nbsp;USUARIOS</a></li>
+                                        }
+                                        if (item.Split('|')[1].ToString() == "Configuración de Sistema")
+                                        {
+                                            <li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i>&nbsp;CONFIG&nbsp;DE&nbsp;SISTEMA</a></li>
+                                        }
+                                        @*<li class=""><a class="text-uppercase" style="color:black;font-weight: bold;" href="@Url.Action(item.Split('|')[2].ToString(), item.Split('|')[3].ToString(), new {area = item.Split('|')[5].ToString()})"><i class="@item.Split('|')[4].ToString()" aria-hidden="true"></i> @item.Split('|')[1].ToString() </a></li>*@
                                     }
                                 }
                             }
                             <li role="separator" class="text-uppercase"></li>
-                            <li class=""><a class="" href="@Url.Action("CambiarPassword","Account", new { Area = ""})"><i class="fa fa-key" aria-hidden="true"></i> Cambiar contraseña</a></li>
+                            <li class=""><a class="" href="@Url.Action("CambiarPassword","Account", new { Area = ""})"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;Cambiar&nbsp;contraseña</a></li>
                         </ul>
                     </li>
 
@@ -170,7 +259,7 @@
                         {
                         <button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
                             <i class="glyphicon glyphicon-align-left"></i>
-                                <span>Menu</span>
+                                <span>MENU</span>
                         </button>
                         }
                     </div>
@@ -178,7 +267,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         
                         <ul class="nav navbar-nav navbar-right">                         
-                            <li style="color:#245580;font-size:30px;font-weight: bold;">SI VAS A SUBIR, SUBE CON CLIMB</li>
+                            <li style="color:#245580;font-size:30px;font-weight: bold;">SI&nbsp;VAS&nbsp;A&nbsp;SUBIR,&nbsp;SUBE&nbsp;CON&nbsp;CLIMB</li>
                             @*<img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"/>*@
                         </ul>
                     </div>
@@ -193,7 +282,7 @@
                                 if (TempData["sustitucioneselectronicas"].ToString() != "0")
                                 {
                                     <form action="@Url.Action("Sustituciones", "AdministrarComponentesElectronicos")">
-                                        <button style="float:right;font-weight:bold;" type="submit" class="btn btn-info fa fa-exclamation-triangle "> Sustituciones Electronicas <span class="btn btn-danger badge"> @TempData["sustitucioneselectronicas"]</span></button>
+                                        <button style="float:right;font-weight:bold;" type="submit" class="btn btn-info fa fa-exclamation-triangle text-uppercase"> Sustituciones Electronicas <span class="btn btn-danger badge text-uppercase"> @TempData["sustitucioneselectronicas"]</span></button>
                                     </form>
                                     
                                 }
@@ -203,7 +292,7 @@
                                 if (TempData["sustitucionesmecanicas"].ToString() != "0")
                                 {
                                     <form action="@Url.Action("Sustituciones", "AdministrarComponentesMecanicos")">
-                                        <button style="float:right;font-weight:bold;" type="submit"  class="btn btn-info fa fa-exclamation-triangle"> Sustituciones Mecanicas <span class="btn btn-danger badge"> @TempData["sustitucionesmecanicas"]</span></button>
+                                        <button style="float:right;font-weight:bold;" type="submit"  class="btn btn-info fa fa-exclamation-triangle text-uppercase"> Sustituciones Mecanicas <span class="btn btn-danger badge text-uppercase"> @TempData["sustitucionesmecanicas"]</span></button>
                                     </form>
                                  }
                             }
@@ -242,7 +331,7 @@
                 }
                 @if (!Request.Url.AbsoluteUri.Contains("Account/Login"))
                 {
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript: volver();">Volver</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript: volver();">VOLVER</button>
                 }
                  <hr />
 
@@ -252,7 +341,7 @@
             </div>
             <footer class="footer">
                 <a href="http://www.ascensoresclimb.com/" class="article text-uppercase"><p>&copy; @DateTime.Now.Year - www.ascensoresclimb.com</p> </a> 
-                @*<a style="float:left;" href="https://jdsistemas.net.ve" class="article text-uppercase">Realizado por JD Sistemas </a>*@
+                @*<a style="float:left;" href="https://jdappstudio.com" class="article text-uppercase">Realizado por JD Sistemas </a>*@
             </footer>
         </div>
     </div>
@@ -357,7 +446,7 @@
 
    
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-
+    
 
     <!-- Bootstrap Js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>

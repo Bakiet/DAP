@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading"> Mantenimiento preventivo</h2>
+<h2 class="form-signin-heading"> MANTENIMIENTO PREVENTIVO</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Mantenimiento preventivo</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de detalle</div>
+    <div class="panel-heading">FORMULARIO DE DETALLE</div>
     <div class="panel-body">
         @using (Html.BeginForm("Editar", "AdministrarMantenimientosPreventivos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Archivo</label>
+                    <label class="col-sm-3 control-label">ARCHIVO</label>
                     <div class="col-sm-4">
                         <div>
                             @foreach (var Archivos in (ViewBag.Archivos))
@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Evaluación</label>
+                    <label class="col-sm-3 control-label">EVALUACIÓN</label>
                     <div class="col-sm-4">
                         <div>
                             @foreach (var Evaluaciones in (ViewBag.Evaluaciones))

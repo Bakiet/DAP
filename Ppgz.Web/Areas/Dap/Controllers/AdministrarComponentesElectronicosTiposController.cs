@@ -19,7 +19,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
     {
         private readonly ComponentesElectricosTiposManager _componenteselectricostiposManager = new ComponentesElectricosTiposManager();
 
-        private readonly ComponentesMecanicosManager _componenteselectronicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+
+        private readonly ComponentesElectricosManager _componenteselectronicosManager = new ComponentesElectricosManager();
 
         private readonly EquiposManager _equiposManager = new EquiposManager();
 
@@ -123,18 +125,31 @@ namespace Ppgz.Web.Areas.Dap.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Crear(ComponenteElectricoTipoViewModel model, FormCollection collection)
         {
-            var equipo = _equiposManager.Find(Convert.ToInt32(TempData["equipo_id"]));
+            
 
+            var equipo = _equiposManager.Find(Convert.ToInt32(TempData["equipo_id"]));
+            if (equipo == null)
+            {
+                equipo = _equiposManager.Find(Convert.ToInt32(TempData["equipoid"]));
+            }
 
             TempData.Keep();
             ViewBag.Equipo = equipo;
+            if (equipo != null)
+            {
+                ViewBag.obra = _obrasManager.Find(equipo.obra_id);
+                TempData["obra_id"] = equipo.obra_id;
+                TempData.Keep();
+                ViewBag.ComponentesElectronicos = _componenteselectronicosManager.GetComponentesElectricos(equipo.Id);
+            }
+            /*
 
             ViewBag.obra = _obrasManager.Find(equipo.obra_id);
 
             TempData["obra_id"] = equipo.obra_id;
             TempData.Keep();
-            ViewBag.ComponentesMecanicos = _componenteselectronicosManager.GetComponentesMecanicos(Convert.ToInt32(TempData["equipo_id"]));
-
+            ViewBag.ComponentesElectronicos = _componenteselectronicosManager.GetComponentesElectricos(Convert.ToInt32(TempData["equipo_id"]));
+            */
             if (!ModelState.IsValid) return View(model);
 
             try
@@ -142,9 +157,24 @@ namespace Ppgz.Web.Areas.Dap.Controllers
              
                 _componenteselectricostiposManager.Crear(
                       model.Descripcion);
-
-                //TempData["FlashSuccess"] = MensajesResource.INFO_MensajesInstitucionales_CreadoCorrectamente;
-                return RedirectToAction("Editar", "AdministrarComponentesElectronicos", new { @id = TempData["componente"] });
+                if (TempData["componente"] != null)
+                {
+                    //TempData["FlashSuccess"] = MensajesResource.INFO_MensajesInstitucionales_CreadoCorrectamente;
+                    return RedirectToAction("Editar", "AdministrarComponentesElectronicos", new { @id = TempData["componente"] });
+                }
+                else
+                {
+                    if (TempData["fallaid"] != null)
+                    {
+                        return RedirectToAction("Editar", "AdministrarFallas", new { @id = TempData["fallaid"] });
+                    }
+                    else
+                    {
+                        return RedirectToAction("CrearPorDefecto", "AdministrarFallas");
+                    }
+                   
+                }
+                
             }
             catch (BusinessException businessEx)
             {

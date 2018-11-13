@@ -1,0 +1,93 @@
+﻿@using Ppgz.Repository
+@using System.Globalization;
+@model Ppgz.Web.Areas.Dap.Models.HerramientaViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<h2 class="form-signin-heading">REPORTE DE HERRAMIENTAS</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">HERRAMIENTAS EN LA OBRA REGISTRADAS</div>
+    <div class="panel-body">
+       
+        <table class="table table-striped" id="mensajes">
+            <thead>
+                <tr>
+                    @*<th class="text-center">Id</th>*@
+                    <th class="text-center">OBRA</th>
+                    <th class="text-center">DESCRIPCIÓN</th>
+                    <th class="text-center">CANTIDAD</th>
+                    <th class="text-center">FECHA DE SALIDA</th>
+                    <th class="text-center">PROPIEDAD</th>
+                    <th class="text-center">FECHA DE CULMINACION</th>
+                    <th class="text-center">CANTIDAD DEPOSITO</th>
+                    <th class="text-center">FECHA DE ENTRADA</th>
+                    <th class="text-center">TÉCNICO</th>
+            </thead>
+            <tbody>
+                @foreach (var herramienta in (ViewBag.herramientas))
+                {
+                    <tr>
+                        @*<td class="text-center vert-align">@herramienta.Id</td>*@
+                        @if (herramienta.obra != null)
+                        {
+                            <td class="text-center vert-align">@herramienta.obra</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        <td class="text-center vert-align">@herramienta.Descripcion</td>
+                        <td class="text-center vert-align">@herramienta.Cantidad</td>
+                        @if (herramienta.FechaSalida != null)
+                        {
+                            <td class="text-center vert-align">@herramienta.FechaSalida.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        <td class="text-center vert-align">@herramienta.Propiedad</td>
+                        @if (herramienta.FechaCulminacion != null)
+                        {
+                            <td class="text-center vert-align">@herramienta.FechaCulminacion.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        <td class="text-center vert-align">@herramienta.CantidadDeposito</td>
+                        @if (herramienta.FechaEntrada != null)
+                        {
+                            <td class="text-center vert-align">@herramienta.FechaEntrada.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        <td class="text-center vert-align">@herramienta.TecnicoResponsable</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#mensajes').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
+                },
+                "lengthMenu": [[10, 25, 50, 100, 500, 1000, 5000, -1], [10, 25, 50, 100, 500, 1000, 5000, "Todos"]]
+            });
+        });
+
+
+    </script>
+}

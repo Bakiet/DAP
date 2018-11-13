@@ -20,7 +20,10 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
         private readonly ObrasManager _obrasManager = new ObrasManager();
 
+        private readonly EquiposManager _equiposManager = new EquiposManager();
 
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
         [Authorize(Roles = "MAESTRO-NAZAN,NAZAN-ADMINISTRARFALLAS-CONSULTAR")]
         public ActionResult Index()
         {
@@ -32,6 +35,16 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             ViewBag.FallasCount = _fallasManager.GetSustituciones();
             TempData["sustituciones"] = ViewBag.FallasCount.Count;
+            TempData.Keep();
+
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
+
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
             TempData.Keep();
 
             return View();
@@ -118,7 +131,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
         [Authorize(Roles = "MAESTRO-NAZAN,NAZAN-ADMINISTRARFALLAS-MODIFICAR")]
         public ActionResult Editar(int id, string tipo)
         {
-
+            
             TempData["fallaid"] = id;
             TempData.Keep();
             var falla = _fallasManager.Find(id);
@@ -127,6 +140,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             ViewBag.Obras =
                new SelectList(_fallasManager.FindObras(), "nombre", "nombre",falla.Obra);
 
+            TempData["obra"] = falla.obra_id;
+            TempData.Keep();
             var fallaequiposobra = _fallasManager.FindEquiposPorObra(id);
 
             ViewBag.ArchivosCorreo = _obrasManager.FindCorreosFallas(id);
@@ -134,11 +149,21 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             if (fallaequiposobra.Count > 0) { 
             ViewBag.Equipos =
-               new SelectList(fallaequiposobra, "nombre", "nombre",falla.Equipo);
-            }else
+              // new SelectList(fallaequiposobra, "nombre", "nombre",falla.Equipo);
+              new SelectList(_equiposManager.GetEquipos(falla.obra_id), "Nombre", "Nombre", falla.Equipo);
+
+               // _equiposManager.GetEquipos(id);
+
+                equipos equipo = _equiposManager.FindPorNombre(falla.Equipo);
+                TempData["equipoid"] = equipo.Id;
+            }
+            else
             {
                 ViewBag.Equipos =
-               new SelectList(_fallasManager.FindEquiposTipo(), "Descripcion", "Descripcion");
+              // new SelectList(fallaequiposobra, "nombre", "nombre",falla.Equipo);
+              new SelectList(_equiposManager.GetEquipos(falla.obra_id), "Nombre", "Nombre", falla.Equipo);
+             //   ViewBag.Equipos =
+              // new SelectList(_fallasManager.FindEquiposTipo(), "Descripcion", "Descripcion");
             }
 
             if(tipo != null)
@@ -210,7 +235,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var fallaModel = new FallaViewModel()
             {
                 id = id,
-                FechaFalla = falla.FechaFalla.ToString("dd/MM/YYYY"),
+                FechaFalla = falla.FechaFalla.ToString(),
                 //Obra = falla.Obra.ToList().,
                 Equipo = falla.Equipo,
                 Tipo = falla.Tipo,
@@ -230,7 +255,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                // Fallas = falla.Fallas
                 
             };
-
+            TempData["obraidactual"] = null;
             return View(fallaModel);
         }
 
@@ -306,7 +331,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var fallaModel = new FallaViewModel()
             {
                 id = id,
-                FechaFalla = falla.FechaFalla.ToString("dd/MM/YYYY"),
+                FechaFalla = falla.FechaFalla.ToString(),
                 //Obra = falla.Obra.ToList().,
                 Equipo = falla.Equipo,
                 Tipo = falla.Tipo,
@@ -396,7 +421,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var fallaModel = new FallaViewModel()
             {
                 id = id,
-                FechaFalla = falla.FechaFalla.ToString("dd/MM/yyyy"),
+                FechaFalla = falla.FechaFalla.ToString(),
                 //Obra = falla.Obra.ToList().,
                 Equipo = falla.Equipo,
                 Tipo = falla.Tipo,
@@ -508,7 +533,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                     {
                         _fallasManager.Actualizar(
                          id,
-                          DateTime.Parse(model.FechaFalla),
+                           DateTime.Parse(model.FechaFalla),
                           fallasolucion,
                          falla.Obra,
                          model.Equipo,
@@ -724,6 +749,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
                 ViewBag.TipoFallas =
                    new SelectList(db.fallas_tipo, "descripcion", "descripcion", TempData["tipo"]);
+
                
             }
             else
@@ -732,11 +758,12 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                new SelectList(_fallasManager.FindObras(), "nombre", "nombre");
 
                 ViewBag.Equipos =
-               new SelectList(_fallasManager.FindEquiposPorObra(0), "nombre", "nombre");
+               new SelectList(_fallasManager.FindEquiposTipo(), "Descripcion", "Descripcion");
 
 
                 ViewBag.TipoFallas =
                    new SelectList(db.fallas_tipo, "descripcion", "descripcion");
+                
             }
             // var tipo = this.Response.Headers["ddltipofalla"].ToString();
 
@@ -881,7 +908,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 //if (TempData["OBRA_ID"] != null)
                 //{
 
-
+               // TempData["obraidactual"] = null;
 
                 HttpPostedFileBase file;
 
@@ -1032,7 +1059,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 }
 
                 HttpPostedFileBase file;
-
+              //  TempData["obraidactual"] = null;
                 for (int i = 0; i < Request.Files.Count; i++)
                 {
 

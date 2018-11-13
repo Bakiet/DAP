@@ -18,7 +18,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
     {
         private readonly GestionObrasManager _gestionobrasManager = new GestionObrasManager();
 
-
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
         //asignar los roles para esta funcionalidad
         [Authorize(Roles = "MAESTRO-NAZAN,NAZAN-ADMINISTRARGESTIONOBRAS-CONSULTAR")]
         public ActionResult Index()
@@ -28,7 +29,15 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             var fecha = DateTime.Today.AddMonths(-3);
 
             ViewBag.GestionObras = db.obrasgestion.ToList();
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
 
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
+            TempData.Keep();
             return View();
         }
        

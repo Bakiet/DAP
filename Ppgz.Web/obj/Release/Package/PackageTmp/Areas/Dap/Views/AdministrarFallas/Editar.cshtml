@@ -6,12 +6,12 @@
     
 }
 
-<h2 class="form-signin-heading">Editar Fallas</h2>
+<h2 class="form-signin-heading">EDITAR FALLAS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar fallas</i></p>*@
 
 @*<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Fallas", "AdministrarFallas", new { @id = Model.obraid })'">Volver</button>*@
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-heading">FORMULARIO DE EDICIÓN</div>
     <div class="panel-body">
         @using (Html.BeginForm("Editar", "AdministrarFallas", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -37,7 +37,8 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(f => f.FechaFalla, new { @class = "col-sm-3 control-label" })
+              
+                <label for="FechaFalla" class="col-sm-3 control-label">FECHA&nbsp;DE&nbsp;FALLA</label>
                 <div class="col-sm-4">
                     @Html.TextBoxFor(f => f.FechaFalla, new { @class = "form-control fecha-hora" })
                     @Html.ValidationMessageFor(f => f.FechaFalla)
@@ -51,7 +52,7 @@
                 </div>
             </div>*@
             <div class="form-group">
-                @Html.LabelFor(f => f.Tipo, new { @class = "col-sm-3 control-label" })
+                <label for="TIPOFALLA" class="col-sm-3 control-label">TIPO&nbsp;DE&nbsp;FALLA</label>
                 <div class="col-sm-4">
                     @Html.DropDownListFor(f => f.Tipo, (IEnumerable<SelectListItem>)ViewBag.TipoFallas, "Seleccione un Valor", new { @class = "form-control", @id = "ddlTipo" })
                     @Html.ValidationMessageFor(f => f.Tipo)
@@ -63,10 +64,21 @@
                 <div class="col-sm-4">
                     @Html.DropDownListFor(f => f.Componente, (IEnumerable<SelectListItem>)ViewBag.Componentes, "Seleccione un Valor", new { @class = "form-control" })
                     @Html.ValidationMessageFor(f => f.Componente)
+                    <div class="col-sm-1">
+                        
+                    </div>
                 </div>
+                
             </div>
 
-
+            <div class="form-group">
+                <label for="crearnuevo" class="col-sm-3 control-label">CRAER&nbsp;COMPONENTE</label>
+                <div class="col-sm-4">
+                    <a class="btn btn-default" href="@Url.Action("Crear", "AdministrarComponentesMecanicosTipos")"><i class="fa fa-plus" aria-hidden="true"></i> MECÁNICO</a>
+                    <a class="btn btn-default" href="@Url.Action("Crear", "AdministrarComponentesElectronicosTipos")"><i class="fa fa-plus" aria-hidden="true"></i> ELECTRÓNICO</a>
+                </div>
+               
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(f => f.Personal, new { @class = "col-sm-3 control-label" })
@@ -76,14 +88,16 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(f => f.FechaSolucion, new { @class = "col-sm-3 control-label" })
+               
+                <label for="FechaSolucion" class="col-sm-3 control-label">FECHA&nbsp;DE&nbsp;SOLUCIÓN</label>
                 <div class="col-sm-4">
                     @Html.TextBoxFor(f => f.FechaSolucion, new { @class = "form-control  fecha-hora" })
                     @Html.ValidationMessageFor(f => f.FechaSolucion)
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(f => f.StatusFalla, new { @class = "col-sm-3 control-label" })
+              
+                <label for="StatusFalla" class="col-sm-3 control-label">ESTATUS&nbsp;DE&nbsp;FALLA</label>
                 <div class="col-sm-4">
                         @Html.DropDownListFor(f => f.StatusFalla, (IEnumerable<SelectListItem>)ViewBag.Status, "Seleccione un Valor", new { @class = "form-control", @id="confirmar"})
                         @Html.ValidationMessageFor(f => f.StatusFalla)
@@ -116,7 +130,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(f => f.AccionesTomadas, new { @class = "col-sm-3 control-label" })
+              
+                <label for="AccionesTomadas" class="col-sm-3 control-label">ACCIONES&nbsp;TOMADAS</label>
                 <div class="col-sm-4">
                     @Html.TextAreaFor(f => f.AccionesTomadas, new { @class = "form-control" })
                     @Html.ValidationMessageFor(f => f.AccionesTomadas)
@@ -134,14 +149,15 @@
            
 
             <div class="form-group">
-                @Html.LabelFor(f => f.PersonaReporte, new { @class = "col-sm-3 control-label" })
+            
+                <label for="PersonaReporte" class="col-sm-3 control-label">PERSONA&nbsp;REPORTE</label>
                 <div class="col-sm-4">
                     @Html.TextBoxFor(f => f.PersonaReporte, new { @class = "form-control" })
                     @Html.ValidationMessageFor(f => f.PersonaReporte)
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(f => f.GerenciaResponsable, new { @class = "col-sm-3 control-label" })
+                <label for="GerenciaResponsable" class="col-sm-3 control-label">GERENCIA&nbsp;RESPONSABLE</label>
                 <div class="col-sm-4">
                     @Html.TextBoxFor(f => f.GerenciaResponsable, new { @class = "form-control" })
                     @Html.ValidationMessageFor(f => f.GerenciaResponsable)
@@ -156,7 +172,7 @@
             </div>*@
 
             <div class="form-group">
-                <label class="col-sm-3 control-label">Archivos</label>
+                <label class="col-sm-3 control-label">ARCHIVOS</label>
                 <div class="col-sm-4">
                     <div>
 
@@ -169,7 +185,7 @@
                                 nombrearchivo = nombrearchivo.Replace(".docx", "");
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
                             }
                             else if (nombrearchivo.Contains(".pdf"))
@@ -177,7 +193,7 @@
                                 nombrearchivo = nombrearchivo.Replace(".pdf", "");
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-pdf-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
                             }
                             else if (nombrearchivo.Contains(".pptx"))
@@ -185,7 +201,7 @@
                                 nombrearchivo = nombrearchivo.Replace(".pptx", "");
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-powerpoint-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
                             }
                             else if (nombrearchivo.Contains(".xlsx"))
@@ -193,7 +209,7 @@
                                 nombrearchivo = nombrearchivo.Replace(".xlsx", "");
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-excel-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
                             }
                             else if (nombrearchivo.Contains(".jpg"))
@@ -201,7 +217,7 @@
                                 nombrearchivo = nombrearchivo.Replace(".jpg", "");
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-picture-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
                             }
                             else if (nombrearchivo.Contains(".png"))
@@ -209,20 +225,20 @@
                                 nombrearchivo = nombrearchivo.Replace(".png", "");
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-image-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
                             }
                             else
                             {
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-archive-o fa-1x" href="@Url.Content(ArchivosCorreo.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarFallas", new { @archivo = ArchivosCorreo.url, @tipo = "fallas", @caracteristica = "correo", @id = TempData["fallaid"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
                             }
                         }
                         <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                            <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                            <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -243,11 +259,11 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+                            <h4 class="modal-title" id="myModalLabel">CONFIRMAR</h4>
                         </div>
                         <div class="modal-body">
                             <p></p>
-                            <p>Esta seguro de cambiar el estatus de la falla</p>
+                            <p>ESTA SEGURO DE ENVIAR AL HISTORICO DE LAS FALLAS?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.href='@Url.Action("Editar", "AdministrarFallas", new { @id = Model.id })'">CANCELAR</button>
@@ -263,10 +279,10 @@
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-7">
                        
-                            <button id="confirm" type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                            <button id="confirm" type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
                      
                         
-                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarFallas")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarFallas")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                     </div>
                 </div>
 
@@ -319,7 +335,7 @@
         $('.fecha-hora').datetimepicker({
             locale: 'es',
 
-            format: 'DD/MM/YYYY',
+            format: 'DD/MM/YYYY HH:mm A',
             showClose: true,
             sideBySide: true
         });

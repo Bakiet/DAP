@@ -186,11 +186,11 @@ namespace Ppgz.Services
 				_db.SaveChanges();
                 return requerimiento;
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
 			   
 
-				throw;
+				throw e;
 			}
 
 

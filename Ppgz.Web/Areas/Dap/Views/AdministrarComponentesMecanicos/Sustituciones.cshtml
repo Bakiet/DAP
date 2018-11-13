@@ -7,36 +7,38 @@
   //  var equipo = (equipos)ViewBag.equipo;
 }
 
-<h2 class="form-signin-heading">Componentes mecanicos</h2>
+<h2 class="form-signin-heading">COMPONENTES MECANICOS</h2>
 <a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallecomponentesmecanicos-modal" id="" onclick="createModal('@Url.Action("ReporteComponentesMecanicos", "AdministrarComponentesMecanicos" , new {id=ViewBag.id })')">
-    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
 </a>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de componentes mecanicos</i></p>*@
-<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarComponentesMecanicos", new { @id = ViewBag.id })'">Histórico</button>
+<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarComponentesMecanicos", new { @id = ViewBag.id })'">HISTÓRICO</button>
 <div class="clearfix">
-    <a href="@Url.Action("Crear", "AdministrarComponentesMecanicos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Componentes mecanicos</a>
+    @*<a href="@Url.Action("Crear", "AdministrarComponentesMecanicos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Componentes mecanicos</a>*@
 </div>
 
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Componentes Mecanicos</div>
+    <div class="panel-heading">COMPONENTES MECANICOS</div>
     <div class="panel-body">
         <table class="table table-striped" id="obras">
             <thead>
                 <tr>
-                    <th class="text-center">Reporte</th>
+                    <th class="text-center">REPORTE</th>
+                    <th class="text-center">OBRA</th>
+                    <th class="text-center">EQUIPO</th>
                     @*<th class="text-center">Id</th>*@
-                    <th class="text-center">Tipo</th>
-                    <th class="text-center">Caracteristicas</th>
+                    <th class="text-center">TIPO</th>
+                    <th class="text-center">CARACTERISTICAS</th>
                     @*<th class="text-center">Descripción</th>*@
-                    <th class="text-center">Marca</th>
-                    <th class="text-center">Modelo</th>
-                    <th class="text-center">Serial</th>
-                    <th class="text-center">Fecha Fabricado</th>
-                    <th class="text-center">Fecha Alerta</th>
-                    <th class="text-center">Fecha Vencimiento</th>
-                    <th class="text-center">Sustitución</th>
+                    <th class="text-center">MARCA</th>
+                    <th class="text-center">MODELO</th>
+                    <th class="text-center">SERIAL</th>
+                    <th class="text-center">FECHA FABRICADO</th>
+                    <th class="text-center">FECHA ALERTA</th>
+                    <th class="text-center">FECHA VENCIMIENTO</th>
+                    <th class="text-center">SUSTITUCIÓN</th>
                     @*<th class="text-center">Fotografía</th>*@
                     <th></th>
             </thead>
@@ -48,10 +50,26 @@
 
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@componentemecanico.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarComponentesMecanicos" , new {id=componentemecanico.Id })')">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                    <i class="fa fa-eye" aria-hidden="true"></i> VER
                                 </a>
                             </div>
                         </td>
+                        @if (componentemecanico.obra != null)
+                        {
+                            <td class="text-center vert-align">@componentemecanico.obra</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        @if (componentemecanico.equipo != null)
+                        {
+                            <td class="text-center vert-align">@componentemecanico.equipo</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
                         @*<td class="text-center vert-align">@componentemecanico.Id</td>*@
                         <td class="text-center vert-align">@componentemecanico.Tipo</td>
                         <td class="text-center vert-align">@componentemecanico.Caracteristicas</td>
@@ -91,14 +109,14 @@
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarComponentesMecanicos", new { @id = @componentemecanico.Id })">
 
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                    <i class="fa fa-eye" aria-hidden="true"></i> DETALLE
                                 </a>
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarComponentesMecanicos", new { @id = @componentemecanico.Id })">
 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarComponentesMecanicos", new { @id = @componentemecanico.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El componente mecanico será eliminado.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarComponentesMecanicos", new { @id = @componentemecanico.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿ESTÁ SEGURO?" data-content="EL COMPONENTE MECANICO SERÁ ELIMINADO.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>
@@ -116,7 +134,7 @@
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content" id="modelContent">
                 <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecComponenteMecanico('reportecomponentemecanico')">
-                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
                 </a>
                 <div id="reportecomponentemecanico">
                     <div class="modal-header">
@@ -125,7 +143,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                         </button>
-                        <h4 class="modal-title">Reporte de Componente Mecanico</h4>
+                        <h4 class="modal-title">REPORTE DE COMPONENTE MECANICO</h4>
                     </div>
 
                     <div class="modal-body">
@@ -238,7 +256,7 @@
                 @*<a class="text-uppercase" id="download">Imprimir</a>*@
                 @*<a class="" href="javascript:imprSelec('reporte')">Imprimir</a>*@
                 <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
-                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
                 </a>
                 <div id="reporte">
 
@@ -249,7 +267,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                         </button>
-                        <h4 class="modal-title">Reporte de Componente Mecanico</h4>
+                        <h4 class="modal-title">REPORTE DE COMPONENTE MECANICO</h4>
                     </div>
 
 
@@ -257,19 +275,19 @@
                         <div class="container-fluid">
 
                             <div class="panel panel-default">
-                                <div class="panel-heading">Componentes Mecanicos Registrados</div>
+                                <div class="panel-heading">COMPONENTES MECANICOS REGISTRADOS</div>
                                 <div class="panel-body">
                                     <table class="table table-striped" id="mensajesmodal">
                                         <thead>
                                             <tr>
                                                
-                                                <th class="text-center">Tipo</th>
-                                                <th class="text-center">Caracteristicas</th>
-                                                <th class="text-center">Marca</th>
-                                                <th class="text-center">Modelo</th>
-                                                <th class="text-center">Serial</th>
-                                                <th class="text-center">Fecha Fabricado</th>
-                                                <th class="text-center">Fecha Vencimiento</th>
+                                                <th class="text-center">TIPO</th>
+                                                <th class="text-center">CARACTERISTICAS</th>
+                                                <th class="text-center">MARCA</th>
+                                                <th class="text-center">MODELO</th>
+                                                <th class="text-center">SERIAL</th>
+                                                <th class="text-center">FECHA FABRICADO</th>
+                                                <th class="text-center">FECHA VENCIMIENTO</th>
                                                 @*<th class="text-center">Sustitución</th>*@
                                             </tr>
 

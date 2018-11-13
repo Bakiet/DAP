@@ -48,8 +48,8 @@ namespace Ppgz.Services
 		}
 
 		public componentesmecanicos Actualizar(int id, string Tipo = null, string Caracteristicas = null, string Descripcion = null,
-			string Marca = null, string Modelo = null, string Serial = null, DateTime? FechaFabricado = null, DateTime? Duracion = null
-			, string Sustitucion = null, string Fotografia = null, DateTime? FechaSustitucion = null, DateTime? FechaAlerta = null)
+			string Marca = null, string Modelo = null, string Serial = null, string FechaFabricado = null, string Duracion = null
+			, string Sustitucion = null, string Fotografia = null, string FechaSustitucion = null, string FechaAlerta = null,string obra =null, string equipo =null)
 		{
 
 			var componentemecanico = _db.componentesmecanicos.Find(id);
@@ -95,24 +95,28 @@ namespace Ppgz.Services
                 componentemecanico.Serial = Serial;
            // }
 
-          //  if (FechaFabricado != null)
-//{
+            if (FechaFabricado != null)
+            {
 
-                componentemecanico.FechaFabricado = FechaFabricado;
-          //  }
-         //   if (FechaSustitucion != null)
-           // {
+                componentemecanico.FechaFabricado = DateTime.Parse(FechaFabricado);
+            }
+            if (FechaSustitucion != null)
+            {
+            
+                componentemecanico.FechaSustitucion = DateTime.Parse(FechaSustitucion);
 
-                componentemecanico.FechaSustitucion = FechaSustitucion;
-
-            componentemecanico.FechaAlerta = FechaAlerta;
-          //  }
-
-          //  if (Duracion != null)
-          //  {
-
-                componentemecanico.Duracion = Duracion;
-          //  }
+            
+            }
+            if (FechaAlerta != null)
+            {
+                componentemecanico.FechaAlerta = DateTime.Parse(FechaAlerta);
+                //  if (Duracion != null)
+                //  {
+            }
+            if(Duracion != null) { 
+            componentemecanico.Duracion = DateTime.Parse(Duracion);
+            }
+            //  }
             if (Sustitucion != null)
             {
 
@@ -122,9 +126,10 @@ namespace Ppgz.Services
            // {
 
                 componentemecanico.Fotografia = Fotografia;
-           // }
+            // }
 
-
+            componentemecanico.obra = obra;
+            componentemecanico.equipo = equipo;
             _db.Entry(componentemecanico).State = EntityState.Modified;
 			_db.SaveChanges();
 
@@ -133,8 +138,8 @@ namespace Ppgz.Services
 
 
 		public componentesmecanicos Crear(int equipoid,string Tipo = null, string Caracteristicas = null, string Descripcion = null,
-			string Marca = null, string Modelo = null, string Serial = null, DateTime? FechaFabricado = null, DateTime? Duracion = null
-			,string Sustitucion = null, string Fotografia = null, DateTime? FechaSustitucion = null, DateTime? FechaAlerta = null)
+			string Marca = null, string Modelo = null, string Serial = null, string FechaFabricado = null, string Duracion = null
+			,string Sustitucion = null, string Fotografia = null, string FechaSustitucion = null, string FechaAlerta = null,string obra = null,string equipo = null)
 		{
             //if(Caracteristicas == null)
             //{
@@ -175,8 +180,36 @@ namespace Ppgz.Services
             //{
             //    Fotografia = "null";
             //}
+            DateTime? FechaFabricadoD = null;
+            DateTime? FechaSustitucionD = null;
+            DateTime? FechaAlertaD = null;
+            DateTime? SustitucionD = null;
+            DateTime? DuracionD = null;
+            if (FechaFabricado != null)
+            {
 
-			try
+                FechaFabricadoD = DateTime.Parse(FechaFabricado);
+            }
+            if (FechaSustitucion != null)
+            {
+
+                FechaSustitucionD = DateTime.Parse(FechaSustitucion);
+
+
+            }
+            if (FechaAlerta != null)
+            {
+                FechaAlertaD = DateTime.Parse(FechaAlerta);
+                //  if (Duracion != null)
+                //  {
+            }
+            if (Duracion != null)
+            {
+                DuracionD = DateTime.Parse(Duracion);
+            }
+            //  }
+           
+            try
 			{
 				var componentemecanico = new componentesmecanicos()
 				{
@@ -185,15 +218,17 @@ namespace Ppgz.Services
 					Tipo = Tipo,
 					Caracteristicas = Caracteristicas,
 					Descripcion = Descripcion,
-					FechaFabricado = FechaFabricado,
+					FechaFabricado = FechaFabricadoD,
 					Marca = Marca,
 					Modelo  = Modelo,
 					Serial = Serial,
-					Duracion = Duracion,
+					Duracion = DuracionD,
 					Sustitucion = Sustitucion,
 					Fotografia = Fotografia,
-                    FechaSustitucion = FechaSustitucion,
-                    FechaAlerta = FechaAlerta
+                    FechaSustitucion = FechaSustitucionD,
+                    FechaAlerta = FechaAlertaD,
+                    obra = obra,
+                    equipo = equipo
 
 				};
 

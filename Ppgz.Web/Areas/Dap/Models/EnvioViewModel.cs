@@ -5,7 +5,7 @@ namespace Ppgz.Web.Areas.Dap.Models
     public class EnvioViewModel
     {
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Obra")]
+        [Display(Name = "OBRA")]
         public string Obra { get; set; }
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Tipo de Componente")]
@@ -17,7 +17,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         [Display(Name = "fecha de Salida")]
         public DateTime? FechaSalida { get; set; }
      //   [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Tracking")]
+        [Display(Name = "TRACKING")]
         public string Tracking { get; set; }
      //   [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Empresa de Envio")]       
@@ -37,7 +37,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         [Display(Name = "CodigoArancelario")]
         public string CodigoArancelario { get; set; }
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Solicitado")]
+        [Display(Name = "SOLICITADO")]
         public string Solicitado { get; set; }
        // [Required(ErrorMessage = "El campo es obligatorio.")]
         [Display(Name = "Costo del Producto")]

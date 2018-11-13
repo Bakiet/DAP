@@ -120,7 +120,7 @@ namespace Ppgz.Web
                 //"ADMINISTRARFACTURAS|Administración de Facturas|Index|AdministrarFacturas|fa fa-file-text-o|Dap",
                  
                 "ADMINISTRARCALENDARIO|Calendario|Index|AdministrarCalendario|fa fa-calendar|Dap",
-                "ADMINISTRAROBRAS| Nuestras Obras|Index|AdministrarObras|fa fa-industry|Dap",
+                "ADMINISTRAROBRAS|Nuestras Obras|Index|AdministrarObras|fa fa-industry|Dap",
                 //"ADMINISTRAREQUIPOS|Administración de Equipos|Index|AdministrarEquipos|fa fa-industry|Dap",
                 //"ADMINISTRARPREVIOS|D.A.P Previo|Index|AdministrarPrevios|fa fa-industry|Dap",
                 //"ADMINISTRARKITDAPS|Kit D.A.P|KitDaps|AdministrarKitDaps|fa fa-industry|Dap",
@@ -136,6 +136,7 @@ namespace Ppgz.Web
                 "ADMINISTRARFALLAS|Reporte de Fallas|Index|AdministrarFallas|fa fa-ambulance|Dap",
                 "ADMINISTRARENVIOS|Control de Envios|Index|AdministrarEnvios|fa fa-truck|Dap",
                 "ADMINISTRARREQUERIMIENTOS|Requerimientos|Index|AdministrarRequerimientos|fa fa-wpforms|Dap",
+                "ADMINISTRARHERRAMIENTAS|Herramientas|Index|AdministrarHerramientas|fa fa-wrench|Dap",
                 "ADMINISTRARGESTIONOBRAS|Gestión de Obras|Index|AdministrarGestionObras|fa fa-briefcase|Dap",
                 "ADMINISTRARGESTIONOBRAS|Constructoras|Index|AdministrarDatosObras|fa fa-address-book|Dap",
                 "CONFIGSYS|Configuración de Sistema|Index|Configsys|fa fa-cogs|Dap",

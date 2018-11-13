@@ -151,6 +151,8 @@
     <Property Name="FechaAlerta" Type="datetime" Precision="0" />
     <Property Name="Fotografia" Type="varchar" MaxLength="1000" />
     <Property Name="IdEquipos" Type="int" />
+    <Property Name="obra" Type="varchar" MaxLength="500" />
+    <Property Name="equipo" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="componenteselectricos_sustituciones">
     <Key>
@@ -194,6 +196,8 @@
     <Property Name="FechaAlerta" Type="datetime" Precision="0" />
     <Property Name="Fotografia" Type="varchar" MaxLength="1000" />
     <Property Name="IdEquipos" Type="int" />
+    <Property Name="obra" Type="varchar" MaxLength="500" />
+    <Property Name="equipo" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="componentesmecanicos_sustituciones">
     <Key>
@@ -490,6 +494,7 @@ warning 6002: The table/view 'def.dap.devoluciones' does not have a primary key 
     <Property Name="Archivo" Type="varchar" MaxLength="1000" />
     <Property Name="previo_id" Type="int" />
     <Property Name="obra_id" Type="int" Nullable="false" />
+    <Property Name="obra" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="horariorieles">
     <Key>

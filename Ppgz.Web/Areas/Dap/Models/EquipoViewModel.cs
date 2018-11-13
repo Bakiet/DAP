@@ -6,23 +6,23 @@ namespace Ppgz.Web.Areas.Dap.Models
     {
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Nombre")]
+        [Display(Name = "NOMBRE")]
         public string Nombre { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Marca")]
+        [Display(Name = "MARCA")]
         public string Marca { get; set; }
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Modelo")]
+        [Display(Name = "MODELO")]
         public string Modelo { get; set; }
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Paradas")]
+        [Display(Name = "PARADAS")]
         public string Paradas { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Referencia")]
+        [Display(Name = "REFERENCIA")]
         public string Referencia { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
@@ -38,19 +38,19 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string CargaNominal { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Velocidad")]
+        [Display(Name = "VELOCIDAD")]
         public string Velocidad { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Recorrido")]
+        [Display(Name = "RECORRIDO")]
         public string Recorrido { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Paradas")]
+        [Display(Name = "PARADAS")]
         public string TipoDeManiobraParadas { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Accesos")]
+        [Display(Name = "ACCESOS")]
         public string Accesos { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
@@ -70,7 +70,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string NumeroDeGuayas { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Fotografia")]
+        [Display(Name = "FOTOGRAFIA")]
         public string Fotografia { get; set; }
 
         [Display(Name = "Cantidad de Personas")]
@@ -83,7 +83,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         [Display(Name = "Fecha Vencimiento")]
         public string FechaVencimiento { get; set; }
         // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Plano")]
+        [Display(Name = "PLANO")]
         public string Plano { get; set; }
 
         public int obra_id { get; set; }

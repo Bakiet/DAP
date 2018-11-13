@@ -4,13 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Envios</h2>
+<h2 class="form-signin-heading">ENVIOS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar envios</i></p>*@
 
 @*<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Envios", "AdministrarEnvios", new { @id = Model.obra_id })'">Volver</button>*@
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de detalle</div>
+    <div class="panel-heading">FORMULARIO DE DETALLE</div>
     <div class="panel-body">
         @using (Html.BeginForm("Detalle", "AdministrarEnvios", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -148,11 +148,11 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+                                    <h4 class="modal-title" id="myModalLabel">CONFIRMAR</h4>
                                 </div>
                                 <div class="modal-body">
                                     <p></p>
-                                    <p>Esta seguro de cambiar el status de el envio</p>
+                                    <p>ESTA SEGURO DE CAMBIAR EL STATUS DE EL ENVIO</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.href='@Url.Action("Editar", "AdministrarEnvios", new { @id = Model.id })'">CANCELAR</button>
@@ -166,7 +166,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
                     @*<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>*@
-                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarEnvios")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarEnvios")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                 </div>
             </div>
         }

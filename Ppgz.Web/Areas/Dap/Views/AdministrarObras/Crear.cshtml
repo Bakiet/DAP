@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Obras</h2>
+<h2 class="form-signin-heading">OBRAS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Obras</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de Obras</div>
+    <div class="panel-heading">FORMULARIO DE OBRAS</div>
     <div class="panel-body">
         @using (Html.BeginForm("Crear", "AdministrarObras", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -26,21 +26,21 @@
                 </div>
             </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.PersonaJuridica, new { @class = "col-sm-3 control-label" })
+                    <label for="PersonaJuridica" class="col-sm-3 control-label">PERSONA&nbsp;JURIDICA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.PersonaJuridica, new { @class = "form-control" })
                         @Html.ValidationMessageFor(o => o.PersonaJuridica)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.DireccionObra, new { @class = "col-sm-3 control-label" })
+                    <label for="DireccionObra" class="col-sm-3 control-label">DIRECCIÓN&nbsp;DE&nbsp;OBRA</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(o => o.DireccionObra, new { @class = "form-control", style = "width: 700px; height:150px;" })
                         @Html.ValidationMessageFor(o => o.DireccionObra)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.DireccionFacturacion, new { @class = "col-sm-3 control-label" })
+                    <label for="DireccionFacturacion" class="col-sm-3 control-label">DIRECCIÓN&nbsp;DE&nbsp;FACTURACIÓN</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(o => o.DireccionFacturacion, new { @class = "form-control", style = "width: 700px; height:150px;" })
                         @Html.ValidationMessageFor(o => o.DireccionFacturacion)
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(o => o.DireccionOficina, new { @class = "col-sm-3 control-label" })
+                    <label for="DireccionOficina" class="col-sm-3 control-label">DIRECCIÓN&nbsp;DE&nbsp;OFICINA</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(o => o.DireccionOficina, new { @class = "form-control", style = "width: 700px; height:150px;" })
                         @Html.ValidationMessageFor(o => o.DireccionOficina)
@@ -92,13 +92,13 @@
         </div>
     </div>*@
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Fotos</label>
+                    <label class="col-sm-3 control-label">FOTOS</label>
                     <div class="col-sm-4">
                         <div>
 
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Cargar</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">CARGAR</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -117,7 +117,7 @@
                     
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Mapa satelital Link</label>
+                    <label class="col-sm-3 control-label">MAPA&nbsp;SATELITAL&nbsp;LINK</label>
                     <div class="col-sm-4">
                         <div>
 
@@ -146,8 +146,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-7">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarObras")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarObras")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                     </div>
                 </div>
         }

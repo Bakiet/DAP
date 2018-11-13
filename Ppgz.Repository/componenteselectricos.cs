@@ -28,5 +28,7 @@ namespace Ppgz.Repository
         public string Caracteristicas { get; set; }
         public Nullable<System.DateTime> FechaSustitucion { get; set; }
         public Nullable<System.DateTime> FechaAlerta { get; set; }
+        public string obra { get; set; }
+        public string equipo { get; set; }
     }
 }

@@ -330,13 +330,13 @@ namespace Ppgz.Services
                 _db.protocolos.Add(protocolo);
                 _db.SaveChanges();
 
-                var herramienta = new herramientas()
+                /*var herramienta = new herramientas()
                 {
                     obra_id = id.Id,
                     previo_id = previo.Id
                 };
                 _db.herramientas.Add(herramienta);
-                _db.SaveChanges();
+                _db.SaveChanges();*/
 /*
                 var montacarro = new equipos()
 				{

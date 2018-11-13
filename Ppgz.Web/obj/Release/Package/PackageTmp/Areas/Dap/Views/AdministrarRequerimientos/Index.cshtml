@@ -4,49 +4,51 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2 class="form-signin-heading">Requerimientos</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/PrintArea.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/PrintArea.min.css" />
+<h2 class="form-signin-heading">REQUERIMIENTOS</h2>
 <a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallerequerimientos-modal" id="" onclick="createModal('@Url.Action("ReporteRequerimientos", "AdministrarRequerimientos" , new {id=ViewBag.id })')">
-    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
 </a>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de requerimientos</i></p>*@
 @if (ViewBag.id != null)
 {
-    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarRequerimientos", new { @id = ViewBag.id })'">Histórico</button>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarRequerimientos", new { @id = ViewBag.id })'">HISTÓRICO</button>
 }
 else
 {
-    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("HistoricoTodos", "AdministrarRequerimientos")'">Histórico</button>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("HistoricoTodos", "AdministrarRequerimientos")'">HISTÓRICO</button>
 }
 <div class="clearfix">
     @if (ViewBag.id != null)
     {
 
-        <a href="@Url.Action("Crear", "AdministrarRequerimientos", new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Requerimientos</a>
+        <a href="@Url.Action("Crear", "AdministrarRequerimientos", new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR REQUERIMIENTOS</a>
 
     }
     else
     {
 
-        <a href="@Url.Action("CrearPorDefecto", "AdministrarRequerimientos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Requerimientos</a>
+        <a href="@Url.Action("CrearPorDefecto", "AdministrarRequerimientos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR REQUERIMIENTOS</a>
 
     }
 </div>
 
 <div class="panel panel-default">
-    <div class="panel-heading">Requerimientos Registrados</div>
+    <div class="panel-heading">REQUERIMIENTOS REGISTRADOS</div>
     <div class="panel-body">
         <table class="table table-striped" id="mensajes">
             <thead>
                 <tr>
-                    <th class="text-center">Reporte</th>
+                    <th class="text-center">REPORTE</th>
                     @*<th class="text-center">Id</th>*@
-                    <th class="text-center">Obra</th>
-                    <th class="text-center">Tipo</th>
-                    <th class="text-center">Fecha de Solicitud</th>
-                    <th class="text-center">Gerencia Responsable</th>
-                    <th class="text-center">Técnicos</th>
-                    <th class="text-center">Estatus de Requerimiento</th>
-                    <th class="text-center">Fecha de Cumplimiento de Solicitud</th>
+                    <th class="text-center">OBRA</th>
+                    <th class="text-center">TIPO</th>
+                    <th class="text-center">FECHA DE SOLICITUD</th>
+                    <th class="text-center">GERENCIA RESPONSABLE</th>
+                    <th class="text-center">TÉCNICOS</th>
+                    <th class="text-center">ESTATUS DE REQUERIMIENTO</th>
+                    <th class="text-center">FECHA DE CUMPLIMIENTO DE SOLICITUD</th>
                     @*<th class="text-center">Descripción</th>*@
                     @*<th class="text-center">Acciones Ejecutadas</th>*@
 
@@ -64,9 +66,10 @@ else
                         <td class="text-center vert-align">
 
                             <div class="btn-group-vertical">
-                                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@requerimiento.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarRequerimientos" , new {id=requerimiento.Id })')">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
-                                </a>
+                                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="" onclick="createModal('@Url.Action("Reporte", "AdministrarRequerimientos" , new {id=requerimiento.Id })')">
+                                    @*<a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="" onclick="">*@
+                                        <i class="fa fa-eye" aria-hidden="true"></i> VER
+                                    </a>
                             </div>
                         </td>        
                         @*<td class="text-center vert-align">@requerimiento.Id</td>*@
@@ -100,13 +103,13 @@ else
                         <td class="text-center">
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarRequerimientos", new { @id = @requerimiento.Id })">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> DETALLE
                                 </a>
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarRequerimientos", new { @id = @requerimiento.Id })">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
                                 <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarRequerimientos", new { @id = @requerimiento.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El mensaje será eliminado.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>
@@ -121,8 +124,9 @@ else
 <div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="modelContent">
-            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecRequerimiento('reporterequerimiento')">
-                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprimerequerimiento">
+                @*href="javascript:imprSelec('reporte')*@
+                <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
             </a>
             <div id="reporterequerimiento">
                 <div class="modal-header">
@@ -131,7 +135,7 @@ else
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                     </button>
-                    <h4 class="modal-title">Reporte de Requerimiento</h4>
+                    <h4 class="modal-title">REPORTE DE REQUERIMIENTO</h4>
                 </div>
 
                 <div class="modal-body">
@@ -245,7 +249,7 @@ else
             @*<a class="" href="javascript:imprSelec('reporte')">Imprimir</a>*@
             <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprime">
                 @*href="javascript:imprSelec('reporte')*@
-                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
             </a>
             <div id="reporte">
 
@@ -256,7 +260,7 @@ else
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                     </button>
-                    <h4 class="modal-title">Reporte de Requerimientos</h4>
+                    <h4 class="modal-title">REPORTE DE REQUERIMIENTOS</h4>
                 </div>
 
 
@@ -264,21 +268,21 @@ else
                     <div class="container-fluid">
 
                         <div class="panel panel-default">
-                            <div class="panel-heading">Requerimientos Registradas</div>
+                            <div class="panel-heading">REQUERIMIENTOS REGISTRADOS</div>
                             <div class="panel-body">
                                 <table class="table table-striped" id="mensajesmodal">
                                     <thead>
                                         <tr>
                                            
-                                            <th class="text-center">Obra</th>
-                                            <th class="text-center">Tipo</th>
-                                            <th class="text-center">Fecha de Solicitud</th>
-                                            <th class="text-center">Gerencia Responsable</th>
-                                            <th class="text-center">Técnicos</th>
-                                            <th class="text-center">Estatus de Requerimiento</th>
-                                            <th class="text-center">Fecha de Cumplimiento de Solicitud</th>
+                                            <th class="text-center">OBRA</th>
+                                            <th class="text-center">TIPO</th>
+                                            <th class="text-center">FECHA DE SOLICITUD</th>
+                                            <th class="text-center">GERENCIA RESPONSABLE</th>
+                                            <th class="text-center">TÉCNICOS</th>
+                                            <th class="text-center">ESTATUS DE REQUERIMIENTO</th>
+                                            <th class="text-center">FECHA DE CUMPLIMIENTO DE SOLICITUD</th>
                                           
-                                            <th class="text-center">Acciones Ejecutadas</th>
+                                            <th class="text-center">ACCIONES EJECUTADAS</th>
 
                                           
                                     </thead>
@@ -351,6 +355,13 @@ else
 
       }
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js.map"></script>
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/jquery.dataTables.min.js")
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/dataTables.bootstrap.min.js")
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
 
 
@@ -358,6 +369,9 @@ else
            
             $("#imprime").click(function () {
                 $("div#reporte").printArea();
+            })
+            $("#imprimerequerimiento").click(function () {
+                $("div#reporterequerimiento").printArea();
             })
 
             $('#mensajes').DataTable({

@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Editar Datos de Obras</h2>
+<h2 class="form-signin-heading">EDITAR DATOS DE OBRAS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar datos de obras</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-heading">FORMULARIO DE EDICIÓN</div>
     <div class="panel-body">
         @using (Html.BeginForm("Editar", "AdministrarDatosObras", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -24,14 +24,15 @@
 
 
                     <div class="col-sm-4">
-                        <label class="col-sm-3 control-label">Datos de la empresa constructora</label>
+                        <label class="col-sm-3 control-label">DATOS DE LA EMPRESA CONSTRUCTORA</label>
                     </div>
                 </div>
                 
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.nombreconstructora, new { @class = "col-sm-3 control-label" })
+             
+                    <label for="nombreconstructora" class="col-sm-3 control-label">NOMBRE&nbsp;DE&nbsp;CONSTRUCTORA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.nombreconstructora, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.nombreconstructora)
@@ -40,7 +41,8 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.contactotelefonicoempresa, new { @class = "col-sm-3 control-label" })
+                   
+                    <label for="contactotelefonicoempresa" class="col-sm-3 control-label">CONTACTO&nbsp;TELEFONICO&nbsp;EMPRESA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.contactotelefonicoempresa, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.contactotelefonicoempresa)
@@ -49,7 +51,8 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.correoelectronicoempresa, new { @class = "col-sm-3 control-label" })
+                 
+                    <label for="correoelectronicoempresa" class="col-sm-3 control-label">CORREO&nbsp;ELECTRONICO&nbsp;EMPRESA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.correoelectronicoempresa, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.correoelectronicoempresa)
@@ -58,7 +61,8 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.cargoempresa, new { @class = "col-sm-3 control-label" })
+                  
+                    <label for="cargoempresa" class="col-sm-3 control-label">CARGO&nbsp;EMPRESA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.cargoempresa, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.cargoempresa)
@@ -67,7 +71,8 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.direccionoficina, new { @class = "col-sm-3 control-label" })
+                  
+                    <label for="direccionoficina" class="col-sm-3 control-label">DIRECCIÓN&nbsp;DE&nbsp;OFICINA</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(m => m.direccionoficina, new { @class = "form-control", style = "width: 700px; height:150px;" })
                         @Html.ValidationMessageFor(m => m.direccionoficina)
@@ -78,8 +83,8 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarDatosObras")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarDatosObras")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                 </div>
             </div>
         }

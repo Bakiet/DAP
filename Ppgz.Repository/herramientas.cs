@@ -28,5 +28,6 @@ namespace Ppgz.Repository
         public Nullable<int> previo_id { get; set; }
         public int obra_id { get; set; }
         public string Archivo { get; set; }
+        public string obra { get; set; }
     }
 }

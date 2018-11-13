@@ -9,7 +9,7 @@
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de Kit D.A.P</i></p>*@
 
 <div class="clearfix">
-    <a href="@Url.Action("Crear", "AdministrarKitDaps")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Kit D.A.P</a>
+    <a href="@Url.Action("Crear", "AdministrarKitDaps")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR KIT D.A.P</a>
 </div>
 @*<div class="panel panel-default">
     <div class="panel-heading">Cuenta</div>
@@ -25,14 +25,14 @@
     </div>
 </div>*@
 <div class="panel panel-default">
-    <div class="panel-heading">Kit D.A.P Registrados</div>
+    <div class="panel-heading">KIT D.A.P REGISTRADOS</div>
     <div class="panel-body">
         <table class="table table-striped" id="obras">
             <thead>
                 <tr>
                     @*<th class="text-center">Id</th>*@
-                    <th class="text-center">Nombre</th>
-                    <th class="text-center">Ver</th>
+                    <th class="text-center">NOMBRE</th>
+                    <th class="text-center">VER</th>
             </thead>
             <tbody>
                 @foreach (var kitdap in (ViewBag.kitdaps))
@@ -92,10 +92,10 @@
                             <div class="btn-group-vertical">
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarKitDaps", new { @id = @kitdap.Id })">
 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarKitDaps", new { @id = @kitdap.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El Kit dap será eliminado.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarKitDaps", new { @id = @kitdap.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿ESTÁ SEGURO?" data-content="EL KIT DAP SERÁ ELIMINADO.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>

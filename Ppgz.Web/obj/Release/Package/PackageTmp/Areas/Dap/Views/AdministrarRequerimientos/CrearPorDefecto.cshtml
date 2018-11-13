@@ -3,11 +3,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2 class="form-signin-heading">Crear Requerimientos</h2>
+<h2 class="form-signin-heading">CREAR REQUERIMIENTOS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Requerimientos</i></p>*@
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario</div>
+    <div class="panel-heading">FORMULARIO</div>
     <div class="panel-body">
         @using (Html.BeginForm("Crear", "AdministrarRequerimientos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -16,35 +16,35 @@
             @Html.ValidationSummary(true)
             <div class="form-group">
                 <div class="form-group">
-                    @Html.LabelFor(f => f.Obra, new { @class = "col-sm-3 control-label" })
+                    @Html.LabelFor(f => f.Obra, new { @class = "col-sm-4 control-label" })
                     <div class="col-sm-4">
                         @Html.DropDownListFor(f => f.Obra, (IEnumerable<SelectListItem>)ViewBag.Obras, "Seleccione un Valor", new { @class = "form-control" })
                         @Html.ValidationMessageFor(f => f.Obra)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.Tipo, new { @class = "col-sm-3 control-label" })
+                    @Html.LabelFor(r => r.Tipo, new { @class = "col-sm-4 control-label" })
                     <div class="col-sm-4">
                         @Html.TextBoxFor(r => r.Tipo, new { @class = "form-control" })
                         @Html.ValidationMessageFor(r => r.Tipo)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.FechaSolicitud, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaSolicitud" class="col-sm-4 control-label">FECHA&nbsp;SOLICITUD</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(r => r.FechaSolicitud, new { @class = "form-control fecha-hora" })
                         @Html.ValidationMessageFor(r => r.FechaSolicitud)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.GerenciaResponsable, new { @class = "col-sm-3 control-label" })
+                    <label for="GERENCIARESPONSABLE" class="col-sm-4 control-label">GERENCIA&nbsp;RESPONSABLE</label>
                     <div class="col-sm-4">
                         @Html.DropDownListFor(r => r.GerenciaResponsable, (IEnumerable<SelectListItem>)ViewBag.GerenciaResponsable, "Seleccione un Valor", new { @class = "form-control" })
                         @Html.ValidationMessageFor(r => r.GerenciaResponsable)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.Tecnicos, new { @class = "col-sm-3 control-label" })
+                    @Html.LabelFor(r => r.Tecnicos, new { @class = "col-sm-4 control-label" })
                     <div class="col-sm-4">
                         @Html.TextBoxFor(r => r.Tecnicos, new { @class = "form-control" })
                         @Html.ValidationMessageFor(r => r.Tecnicos)
@@ -53,28 +53,28 @@
                 
                
                 <div class="form-group">
-                    @Html.LabelFor(r => r.FechaCumplimientoSolicitud, new { @class = "col-sm-3 control-label" })
+                    <label for="FechacumplimientoSolicitud" class="col-sm-4 control-label">FECHA&nbsp;CUMPLIMIENTO&nbsp;SOLICITUD</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(r => r.FechaCumplimientoSolicitud, new { @class = "form-control fecha-hora" })
                         @Html.ValidationMessageFor(r => r.FechaCumplimientoSolicitud)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.Descripcion, new { @class = "col-sm-3 control-label" })
+                    @Html.LabelFor(r => r.Descripcion, new { @class = "col-sm-4 control-label" })
                     <div class="col-sm-4">
                         @Html.TextAreaFor(r => r.Descripcion, new { @class = "form-control", style = "width: 700px; height:150px;" })
                         @Html.ValidationMessageFor(r => r.Descripcion)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.AccionesEjecutadas, new { @class = "col-sm-3 control-label" })
+                    <label for="ACCIONESEJECUTADAS" class="col-sm-4 control-label">ACCIONES&nbsp;EJECUTADAS</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(r => r.AccionesEjecutadas, new { @class = "form-control", style = "width: 700px; height:150px;" })
                         @Html.ValidationMessageFor(r => r.AccionesEjecutadas)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(f => f.StatusRequerimientos, new { @class = "col-sm-3 control-label" })
+                    <label for="ESTATUSREQUERIMIENTOS" class="col-sm-4 control-label">ESTATUS&nbsp;REQUERIMIENTOS</label>
                     <div class="col-sm-4">
                         @Html.DropDownListFor(f => f.StatusRequerimientos, (IEnumerable<SelectListItem>)ViewBag.StatusRequerimiento, "Seleccione un Valor", new { @class = "form-control", @id = "confirmar" })
                         @Html.ValidationMessageFor(f => f.StatusRequerimientos)
@@ -82,13 +82,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">Correos</label>
+                <label class="col-sm-4 control-label">CORREOS</label>
                 <div class="col-sm-4">
                     <div>
 
                         <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                            <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivos</a></li>
+                            <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVOS</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -104,8 +104,8 @@
            
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarObras")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarObras")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                 </div>
             </div>
         }

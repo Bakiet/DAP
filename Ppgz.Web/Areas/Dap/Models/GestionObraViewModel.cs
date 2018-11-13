@@ -17,7 +17,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string correoelectronicoobra { get; set; }
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Cargo")]
+        [Display(Name = "CARGO")]
         public string cargoobra { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
@@ -69,7 +69,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string novendidas { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Paralizadas")]
+        [Display(Name = "PARALIZADAS")]
         public string paralizadas { get; set; }
 
 

@@ -17,7 +17,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
     [Authorize]
     public class AdministrarComponentesElectronicosController : Controller
     {
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
         private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
+      
 
         private readonly EquiposManager _equiposManager = new EquiposManager();
 
@@ -57,14 +59,18 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             var fecha = DateTime.Today.AddMonths(-3);
 
-
             ViewBag.ComponentesElectricos = db.componenteselectricos.ToList();
 
-           
-
-
             //ViewBag.EstatusCita = db.estatuscitas.ToList();
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
 
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
+            TempData.Keep();
             return View();
         }
         public ActionResult Sustituciones()
@@ -174,12 +180,12 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Marca = componenteelectrico.Marca,
                 Modelo = componenteelectrico.Modelo,
                 Serial = componenteelectrico.Serial,
-                FechaFabricado = componenteelectrico.FechaFabricado,
+                FechaFabricado = componenteelectrico.FechaFabricado.ToString(),
                 Duracion = componenteelectrico.Duracion.ToString(),
                 Sustitucion = componenteelectrico.Sustitucion,
                 Fotografia = componenteelectrico.Fotografia,
-                FechaAlerta = componenteelectrico.FechaAlerta,
-                FechaSustitucion = componenteelectrico.FechaSustitucion
+                FechaAlerta = componenteelectrico.FechaAlerta.ToString(),
+                FechaSustitucion = componenteelectrico.FechaSustitucion.ToString()
 
             };
 
@@ -217,12 +223,12 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Marca = componenteelectrico.Marca,
                 Modelo = componenteelectrico.Modelo,
                 Serial = componenteelectrico.Serial,
-                FechaFabricado = componenteelectrico.FechaFabricado,
+                FechaFabricado = componenteelectrico.FechaFabricado.ToString(),
                 Duracion = componenteelectrico.Duracion.ToString(),
                 Sustitucion = componenteelectrico.Sustitucion,
                 Fotografia = componenteelectrico.Fotografia,
-                FechaSustitucion = componenteelectrico.FechaSustitucion,
-                FechaAlerta = componenteelectrico.FechaAlerta
+                FechaSustitucion = componenteelectrico.FechaSustitucion.ToString(),
+                FechaAlerta = componenteelectrico.FechaAlerta.ToString()
 
             };
 
@@ -259,12 +265,12 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 Marca = componenteelectrico.Marca,
                 Modelo = componenteelectrico.Modelo,
                 Serial = componenteelectrico.Serial,
-                FechaFabricado = componenteelectrico.FechaFabricado,
+                FechaFabricado = componenteelectrico.FechaFabricado.ToString(),
                 Duracion = componenteelectrico.Duracion.ToString(),
                 Sustitucion = componenteelectrico.Sustitucion,
                 Fotografia = componenteelectrico.Fotografia,
-                FechaAlerta = componenteelectrico.FechaAlerta,
-                FechaSustitucion = componenteelectrico.FechaSustitucion
+                FechaAlerta = componenteelectrico.FechaAlerta.ToString(),
+                FechaSustitucion = componenteelectrico.FechaSustitucion.ToString()
 
             };
 
@@ -311,7 +317,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.Modelo,
                       model.Serial,
                       model.FechaFabricado,
-                      DateTime.Parse(model.Duracion),
+                      model.Duracion,
                       model.Sustitucion,
                       pdfUrl.Trim(), model.FechaSustitucion,model.FechaAlerta);
 
@@ -391,6 +397,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 }
                 else { pdfUrl = ""; }
                 */
+                obras obra = _obrasManager.Find(Convert.ToInt32(TempData["obra"]));
+                equipos equipo = _equiposManager.Find(Convert.ToInt32(TempData["equipo"]));
+
                 componenteselectricos ce =_componentesElectricos_Manager.Crear(Convert.ToInt32(TempData["equipo"]),
                      model.Tipo,
                       model.Caracteristicas,
@@ -399,9 +408,9 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                       model.Modelo,
                       model.Serial,
                       model.FechaFabricado,
-                      DateTime.Parse(model.Duracion),
+                      model.Duracion,
                       model.Sustitucion,
-                      pdfUrl.Trim(), model.FechaSustitucion,model.FechaAlerta);
+                      pdfUrl.Trim(), model.FechaSustitucion,model.FechaAlerta, obra.Nombre, equipo.Nombre);
 
                 HttpPostedFileBase file;
 

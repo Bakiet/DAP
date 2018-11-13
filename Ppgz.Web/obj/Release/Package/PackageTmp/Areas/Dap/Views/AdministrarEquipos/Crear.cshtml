@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Equipos</h2>
+<h2 class="form-signin-heading">EQUIPOS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Equipo</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de Equipos</div>
+    <div class="panel-heading">FORMULARIO DE EQUIPOS</div>
     <div class="panel-body">
         @using (Html.BeginForm("Crear", "AdministrarEquipos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -18,7 +18,7 @@
             @Html.ValidationSummary(true)
 
             <div class="form-group">
-                @Html.LabelFor(o => o.obra, new { @class = "col-sm-3 control-label" })
+                <label for="OBRA" class="col-sm-3 control-label">OBRA</label>
                 <div class="col-sm-4">
                     @Html.DropDownListFor(o => o.obra_id, (IEnumerable<SelectListItem>)ViewBag.Obras, "Seleccione un Valor", new { @class = "form-control", @disabled="disabled"})
                     @Html.ValidationMessageFor(o => o.obra_id)
@@ -55,21 +55,21 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(o => o.DimensionesCabina, new { @class = "col-sm-3 control-label" })
+                    <label for="DimensionesCabina" class="col-sm-3 control-label">DIMENSIONES&nbsp;DE&nbsp;CABINA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.DimensionesCabina, new { @class = "form-control" })
                         @Html.ValidationMessageFor(o => o.DimensionesCabina)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.DimensionesHueco, new { @class = "col-sm-3 control-label" })
+                    <label for="DimensionesHueco" class="col-sm-3 control-label">DIMENSIONES&nbsp;DE&nbsp;HUECO</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.DimensionesHueco, new { @class = "form-control" })
                         @Html.ValidationMessageFor(o => o.DimensionesHueco)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.CargaNominal, new { @class = "col-sm-3 control-label" })
+                    <label for="CargaNominal" class="col-sm-3 control-label">CARGA&nbsp;NOMINAL</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.CargaNominal, new { @class = "form-control" })
                         @Html.ValidationMessageFor(o => o.CargaNominal)
@@ -104,62 +104,62 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.VoltajeDeRed, new { @class = "col-sm-3 control-label" })
+                    <label for="VoltajeDeRed" class="col-sm-3 control-label">VOLTAJE&nbsp;DE&nbsp;RED</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.VoltajeDeRed, new { @class = "form-control" })
                         @Html.ValidationMessageFor(o => o.VoltajeDeRed)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.PotenciaDeMaquina, new { @class = "col-sm-3 control-label" })
+                    <label for="PotenciaDeMaquina" class="col-sm-3 control-label">POTENCIA&nbsp;DE&nbsp;MAQUINA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.PotenciaDeMaquina, new { @class = "form-control" })
                         @Html.ValidationMessageFor(o => o.PotenciaDeMaquina)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.TipoDeManiobra, new { @class = "col-sm-3 control-label" })
+                    <label for="TipoDeManiobra" class="col-sm-3 control-label">TIPO&nbsp;DE&nbsp;MANIOBRA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.TipoDeManiobra, new { @class = "form-control" })
                         @Html.ValidationMessageFor(o => o.TipoDeManiobra)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.NumeroDeGuayas, new { @class = "col-sm-3 control-label" })
+                     <label for="NumeroDeGuayas" class="col-sm-3 control-label">NUMERO&nbsp;DE&nbsp;GUAYAS</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.NumeroDeGuayas, new { @class = "form-control" })
                         @Html.ValidationMessageFor(o => o.NumeroDeGuayas)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.CantidadPersonas, new { @class = "col-sm-3 control-label" })
+                    <label for="CantidadPersonas" class="col-sm-3 control-label">CANTIDAD&nbsp;DE&nbsp;PERSONAS</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.CantidadPersonas, new { @class = "form-control" })
                         @Html.ValidationMessageFor(o => o.CantidadPersonas)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.FechaGarantia, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaGarantia" class="col-sm-3 control-label">FECHA&nbsp;DE&nbsp;GARANTIA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.FechaGarantia, new { @class = "form-control fecha-hora"})
                         @Html.ValidationMessageFor(o => o.FechaGarantia)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.FechaVencimiento, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaVencimiento" class="col-sm-3 control-label">FECHA&nbsp;DE&nbsp;VENCIMIENTO</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(o => o.FechaVencimiento, new { @class = "form-control fecha-hora" })
                         @Html.ValidationMessageFor(o => o.FechaVencimiento)
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Fotografias</label>
+                    <label class="col-sm-3 control-label">FOTOGRAFIAS</label>
                     <div class="col-sm-4">
                         <div>
                             
                                 <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Cargar</a></li>
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">CARGAR</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -175,13 +175,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Planos</label>
+                    <label class="col-sm-3 control-label">PLANOS</label>
                     <div class="col-sm-4">
                         <div>
                             
                                 <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                    <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">Cargar</a></li>
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">CARGAR</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -199,8 +199,8 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-7">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarEquipos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarEquipos")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                     </div>
                 </div>
         }

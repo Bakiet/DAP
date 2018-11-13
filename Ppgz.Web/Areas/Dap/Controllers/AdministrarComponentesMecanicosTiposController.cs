@@ -124,18 +124,22 @@ namespace Ppgz.Web.Areas.Dap.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Crear(ComponenteMecanicoTipoViewModel model, FormCollection collection)
         {
-
+            
             var equipo = _equiposManager.Find(Convert.ToInt32(TempData["equipo_id"]));
-
+            if(equipo == null)
+            {
+                equipo = _equiposManager.Find(Convert.ToInt32(TempData["equipoid"]));
+            }
             
             TempData.Keep();
             ViewBag.Equipo = equipo;
-
+            if(equipo != null) { 
             ViewBag.obra = _obrasManager.Find(equipo.obra_id);
-
-            TempData["obra_id"] = equipo.obra_id;
-            TempData.Keep();
-            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetComponentesMecanicos(Convert.ToInt32(TempData["equipo_id"]));
+                TempData["obra_id"] = equipo.obra_id;
+                TempData.Keep();
+                ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetComponentesMecanicos(equipo.Id);
+            }
+           
 
             if (!ModelState.IsValid) return View(model);
 
@@ -144,9 +148,19 @@ namespace Ppgz.Web.Areas.Dap.Controllers
              
                 _componentesmecanicostiposManager.Crear(
                       model.Descripcion);
-
+                if(TempData["componente"] != null) { 
                 //TempData["FlashSuccess"] = MensajesResource.INFO_MensajesInstitucionales_CreadoCorrectamente;
                 return RedirectToAction("Editar","AdministrarComponentesMecanicos", new { @id = TempData["componente"] });
+                }
+                else
+                {
+                    if(TempData["fallaid"] != null) { 
+                    return RedirectToAction("Editar", "AdministrarFallas", new { @id = TempData["fallaid"] });
+                    }else
+                    {
+                        return RedirectToAction("CrearPorDefecto", "AdministrarFallas");
+                    }
+                }
             }
             catch (BusinessException businessEx)
             {

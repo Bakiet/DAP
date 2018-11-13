@@ -23,9 +23,13 @@ namespace Ppgz.Services
 		{
 			return _db.herramientas.FirstOrDefault(e => e.Id ==id);
 		}
+        public List<herramientas> GetHerramientasAll()
+        {
+            return _db.herramientas.Where(s => s.FechaEntrada == null).ToList();
 
-	   
-		public List<herramientas> GetHerramientas(int obraId)
+        }
+
+        public List<herramientas> GetHerramientas(int obraId)
 		{
 			return _db.herramientas.Where(s => s.obra_id == obraId && s.FechaEntrada == null).ToList();
 
@@ -37,7 +41,13 @@ namespace Ppgz.Services
 
         }
 
-        public herramientas Actualizar(int obra_id,int id, string Descripcion = null, string Cantidad = null, DateTime? FechaSalida = null,
+        public List<herramientas> GetHistoricoAll()
+        {
+            return _db.herramientas.Where(f => f.FechaEntrada != null).ToList();
+
+        }
+
+        public herramientas Actualizar(int obra_id,int id, string obra = null,string Descripcion = null, string Cantidad = null, DateTime? FechaSalida = null,
 			string Propiedad = null, DateTime? FechaCulminacion = null, string CantidadDeposito = null, DateTime? FechaEntrada = null, string SupervisorObra = null
 			, string TecnicoResponsable = null, string Observaciones = null)
 		{
@@ -49,7 +59,7 @@ namespace Ppgz.Services
 			   // throw new BusinessException(CommonMensajesResource.ERROR_Usuario_Id);
 				
 			}
-			
+            herramienta.obra = obra;
 
 				herramienta.Descripcion = Descripcion;
 			
@@ -89,7 +99,7 @@ namespace Ppgz.Services
 		}
 
 
-		public herramientas Crear(int obra_id,string Descripcion = null, string Cantidad = null, DateTime? FechaSalida = null,
+		public herramientas Crear(int obra_id,string obra = null, string Descripcion = null, string Cantidad = null, DateTime? FechaSalida = null,
 			string Propiedad = null, DateTime? FechaCulminacion = null, string CantidadDeposito = null, DateTime? FechaEntrada = null, string SupervisorObra = null
 			, string TecnicoResponsable = null, string Observaciones = null)
 		{
@@ -103,7 +113,7 @@ namespace Ppgz.Services
 			{
                 var herramienta = new herramientas()
                 {
-                   
+                    obra = obra,
                     Descripcion = Descripcion,
                     Cantidad = int.Parse(Cantidad),
                     FechaSalida = FechaSalida,

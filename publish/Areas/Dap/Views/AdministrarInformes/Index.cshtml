@@ -5,17 +5,17 @@
     var obra = (obras)ViewBag.obra;
 }
 
-<h2 class="form-signin-heading">Informes Generales</h2>
+<h2 class="form-signin-heading">INFORMES GENERALES</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de Informes generales</i></p>*@
 @*<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Ventas", "AdministrarVentas", new { @id = TempData["IDOBRA"] })'">Volver</button>*@
 <div class="clearfix">
-    <a href="@Url.Action("Crear", "AdministrarInformes")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Informes generales</a>
+    <a href="@Url.Action("Crear", "AdministrarInformes")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR INFORMES GENERALES</a>
 </div>
 <div class="panel panel-default">
   
     <div class="panel-body">
         <div class="row">
-            <label class="col-sm-2 control-label">Obra</label>
+            <label class="col-sm-2 control-label">OBRA</label>
             <div class="col-sm-3">
                 @if(obra != null) { 
                 <div class="h4">@obra.Nombre</div>
@@ -30,15 +30,15 @@
     </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading">Informes generales Registrados</div>
+    <div class="panel-heading">INFORMES GENERALES REGISTRADOS</div>
     <div class="panel-body">
         <table class="table table-striped" id="obras">
             <thead>
                 <tr>
                     @*<th class="text-center">Id</th>*@
-                    <th class="text-center">Fecha</th>
-                    <th class="text-center">Nombre</th>
-                    <th class="text-center">Ver</th>
+                    <th class="text-center">FECHA</th>
+                    <th class="text-center">NOMBRE</th>
+                    <th class="text-center">VER</th>
                     <th class="text-center"></th>
             </thead>
             <tbody>
@@ -64,10 +64,10 @@
                             <div class="btn-group-vertical">
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarInformes", new { @id = @informe.Id })">
 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarInformes", new { @id = @informe.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El informe general será eliminado.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarInformes", new { @id = @informe.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿ESTÁ SEGURO?" data-content="EL INFORME GENERAL SERÁ ELIMINADO.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>

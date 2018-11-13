@@ -3,28 +3,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Gestión de Obras</h2>
+<h2 class="form-signin-heading">GESTIÓN DE OBRAS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la gestiones de obras</i></p>*@
 
 <div class="clearfix">
-    <a href="@Url.Action("Crear", "AdministrarGestionObras")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Gestión de obra</a>
+    <a href="@Url.Action("Crear", "AdministrarGestionObras")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR GESTIÓN DE OBRA</a>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading">Gestión de obras Registradas</div>
+    <div class="panel-heading">GESTIÓN DE OBRAS REGISTRADAS</div>
     <div class="panel-body">
         <table class="table table-striped" id="mensajes">
             <thead>
                 <tr>
                     @*<th class="text-center">Id</th>*@
-                    <th class="text-center">Primer Contacto</th>
-                    <th class="text-center">Contacto Telefonico</th>
-                    <th class="text-center">Correo Electronico</th>
-                    <th class="text-center">Cargo Obra</th>
-                    <th class="text-center">Nombre Constructora</th>
-                    <th class="text-center">Vendidas por Climb</th>
-                    <th class="text-center">Vendidas por Otros</th>
-                    <th class="text-center">No vendidas</th>
-                    <th class="text-center">Paralizadas</th>
+                    <th class="text-center">PRIMER CONTACTO</th>
+                    <th class="text-center">CONTACTO TELEFONICO</th>
+                    <th class="text-center">CORREO ELECTRONICO</th>
+                    <th class="text-center">CARGO OBRA</th>
+                    <th class="text-center">NOMBRE CONSTRUCTORA</th>
+                    <th class="text-center">VENDIDAS POR CLIMB</th>
+                    <th class="text-center">VENDIDAS POR OTROS</th>
+                    <th class="text-center">NO VENDIDAS</th>
+                    <th class="text-center">PARALIZADAS</th>
                     <th></th>
             </thead>
             <tbody>
@@ -47,15 +47,15 @@
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" href="@Url.Action("Editar", "AdministrarGestionObras", new { @id = @gestionobra.Id })">
 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Detalle
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> DETALLE
                                 </a>
 
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarGestionObras", new { @id = @gestionobra.Id })">
 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarGestionObras", new { @id = @gestionobra.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="La gestion de obra será eliminada.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarGestionObras", new { @id = @gestionobra.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿ESTÁ SEGURO?" data-content="LA GESTION DE OBRA SERÁ ELIMINADA.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>

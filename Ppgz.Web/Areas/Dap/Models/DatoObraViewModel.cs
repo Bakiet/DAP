@@ -5,19 +5,19 @@ namespace Ppgz.Web.Areas.Dap.Models
     public class DatoObraViewModel
     {
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Primer Contacto en obra")]
+        [Display(Name = "PRIMER CONTACTO EN OBRA")]
         public string primercontacto { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Contacto telefónico")]
+        [Display(Name = "CONTACTO TELEFONICO")]
         public string contactotelefonicoobra { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Correo Electrónico")]
+        [Display(Name = "CORREO ELECTRÓNICO")]
         public string correoelectronicoobra { get; set; }
 
       //  [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Cargo")]
+        [Display(Name = "CARGO")]
         public string cargoobra { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
@@ -69,7 +69,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string novendidas { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Paralizadas")]
+        [Display(Name = "PARALIZADAS")]
         public string paralizadas { get; set; }
 
 

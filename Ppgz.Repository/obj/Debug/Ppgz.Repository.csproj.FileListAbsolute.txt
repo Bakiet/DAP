@@ -97,6 +97,6 @@ C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Debug\EntityFramework.Sql
 C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Debug\MySql.Data.dll
 C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Debug\EntityFramework.xml
 C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.csprojResolveAssemblyReference.cache
 C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.dll
 C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.pdb
+C:\Users\Juan\Documents\GitHub\DAP\Ppgz.Repository\obj\Debug\Ppgz.Repository.csprojResolveAssemblyReference.cache

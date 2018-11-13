@@ -8,25 +8,25 @@
     var equipo = (equipos)ViewBag.equipo;
 }
 
-<h2 class="form-signin-heading">Componentes electronicos</h2>
+<h2 class="form-signin-heading">COMPONENTES ELECTRONICOS</h2>
 <a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallecomponenteselectronicos-modal" id="" onclick="createModal('@Url.Action("ReporteComponentesElectronicos", "AdministrarComponentesElectronicos" , new {id=ViewBag.id })')">
-    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
 </a>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de componentes electronicos</i></p>*@
-<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarComponentesElectronicos", new { @id = ViewBag.id })'">Histórico</button>
+<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarComponentesElectronicos", new { @id = ViewBag.id })'">HISTÓRICO</button>
 <div class="clearfix">
-    <a href="@Url.Action("Crear", "AdministrarComponentesElectronicos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Componentes electronicos</a>
+    <a href="@Url.Action("Crear", "AdministrarComponentesElectronicos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR COMPONENTES ELECTRONICOS</a>
 </div>
 
 <div class="panel panel-default">
-    <div class="panel-heading">Cuenta</div>
+    <div class="panel-heading">CUENTA</div>
     <div class="panel-body">
         <div class="row">
-            <label class="col-sm-2 control-label">Obra</label>
+            <label class="col-sm-2 control-label">OBRA</label>
             <div class="col-sm-3">
                 <div class="h4">@obra.Nombre</div>
             </div>
-            <label class="col-sm-2 control-label">Equipo</label>
+            <label class="col-sm-2 control-label">EQUIPO</label>
             <div class="col-sm-3">
                 <div>@equipo.Nombre</div>
             </div>
@@ -36,23 +36,23 @@
 </div>
 
 <div class="panel panel-default">
-    <div class="panel-heading">Componentes Electronicos</div>
+    <div class="panel-heading">COMPONENTES ELECTRONICOS</div>
     <div class="panel-body">
         <table class="table table-striped" id="obras">
             <thead>
                 <tr>
-                    <th class="text-center">Reporte</th>
+                    <th class="text-center">REPORTE</th>
                     @*<th class="text-center">Id</th>*@
-                    <th class="text-center">Tipo</th>
-                    <th class="text-center">Caracteristicas</th>
+                    <th class="text-center">TIPO</th>
+                    <th class="text-center">CARACTERISTICAS</th>
                     @*<th class="text-center">Descripción</th>*@
-                    <th class="text-center">Marca</th>
-                    <th class="text-center">Modelo</th>
-                    <th class="text-center">Serial</th>
-                    <th class="text-center">Fecha Fabricado</th>
-                    <th class="text-center">Fecha Alerta</th>
-                    <th class="text-center">Fecha Vencimiento</th>
-                    <th class="text-center">Sustitución</th>
+                    <th class="text-center">MARCA</th>
+                    <th class="text-center">MODELO</th>
+                    <th class="text-center">SERIAL</th>
+                    <th class="text-center">FECHA FABRICADO</th>
+                    <th class="text-center">FECHA ALERTA</th>
+                    <th class="text-center">FECHA VENCIMIENTO</th>
+                    <th class="text-center">SUSTITUCIÓN</th>
                     @*<th class="text-center">Fotografía</th>*@
                     <th></th>
             </thead>
@@ -64,7 +64,7 @@
 
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@componenteelectronico.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarComponentesElectronicos" , new {id=componenteelectronico.Id })')">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                    <i class="fa fa-eye" aria-hidden="true"></i> VER
                                 </a>
                             </div>
                         </td>
@@ -75,9 +75,30 @@
                         <td class="text-center vert-align">@componenteelectronico.Marca</td>
                         <td class="text-center vert-align">@componenteelectronico.Modelo</td>
                         <td class="text-center vert-align">@componenteelectronico.Serial</td>
-                        <td class="text-center vert-align">@componenteelectronico.FechaFabricado</td>
-                        <td class="text-center vert-align">@componenteelectronico.FechaAlerta</td>
-                        <td class="text-center vert-align">@componenteelectronico.Duracion</td>
+                        @if (componenteelectronico.FechaFabricado != null)
+                        {
+                            <td class="text-center vert-align">@componenteelectronico.FechaFabricado.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        @if (componenteelectronico.FechaAlerta != null)
+                        {
+                            <td class="text-center vert-align">@componenteelectronico.FechaAlerta.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        @if (componenteelectronico.Duracion != null)
+                        {
+                            <td class="text-center vert-align">@componenteelectronico.Duracion.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
                         <td class="text-center vert-align">@componenteelectronico.Sustitucion</td>
 
 
@@ -126,14 +147,14 @@
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarComponentesElectronicos", new { @id = @componenteelectronico.Id })">
 
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                    <i class="fa fa-eye" aria-hidden="true"></i> DETALLE
                                 </a>
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarComponentesElectronicos", new { @id = @componenteelectronico.Id })">
 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarComponentesElectronicos", new { @id = @componenteelectronico.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El componente electronico será eliminado.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarComponentesElectronicos", new { @id = @componenteelectronico.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿ESTÁ SEGURO?" data-content="EL COMPONENTE ELECTRONICO SERÁ ELIMINADO.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>
@@ -150,8 +171,9 @@
     <div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" id="modelContent">
-                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecComponenteElectronico('reportecomponenteelectronico')">
-                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprimecomponenteelectronico">
+                    @*href="javascript:imprSelec('reporte')*@
+                    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
                 </a>
                 <div id="reportecomponenteelectronico">
                     <div class="modal-header">
@@ -160,7 +182,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                         </button>
-                        <h4 class="modal-title">Reporte de Envios</h4>
+                        <h4 class="modal-title">REPORTE DE ENVIOS</h4>
                     </div>
 
                     <div class="modal-body">
@@ -281,8 +303,9 @@
             <div class="modal-content" id="modelContent" style="width:1000px;">
                 @*<a class="text-uppercase" id="download">Imprimir</a>*@
                 @*<a class="" href="javascript:imprSelec('reporte')">Imprimir</a>*@
-                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
-                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprime">
+                    @*href="javascript:imprSelec('reporte')*@
+                    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
                 </a>
                 <div id="reporte">
 
@@ -293,7 +316,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                         </button>
-                        <h4 class="modal-title">Reporte de Componente Electronico</h4>
+                        <h4 class="modal-title">REPORTE DE COMPONENTE ELECTRONICO</h4>
                     </div>
 
 
@@ -301,21 +324,21 @@
                         <div class="container-fluid">
 
                             <div class="panel panel-default">
-                                <div class="panel-heading">Componentes Electronicos Registrados</div>
+                                <div class="panel-heading">COMPONENTES ELECTRONICOS REGISTRADOS</div>
                                 <div class="panel-body">
                                     <table class="table table-striped" id="mensajesmodal">
                                         <thead>
                                             <tr>
                                                 @*<th class="text-center">Id</th>*@
-                                                <th class="text-center">Tipo</th>
-                                                <th class="text-center">Caracteristicas</th>
+                                                <th class="text-center">TIPO</th>
+                                                <th class="text-center">CARACTERISTICAS</th>
                                                 @*<th class="text-center">Descripción</th>*@
-                                                <th class="text-center">Marca</th>
-                                                <th class="text-center">Modelo</th>
-                                                <th class="text-center">Serial</th>
-                                                <th class="text-center">Fecha Fabricado</th>
-                                                <th class="text-center">Fecha Alerta</th>
-                                                <th class="text-center">Fecha Vencimiento</th>
+                                                <th class="text-center">MARCA</th>
+                                                <th class="text-center">MODELO</th>
+                                                <th class="text-center">SERIAL</th>
+                                                <th class="text-center">FECHA FABRICADO</th>
+                                                <th class="text-center">FECHA ALERTA</th>
+                                                <th class="text-center">FECHA VENCIMIENTO</th>
                                                 @*<th class="text-center">Sustitución</th>*@
 
 
@@ -331,9 +354,30 @@
                                                     <td class="text-center vert-align">@componenteelectronico.Marca</td>
                                                     <td class="text-center vert-align">@componenteelectronico.Modelo</td>
                                                     <td class="text-center vert-align">@componenteelectronico.Serial</td>
-                                                    <td class="text-center vert-align">@componenteelectronico.FechaFabricado</td>
-                                                    <td class="text-center vert-align">@componenteelectronico.FechaAlerta</td>
-                                                    <td class="text-center vert-align">@componenteelectronico.Duracion</td>
+                                                    @if (componenteelectronico.FechaFabricado != null)
+                                                    {
+                                                        <td class="text-center vert-align">@componenteelectronico.FechaFabricado.ToString("dd/MM/yyyy")</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="text-center vert-align"></td>
+                                                    }
+                                                    @if (componenteelectronico.FechaAlerta != null)
+                                                    {
+                                                        <td class="text-center vert-align">@componenteelectronico.FechaAlerta.ToString("dd/MM/yyyy")</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="text-center vert-align"></td>
+                                                    }
+                                                    @if (componenteelectronico.Duracion != null)
+                                                    {
+                                                        <td class="text-center vert-align">@componenteelectronico.Duracion.ToString("dd/MM/yyyy")</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="text-center vert-align"></td>
+                                                    }
                                                     @*<td class="text-center vert-align">@componenteelectronico.Sustitucion</td>*@
 
                                                 </tr>
@@ -378,11 +422,23 @@
 
             }
 </script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js.map"></script>
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/jquery.dataTables.min.js")
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/dataTables.bootstrap.min.js")
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
 
 
         $(document).ready(function () {
+            $("#imprime").click(function () {
+                $("div#reporte").printArea();
+            })
+            $("#imprimecomponenteelectronico").click(function () {
+                $("div#reportecomponenteelectronico").printArea();
+            })
             $('#obras').DataTable({
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"

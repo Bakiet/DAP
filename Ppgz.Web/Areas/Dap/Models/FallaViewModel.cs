@@ -13,12 +13,12 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string FechaFalla { get; set; }
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Obra")]
+        [Display(Name = "OBRA")]
         public string Obra { get; set; }
         public IEnumerable<SelectListItem> ObraList { get; set; }
 
-       // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Equipo")]
+        [Required(ErrorMessage = "El campo es obligatorio.")]
+        [Display(Name = "EQUIPO")]
         public string Equipo { get; set; }
         public IEnumerable<SelectListItem> EquipoList { get; set; }
 
@@ -28,12 +28,12 @@ namespace Ppgz.Web.Areas.Dap.Models
         public IEnumerable<SelectListItem> FallaList { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Componente")]
+        [Display(Name = "COMPONENTE")]
         public string Componente { get; set; }
         public IEnumerable<SelectListItem> ComponenteElectronicoList { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Técnico")]
+        [Display(Name = "TECNICO")]
         public string Personal { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
@@ -51,12 +51,12 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string NumeroReporte { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Descripción")]
+        [Display(Name = "DESCRIPCIÓN")]
         public string Descripcion { get; set; }
 
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Condiciòn")]
+        [Display(Name = "CONDICIÓN")]
         public string Condicion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]

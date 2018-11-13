@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Componentes Mecanicos</h2>
+<h2 class="form-signin-heading">COMPONENTES MECANICOS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Componentes Mecanicos</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de Componentes Mecanicos</div>
+    <div class="panel-heading">FORMULARIO DE COMPONENTES MECANICOS</div>
     <div class="panel-body">
         @using (Html.BeginForm("Crear", "AdministrarComponentesMecanicos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -23,7 +23,7 @@
                 <div class="col-sm-4">
                     @Html.DropDownListFor(c => c.Tipo, (IEnumerable<SelectListItem>)ViewBag.ComponentesMecanicos_Tipos, "Seleccione un Valor", new { @class = "form-control" })
                     @Html.ValidationMessageFor(c => c.Tipo)
-                    <a class="btn btn-default" href="@Url.Action("Crear", "AdministrarComponentesMecanicosTipos")"><i class="fa fa-plus" aria-hidden="true"></i> Crear Nuevo</a>
+                    <a class="btn btn-default" href="@Url.Action("Crear", "AdministrarComponentesMecanicosTipos")"><i class="fa fa-plus" aria-hidden="true"></i> CREAR NUEVO</a>
                 </div>
             </div>
             <div class="form-group">
@@ -62,14 +62,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(c => c.FechaFabricado, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaFabricado" class="col-sm-3 control-label">FECHA&nbsp;DE&nbsp;FABRICADO</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(c => c.FechaFabricado, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(c => c.FechaFabricado)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(c => c.FechaAlerta, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaAlerta" class="col-sm-3 control-label">FECHA&nbsp;DE&nbsp;ALERTA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(c => c.FechaAlerta, new { @class = "form-control fecha-hora" })
                         @Html.ValidationMessageFor(c => c.FechaAlerta)
@@ -91,13 +91,13 @@
                     </div>
                 </div>*@
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Fotográfias</label>
+                    <label class="col-sm-3 control-label">FOTOGRÁFIAS</label>
                     <div class="col-sm-4">
                         <div>
 
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivos</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVOS</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -115,8 +115,8 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-7">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                        <a class="btn btn-default" href="@Url.Action("ComponentesMecanicos", "AdministrarComponentesMecanicos",new { @id = TempData["equipo_id"] })"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                        <a class="btn btn-default" href="@Url.Action("ComponentesMecanicos", "AdministrarComponentesMecanicos",new { @id = TempData["equipo_id"] })"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                     </div>
                 </div>
         }

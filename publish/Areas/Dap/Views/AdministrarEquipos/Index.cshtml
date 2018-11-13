@@ -7,18 +7,18 @@
     var obra = (obras)ViewBag.obra;
 }
 
-<h2 class="form-signin-heading">Equipos</h2>
+<h2 class="form-signin-heading">EQUIPOS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de equipos</i></p>*@
 
 <div class="clearfix">
-    <a href="@Url.Action("Crear", "AdministrarEquipos", new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Equipo</a>
+    <a href="@Url.Action("Crear", "AdministrarEquipos", new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR EQUIPO</a>
 </div>
 
 <div class="panel panel-default">
-<div class="panel-heading">Equipos Registrados</div>
+<div class="panel-heading">EQUIPOS REGISTRADOS</div>
 <div class="panel-body">
     <div class="row">
-        <label class="col-sm-2 control-label">Obra</label>
+        <label class="col-sm-2 control-label">OBRA</label>
         <div class="col-sm-3">
             <div class="h4">@obra.Nombre</div>
         </div>
@@ -39,12 +39,12 @@
             <thead>
                 <tr>
                     @*<th class="text-center">Id</th>*@
-                    <th class="text-center">Nombre</th>
-                    <th class="text-center">Marca</th>
-                    <th class="text-center">Modelo</th>
-                    <th class="text-center">Detalle</th>
-                    <th class="text-center">Info.General de Equipo</th>
-                    <th class="text-center">Operaciones</th>
+                    <th class="text-center">NOMBRE</th>
+                    <th class="text-center">MARCA</th>
+                    <th class="text-center">MODELO</th>
+                    <th class="text-center">DETALLE</th>
+                    <th class="text-center">INFO.GENERAL DE EQUIPO</th>
+                    <th class="text-center">OPERACIONES</th>
                     
 
             </thead>
@@ -63,21 +63,21 @@
                             {
                                 <a class="btn btn-success btn-block" href="@Url.Action("Editar", "AdministrarPrevios", new { @id = @equipo.Id })">
 
-                                    <i class="fa fa-check" aria-hidden="true"></i> D.A.P Previo
+                                    <i class="fa fa-check" aria-hidden="true"></i> D.A.P PREVIO
                                 </a>
                             }
                             @if (ViewBag.componentesmecanicos != null)
                             {
                                 <a class="btn btn-info btn-block" href="@Url.Action("ComponentesMecanicos", "AdministrarComponentesMecanicos", new { @id = @equipo.Id })">
 
-                                    <i class="fa fa-cogs" aria-hidden="true"></i> Componentes Mecánicos
+                                    <i class="fa fa-cogs" aria-hidden="true"></i> COMPONENTES MECÁNICOS
                                 </a>
                             }
                             @if (ViewBag.componenteselectronicos != null)
                             {
                                 <a class="btn btn-warning btn-block" href="@Url.Action("ComponentesElectronicos", "AdministrarComponentesElectronicos", new { @id = @equipo.Id })">
 
-                                    <i class="fa fa-code-fork" aria-hidden="true"></i> Componentes Electrónicos
+                                    <i class="fa fa-code-fork" aria-hidden="true"></i> COMPONENTES ELECTRÓNICOS
                                 </a>
                             }
                         </td>
@@ -124,7 +124,7 @@
 
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@equipo.Id" onclick="createModal('@Url.Action("Detalle", "AdministrarEquipos" , new {id=equipo.Id })')">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                    <i class="fa fa-eye" aria-hidden="true"></i> VER
                                 </a>
                             </div>
                         </td>                     
@@ -133,14 +133,14 @@
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" href="@Url.Action("DetalleEquipo", "AdministrarEquipos", new { @id = @equipo.Id })">
 
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                    <i class="fa fa-eye" aria-hidden="true"></i> DETALLE
                                 </a>
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarEquipos", new { @id = @equipo.Id })">
 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarEquipos", new { @id = @equipo.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El Equipo será eliminado.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarEquipos", new { @id = @equipo.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿ESTÁ SEGURO?" data-content="EL EQUIPO SERÁ ELIMINADO.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>
@@ -159,8 +159,10 @@
 <div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" id="modelContent">
-                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecGeneralObra('reportegeneralobra')">
-                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprimeequipo">
+                    @*href="javascript:imprSelec('reporte')*@
+                    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
                 </a>
                 <div id="reportegeneralobra">
                     <div class="modal-header">
@@ -169,7 +171,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                         </button>
-                        <h4 class="modal-title">Caracteristicas Generales del equipo</h4>
+                        <h4 class="modal-title">CARACTERISTICAS GENERALES DEL EQUIPO</h4>
                     </div>
 
                     <div class="modal-body">
@@ -360,14 +362,23 @@
 </div>
 
 @section Scripts {
-    
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js.map"></script>
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/jquery.dataTables.min.js")
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/dataTables.bootstrap.min.js")
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  
     <script type="text/javascript">
 
 
         $(document).ready(function () {
 
-           
+            
+            $("#imprimeequipo").click(function () {
+                $("div#reportegeneralobra").printArea();
+            })
 
             $('#obras').DataTable({
                 "language": {

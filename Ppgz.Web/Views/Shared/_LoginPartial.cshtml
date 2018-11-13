@@ -14,7 +14,8 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("¡BIENVENIDO " + User.Identity.GetUserName().ToUpper() + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" , style = "font-size:11px;" })
+            @Html.ActionLink(User.Identity.GetUserName().ToUpper(), "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" , style = "font-size:11px;" })
+            @*@Html.ActionLink("¡BIENVENIDO" + User.Identity.GetUserName().ToUpper() + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage", style = "font-size:11px;" })*@
         </li>
         @if (cuenta != null)
         {
@@ -22,7 +23,7 @@
                 <a class="btn btn-link text-uppercase" href="@Url.Action("Index", "MensajesInstitucionales", new {area = @cuenta.Tipo})"><i class="fa fa-envelope" aria-hidden="true"></i> <span class="badge"></span></a>
             </li>
         }
-        <li><a class="text-uppercase" style="font-size:11px" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión</a></li>
+        <li><a class="text-uppercase" style="font-size:11px" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar&nbsp;Sesión</a></li>
     </ul>
     }
 }

@@ -19,6 +19,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
     {
         private readonly ObrasManager _obrasManager = new ObrasManager();
         private readonly FallasManager _fallasManager = new FallasManager();
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
         /*
         public ActionResult EditarContacto(int id, ObraContactoViewModel model)
         {
@@ -61,9 +63,20 @@ namespace Ppgz.Web.Areas.Dap.Controllers
         [HttpPost]
         public ActionResult CrearContacto(int id, FormCollection collection)
         {
+            string email = String.Empty;
+            string telefono = String.Empty;
             string nombre = Convert.ToString(collection["txtaddnombre"]);
-            string email = Convert.ToString(collection["txtaddemail"]);
-            string telefono = Convert.ToString(collection["txtaddtelefono"]);
+            if(collection["txtaddemail"] != null)
+            {
+                email = Convert.ToString(collection["txtaddemail"]);
+            }else { email = ""; }
+
+            if (collection["txtaddemail"] != null)
+            {
+                telefono = Convert.ToString(collection["txtaddtelefono"]);
+            }
+            else { telefono = ""; }
+           // string telefono = Convert.ToString(collection["txtaddtelefono"]);
             int obra_id = id;
             try
             {
@@ -71,7 +84,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                 _obrasManager.CrearContacto(obra_id,nombre, email,telefono);
 
                 TempData["FlashSuccess"] = MensajesResource.INFO_ObrasContacto_CreadoCorrectamente;
-                return RedirectToAction("Index");
+                return RedirectToAction("Editar" ,"AdministrarObras" , new { @id = id });
             }
             catch (Exception e)
             {
@@ -117,6 +130,16 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             ViewBag.FallasCount = _fallasManager.GetSustituciones();
             TempData["sustituciones"] = ViewBag.FallasCount.Count;
+            TempData.Keep();
+
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
+
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
             TempData.Keep();
             //ViewBag.EstatusCita = db.estatuscitas.ToList();
 
@@ -448,7 +471,7 @@ namespace Ppgz.Web.Areas.Dap.Controllers
                     _obrasManager.EliminarContacto(Convert.ToInt32(obracontactodelete_id));
                 }
 
-                return RedirectToAction("Index","AdministrarObras");
+                return RedirectToAction("Editar", "AdministrarObras", new { @id = id });
             }
             catch (BusinessException businessEx)
             {

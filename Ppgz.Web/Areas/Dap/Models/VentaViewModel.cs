@@ -6,7 +6,7 @@ namespace Ppgz.Web.Areas.Dap.Models
     {
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Descripción")]
+        [Display(Name = "DESCRIPCIÓN")]
         public string Descripcion { get; set; }
 
         

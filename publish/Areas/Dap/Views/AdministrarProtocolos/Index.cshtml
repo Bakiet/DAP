@@ -5,11 +5,11 @@
     var obra = (obras)ViewBag.obra;
 }
 
-<h2 class="form-signin-heading">Protocolos de chequeo</h2>
+<h2 class="form-signin-heading">PROTOCOLOS DE CHEQUEO</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de protocolos de chequeo</i></p>*@
 
 <div class="clearfix">
-    <a href="@Url.Action("Crear", "AdministrarProtocolos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear protocolo de chequeo</a>
+    <a href="@Url.Action("Crear", "AdministrarProtocolos")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR PROTOCOLO DE CHEQUEO</a>
 </div>
 @*<div class="panel panel-default">
     <div class="panel-heading">Cuenta</div>
@@ -25,14 +25,14 @@
     </div>
 </div>*@
 <div class="panel panel-default">
-    <div class="panel-heading">Protocolos de chequeo Registrados</div>
+    <div class="panel-heading">PROTOCOLOS DE CHEQUEO REGISTRADOS</div>
     <div class="panel-body">
         <table class="table table-striped " id="obras">
             <thead>
                 <tr>
                     @*<th class="text-center">Id</th>*@
-                    <th class="text-center">Nombre</th>
-                    <th class="text-center">Ver</th>
+                    <th class="text-center">NOMBRE</th>
+                    <th class="text-center">VER</th>
             </thead>
             <tbody>
                 @foreach (var protocolo in (ViewBag.Protocolos))
@@ -92,10 +92,10 @@
                             <div class="btn-group-vertical">
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarProtocolos", new { @id = @protocolo.Id })">
 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
                                 <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarProtocolos", new { @id = @protocolo.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El protocolo será eliminado.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>

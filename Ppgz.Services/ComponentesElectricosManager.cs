@@ -47,8 +47,8 @@ namespace Ppgz.Services
 		}
 
 		public componenteselectricos Actualizar(int id, string Tipo = null, string Caracteristicas = null, string Descripcion = null,
-			string Marca = null, string Modelo = null, string Serial = null, DateTime? FechaFabricado = null, DateTime? Duracion = null
-			, string Sustitucion = null, string Fotografia = null, DateTime? FechaSustitucion = null, DateTime? FechaAlerta = null)
+			string Marca = null, string Modelo = null, string Serial = null, string FechaFabricado = null, string Duracion = null
+			, string Sustitucion = null, string Fotografia = null, string FechaSustitucion = null, string FechaAlerta = null)
 		{
 
 			var componenteelectrico = _db.componenteselectricos.Find(id);
@@ -92,34 +92,40 @@ namespace Ppgz.Services
 			//{
 
 				componenteelectrico.Serial = Serial;
-			//}
+            //}
 
-			//if (FechaFabricado != null)
-			//{
+            if (FechaFabricado != null)
+            {
 
-				componenteelectrico.FechaFabricado = FechaFabricado;
-			//}
-           // if (FechaSustitucion != null)
+                componenteelectrico.FechaFabricado = DateTime.Parse(FechaFabricado);
+            }
+            if (FechaSustitucion != null)
+            {
+
+                componenteelectrico.FechaSustitucion = DateTime.Parse(FechaSustitucion);
+
+
+            }
+            if (FechaAlerta != null)
+            {
+                componenteelectrico.FechaAlerta = DateTime.Parse(FechaAlerta);
+                //  if (Duracion != null)
+                //  {
+            }
+            if (Duracion != null)
+            {
+                componenteelectrico.Duracion = DateTime.Parse(Duracion);
+            }
+            //  }
+            if (Sustitucion != null)
+            {
+
+                componenteelectrico.Sustitucion = Sustitucion;
+            }
+            //if (Fotografia != null)
             //{
 
-                componenteelectrico.FechaSustitucion = FechaSustitucion;
-            // }
-            componenteelectrico.FechaAlerta = FechaAlerta;
-
-           // if (Duracion != null)
-			//{
-
-				componenteelectrico.Duracion = Duracion;
-			//}
-			if (Sustitucion != null)
-			{
-
-				componenteelectrico.Sustitucion = Sustitucion;
-			}
-			//if (Fotografia != null)
-			//{
-
-				componenteelectrico.Fotografia = Fotografia;
+            componenteelectrico.Fotografia = Fotografia;
 			//}
 			
 
@@ -131,8 +137,8 @@ namespace Ppgz.Services
 
 
 		public componenteselectricos Crear(int equipoid, string Tipo = null, string Caracteristicas = null, string Descripcion = null,
-			string Marca = null, string Modelo = null, string Serial = null, DateTime? FechaFabricado = null, DateTime? Duracion = null
-			,string Sustitucion = null, string Fotografia = null, DateTime? FechaSustitucion = null, DateTime? FechaAlerta = null)
+			string Marca = null, string Modelo = null, string Serial = null, string FechaFabricado = null, string Duracion = null
+			,string Sustitucion = null, string Fotografia = null, string FechaSustitucion = null, string FechaAlerta = null,string obra = null,string equipo = null)
 		{
 
             //if (Caracteristicas == null)
@@ -175,7 +181,33 @@ namespace Ppgz.Services
             //{
             //    Fotografia = "null";
             //}
+            DateTime? FechaFabricadoD = null;
+            DateTime? FechaSustitucionD = null;
+            DateTime? FechaAlertaD = null;
+            DateTime? SustitucionD = null;
+            DateTime? DuracionD = null;
+            if (FechaFabricado != null)
+            {
 
+                FechaFabricadoD = DateTime.Parse(FechaFabricado);
+            }
+            if (FechaSustitucion != null)
+            {
+
+                FechaSustitucionD = DateTime.Parse(FechaSustitucion);
+
+
+            }
+            if (FechaAlerta != null)
+            {
+                FechaAlertaD = DateTime.Parse(FechaAlerta);
+                //  if (Duracion != null)
+                //  {
+            }
+            if (Duracion != null)
+            {
+                DuracionD = DateTime.Parse(Duracion);
+            }
             try
 			{
 				var componenteelectrico = new componenteselectricos()
@@ -184,15 +216,17 @@ namespace Ppgz.Services
                     Tipo = Tipo,
 					Caracteristicas = Caracteristicas,
 					Descripcion = Descripcion,
-					FechaFabricado = FechaFabricado,
+					FechaFabricado = FechaFabricadoD,
 					Marca = Marca,
 					Modelo  = Modelo,
 					Serial = Serial,
-					Duracion = Duracion,
+					Duracion = DuracionD,
 					Sustitucion = Sustitucion,
 					Fotografia = Fotografia,
-                    FechaSustitucion = FechaSustitucion,
-                    FechaAlerta = FechaAlerta
+                    FechaSustitucion = FechaSustitucionD,
+                    FechaAlerta = FechaAlertaD,
+                    obra  = obra,
+                    equipo = equipo
 
 				};
 

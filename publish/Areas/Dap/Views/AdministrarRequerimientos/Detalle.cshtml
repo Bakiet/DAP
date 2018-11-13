@@ -3,11 +3,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2 class="form-signin-heading">Requerimientos</h2>
+<h2 class="form-signin-heading">REQUERIMIENTOS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Requerimientos</i></p>*@
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de detalle</div>
+    <div class="panel-heading">FORMULARIO DE DETALLE</div>
     <div class="panel-body">
         @using (Html.BeginForm("Detalle", "AdministrarRequerimientos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -30,14 +30,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.FechaSolicitud, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaSolicitud" class="col-sm-4 control-label">FECHA&nbsp;SOLICITUD</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(r => r.FechaSolicitud, new { @class = "form-control fecha-hora", @type = "datetime", @readonly = true })
                         @Html.ValidationMessageFor(r => r.FechaSolicitud)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.GerenciaResponsable, new { @class = "col-sm-3 control-label" })
+                    <label for="GERENCIARESPONSABLE" class="col-sm-4 control-label">GERENCIA&nbsp;RESPONSABLE</label>
                     <div class="col-sm-4">
                         @Html.DropDownListFor(r => r.GerenciaResponsable, (IEnumerable<SelectListItem>)ViewBag.GerenciaResponsableDetalle, "Seleccione un Valor", new { @class = "form-control", @disabled = "disabled", @readonly = true })
                         @Html.ValidationMessageFor(r => r.GerenciaResponsable)
@@ -53,7 +53,7 @@
                 
                
                 <div class="form-group">
-                    @Html.LabelFor(r => r.FechaCumplimientoSolicitud, new { @class = "col-sm-3 control-label" })
+                    <label for="FechacumplimientoSolicitud" class="col-sm-4 control-label">FECHA&nbsp;CUMPLIMIENTO&nbsp;SOLICITUD</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(r => r.FechaCumplimientoSolicitud, new { @class = "form-control fecha-hora", @type = "datetime", @readonly = true })
                         @Html.ValidationMessageFor(r => r.FechaCumplimientoSolicitud)
@@ -67,14 +67,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.AccionesEjecutadas, new { @class = "col-sm-3 control-label" })
+                    <label for="ACCIONESEJECUTADAS" class="col-sm-4 control-label">ACCIONES&nbsp;EJECUTADAS</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(r => r.AccionesEjecutadas, new { @class = "form-control", style = "width: 700px; height:150px;", @readonly = true })
                         @Html.ValidationMessageFor(r => r.AccionesEjecutadas)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(f => f.StatusRequerimientos, new { @class = "col-sm-3 control-label" })
+                    <label for="ESTATUSREQUERIMIENTOS" class="col-sm-4 control-label">ESTATUS&nbsp;REQUERIMIENTOS</label>
                     <div class="col-sm-4">
                         @Html.DropDownListFor(f => f.StatusRequerimientos, (IEnumerable<SelectListItem>)ViewBag.StatusRequerimientoDetalle, "Seleccione un Valor", new { @class = "form-control", @disabled = "disabled", @id = "confirmar", @readonly = true })
                         @Html.ValidationMessageFor(f => f.StatusRequerimientos)
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">Correos</label>
+                <label class="col-sm-3 control-label">CORREOS</label>
                 <div class="col-sm-4">
                     <div>
 
@@ -169,11 +169,11 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+                            <h4 class="modal-title" id="myModalLabel">CONFIRMAR</h4>
                         </div>
                         <div class="modal-body">
                             <p></p>
-                            <p>Esta seguro de cambiar el Estatus de el requerimiento</p>
+                            <p>ESTA SEGURO DE CAMBIAR EL ESTATUS DE EL REQUERIMIENTO</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.href='@Url.Action("Editar", "AdministrarRequerimientos", new { @id = Model.Id })'">CANCELAR</button>
@@ -187,7 +187,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
                     @*<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>*@
-                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarObras")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarObras")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                 </div>
             </div>
         }

@@ -8,48 +8,48 @@
 }
 
 
-<h2 class="form-signin-heading">Reporte de Fallas</h2>
+<h2 class="form-signin-heading">REPORTE DE FALLAS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra los reportes de fallas</i></p>*@
 <a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallefallas-modal" id="" onclick="createModal('@Url.Action("ReporteFallas", "AdministrarFallas" , new {id=ViewBag.id })')">
-    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
 </a>
 @if(ViewBag.id != null){
-    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarFallas", new { @id = ViewBag.id })'">Histórico</button>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarFallas", new { @id = ViewBag.id })'">HISTÓRICO</button>
 }
 else
 {
-    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("HistoricoTodos", "AdministrarFallas")'">Histórico</button>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("HistoricoTodos", "AdministrarFallas")'">HISTÓRICO</button>
 }
 <div class="clearfix">
     @if (ViewBag.id != null)
     {
 
-        <a href="@Url.Action("Crear", "AdministrarFallas" , new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Falla</a>
+        <a href="@Url.Action("Crear", "AdministrarFallas" , new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR FALLA</a>
    
     }
     else
     {
         
-    <a href="@Url.Action("CrearPorDefecto", "AdministrarFallas")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Falla</a>
+    <a href="@Url.Action("CrearPorDefecto", "AdministrarFallas")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR FALLA</a>
 
     }
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading">Fallas Registradas</div>
+    <div class="panel-heading">FALLAS REGISTRADAS</div>
     <div class="panel-body">
         <table class="table table-striped" id="mensajes">
             <thead>
                 <tr>
-                    <th class="text-center">Reporte</th>
+                    <th class="text-center">REPORTE</th>
                     @*<th class="text-center">Id</th>*@
                     
-                    <th class="text-center">Obra</th>
-                    <th class="text-center">Equipo</th>
-                    <th class="text-center">Fecha Falla</th>
-                    <th class="text-center">Componente</th>
-                    <th class="text-center">Estatus Falla</th>
-                    <th class="text-center">Fecha Solución</th>
-                    <th class="text-center">Técnico</th>
+                    <th class="text-center">OBRA</th>
+                    <th class="text-center">EQUIPO</th>
+                    <th class="text-center">FECHA FALLA</th>
+                    <th class="text-center">COMPONENTE</th>
+                    <th class="text-center">ESTATUS FALLA</th>
+                    <th class="text-center">FECHA SOLUCIÓN</th>
+                    <th class="text-center">TÉCNICO</th>
                     <th></th>
             </thead>
             <tbody>
@@ -61,7 +61,7 @@ else
 
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@falla.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarFallas" , new {id=falla.Id })')">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                    <i class="fa fa-eye" aria-hidden="true"></i> VER
                                 </a>
                             </div>
                         </td>        
@@ -70,7 +70,7 @@ else
                         <td class="text-center vert-align h4">@falla.Obra</td>
                         <td class="text-center vert-align">@falla.Equipo</td>
                         @if (falla.FechaFalla != null) { 
-                        <td class="text-center vert-align">@falla.FechaFalla.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center vert-align">@falla.FechaFalla.ToString()</td>
                         }
                         else
                         {
@@ -80,7 +80,7 @@ else
                         <td class="text-center vert-align">@falla.StatusFalla</td>
                         @if (falla.FechaSolucion != null)
                         {
-                            <td class="text-center vert-align">@falla.FechaSolucion.ToString("dd/MM/yyyy")</td>
+                            <td class="text-center vert-align">@falla.FechaSolucion.ToString()</td>
                         }
                         else
                         {
@@ -92,13 +92,13 @@ else
                         <td class="text-center">
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarFallas", new { @id = @falla.Id })">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalles
+                                    <i class="fa fa-eye" aria-hidden="true"></i> DETALLES
                                 </a>
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarFallas", new { @id = @falla.Id })">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarFallas", new { @id = @falla.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="La falla será eliminada.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarFallas", new { @id = @falla.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿ESTÁ SEGURO?" data-content="LA FALLA SERÁ ELIMINADA.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>
@@ -112,8 +112,9 @@ else
 <div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="modelContent">
-            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecFalla('reportefalla')">
-                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprimefalla">
+                @*href="javascript:imprSelec('reporte')*@
+                <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
             </a>
             <div id="reportefalla">
                 <div class="modal-header">
@@ -122,7 +123,7 @@ else
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                     </button>
-                    <h4 class="modal-title">Reporte de Fallas</h4>
+                    <h4 class="modal-title">REPORTE DE FALLAS</h4>
                 </div>
 
                 <div class="modal-body">
@@ -270,8 +271,9 @@ else
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="modelContent" style="width:1000px;">
         
-            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
-                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprime">
+                @*href="javascript:imprSelec('reporte')*@
+                <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
             </a>
             <div id="reporte">
                 
@@ -282,7 +284,7 @@ else
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                     </button>
-                    <h4 class="modal-title">Reporte de Fallas</h4>
+                    <h4 class="modal-title">REPORTE DE FALLAS</h4>
                 </div>
 
                 
@@ -290,23 +292,23 @@ else
                             <div class="container-fluid">
 
                                 <div class="panel panel-default" >
-                                    <div class="panel-heading">Fallas Registradas</div>
+                                    <div class="panel-heading">FALLAS REGISTRADAS</div>
                                     <div class="panel-body">
                                         <table class="table table-striped" id="mensajesmodal">
                                             <thead>
                                                 <tr>
 
                                                     @*<th class="text-center">Id</th>*@
-                                                    <th class="text-center">Obra</th>
+                                                    <th class="text-center">OBRA</th>
                                                     
                                                     
-                                                    <th class="text-center">Equipo</th>
-                                                    <th class="text-center">Fecha Falla</th>
-                                                    <th class="text-center">Componente</th>
-                                                    <th class="text-center">Fecha Solución</th>
-                                                    <th class="text-center">Estatus Falla</th>
+                                                    <th class="text-center">EQUIPO</th>
+                                                    <th class="text-center">FECHA FALLA</th>
+                                                    <th class="text-center">COMPONENTE</th>
+                                                    <th class="text-center">FECHA SOLUCIÓN</th>
+                                                    <th class="text-center">ESTATUS FALLA</th>
                                                     
-                                                    <th class="text-center">Técnico</th>
+                                                    <th class="text-center">TÉCNICO</th>
 
                                             </thead>
                                             <tbody>
@@ -320,7 +322,7 @@ else
                                                         <td class="text-center vert-align">@falla.Equipo</td>
                                                         @if (falla.FechaFalla != null)
                                                         {
-                                                            <td class="text-center vert-align">@falla.FechaFalla.ToString("dd/MM/yyyy")</td>
+                                                            <td class="text-center vert-align">@falla.FechaFalla.ToString("dd/MM/yyyy HH:mm A")</td>
                                                         }
                                                         else
                                                         {
@@ -329,7 +331,7 @@ else
                                                         <td class="text-center vert-align">@falla.Componente</td>
                                                         @if (falla.FechaSolucion != null)
                                                         {
-                                                            <td class="text-center vert-align">@falla.FechaSolucion.ToString("dd/MM/yyyy")</td>
+                                                            <td class="text-center vert-align">@falla.FechaSolucion.ToString("dd/MM/yyyy HH:mm A")</td>
                                                         }
                                                         else
                                                         {
@@ -379,9 +381,21 @@ else
          
       }
 </script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js.map"></script>
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/jquery.dataTables.min.js")
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/dataTables.bootstrap.min.js")
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-        $(document).ready(function () {
+    $(document).ready(function () {
+        $("#imprime").click(function () {
+            $("div#reporte").printArea();
+        })
+        $("#imprimefalla").click(function () {
+            $("div#reportefalla").printArea();
+        })
             $('#mensajes').DataTable({
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"

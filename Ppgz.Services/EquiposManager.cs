@@ -42,6 +42,10 @@ namespace Ppgz.Services
         {
             return _db.equipos.FirstOrDefault(e => e.obra_id == id);
         }
+        public equipos FindPorNombre(string equipo)
+        {
+            return _db.equipos.FirstOrDefault(e => e.Nombre == equipo);
+        }
         public List<obras> FindObras()
         {
             //return _db.obras.ToList();

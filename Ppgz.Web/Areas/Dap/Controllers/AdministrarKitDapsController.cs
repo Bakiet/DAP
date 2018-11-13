@@ -21,6 +21,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
         private readonly ObrasManager _obrasManager = new ObrasManager();
         private readonly PreviosManager _previosManager = new PreviosManager();
         private readonly EquiposManager _equiposManager = new EquiposManager();
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
 
         [Authorize(Roles = "MAESTRO-NAZAN,NAZAN-ADMINISTRARKITDAPS-CONSULTAR")]
         public ActionResult Index()
@@ -32,9 +34,17 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             ViewBag.KitDaps = db.kitdap.ToList();
 
-            
-            //ViewBag.EstatusCita = db.estatuscitas.ToList();
 
+            //ViewBag.EstatusCita = db.estatuscitas.ToList();
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
+
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
+            TempData.Keep();
             return View();
         }
 

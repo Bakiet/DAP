@@ -17,6 +17,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
     [Authorize]
     public class AdministrarMantenimientosCorrectivosController : Controller
     {
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
         private readonly FallasManager _fallasManager = new FallasManager();
 
         private readonly EquiposManager _equiposManager = new EquiposManager();
@@ -61,7 +63,15 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             TempData["venta_id"] = id;
             TempData.Keep();
             var fecha = DateTime.Today.AddMonths(-3);
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
 
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
+            TempData.Keep();
             var mantenimientocorrectivo = _mantenimientoscorrectivosManager.GetMantenimientoCorrectivo(id);
 
             if(mantenimientocorrectivo != null) { 

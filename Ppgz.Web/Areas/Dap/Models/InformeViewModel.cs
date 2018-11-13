@@ -6,15 +6,15 @@ namespace Ppgz.Web.Areas.Dap.Models
     {
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Nombre")]
+        [Display(Name = "NOMBRE")]
         public string Nombre { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Url")]
+        [Display(Name = "URL")]
         public string Url { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Fecha")]
+        [Display(Name = "FECHA")]
         public string Fecha { get; set; }
 
 

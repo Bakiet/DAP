@@ -6,11 +6,11 @@ namespace Ppgz.Web.Areas.Dap.Models
     {
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Equipo")]
+        [Display(Name = "EQUIPO")]
         public string Tipo { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Descripción")]
+        [Display(Name = "DESCRIPCIÓN")]
         public string Descripcion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
@@ -30,7 +30,7 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string NombreDocumento { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Tecnico")]
+        [Display(Name = "TECNICO")]
         public string Tecnico { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
@@ -42,12 +42,12 @@ namespace Ppgz.Web.Areas.Dap.Models
         public string StatusMantenimiento { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Archivo")]
+        [Display(Name = "ARCHIVO")]
         public string Archivo { get; set; }
 
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Evaluación")]
+        [Display(Name = "EVALUACIÓN")]
         public string Evaluacion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]

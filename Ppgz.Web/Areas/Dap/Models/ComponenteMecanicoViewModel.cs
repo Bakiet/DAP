@@ -6,50 +6,55 @@ namespace Ppgz.Web.Areas.Dap.Models
     {
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Tipo")]
+        [Display(Name = "TIPO")]
         public string Tipo { get; set; }    
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Caracteristicas")]
+        [Display(Name = "CARACTERISTICAS")]
         public string Caracteristicas { get; set; }
 
         //[Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Descripción")]
+        [Display(Name = "DESCRIPCIÓN")]
         public string Descripcion { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Marca")]
+        [Display(Name = "MARCA")]
         public string Marca { get; set; }
 
         //[Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Modelo")]
+        [Display(Name = "MODELO")]
         public string Modelo { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Serial")]
+        [Display(Name = "SERIAL")]
         public string Serial { get; set; }
 
        // [Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Fecha Fabricado")]
-        public DateTime? FechaFabricado { get; set; }
+        [Display(Name = "FECHA FABRICADO")]
+        public string FechaFabricado { get; set; }
 
         //[Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Fecha Vencimiento")]
+        [Display(Name = "FECHA VENCIMIENTO")]
         public string Duracion { get; set; }
 
         //[Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Sustitución")]
+        [Display(Name = "SUSTITUCIONES")]
         public string Sustitucion { get; set; }
 
         //[Required(ErrorMessage = "El campo es obligatorio.")]
-        [Display(Name = "Fotografia")]
+        [Display(Name = "FOTOGRAFIA")]
         public string Fotografia { get; set; }
 
-        [Display(Name = "Fecha Sustitución")]
-        public DateTime? FechaSustitucion { get; set; }
+        [Display(Name = "FECHA SUSTITUCIÓN")]
+        public string FechaSustitucion { get; set; }
 
-        [Display(Name = "Fecha Alerta")]
-        public DateTime? FechaAlerta { get; set; }
+        [Display(Name = "FECHA ALERTA")]
+       
+        public string FechaAlerta { get; set; }
+
+        public string obra { get; set; }
+
+        public string equipo { get; set; }
 
     }
 }

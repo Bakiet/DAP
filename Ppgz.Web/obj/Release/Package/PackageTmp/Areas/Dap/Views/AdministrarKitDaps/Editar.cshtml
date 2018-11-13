@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Editar Kit dap</h2>
+<h2 class="form-signin-heading">EDITAR KIT DAP</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Kit dap</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-heading">FORMULARIO DE EDICIÓN</div>
     <div class="panel-body">
         @using (Html.BeginForm("Editar", "AdministrarKitDaps", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -41,7 +41,7 @@
                                 </p>
                                 <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -64,8 +64,8 @@
            
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarKitDaps")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarKitDaps")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                 </div>
             </div>
         }

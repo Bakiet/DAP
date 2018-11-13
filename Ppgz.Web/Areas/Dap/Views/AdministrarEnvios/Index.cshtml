@@ -8,37 +8,37 @@
 
 <h2 class="form-signin-heading">Envios</h2>
 <a class="btn btn-info btn-md" data-toggle="modal" data-target="#detalleenvios-modal" id="" onclick="createModal('@Url.Action("ReporteEnvios", "AdministrarEnvios" , new {id=ViewBag.id })')">
-    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
 </a>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de envios</i></p>*@
 @if (ViewBag.id != null)
 {
-    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarEnvios", new { @id = ViewBag.id })'">Histórico</button>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Historico", "AdministrarEnvios", new { @id = ViewBag.id })'">HISTÓRICO</button>
 }
 else
 {
-    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("HistoricoTodos", "AdministrarEnvios")'">Histórico</button>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("HistoricoTodos", "AdministrarEnvios")'">HISTÓRICO</button>
 }
 <div class="clearfix">
     @if (ViewBag.id != null)
     {
 
-        <a href="@Url.Action("Crear", "AdministrarEnvios", new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Envio</a>
+        <a href="@Url.Action("Crear", "AdministrarEnvios", new { @id = ViewBag.id })" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR ENVIO</a>
 
     }
     else
     {
 
-        <a href="@Url.Action("CrearPorDefecto", "AdministrarEnvios")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Envio</a>
+        <a href="@Url.Action("CrearPorDefecto", "AdministrarEnvios")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR ENVIO</a>
 
     }
 </div>
 @if(obra != null){
 <div class="panel panel-default">
-    <div class="panel-heading">Cuenta</div>
+    <div class="panel-heading">CUENTA</div>
     <div class="panel-body">
         <div class="row">
-            <label class="col-sm-2 control-label">Obra</label>
+            <label class="col-sm-2 control-label">OBRA</label>
             <div class="col-sm-3">
                 <div class="h4">@obra.Nombre</div>
             </div>
@@ -50,22 +50,22 @@ else
 }
 <div class="container-fluid">
     <div class="panel panel-default">
-        <div class="panel-heading">Envios Registrados</div>
+        <div class="panel-heading">ENVIOS REGISTRADOS</div>
         <div class="panel-body">
 
             <table class="table table-striped" id="mensajes">
                 <thead>
                     <tr>
-                        <th class="text-center">Reporte</th>
+                        <th class="text-center">REPORTE</th>
                         @*<th class="text-center">Id</th>*@
-                        <th class="text-center">Obra</th>
-                        <th class="text-center">Tipo de Componente</th>
-                        <th class="text-center">Fecha de Pedido</th>
-                        <th class="text-center">fecha de Salida</th>
-                        <th class="text-center">Tracking</th>
+                        <th class="text-center">OBRA</th>
+                        <th class="text-center">TIPO DE COMPONENTE</th>
+                        <th class="text-center">FECHA DE PEDIDO</th>
+                        <th class="text-center">FECHA DE SALIDA</th>
+                        <th class="text-center">TRACKING</th>
 
-                        <th class="text-center">Empresa de Envio</th>
-                        <th class="text-center">Estatus de Envío</th>
+                        <th class="text-center">EMPRESA DE ENVÍO</th>
+                        <th class="text-center">ESTATUS DE ENVÍO</th>
 
                         <th></th>
                 </thead>
@@ -95,13 +95,13 @@ else
                             <td class="text-center">
                                 <div class="btn-group-vertical">
                                     <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarEnvios", new { @id = @envio.Id })">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                        <i class="fa fa-eye" aria-hidden="true"></i> DETALLE
                                     </a>
                                     <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarEnvios", new { @id = @envio.Id })">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                     </a>
-                                    <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarEnvios", new { @id = @envio.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El envio será eliminado.">
-                                        <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                    <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarEnvios", new { @id = @envio.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿ESTÁ SEGURO?" data-content="EL ENVIO SERÁ ELIMINADO.">
+                                        <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                     </a>
                                 </div>
                             </td>
@@ -116,17 +116,18 @@ else
     <div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" id="modelContent">
-                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecFalla('reporteenvio')">
-                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprimeenvio">
+                    @*href="javascript:imprSelec('reporte')*@
+                    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
                 </a>
-                <div id="reportefalla">
+                <div id="reporteenvio">
                     <div class="modal-header">
                         @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
                         <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                         </button>
-                        <h4 class="modal-title">Reporte de Envios</h4>
+                        <h4 class="modal-title">REPORTE DE ENVIOS</h4>
                     </div>
 
                     <div class="modal-body">
@@ -301,8 +302,9 @@ else
             <div class="modal-content" id="modelContent" style="width:1000px;">
                 @*<a class="text-uppercase" id="download">Imprimir</a>*@
                 @*<a class="" href="javascript:imprSelec('reporte')">Imprimir</a>*@
-                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
-                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprime">
+                    @*href="javascript:imprSelec('reporte')*@
+                    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
                 </a>
                 <div id="reporte">
 
@@ -313,7 +315,7 @@ else
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                         </button>
-                        <h4 class="modal-title">Reporte de Envios</h4>
+                        <h4 class="modal-title">REPORTE DE ENVIOS</h4>
                     </div>
 
 
@@ -321,20 +323,20 @@ else
                         <div class="container-fluid">
 
                             <div class="panel panel-default">
-                                <div class="panel-heading">Envios Registrados</div>
+                                <div class="panel-heading">ENVIOS REGISTRADOS</div>
                                 <div class="panel-body">
                                     <table class="table table-striped" id="mensajesmodal">
                                         <thead>
                                             <tr>
                                                 @*<th class="text-center">Id</th>*@
-                                                <th class="text-center">Obra</th>
-                                                <th class="text-center">Tipo de Componente</th>
-                                                <th class="text-center">Fecha de Pedido</th>
-                                                <th class="text-center">fecha de Salida</th>
-                                                <th class="text-center">Tracking</th>
+                                                <th class="text-center">OBRA</th>
+                                                <th class="text-center">TIPO DE COMPONENTE</th>
+                                                <th class="text-center">FECHA DE PEDIDO</th>
+                                                <th class="text-center">FECHA DE SALIDA</th>
+                                                <th class="text-center">TRACKING</th>
 
-                                                <th class="text-center">Empresa de Envio</th>
-                                                <th class="text-center">Estatus de Envío</th>
+                                                <th class="text-center">EMPRESA DE ENVÍO</th>
+                                                <th class="text-center">ESTATUS DE ENVÍO</th>
 
                                         </thead>
                                         <tbody>
@@ -391,10 +393,21 @@ else
 
             }
         </script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js.map"></script>
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/jquery.dataTables.min.js")
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/dataTables.bootstrap.min.js")
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-
+                $("#imprime").click(function () {
+                    $("div#reporte").printArea();
+                })
+                $("#imprimeenvio").click(function () {
+                    $("div#reporteenvio").printArea();
+                })
 
                 $('#mensajes').DataTable({
                     "language": {

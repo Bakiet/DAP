@@ -6,12 +6,12 @@
     
 }
 
-<h2 class="form-signin-heading">Fallas</h2>
+<h2 class="form-signin-heading">FALLAS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar fallas</i></p>*@
 
 @*<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Fallas", "AdministrarFallas", new { @id = Model.obraid })'">Volver</button>*@
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de detalle</div>
+    <div class="panel-heading">FORMULARIO DE DETALLE</div>
     <div class="panel-body">
         @using (Html.BeginForm("Detalle", "AdministrarFallas", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -150,7 +150,7 @@
 
 
             <div class="form-group">
-                <label class="col-sm-3 control-label">Correos</label>
+                <label class="col-sm-3 control-label">CORREOS</label>
                 <div class="col-sm-4">
                     <div>
 
@@ -230,11 +230,11 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+                            <h4 class="modal-title" id="myModalLabel">CONFIRMAR</h4>
                         </div>
                         <div class="modal-body">
                             <p></p>
-                            <p>Esta seguro de cambiar el estatus de la falla</p>
+                            <p>ESTA SEGURO DE CAMBIAR EL ESTATUS DE LA FALLA</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.href='@Url.Action("Editar", "AdministrarFallas", new { @id = Model.id })'">CANCELAR</button>
@@ -253,7 +253,7 @@
                             @*<button id="confirm" type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>*@
                      
                         
-                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarFallas")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarFallas")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                     </div>
                 </div>
 

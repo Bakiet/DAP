@@ -156,6 +156,8 @@
     <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="FechaSustitucion" Type="DateTime" />
     <Property Name="FechaAlerta" Type="DateTime" />
+    <Property Name="obra" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="equipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="componenteselectricos_sustituciones">
     <Key>
@@ -192,6 +194,8 @@
     <Property Name="Caracteristicas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="FechaSustitucion" Type="DateTime" />
     <Property Name="FechaAlerta" Type="DateTime" />
+    <Property Name="obra" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="equipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="componentesmecanicos_sustituciones">
     <Key>
@@ -421,6 +425,7 @@
     <Property Name="previo_id" Type="Int32" />
     <Property Name="obra_id" Type="Int32" Nullable="false" />
     <Property Name="Archivo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="obra" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="horariorieles">
     <Key>
@@ -770,7 +775,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Obra" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="FechaSolicitud" Type="DateTime" />
     <Property Name="GerenciaResponsable" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="Tecnicos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />

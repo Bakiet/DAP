@@ -1,104 +1,203 @@
-﻿@model Ppgz.Web.Areas.Dap.Models.RequerimientoViewModel
-@{
+﻿<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @model Ppgz.Web.Areas.Dap.Models.RequerimientoViewModel
+    @{
+
+    }
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    @Styles.Render("~/assets/vendor/font-awesome-4.7.0/css/font-awesome.min.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/assets/css/msgcolores.css")
+    @Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/bootstrap.min.css")
+    @Styles.Render("~/assets/vendor/bootstrap-3.3.6/css/bootstrap-theme.min.css")
+
     
-}
-<a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecRequerimiento('reporterequerimiento')">
-    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
-</a>
-<div id="reporterequerimiento">
-    <div class="modal-header">
-        @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
-        <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
-        </button>
-        <h4 class="modal-title">Reporte de Requerimiento</h4>
-    </div>
+    
 
-    <div class="modal-body">
-        <div class="container-fluid">
-            <div class="row" >
-                <div class="col-8 col-sm-6" >
-                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Obra)</h4>
-                </div>
-                <div class="col-4 col-sm-6" style="float:right;">
-                    @Html.DisplayFor(o => o.Obra)
-                </div>
-            </div>
-            <div class="row" >
-                <div class="col-8 col-sm-6" >
-                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tipo)</h4>
-                </div>
-                <div class="col-4 col-sm-6" style="float:right;">
-                    @Html.DisplayFor(o => o.Tipo)
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-8 col-sm-6" >
-                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaSolicitud)</h4>
-                </div>
-                <div class="col-4 col-sm-6" style="float:right;">
-                    @Html.DisplayFor(o => o.FechaSolicitud)
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-8 col-sm-6" >
-                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.GerenciaResponsable)</h4>
-                </div>
-                <div class="col-4 col-sm-6" style="float:right;">
-                    @Html.DisplayFor(o => o.GerenciaResponsable)
-                </div>
-            </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css" />
 
-            <div class="row">
-                <div class="col-8 col-sm-6" >
-                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tecnicos)</h4>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
+
+    <!-- Full Calendar -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.print.css" media="print" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.6/combined/css/gijgo.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/PrintArea.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/PrintArea.min.css" />
+</head>
+<body>
+    <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprimerequerimiento">
+        @*href="javascript:imprSelec('reporte')*@
+        <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
+    </a>
+    <div id="reporterequerimiento">
+        <div class="modal-header">
+            @*<a style="float:right;" href="~/"><img src="@Url.Content("~/assets/img/slogan.png")" class="img-responsive" width="500"></a>*@
+            <a class="brand" href="~/"><img src="@Url.Content("~/assets/img/climb-190x64-org.png")" class="img-responsive" width="200"></a>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+            </button>
+            <h4 class="modal-title">REPORTE DE REQUERIMIENTO</h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+                        <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Obra)</h4>
+                    </div>
+                    <div class="col-4 col-sm-6" style="">
+                        @Html.DisplayFor(o => o.Obra)
+                    </div>
                 </div>
-                <div class="col-4 col-sm-6" style="float:right;">
-                    @Html.DisplayFor(o => o.Tecnicos)
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+                        <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tipo)</h4>
+                    </div>
+                    <div class="col-4 col-sm-6" style="">
+                        @Html.DisplayFor(o => o.Tipo)
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+                        <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaSolicitud)</h4>
+                    </div>
+                    <div class="col-4 col-sm-6" style="">
+                        @Html.DisplayFor(o => o.FechaSolicitud)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+                        <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.GerenciaResponsable)</h4>
+                    </div>
+                    <div class="col-4 col-sm-6" style="">
+                        @Html.DisplayFor(o => o.GerenciaResponsable)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+                        <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.Tecnicos)</h4>
+                    </div>
+                    <div class="col-4 col-sm-6" style="">
+                        @Html.DisplayFor(o => o.Tecnicos)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+
+                        <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaCumplimientoSolicitud)</h4>
+                    </div>
+                    <div class="col-4 col-sm-6" style="">
+                        @Html.DisplayFor(o => o.FechaCumplimientoSolicitud)
+                    </div>
+                </div>
+                @*<div class="row">
+                        <div class="col-8 col-sm-6">
+
+                            <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.Descripcion)</h4>
+                        </div>
+                        <div class="col-4 col-sm-6" style="float:right;">
+                            @Html.DisplayFor(o => o.Descripcion)
+                        </div>
+                    </div>*@
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+
+                        <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.AccionesEjecutadas)</h4>
+                    </div>
+                    <div class="col-4 col-sm-6" style="">
+                        @Html.DisplayFor(o => o.AccionesEjecutadas)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+
+                        <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.StatusRequerimientos)</h4>
+                    </div>
+                    <div class="col-4 col-sm-6" style="">
+                        @Html.DisplayFor(o => o.StatusRequerimientos)
+                    </div>
+                </div>
+
             </div>
+        </div>
+        <div class="modal-footer">
 
-            <div class="row">
-                <div class="col-8 col-sm-6" >
-
-                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.FechaCumplimientoSolicitud)</h4>
-                </div>
-                <div class="col-4 col-sm-6" style="float:right;">
-                    @Html.DisplayFor(o => o.FechaCumplimientoSolicitud)
-                </div>
-            </div>
-            @*<div class="row">
-                <div class="col-8 col-sm-6">
-
-                    <h4 style="color:darkblue;"> @Html.DisplayNameFor(o => o.Descripcion)</h4>
-                </div>
-                <div class="col-4 col-sm-6" style="float:right;">
-                    @Html.DisplayFor(o => o.Descripcion)
-                </div>
-            </div>*@
-            <div class="row">
-                <div class="col-8 col-sm-6">
-
-                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.AccionesEjecutadas)</h4>
-                </div>
-                <div class="col-4 col-sm-6" style="float:right;">
-                    @Html.DisplayFor(o => o.AccionesEjecutadas)
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-8 col-sm-6" >
-
-                    <h4 style="color:darkblue;">@Html.DisplayNameFor(o => o.StatusRequerimientos)</h4>
-                </div>
-                <div class="col-4 col-sm-6" style="float:right;">
-                    @Html.DisplayFor(o => o.StatusRequerimientos)
-                </div>
-            </div>
-            
         </div>
     </div>
-    <div class="modal-footer">
+    <script type="text/javascript">
+      function createModal(url){
+          $('#modelContent').load(url);
 
-    </div>
-    </div>
+      }
+    </script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/jquery.dataTables.min.js")
+    @Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/dataTables.bootstrap.min.js")
+    @Scripts.Render("~/assets/vendor/bootstrap-confirmation.min.js")
+    @Scripts.Render("~/assets/vendor/moment/moment-with-locales.min.js")
+    @Scripts.Render("~/assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js")
+
+    @Scripts.Render("~/assets/vendor/jquery.blockUI.js")
+
+    @Scripts.Render("~/assets/js/bootbox.js")
+    @Scripts.Render("~/assets/js/mensajes.js")
+    @Scripts.Render("~/assets/vendor/jquery.numeric.js")
+
+
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <!-- qTip -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
+
+    <!-- Full Calendar -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.min.js"></script>
+
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js.map"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+
+            $(document).ready(function () {
+
+                $("#imprime").click(function () {
+                    $("div#reporte").printArea();
+                })
+                $("#imprimerequerimiento").click(function () {
+                    $("div#reporterequerimiento").printArea();
+                })
+
+            });
+
+
+    </script>
+</body>
+</html>
+ 
+ 
+   

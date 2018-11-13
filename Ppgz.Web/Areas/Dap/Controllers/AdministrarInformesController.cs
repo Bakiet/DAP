@@ -17,6 +17,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
     [Authorize]
     public class AdministrarInformesController : Controller
     {
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
         private readonly InformesManager _informesManager = new InformesManager();
 
         private readonly VentasManager _ventasManager = new VentasManager();
@@ -61,7 +63,15 @@ namespace Ppgz.Web.Areas.Dap.Controllers
             TempData.Keep();
 
             //var informe = _informesManager.Find(id);
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
 
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
+            TempData.Keep();
 
             var mantenimiento = _informesManager.GetInformeVenta(id);
 

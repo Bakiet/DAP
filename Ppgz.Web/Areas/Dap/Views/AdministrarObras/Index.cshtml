@@ -9,32 +9,32 @@
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra la lista de obras</i></p>*@
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra los reportes de fallas</i></p>*@
 <a class="btn btn-info btn-md" data-toggle="modal" data-target="#detallefallas-modal" id="" onclick="createModal('@Url.Action("ReporteObras", "AdministrarObras" , new {id=ViewBag.id })')">
-    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+    <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
 </a>
 <div class="clearfix">
-    <a href="@Url.Action("Crear", "AdministrarObras")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Crear Obras</a>
+    <a href="@Url.Action("Crear", "AdministrarObras")" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> CREAR OBRAS</a>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading">Obras Registradas</div>
+    <div class="panel-heading">OBRAS REGISTRADAS</div>
     <div class="panel-body">
         <table class="table table-striped " id="obras">
             <thead>
                 <tr>
                     @*<th class="text-center">Id</th>*@
-                    <th class="text-center">Reporte</th>
-                    <th class="text-center">Nombre</th>
-                    <th class="text-center">Persona Jurídica</th>
-                    <th class="text-center">Dirección de obra</th>
-                    <th class="text-center">Dirección de facturación</th>
-                    <th class="text-center">Dirección de oficina</th>
+                    <th class="text-center">REPORTE</th>
+                    <th class="text-center">NOMBRE</th>
+                    <th class="text-center">PERSONA JURÍDICA</th>
+                    <th class="text-center">DIRECCIÓN DE OBRA</th>
+                    <th class="text-center">DIRECCIÓN DE FACTURACIÓN</th>
+                    <th class="text-center">DIRECCIÓN DE OFICINA</th>
                     
                     @*<th class="text-center">Telefono de oficina</th>
                     <th class="text-center">Contacto</th>
                     
                     <th class="text-center">Email</th>*@
                     <th class="text-center">INFO. GENERAL DE OBRA</th>
-                    <th class="text-center">Post Venta</th>
-                    <th class="text-center">Operación</th>
+                    <th class="text-center">POST VENTA</th>
+                    <th class="text-center">OPERACIÓN</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +46,7 @@
 
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#detalle-modal" id="edit_@obra.Id" onclick="createModal('@Url.Action("Reporte", "AdministrarObras" , new {id=obra.Id })')">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Ver
+                                    <i class="fa fa-eye" aria-hidden="true"></i> VER
                                 </a>
                             </div>
                         </td>      
@@ -67,7 +67,7 @@
                                
                                 <a class="btn btn-primary btn-block" style="font-weight:bold;" href="@Url.Action("Equipos", "AdministrarEquipos", new { @id = @obra.Id })">
 
-                                    <i  class="fa fa-industry" aria-hidden="true"></i> Equipos
+                                    <i  class="fa fa-industry" aria-hidden="true"></i> EQUIPOS
                                 </a>
                                   
                             }
@@ -75,28 +75,28 @@
                             {
                                 <a class="btn btn-danger btn-block" style="font-weight:bold;" href="@Url.Action("Fallas", "AdministrarFallas", new { @id = @obra.Id })">
 
-                                    <i class="fa fa-times" aria-hidden="true"></i> Fallas
+                                    <i class="fa fa-times" aria-hidden="true"></i> FALLAS
                                 </a>
                             }
                             @if (ViewBag.envios != null)
                             {
                                 <a class="btn btn-info btn-block" style="font-weight:bold;" href="@Url.Action("Envios", "AdministrarEnvios", new { @id = @obra.Id })">
 
-                                    <i class="fa fa-truck" aria-hidden="true"></i> Envios
+                                    <i class="fa fa-truck" aria-hidden="true"></i> ENVIOS
                                 </a>
                             }
                             @if (ViewBag.requerimientos != null)
                             {
                                 <a class="btn btn-warning btn-block" style="font-weight:bold;" href="@Url.Action("Requerimientos", "AdministrarRequerimientos", new { @id = @obra.Id })">
 
-                                    <i class="fa fa-envelope" aria-hidden="true"></i> Requerimientos
+                                    <i class="fa fa-envelope" aria-hidden="true"></i> REQUERIMIENTOS
                                 </a>
                             }
                             @if (ViewBag.herramientas != null)
                             {
                                 <a class="btn btn-success btn-block" style="font-weight:bold;" href="@Url.Action("HerramientasDesdeObra", "AdministrarHerramientas", new { @id = @obra.Id })">
 
-                                    <i class="fa fa-wrench" aria-hidden="true"></i> Herramientas
+                                    <i class="fa fa-wrench" aria-hidden="true"></i> HERRAMIENTAS
                                 </a>
                             }
                         </td>
@@ -144,14 +144,14 @@
                             <div class="btn-group-vertical">
                                 <a class="btn btn-info btn-xs" href="@Url.Action("Detalle", "AdministrarObras", new { @id = @obra.Id })">
 
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalle
+                                    <i class="fa fa-eye" aria-hidden="true"></i> DETALLE
                                 </a>
                                 <a class="btn btn-warning btn-xs" href="@Url.Action("Editar", "AdministrarObras", new { @id = @obra.Id })">
 
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> EDITAR
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarObras", new { @id = @obra.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿Está seguro?" data-content="El mensaje será eliminado.">
-                                    <i class="fa fa-times" aria-hidden="true"></i> Eliminar
+                                <a class="btn btn-danger btn-xs" href="@Url.Action("Eliminar", "AdministrarObras", new { @id = @obra.Id })" data-toggle="confirmation" data-popout="true" data-btn-ok-label="Si" data-title="¿ESTÁ SEGURO?" data-content="EL MENSAJE SERÁ ELIMINADO.">
+                                    <i class="fa fa-times" aria-hidden="true"></i> ELIMINAR
                                 </a>
                             </div>
                         </td>
@@ -166,8 +166,9 @@
 <div class="modal fade" id="detalle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="modelContent">
-            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelecObra('reporteobra')">
-                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprimeobra">
+                @*href="javascript:imprSelec('reporte')*@
+                <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
             </a>
             <div id="reporteobra">
                 <div class="modal-header">
@@ -176,7 +177,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                     </button>
-                    <h4 class="modal-title">Reporte de Fallas</h4>
+                    <h4 class="modal-title">REPORTE DE FALLAS</h4>
                 </div>
 
                 <div class="modal-body">
@@ -236,7 +237,7 @@
                             <div class="table-title">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h2> <b>Contactos</b></h2>
+                                        <h2> <b>CONTACTOS</b></h2>
                                     </div>
 
                                 </div>
@@ -246,9 +247,9 @@
                                 <thead>
                                     <tr>
                                         @*<th class="text-center">Id</th>*@
-                                        <th class="text-center">Nombre</th>
-                                        <th class="text-center">Email</th>
-                                        <th class="text-center">Telefono</th>
+                                        <th class="text-center">NOMBRE</th>
+                                        <th class="text-center">EMAIL</th>
+                                        <th class="text-center">TELEFONO</th>
 
                                 </thead>
                                 <tbody>
@@ -294,8 +295,9 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="modelContent" style="width:1000px;">
 
-            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:imprSelec('reporte')">
-                <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+            <a style="padding:15px;" class="btn btn-info btn-xs" href="javascript:void(0)" id="imprime">
+                @*href="javascript:imprSelec('reporte')*@
+                <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR
             </a>
             <div id="reporte">
 
@@ -306,7 +308,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
                     </button>
-                    <h4 class="modal-title">Obras</h4>
+                    <h4 class="modal-title">OBRAS</h4>
                 </div>
 
 
@@ -314,18 +316,18 @@
                     <div class="container-fluid">
 
                         <div class="panel panel-default">
-                            <div class="panel-heading">Obras Registradas</div>
+                            <div class="panel-heading">OBRAS REGISTRADAS</div>
                             <div class="panel-body">
                                 <table class="table table-striped" id="mensajesmodal">
                                     <thead>
                                         <tr>
                                             @*<th class="text-center">Id</th>*@
                                            
-                                            <th class="text-center">Nombre</th>
-                                            <th class="text-center">Persona Jurídica</th>
-                                            <th class="text-center">Dirección de obra</th>
-                                            <th class="text-center">Dirección de facturación</th>
-                                            <th class="text-center">Dirección de oficina</th>
+                                            <th class="text-center">NOMBRE</th>
+                                            <th class="text-center">PERSONA JURÍDICA</th>
+                                            <th class="text-center">DIRECCIÓN DE OBRA</th>
+                                            <th class="text-center">DIRECCIÓN DE FACTURACIÓN</th>
+                                            <th class="text-center">DIRECCIÓN DE OFICINA</th>
 
                                
                                         </tr>
@@ -385,11 +387,25 @@
 
       }
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js.map"></script>
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/jquery.dataTables.min.js")
+@Scripts.Render("~/assets/vendor/dataTables-1.10.13/media/js/dataTables.bootstrap.min.js")
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
 
 
         $(document).ready(function () {
+            $("#imprime").click(function () {
+                $("div#reporte").printArea();
+            })
+            $("#imprimeobra").click(function () {
+                $("div#reporteobra").printArea();
+            })
+
             $('#mensajes').DataTable({
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"

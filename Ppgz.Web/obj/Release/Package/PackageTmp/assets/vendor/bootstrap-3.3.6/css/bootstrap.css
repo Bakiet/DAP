@@ -1477,7 +1477,7 @@ abbr[data-original-title] {
 }
 .initialism {
   font-size: 90%;
-  text-transform: uppercase;
+ /* text-transform: uppercase;*/
 }
 blockquote {
   padding: 10px 20px;
@@ -1587,7 +1587,7 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  text-transform: uppercase;
+ /* text-transform: uppercase;*/
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -1595,13 +1595,13 @@ pre code {
 }
 @media (min-width: 768px) {
   .container {
-    text-transform: uppercase;
+   /* text-transform: uppercase;*/
     width: 750px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    text-transform: uppercase;
+   /* text-transform: uppercase;*/
     width: 970px;
   }
 }
@@ -1611,7 +1611,7 @@ pre code {
   }
 }
 .container-fluid {
-    text-transform: uppercase;
+  /*  text-transform: uppercase;*/
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -2997,7 +2997,7 @@ select[multiple].input-lg {
     padding-top: 7px;
     margin-bottom: 0;
     text-align: right;
-    text-transform: uppercase;
+  /*  text-transform: uppercase;*/
     color: navy;
   }
 }
@@ -5472,7 +5472,7 @@ button.list-group-item-danger.active:focus {
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 .panel-body {
-  text-transform: uppercase;
+ /* text-transform: uppercase;*/
   padding: 15px;
 }
 .panel-heading {

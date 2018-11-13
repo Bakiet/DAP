@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Mantenimiento preventivo</h2>
+<h2 class="form-signin-heading">MANTENIMIENTO PREVENTIVO</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Mantenimiento preventivo</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de Mantenimiento preventivo</div>
+    <div class="panel-heading">FORMULARIO DE MANTENIMIENTO PREVENTIVO</div>
     <div class="panel-body">
         @using (Html.BeginForm("Crear", "AdministrarMantenimientosPreventivos", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -28,7 +28,7 @@
 
                
                 <div class="form-group">
-                    @Html.LabelFor(m => m.PersonaJuridica, new { @class = "col-sm-3 control-label" })
+                    <label for="PersonaJuridica" class="col-sm-3 control-label">PERSONA&nbsp;JURIDICA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.PersonaJuridica, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.PersonaJuridica)
@@ -36,21 +36,21 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(m => m.FechaVisita, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaVisita" class="col-sm-3 control-label">FECHA&nbsp;DE&nbsp;VISITA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.FechaVisita, new { @class = "form-control fecha" })
                         @Html.ValidationMessageFor(m => m.FechaVisita)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.FechaPublicacion, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaPublicacion" class="col-sm-3 control-label">FECHA&nbsp;DE&nbsp;PUBLICACIÓN</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.FechaPublicacion, new { @class = "form-control fecha" })
                         @Html.ValidationMessageFor(m => m.FechaPublicacion)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.NombreDocumento, new { @class = "col-sm-3 control-label" })
+                    <label for="NombreDocumento" class="col-sm-3 control-label">NOMBRE&nbsp;DE&nbsp;DOCUMENTO</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.NombreDocumento, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.NombreDocumento)
@@ -64,14 +64,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.EquiposAtendidos, new { @class = "col-sm-3 control-label" })
+                    <label for="EquiposAtendidos" class="col-sm-3 control-label">EQUIPOS&nbsp;ATENDIDOS</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.EquiposAtendidos, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.EquiposAtendidos)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.StatusMantenimiento, new { @class = "col-sm-3 control-label" })
+                    <label for="StatusMantenimiento" class="col-sm-3 control-label">ESTATUS&nbsp;DE&nbsp;MANTENIMIENTO</label>
                     <div class="col-sm-4">
                         @Html.DropDownListFor(m => m.StatusMantenimiento, (IEnumerable<SelectListItem>)ViewBag.StatusMantenimiento, "Seleccione un Valor", new { @class = "form-control" })
                         
@@ -86,14 +86,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Archivo</label>
+                    <label class="col-sm-3 control-label">ARCHIVO</label>
                     <div class="col-sm-4">
                         <div>
                            
                                
                                 <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -109,13 +109,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Evaluación</label>
+                    <label class="col-sm-3 control-label">EVALUACIÓN</label>
                     <div class="col-sm-4">
                         <div>
                             
                                 <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                    <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -133,14 +133,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.HoraLlegada, new { @class = "col-sm-3 control-label" })
+                    <label for="HoraLlegada" class="col-sm-3 control-label">HORA&nbsp;DE&nbsp;LLEGADA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.HoraLlegada, new { @class = "form-control fecha-hora" })
                         @Html.ValidationMessageFor(m => m.HoraLlegada)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.HoraSalida, new { @class = "col-sm-3 control-label" })
+                    <label for="HoraSalida" class="col-sm-3 control-label">HORA&nbsp;DE&nbsp;SALIDA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.HoraSalida, new { @class = "form-control fecha-hora" })
                         @Html.ValidationMessageFor(m => m.HoraSalida)
@@ -149,8 +149,8 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-7">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarMantenimientosPreventivos", new { @id = TempData["venta"] })"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                        <a class="btn btn-default" href="@Url.Action("Index", "AdministrarMantenimientosPreventivos", new { @id = TempData["venta"] })"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                     </div>
                 </div>
         }

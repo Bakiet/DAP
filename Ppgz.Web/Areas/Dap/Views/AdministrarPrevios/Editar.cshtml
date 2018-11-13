@@ -7,19 +7,19 @@
     var equipo = (equipos)ViewBag.equipo;
 }
 
-<h2 class="form-signin-heading">Editar Dap Previo</h2>
+<h2 class="form-signin-heading">EDITAR DAP PREVIO</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Dap Previo</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Cuenta</div>
+    <div class="panel-heading">CUENTA</div>
     <div class="panel-body">
         <div class="row">
-            <label class="col-sm-2 control-label">Obra</label>
+            <label class="col-sm-2 control-label">OBRA</label>
             <div class="col-sm-3">
                 <div>@obra.Nombre</div>
             </div>
-            <label class="col-sm-2 control-label">Equipo</label>
+            <label class="col-sm-2 control-label">EQUIPO</label>
             <div class="col-sm-3">
                 <div>@equipo.Nombre</div>
             </div>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de edición y detalle</div>
+    <div class="panel-heading">FORMULARIO DE EDICIÓN Y DETALLE</div>
     <div class="panel-body">
         @using (Html.BeginForm("Editar", "AdministrarPrevios", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -42,7 +42,8 @@
                 <div class="form-group">
                     @if (Model.CartaPresentacion != null)
                 {
-                        @Html.LabelFor(p => p.CartaPresentacion, new { @class = "col-sm-3 control-label" })
+                        <label for="Cartadepresentación" class="col-sm-4 control-label">CARTA&nbsp;DE&nbsp;PRESENTACIÓN</label>
+                        @*@Html.LabelFor(p => p.CartaPresentacion, new { @class = "col-sm-3 control-label" })*@
                         <div class="col-sm-4">
                             @Html.TextBoxFor(p => p.CartaPresentacion, new { @class = "form-control fecha-hora", @type = "datetime" })
                             @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
@@ -50,7 +51,7 @@
                     }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-5">
                         <div>
                             @if (ViewBag.CartaPresentacionFotografia != null)
@@ -61,7 +62,7 @@
 
                                     <p>
                                         <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="CartaPresentacionFotografia" href="@Url.Content(CartaPresentacionFotografia.url)" target="_blank">@nombrearchivo</a>
-                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = CartaPresentacionFotografia.url, @tipo = "previos", @caracteristica = "CartaPresentacionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = CartaPresentacionFotografia.url, @tipo = "previos", @caracteristica = "CartaPresentacionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                     </p>
 
 
@@ -72,7 +73,7 @@
                     </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -91,7 +92,8 @@
                 <div class="form-group">
                 @if (Model.FechaFirmaContrato != null)
                 {
-                    @Html.LabelFor(p => p.FechaFirmaContrato, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaFirmaContrato" class="col-sm-4 control-label">FECHA&nbsp;FIRMA&nbsp;DE&nbsp;CONTRATO</label>
+                 
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaFirmaContrato, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
@@ -99,7 +101,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-5">
                         <div>
                             @if(ViewBag.FechaFirmaContratoFotografia != null) { 
@@ -109,7 +111,7 @@
                                
                                         <p>
                                             <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaFirmaContratoFotografia" href="@Url.Content(FechaFirmaContratoFotografia.url)" target="_blank">@nombrearchivo</a>
-                                            <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaFirmaContratoFotografia.url, @tipo = "previos", @caracteristica = "FechaFirmaContratoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                            <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaFirmaContratoFotografia.url, @tipo = "previos", @caracteristica = "FechaFirmaContratoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                         </p>
                                
                                 
@@ -120,7 +122,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel1" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -138,7 +140,8 @@
                 <div class="form-group">
                 @if (Model.FechaPagoInicialFabrica != null)
                 {
-                    @Html.LabelFor(p => p.FechaPagoInicialFabrica, new { @class = "col-sm-3 control-label" })
+                    
+                    <label for="FechaPagoInicialFabrica" class="col-sm-4 control-label">FECHA&nbsp;PAGO&nbsp;INICIAL&nbsp;DEL&nbsp;FABRICA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaPagoInicialFabrica, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaPagoInicialFabrica)
@@ -146,7 +149,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">Documentos</label>
                     <div class="col-sm-5">
                         <div>
                             @if(ViewBag.FechaPagoInicialFabricaFotografia != null) { 
@@ -156,7 +159,7 @@
 
                                     <p>
                                         <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaPagoInicialFabricaFotografia" href="@Url.Content(FechaPagoInicialFabricaFotografia.url)" target="_blank">@nombrearchivo</a>
-                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPagoInicialFabricaFotografia.url, @tipo = "previos", @caracteristica = "FechaPagoInicialFabricaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPagoInicialFabricaFotografia.url, @tipo = "previos", @caracteristica = "FechaPagoInicialFabricaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                     </p>
 
 
@@ -167,7 +170,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel2" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel2" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -186,7 +189,8 @@
                 <div class="form-group">
                     @if (Model.FechaIngresoProduccion != null)
                 {
-                        @Html.LabelFor(p => p.FechaIngresoProduccion, new { @class = "col-sm-3 control-label" })
+                        <label for="FechaIngresoProduccion" class="col-sm-4 control-label">FECHA&nbsp;DE&nbsp;INGRESO&nbsp;EN&nbsp;PRODUCCIÓN</label>
+                  
                         <div class="col-sm-4">
                             @Html.TextBoxFor(p => p.FechaIngresoProduccion, new { @class = "form-control fecha-hora", @type = "datetime" })
                             @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
@@ -194,7 +198,7 @@
                     }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-5">
                         <div>
                             @if (ViewBag.FechaIngresoProduccionFotografia != null)
@@ -205,7 +209,7 @@
 
                                     <p>
                                         <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaIngresoProduccionFotografia" href="@Url.Content(FechaIngresoProduccionFotografia.url)" target="_blank">@nombrearchivo</a>
-                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaIngresoProduccionFotografia.url, @tipo = "previos", @caracteristica = "FechaIngresoProduccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaIngresoProduccionFotografia.url, @tipo = "previos", @caracteristica = "FechaIngresoProduccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                     </p>
 
 
@@ -216,7 +220,7 @@
                     </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel3" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel3" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -282,7 +286,8 @@
                 <div class="form-group">
                 @if (Model.FechaConstruccion != null)
                 {
-                    @Html.LabelFor(p => p.FechaConstruccion, new { @class = "col-sm-3 control-label" })
+                  
+                    <label for="FechaConstruccion" class="col-sm-4 control-label">FECHA&nbsp;DE&nbsp;INICIO&nbsp;DE&nbsp;CONSTRUCCIÓN</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaConstruccion, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaConstruccion)
@@ -290,7 +295,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaConstruccionFotografia != null) { 
@@ -300,7 +305,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaConstruccionFotografia" href="@Url.Content(FechaConstruccionFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaConstruccionFotografia.url, @tipo = "previos", @caracteristica = "FechaConstruccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaConstruccionFotografia.url, @tipo = "previos", @caracteristica = "FechaConstruccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -311,7 +316,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel5" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel5" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -330,7 +335,8 @@
                 <div class="form-group">
                     @if (Model.EstatusConstruccion != null)
                 {
-                        @Html.LabelFor(p => p.EstatusConstruccion, new { @class = "col-sm-3 control-label" })
+                        
+                        <label for="ESTATUSConstruccion" class="col-sm-4 control-label">ESTATUS&nbsp;DE&nbsp;CONSTRUCCIÓN</label>
                         <div class="col-sm-4">
                             @Html.TextBoxFor(p => p.EstatusConstruccion, new { @class = "form-control fecha-hora", @type = "datetime" })
                             @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
@@ -338,7 +344,7 @@
                     }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-5">
                         <div>
                             @if (ViewBag.EstatusConstruccionFotografia != null)
@@ -349,7 +355,7 @@
 
                                     <p>
                                         <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="EstatusConstruccionFotografia" href="@Url.Content(EstatusConstruccionFotografia.url)" target="_blank">@nombrearchivo</a>
-                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = EstatusConstruccionFotografia.url, @tipo = "previos", @caracteristica = "EstatusConstruccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = EstatusConstruccionFotografia.url, @tipo = "previos", @caracteristica = "EstatusConstruccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                     </p>
 
 
@@ -360,7 +366,7 @@
                     </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel6" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel6" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -380,7 +386,8 @@
                 <div class="form-group">
                     @if (Model.IngresoDepartamentoIngMan != null)
                 {
-                        @Html.LabelFor(p => p.IngresoDepartamentoIngMan, new { @class = "col-sm-3 control-label" })
+                      
+                        <label for="IngresoDepartamentoIngMan" class="col-sm-4 control-label">INGRESO&nbsp;AL&nbsp;DEPARTAMENTO&nbsp;DE&nbsp;INGENIERÍA&nbsp;Y&nbsp;MANIOBRAS&nbsp;ELECTRÓNICAS</label>
                         <div class="col-sm-4">
                             @Html.TextBoxFor(p => p.IngresoDepartamentoIngMan, new { @class = "form-control fecha-hora", @type = "datetime" })
                             @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
@@ -388,7 +395,7 @@
                     }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-5">
                         <div>
                             @if (ViewBag.IngresoDepartamentoIngManFotografia != null)
@@ -399,7 +406,7 @@
 
                                     <p>
                                         <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="IngresoDepartamentoIngManFotografia" href="@Url.Content(IngresoDepartamentoIngManFotografia.url)" target="_blank">@nombrearchivo</a>
-                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = IngresoDepartamentoIngManFotografia.url, @tipo = "previos", @caracteristica = "IngresoDepartamentoIngManFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = IngresoDepartamentoIngManFotografia.url, @tipo = "previos", @caracteristica = "IngresoDepartamentoIngManFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                     </p>
 
 
@@ -410,7 +417,7 @@
                     </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel7" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel7" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -430,7 +437,8 @@
                 <div class="form-group">
                     @if (Model.SolicitudPagoInicialFabrica != null)
                 {
-                        @Html.LabelFor(p => p.SolicitudPagoInicialFabrica, new { @class = "col-sm-3 control-label" })
+                        @*@Html.LabelFor(p => p.SolicitudPagoInicialFabrica, new { @class = "col-sm-3 control-label" })*@
+                        <label for="SolicitudPagoInicialFabrica" class="col-sm-4 control-label">SOLICITUD&nbsp;DE&nbsp;PAGO&nbsp;FINAL&nbsp;A&nbsp;LA&nbsp;FÁBRICA</label>
                         <div class="col-sm-4">
                             @Html.TextBoxFor(p => p.SolicitudPagoInicialFabrica, new { @class = "form-control fecha-hora", @type = "datetime" })
                             @*@Html.ValidationMessageFor(p => p.FechaFirmaContrato)*@
@@ -438,7 +446,7 @@
                     }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-5">
                         <div>
                             @if (ViewBag.SolicitudPagoInicialFabricaFotografia != null)
@@ -449,7 +457,7 @@
 
                                     <p>
                                         <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="SolicitudPagoInicialFabricaFotografia" href="@Url.Content(SolicitudPagoInicialFabricaFotografia.url)" target="_blank">@nombrearchivo</a>
-                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = SolicitudPagoInicialFabricaFotografia.url, @tipo = "previos", @caracteristica = "SolicitudPagoInicialFabricaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = SolicitudPagoInicialFabricaFotografia.url, @tipo = "previos", @caracteristica = "SolicitudPagoInicialFabricaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                     </p>
 
 
@@ -460,7 +468,7 @@
                     </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel8" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel8" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -479,7 +487,8 @@
                 <div class="form-group">
                 @if (Model.FechaSalidaFabrica != null)
                 {
-                    @Html.LabelFor(p => p.FechaSalidaFabrica, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.FechaSalidaFabrica, new { @class = "col-sm-3 control-label" })*@
+                    <label for="FechaSalidaFabrica" class="col-sm-4 control-label">FECHA&nbsp;SALIDA&nbsp;DE&nbsp;FABRICA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaSalidaFabrica, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaSalidaFabrica)
@@ -487,7 +496,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaSalidaFabricaFotografia != null) { 
@@ -497,7 +506,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaSalidaFabricaFotografia" href="@Url.Content(FechaSalidaFabricaFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaSalidaFabricaFotografia.url, @tipo = "previos", @caracteristica = "FechaSalidaFabricaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaSalidaFabricaFotografia.url, @tipo = "previos", @caracteristica = "FechaSalidaFabricaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -508,7 +517,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel9" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel9" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -526,7 +535,8 @@
                 <div class="form-group">
                 @if (Model.FechaSalidaBuque != null)
                 {
-                    @Html.LabelFor(p => p.FechaSalidaBuque, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.FechaSalidaBuque, new { @class = "col-sm-3 control-label" })*@
+                    <label for="FechaSalidaBuque" class="col-sm-4 control-label">FECHA&nbsp;SALIDA&nbsp;A&nbsp;BUQUE</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaSalidaBuque, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaSalidaBuque)
@@ -534,7 +544,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaSalidaBuqueFotografia != null) { 
@@ -544,7 +554,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaSalidaBuqueFotografia" href="@Url.Content(FechaSalidaBuqueFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaSalidaBuqueFotografia.url, @tipo = "previos", @caracteristica = "FechaSalidaBuqueFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaSalidaBuqueFotografia.url, @tipo = "previos", @caracteristica = "FechaSalidaBuqueFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -555,7 +565,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel10" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel10" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -573,7 +583,8 @@
                 <div class="form-group">
                 @if (Model.FechaLlegadaBuque != null)
                 {
-                    @Html.LabelFor(p => p.FechaLlegadaBuque, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.FechaLlegadaBuque, new { @class = "col-sm-3 control-label" })*@
+                    <label for="FechaLlegadaBuque" class="col-sm-4 control-label">FECHA&nbsp;LLEGADA&nbsp;A&nbsp;BUQUE</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaLlegadaBuque, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaLlegadaBuque)
@@ -581,7 +592,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaLlegadaBuqueFotografia != null) { 
@@ -591,7 +602,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaLlegadaBuqueFotografia" href="@Url.Content(FechaLlegadaBuqueFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaLlegadaBuqueFotografia.url, @tipo = "previos", @caracteristica = "FechaLlegadaBuqueFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaLlegadaBuqueFotografia.url, @tipo = "previos", @caracteristica = "FechaLlegadaBuqueFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -602,7 +613,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel11" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel11" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -620,7 +631,8 @@
                 <div class="form-group">
                 @if (Model.FechaPeriodoNacionalizacion != null)
                 {
-                    @Html.LabelFor(p => p.FechaPeriodoNacionalizacion, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.FechaPeriodoNacionalizacion, new { @class = "col-sm-3 control-label" })*@
+                    <label for="FechaLlegadaBuque" class="col-sm-4 control-label">FECHA&nbsp;PERIODO&nbsp;DE&nbsp;NACIONALIZACIÓN</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaPeriodoNacionalizacion, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaPeriodoNacionalizacion)
@@ -628,7 +640,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaPeriodoNacionalizacionFotografia != null) { 
@@ -638,7 +650,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaPeriodoNacionalizacionFotografia" href="@Url.Content(FechaPeriodoNacionalizacionFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPeriodoNacionalizacionFotografia.url, @tipo = "previos", @caracteristica = "FechaPeriodoNacionalizacionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPeriodoNacionalizacionFotografia.url, @tipo = "previos", @caracteristica = "FechaPeriodoNacionalizacionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -649,7 +661,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel12" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel12" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -667,7 +679,8 @@
                 <div class="form-group">
                 @if (Model.FechaSalidaPuertoObra != null)
                 {
-                    @Html.LabelFor(p => p.FechaSalidaPuertoObra, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.FechaSalidaPuertoObra, new { @class = "col-sm-3 control-label" })*@
+                    <label for="FechaSalidaPuertoObra" class="col-sm-4 control-label">FECHA&nbsp;SALIDA&nbsp;DE&nbsp;PUERTO&nbsp;A&nbsp;OBRA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaSalidaPuertoObra, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaSalidaPuertoObra)
@@ -675,7 +688,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaSalidaPuertoObraFotografia != null) { 
@@ -685,7 +698,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaSalidaPuertoObraFotografia" href="@Url.Content(FechaSalidaPuertoObraFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaSalidaPuertoObraFotografia.url, @tipo = "previos", @caracteristica = "FechaSalidaPuertoObraFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaSalidaPuertoObraFotografia.url, @tipo = "previos", @caracteristica = "FechaSalidaPuertoObraFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -696,7 +709,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel13" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel13" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -714,7 +727,8 @@
                 <div class="form-group">
                 @if (Model.FechaDescargaResguardo != null)
                 {
-                    @Html.LabelFor(p => p.FechaDescargaResguardo, new { @class = "col-sm-3 control-label" })
+                    <label for="FechaSalidaPuertoObra" class="col-sm-4 control-label">FECHA&nbsp;DESCARGA&nbsp;A&nbsp;RESGUARDO</label>
+                    @*@Html.LabelFor(p => p.FechaDescargaResguardo, new { @class = "col-sm-3 control-label" })*@
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaDescargaResguardo, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaDescargaResguardo)
@@ -722,7 +736,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaDescargaResguardoFotografia != null) { 
@@ -732,7 +746,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaDescargaResguardoFotografia" href="@Url.Content(FechaDescargaResguardoFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaDescargaResguardoFotografia.url, @tipo = "previos", @caracteristica = "FechaDescargaResguardoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaDescargaResguardoFotografia.url, @tipo = "previos", @caracteristica = "FechaDescargaResguardoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -743,7 +757,7 @@
                                 </p>*@
                                 <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                    <li role="presentation" id="pdf"><a href="#pdf-panel14" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel14" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -761,7 +775,8 @@
                 <div class="form-group">
                 @if (Model.ActivacionProtocoloGarantiaFabrica != null)
                 {
-                    @Html.LabelFor(p => p.ActivacionProtocoloGarantiaFabrica, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.ActivacionProtocoloGarantiaFabrica, new { @class = "col-sm-3 control-label" })*@
+                    <label for="ActivacionProtocoloGarantiaFabrica" class="col-sm-4 control-label">ACTIVACIÓN&nbsp;PROTOCOLO&nbsp;GARANTIA&nbsp;DE&nbsp;FABRICA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.ActivacionProtocoloGarantiaFabrica, new { @class = "form-control" })
                         @Html.ValidationMessageFor(p => p.ActivacionProtocoloGarantiaFabrica)
@@ -771,7 +786,8 @@
                 <div class="form-group">
                 @if (Model.FechaInicioMontaje != null)
                 {
-                    @Html.LabelFor(p => p.FechaInicioMontaje, new { @class = "col-sm-3 control-label" })
+                   
+                    <label for="FechaInicioMontaje" class="col-sm-4 control-label">FECHA&nbsp;INICIO&nbsp;DE&nbsp;MONTAJE</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaInicioMontaje, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaInicioMontaje)
@@ -779,7 +795,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaInicioMontajeFotografia != null) { 
@@ -789,7 +805,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaInicioMontajeFotografia" href="@Url.Content(FechaInicioMontajeFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaInicioMontajeFotografia.url, @tipo = "previos", @caracteristica = "FechaInicioMontajeFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaInicioMontajeFotografia.url, @tipo = "previos", @caracteristica = "FechaInicioMontajeFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -800,7 +816,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel15" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel15" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -818,6 +834,7 @@
                 <div class="form-group">
                 @if (Model.FechaEntregaSoso != null)
                 {
+                    <label for="FechaEntregaSoso" class="col-sm-4 control-label">FECHA&nbsp;ENTREGA&nbsp;DE&nbsp;SOSO</label>
                     @Html.LabelFor(p => p.FechaEntregaSoso, new { @class = "col-sm-3 control-label" })
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaEntregaSoso, new { @class = "form-control fecha-hora", @type = "datetime" })
@@ -826,7 +843,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaEntregaSosoFotografia != null) { 
@@ -836,7 +853,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaEntregaSosoFotografia" href="@Url.Content(FechaEntregaSosoFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaEntregaSosoFotografia.url, @tipo = "previos", @caracteristica = "FechaEntregaSosoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaEntregaSosoFotografia.url, @tipo = "previos", @caracteristica = "FechaEntregaSosoFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -847,7 +864,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel16" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel16" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -865,7 +882,8 @@
                 <div class="form-group">
                 @if (Model.FechaCulminacionMontaje != null)
                 {
-                    @Html.LabelFor(p => p.FechaCulminacionMontaje, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.FechaCulminacionMontaje, new { @class = "col-sm-3 control-label" })*@
+                    <label for="FechaCulminacionMontaje" class="col-sm-4 control-label">FECHA&nbsp;CULMINACIÓN&nbsp;DE&nbsp;MONTAJE</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaCulminacionMontaje, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaCulminacionMontaje)
@@ -873,7 +891,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaCulminacionMontajeFotografia != null) { 
@@ -883,7 +901,7 @@
 
                                     <p>
                                         <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaCulminacionMontajeFotografia" href="@Url.Content(FechaCulminacionMontajeFotografia.url)" target="_blank">@nombrearchivo</a>
-                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaCulminacionMontajeFotografia.url, @tipo = "previos", @caracteristica = "FechaCulminacionMontajeFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaCulminacionMontajeFotografia.url, @tipo = "previos", @caracteristica = "FechaCulminacionMontajeFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                     </p>
 
 
@@ -894,7 +912,7 @@
                                 </p>*@
                                 <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                    <li role="presentation" id="pdf"><a href="#pdf-panel17" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel17" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -913,7 +931,8 @@
                 <div class="form-group">
                 @if (Model.FechaConfiguracion != null)
                 {
-                    @Html.LabelFor(p => p.FechaConfiguracion, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.FechaConfiguracion, new { @class = "col-sm-3 control-label" })*@
+                    <label for="FechaConfiguracion" class="col-sm-4 control-label">FECHA&nbsp;DE&nbsp;CONFIGURACIÓN</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaConfiguracion, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaConfiguracion)
@@ -921,7 +940,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaConfiguracionFotografia != null) { 
@@ -931,7 +950,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaConfiguracionFotografia" href="@Url.Content(FechaConfiguracionFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaConfiguracionFotografia.url, @tipo = "previos", @caracteristica = "FechaConfiguracionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaConfiguracionFotografia.url, @tipo = "previos", @caracteristica = "FechaConfiguracionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -942,7 +961,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel18" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel18" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -960,7 +979,8 @@
                 <div class="form-group">
                 @if (Model.FechaPeriodoPrueba != null)
                 {
-                    @Html.LabelFor(p => p.FechaPeriodoPrueba, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.FechaPeriodoPrueba, new { @class = "col-sm-3 control-label" })*@
+                    <label for="FechaPeriodoPrueba" class="col-sm-4 control-label">FECHA&nbsp;PERIODO&nbsp;DE&nbsp;PRUEBA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaPeriodoPrueba, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaPeriodoPrueba)
@@ -968,7 +988,7 @@
                 }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaPeriodoPruebaFotografia != null) { 
@@ -978,7 +998,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaPeriodoPruebaFotografia" href="@Url.Content(FechaPeriodoPruebaFotografia.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPeriodoPruebaFotografia.url, @tipo = "previos", @caracteristica = "FechaPeriodoPruebaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaPeriodoPruebaFotografia.url, @tipo = "previos", @caracteristica = "FechaPeriodoPruebaFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -989,7 +1009,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                <li role="presentation" id="pdf"><a href="#pdf-panel19" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel19" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -1007,7 +1027,8 @@
                 <div class="form-group">
                 @if (Model.FechaInspeccion != null)
                 {
-                    @Html.LabelFor(p => p.FechaInspeccion, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.FechaInspeccion, new { @class = "col-sm-3 control-label" })*@
+                    <label for="FechaInspeccion" class="col-sm-4 control-label">FECHA&nbsp;DE&nbsp;INSPECCIÓN</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.FechaInspeccion, new { @class = "form-control fecha-hora", @type = "datetime" })
                         @Html.ValidationMessageFor(p => p.FechaInspeccion)
@@ -1016,7 +1037,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Documentos Inspección</label>
+                    <label class="col-sm-4 control-label">DOCUMENTOS&nbsp;INSPECCIÓN</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.FechaInspeccionFotografia != null) { 
@@ -1026,7 +1047,7 @@
 
                             <p>
                                 <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaInspeccionFotografia" href="@Url.Content(FechaInspeccionFotografia.url)" target="_blank">@nombrearchivo</a>
-                                <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaInspeccionFotografia.url, @tipo = "previos", @caracteristica = "FechaInspeccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaInspeccionFotografia.url, @tipo = "previos", @caracteristica = "FechaInspeccionFotografia", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                             </p>
 
 
@@ -1037,7 +1058,7 @@
                             </p>*@
                             <ul class="nav nav-tabs" role="tablist" id="text-pdf">
                                
-                                <li role="presentation" id="pdf"><a href="#pdf-panel20" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                <li role="presentation" id="pdf"><a href="#pdf-panel20" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -1054,7 +1075,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Inspección Videos</label>
+                    <label class="col-sm-4 control-label">INSPECCIÓN&nbsp;VIDEOS</label>
                     <div class="col-sm-4">
                         <div>
                                 @if(ViewBag.FechaInspeccionVideo != null) { 
@@ -1064,7 +1085,7 @@
 
                                     <p>
                                         <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="FechaInspeccionVideo" href="@Url.Content(FechaInspeccionVideo.url)" target="_blank">@nombrearchivo</a>
-                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaInspeccionVideo.url, @tipo = "previos", @caracteristica = "FechaInspeccionVideo", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                        <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = FechaInspeccionVideo.url, @tipo = "previos", @caracteristica = "FechaInspeccionVideo", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                     </p>
 
 
@@ -1075,7 +1096,7 @@
                                 </p>*@
                                 <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                    <li role="presentation" id="pdf"><a href="#pdf-panel21" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo de video</a></li>
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel21" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO DE VIDEO</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -1094,7 +1115,8 @@
                
                 <div class="form-group">
                     @if(Model.TecnicoInstalador != null){
-                    @Html.LabelFor(p => p.TecnicoInstalador, new { @class = "col-sm-3 control-label" })
+                    @*@Html.LabelFor(p => p.TecnicoInstalador, new { @class = "col-sm-3 control-label" })*@
+                        <label for="TecnicoInstalador" class="col-sm-4 control-label">TECNICO&nbsp;INSTALADOR</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(p => p.TecnicoInstalador, new { @class = "form-control" })
                         @Html.ValidationMessageFor(p => p.TecnicoInstalador)
@@ -1103,7 +1125,7 @@
                     }
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Informes Entrega Final</label>
+                    <label class="col-sm-4 control-label">INFORMES&nbsp;ENTREGA&nbsp;FINAL</label>
                     <div class="col-sm-4">
                         <div>
                             @if(ViewBag.InformeEntregaFinal != null) { 
@@ -1113,7 +1135,7 @@
 
                                 <p>
                                     <a style="font-size:15px;" class="fa fa-file-word-o fa-1x" name="InformeEntregaFinal" href="@Url.Content(InformeEntregaFinal.url)" target="_blank">@nombrearchivo</a>
-                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = InformeEntregaFinal.url, @tipo = "previos", @caracteristica = "InformeEntregaFinal", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> Eliminar</a>
+                                    <a style="font-size:10px;" class="btn btn-default" href="@Url.Action("EliminarArchivo", "AdministrarPrevios", new { @archivo = InformeEntregaFinal.url, @tipo = "previos", @caracteristica = "InformeEntregaFinal", @id = TempData["previo_id"] })"><i class="fa fa-eraser" aria-hidden="true"></i> ELIMINAR</a>
                                 </p>
 
 
@@ -1124,7 +1146,7 @@
                                 </p>*@
                                 <ul class="nav nav-tabs" role="tablist" id="text-pdf">
 
-                                    <li role="presentation" id="pdf"><a href="#pdf-panel22" aria-controls="pdf-panel" role="tab" data-toggle="tab">Subir Archivo</a></li>
+                                    <li role="presentation" id="pdf"><a href="#pdf-panel22" aria-controls="pdf-panel" role="tab" data-toggle="tab">SUBIR ARCHIVO</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -1142,13 +1164,15 @@
                
                
                 <div class="form-group">
-                    @Html.Label("KIT DAP", new { @class = "col-sm-3 control-label" })
+                    @*@Html.Label("KIT DAP", new { @class = "col-sm-3 control-label" })*@
+                    <label for="KITDAP" class="col-sm-4 control-label">KIT&nbsp;DAP</label>
                     <div class="col-sm-4">
                         <a class="btn btn-default" href="@Url.Action("KitDaps", "AdministrarKitDaps", new { @id = @Model.previo_id })"><i class="fa fa-eye" aria-hidden="true"></i> VER </a>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.Label("Protocolos de chequeo", new { @class = "col-sm-3 control-label" })
+                    @*@Html.Label("Protocolos de chequeo", new { @class = "col-sm-3 control-label" })*@
+                    <label for="PCHEQUEO" class="col-sm-4 control-label">PROTOCOLOS&nbsp;DE&nbsp;CHEQUEO</label>
                     <div class="col-sm-4">
                         <a class="btn btn-default" href="@Url.Action("Protocolos", "AdministrarProtocolos", new { @id = @Model.previo_id })"><i class="fa fa-eye" aria-hidden="true"></i> VER </a>
                     </div>
@@ -1170,8 +1194,8 @@
                 </div>*@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarEquipos")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarEquipos")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                 </div>
             </div>
         }

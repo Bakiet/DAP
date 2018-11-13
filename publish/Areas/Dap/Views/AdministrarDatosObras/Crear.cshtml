@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Datos de Obras</h2>
+<h2 class="form-signin-heading">DATOS DE OBRAS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Crear Gestión de obras</i></p>*@
 
 
@@ -18,19 +18,11 @@
             @Html.ValidationSummary(true)
             
             
+            
 
                 <div class="form-group">
 
-
-                    <div class="col-sm-4">
-                        <label class="col-sm-3 control-label">Datos de la empresa constructora</label>
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-
-                    @Html.LabelFor(m => m.nombreconstructora, new { @class = "col-sm-3 control-label" })
+                    <label for="nombreconstructora" class="col-sm-3 control-label">NOMBRE&nbsp;DE&nbsp;CONSTRUCTORA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.nombreconstructora, new { @class = "form-control" })
                        
@@ -39,7 +31,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.contactotelefonicoempresa, new { @class = "col-sm-3 control-label" })
+                    <label for="contactotelefonicoempresa" class="col-sm-3 control-label">CONTACTO&nbsp;TELEFONICO&nbsp;EMPRESA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.contactotelefonicoempresa, new { @class = "form-control" })
                         
@@ -48,7 +40,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.correoelectronicoempresa, new { @class = "col-sm-3 control-label" })
+                    <label for="correoelectronicoempresa" class="col-sm-3 control-label">CORREO&nbsp;ELECTRONICO&nbsp;EMPRESA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.correoelectronicoempresa, new { @class = "form-control" })
                       
@@ -57,7 +49,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.cargoempresa, new { @class = "col-sm-3 control-label" })
+                    <label for="cargoempresa" class="col-sm-3 control-label">CARGO&nbsp;EMPRESA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.cargoempresa, new { @class = "form-control" })
                         
@@ -66,7 +58,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.direccionoficina, new { @class = "col-sm-3 control-label" })
+                    <label for="direccionoficina" class="col-sm-3 control-label">DIRECCIÓN&nbsp;DE&nbsp;OFICINA</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(m => m.direccionoficina, new { @class = "form-control" })
                         
@@ -78,8 +70,8 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Guardar</button>
-                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarDatosObras")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> GUARDAR</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarDatosObras")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                 </div>
             </div>
         }

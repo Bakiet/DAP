@@ -21,7 +21,8 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
         private readonly ObrasManager _obrasManager = new ObrasManager();
 
-
+        private readonly ComponentesMecanicosManager _componentesmecanicosManager = new ComponentesMecanicosManager();
+        private readonly ComponentesElectricosManager _componentesElectricos_Manager = new ComponentesElectricosManager();
         //asignar los roles para esta funcionalidad
         [Authorize(Roles = "MAESTRO-NAZAN,NAZAN-ADMINISTRARENVIOS-CONSULTAR")]
         public ActionResult Index()
@@ -35,7 +36,15 @@ namespace Ppgz.Web.Areas.Dap.Controllers
 
             ViewBag.Envios = _enviosManager.GetEnvios();
 
+            ViewBag.ComponentesMecanicosCount = _componentesmecanicosManager.GetSustituciones();
+            ViewBag.ComponentesMecanicos = _componentesmecanicosManager.GetSustituciones();
+            TempData["sustitucionesmecanicas"] = ViewBag.ComponentesMecanicosCount.Count;
+            TempData.Keep();
 
+            ViewBag.ComponentesElectricosCount = _componentesElectricos_Manager.GetSustituciones();
+            ViewBag.ComponentesElectricos = _componentesElectricos_Manager.GetSustituciones();
+            TempData["sustitucioneselectronicas"] = ViewBag.ComponentesElectricosCount.Count;
+            TempData.Keep();
             //ViewBag.EstatusCita = db.estatuscitas.ToList();
 
             return View();

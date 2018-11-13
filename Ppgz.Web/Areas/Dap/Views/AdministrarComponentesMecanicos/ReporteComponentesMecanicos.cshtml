@@ -6,27 +6,27 @@
     
 }
 
-<h2 class="form-signin-heading">Reporte de Componentes Mecanicos</h2>
+<h2 class="form-signin-heading">REPORTE DE COMPONENTES MECANICOS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Muestra los reportes de fallas</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Componentes Mecanicos Registrados</div>
+    <div class="panel-heading">COMPONENTES MECANICOS REGISTRADOS</div>
     <div class="panel-body">
        
         <table class="table table-striped" id="mensajes">
             <thead>
                 <tr>
                    
-                    <th class="text-center">Tipo</th>
-                    <th class="text-center">Caracteristicas</th>
+                    <th class="text-center">TIPO</th>
+                    <th class="text-center">CARACTERISTICAS</th>
                   
-                    <th class="text-center">Marca</th>
-                    <th class="text-center">Modelo</th>
-                    <th class="text-center">Serial</th>
-                    <th class="text-center">Fecha Fabricado</th>
-                    <th class="text-center">Fecha Alerta</th>
-                    <th class="text-center">Fecha Vencimiento</th>
+                    <th class="text-center">MARCA</th>
+                    <th class="text-center">MODELO</th>
+                    <th class="text-center">SERIAL</th>
+                    <th class="text-center">FECHA FABRICADO</th>
+                    <th class="text-center">FECHA ALERTA</th>
+                    <th class="text-center">FECHA VENCIMIENTO</th>
                     @*<th class="text-center">Sustitución</th>*@
                    
                 </tr>
@@ -42,9 +42,30 @@
                         <td class="text-center vert-align">@componentemecanico.Marca</td>
                         <td class="text-center vert-align">@componentemecanico.Modelo</td>
                         <td class="text-center vert-align">@componentemecanico.Serial</td>
-                        <td class="text-center vert-align">@componentemecanico.FechaFabricado</td>
-                        <td class="text-center vert-align">@componentemecanico.FechaVencimiento</td>
-                        <td class="text-center vert-align">@componentemecanico.Duracion</td>
+                        @if (componentemecanico.FechaFabricado != null)
+                        {
+                            <td class="text-center vert-align">@componentemecanico.FechaFabricado.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        @if (componentemecanico.FechaAlerta != null)
+                        {
+                            <td class="text-center vert-align">@componentemecanico.FechaAlerta.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
+                        @if (componentemecanico.Duracion != null)
+                        {
+                            <td class="text-center vert-align">@componentemecanico.Duracion.ToString("dd/MM/yyyy")</td>
+                        }
+                        else
+                        {
+                            <td class="text-center vert-align"></td>
+                        }
                         @*<td class="text-center vert-align">@componentemecanico.Sustitucion</td>*@
                     </tr>
                 }

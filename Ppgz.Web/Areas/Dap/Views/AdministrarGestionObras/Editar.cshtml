@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Editar Gestion de Obras</h2>
+<h2 class="form-signin-heading">EDITAR GESTION DE OBRAS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar gestion de obras</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-heading">FORMULARIO DE EDICIÓN</div>
     <div class="panel-body">
         @using (Html.BeginForm("Editar", "AdministrarGestionObras", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -18,17 +18,12 @@
             @Html.ValidationSummary(true)
             
 
-            <div class="form-group">
-
-               
-                <div class="col-sm-7">
-                    <label class="col-sm-3 control-label">Primer Contacto en obras</label>
-                </div>
-            </div>
+          
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.primercontacto, new { @class = "col-sm-3 control-label" })
+                  
+                    <label for="primercontacto" class="col-sm-4 control-label">PRIMERO&nbsp;CONTACTO</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.primercontacto, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.primercontacto)
@@ -37,7 +32,8 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.contactotelefonicoobra, new { @class = "col-sm-3 control-label" })
+                  
+                    <label for="contactotelefonicoobra" class="col-sm-4 control-label">CONTACTO&nbsp;TELEFONICO&nbsp;OBRA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.contactotelefonicoobra, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.contactotelefonicoobra)
@@ -46,7 +42,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.correoelectronicoobra, new { @class = "col-sm-3 control-label" })
+                    <label for="correoelectronicoobra" class="col-sm-4 control-label">CORREO&nbsp;ELECTRONICO&nbsp;OBRA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.correoelectronicoobra, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.correoelectronicoobra)
@@ -54,25 +50,20 @@
                 </div>
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.cargoobra, new { @class = "col-sm-3 control-label" })
+                  
+                    <label for="cargoobra" class="col-sm-4 control-label">CARGO&nbsp;EN&nbsp;OBRA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.cargoobra, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.cargoobra)
                     </div>
                 </div>
 
-                <div class="form-group">
 
-
-                    <div class="col-sm-4">
-                        <label class="col-sm-3 control-label">Datos de la empresa constructora</label>
-                    </div>
-                </div>
-                
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.nombreconstructora, new { @class = "col-sm-3 control-label" })
+                   
+                    <label for="nombreconstructora" class="col-sm-4 control-label">NOMBRE&nbsp;DE&nbsp;CONSTRUCTORA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.nombreconstructora, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.nombreconstructora)
@@ -81,7 +72,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.contactotelefonicoempresa, new { @class = "col-sm-3 control-label" })
+                    <label for="contactotelefonicoempresa" class="col-sm-4 control-label">CONTACTO&nbsp;TELEFONICO&nbsp;EMPRESA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.contactotelefonicoempresa, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.contactotelefonicoempresa)
@@ -90,7 +81,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.correoelectronicoempresa, new { @class = "col-sm-3 control-label" })
+                    <label for="correoelectronicoempresa" class="col-sm-4 control-label">CORREO&nbsp;ELECTRONICO&nbsp;EMPRESA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.correoelectronicoempresa, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.correoelectronicoempresa)
@@ -99,7 +90,8 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.cargoempresa, new { @class = "col-sm-3 control-label" })
+                  
+                    <label for="cargoempresa" class="col-sm-4 control-label">CARGO&nbsp;EMPRESA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.cargoempresa, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.cargoempresa)
@@ -108,24 +100,19 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.direccionoficina, new { @class = "col-sm-3 control-label" })
+                
+                    <label for="direccionoficina" class="col-sm-4 control-label">DIRECCIÓN&nbsp;DE&nbsp;OFICINA</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(m => m.direccionoficina, new { @class = "form-control", style = "width: 700px; height:150px;" })
                         @Html.ValidationMessageFor(m => m.direccionoficina)
                     </div>
                 </div>
 
-                <div class="form-group">
-
-
-                    <div class="col-sm-4">
-                        <label class="col-sm-3 control-label">Caracteristicas de las obras y equipos</label>
-                    </div>
-                </div>
                 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.ubicacionobra, new { @class = "col-sm-3 control-label" })
+                  
+                    <label for="ubicacionobra" class="col-sm-4 control-label">UBICACIÓN&nbsp;DE&nbsp;OBRA</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(m => m.ubicacionobra, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.ubicacionobra)
@@ -134,7 +121,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.tipoobra, new { @class = "col-sm-3 control-label" })
+                    <label for="tipoobra" class="col-sm-4 control-label">TIPO&nbsp;DE&nbsp;OBRA</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.tipoobra, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.tipoobra)
@@ -143,7 +130,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.numeroequipos, new { @class = "col-sm-3 control-label" })
+                    <label for="numeroequipos" class="col-sm-4 control-label">NUMERO&nbsp;DE&nbsp;EQUIPOS</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.numeroequipos, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.numeroequipos)
@@ -152,25 +139,20 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.tipoequipo, new { @class = "col-sm-3 control-label" })
+                    <label for="tipoequipo" class="col-sm-4 control-label">TIPO&nbsp;DE&nbsp;EQUIPOS</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.tipoequipo, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.tipoequipo)
                     </div>
                 </div>
 
-                <div class="form-group">
-
-
-                    <div class="col-sm-4">
-                        <label class="col-sm-3 control-label">Status de la obra</label>
-                    </div>
-                </div>
+                
                 
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.vendidasclimb, new { @class = "col-sm-3 control-label" })
+                 
+                    <label for="vendidasclimb" class="col-sm-4 control-label">VENDIDAD&nbsp;POR&nbsp;CLIMB</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.vendidasclimb, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.vendidasclimb)
@@ -179,7 +161,8 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.vendidasotros, new { @class = "col-sm-3 control-label" })
+               
+                    <label for="vendidasotros" class="col-sm-4 control-label">VENDIDAD&nbsp;POR&nbsp;OTROS</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.vendidasotros, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.vendidasotros)
@@ -187,7 +170,7 @@
                 </div>
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.novendidas, new { @class = "col-sm-3 control-label" })
+                    <label for="novendidas" class="col-sm-4 control-label">NO&nbsp;VENDIDAS</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.novendidas, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.novendidas)
@@ -196,7 +179,7 @@
 
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.paralizadas, new { @class = "col-sm-3 control-label" })
+                    @Html.LabelFor(m => m.paralizadas, new { @class = "col-sm-4 control-label" })
                     <div class="col-sm-4">
                         @Html.TextBoxFor(m => m.paralizadas, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.paralizadas)
@@ -206,8 +189,8 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarGestionObras")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarGestionObras")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                 </div>
             </div>
         }

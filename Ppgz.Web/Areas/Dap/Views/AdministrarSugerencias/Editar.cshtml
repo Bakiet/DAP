@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="form-signin-heading">Editar Reporte Sugerencias</h2>
+<h2 class="form-signin-heading">EDITAR REPORTE DE SUGERENCIAS</h2>
 @*<p class="page-description-title"><i class="fa fa-info" aria-hidden="true"></i> <i>Editar Reporte de sugerencias</i></p>*@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading">Formulario de edición</div>
+    <div class="panel-heading">FORMULARIO DE EDICIÓN</div>
     <div class="panel-body">
         @using (Html.BeginForm("Editar", "AdministrarSugerencias", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "form", role = "form", enctype = "multipart/form-data" }))
         {
@@ -40,21 +40,21 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(s => s.AccionesTomadas, new { @class = "col-sm-3 control-label" })
+                    <label for="AccionesTomadas" class="col-sm-3 control-label">ACCIONES&nbsp;TOMADAS</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(s => s.AccionesTomadas, new { @class = "form-control", style = "width: 700px; height:150px;" })
                         @Html.ValidationMessageFor(s => s.AccionesTomadas)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(s => s.AccionesRecomendadas, new { @class = "col-sm-3 control-label" })
+                    <label for="AccionesRecomendadas" class="col-sm-3 control-label">ACCIONES&nbsp;RECOMENDADAS</label>
                     <div class="col-sm-4">
                         @Html.TextAreaFor(s => s.AccionesRecomendadas, new { @class = "form-control", style = "width: 700px; height:150px;" })
                         @Html.ValidationMessageFor(s => s.AccionesRecomendadas)
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(s => s.GerenciaResponsable, new { @class = "col-sm-3 control-label" })
+                    <label for="GERENCIARESPONSABLE" class="col-sm-3 control-label">GERENCIA&nbsp;RESPONSABLE</label>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(s => s.GerenciaResponsable, new { @class = "form-control" })
                         @Html.ValidationMessageFor(s => s.GerenciaResponsable)
@@ -71,8 +71,8 @@
             </div>*@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
-                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarSugerencias")"><i class="fa fa-undo" aria-hidden="true"></i> Cancelar</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "AdministrarSugerencias")"><i class="fa fa-undo" aria-hidden="true"></i> CANCELAR</a>
                 </div>
             </div>
         }
